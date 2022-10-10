@@ -26,4 +26,3 @@ public class PracticeController {
 }
 
 //지니 수정
-//민지 수정
