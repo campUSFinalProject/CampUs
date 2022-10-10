@@ -8,13 +8,21 @@
         <version>2.7.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+<<<<<<< HEAD
     <groupId>com.example</groupId>
+=======
+    <groupId>kibwa</groupId>
+>>>>>>> 4ada33f428ddb1e35c353c571dd04b8949553fbc
     <artifactId>CampUs</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>CampUs</name>
     <description>CampUs</description>
     <properties>
+<<<<<<< HEAD
         <java.version>17</java.version>
+=======
+        <java.version>1.8</java.version>
+>>>>>>> 4ada33f428ddb1e35c353c571dd04b8949553fbc
     </properties>
     <dependencies>
         <dependency>
