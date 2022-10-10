@@ -1,11 +1,10 @@
-package kibwa.campus.Controller;
-
+package kibwa.campus.controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static kibwa.campus.Util.CmmUtil.nvl;
+import static kibwa.campus.util.CmmUtil.nvl;
 
 @RequestMapping(value = "get")
 public class test {
