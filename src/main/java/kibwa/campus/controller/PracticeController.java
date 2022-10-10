@@ -24,3 +24,5 @@ public class PracticeController {
         return "/get";
     }
 }
+
+//지니 수정
