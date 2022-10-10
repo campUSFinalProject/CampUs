@@ -5,6 +5,7 @@
 * JQuery   
 * Apache Tomcat v8.5
 * MariaDB v10.5.17  
+* IntellJ v17.0.4.1
 ### Page routing path   
 ### Commit Message Convention   
 
