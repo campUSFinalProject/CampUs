@@ -1,4 +1,4 @@
-package kibwa.campus;
+package com.example.campus;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
