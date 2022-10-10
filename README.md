@@ -1,8 +1,7 @@
 # 👨‍💻 SW캠프 Final 프로젝트 
 ## Development   
-* HTML
-* JavaScript
-* JQuery   
+* Java
+* Spring
 * Apache Tomcat v8.5
 * MariaDB v10.5.17  
 * IntellJ v17.0.4.1
