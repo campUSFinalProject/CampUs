@@ -14,15 +14,12 @@ public class PracticeController {
     public String get(HttpServletRequest request, ModelMap model)
         throws Exception{
 
-        log.info(this.getClass().getName() + ".get Start!");
-
         String name = nvl(request.getParameter("name"));
 
-        log.info("name : " + name);
-
-        model.addAttribute("name",name);
+        model.addAttribute("name", name);
         return "/get";
     }
 }
 
 //지니 수정
+//민지가 오류나는거 수정함
