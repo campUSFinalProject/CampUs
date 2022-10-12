@@ -23,3 +23,4 @@ public class PracticeController {
 
 //지니 수정
 //민지가 오류나는거 수정함
+//건우 push test
