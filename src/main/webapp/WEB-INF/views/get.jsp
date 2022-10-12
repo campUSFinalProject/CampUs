@@ -1,9 +1,10 @@
 <%@page import="static kibwa.campus.util.CmmUtil.nvl" %>
+<%@ page import="kibwa.campus.util.CmmUtil" %>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
-    //String name = nvl((String)request.getAttribute("name"));
-    String name = "민지";
+    String name = CmmUtil.nvl((String)request.getAttribute("name"));
+    //String name = "민지";
 %>
 
 <!DOCTYPE html>
