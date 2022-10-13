@@ -9,12 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import static kibwa.campus.util.CmmUtil.nvl;
 
 @Controller
-public class PracticeController {
-    @RequestMapping(value = "get")
-    public String get(HttpServletRequest request, ModelMap model) throws Exception {
-        String name = nvl(request.getParameter("name"));
-        model.addAttribute("name", name);
-        return "/get";
+public class BoardListController {
+
+    @RequestMapping(value = "boardList")
+    public String BoardList(HttpServletRequest request, ModelMap
+            model) throws Exception {
+        //String name = nvl(request.getParameter("name"));
+        //model.addAttribute("name", name);
+        return "/board/FreeBoard";
     }
 }
 
