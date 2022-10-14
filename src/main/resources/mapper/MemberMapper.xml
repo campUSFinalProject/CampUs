@@ -7,12 +7,14 @@
     <insert id="InsertMember" parameterType="MemberDTO">
             INSERT INTO MEMBER
                 (
+                 Mem_num,
                  ID,
                  Password,
                  Name,
                  Mem_tel
                 )
             VALUES(
+                   MEM_SEQ.nextval(),
                    #{id},
                    #{password},
                    #{name},
