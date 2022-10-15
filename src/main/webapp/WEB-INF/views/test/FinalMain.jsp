@@ -1,3 +1,7 @@
+
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+         pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +49,7 @@
                     <em class="icon3"><i></i></em><p><span>TipBoard</span><span>꿀팁게시판</span></p></a></li>
                 <li><a href="https://www.busanparadisehotel.co.kr/front/facility/spaparapool?">
                     <em class="icon4"><i></i></em>
-                    <p><span>OUTDOOR OCEAN SPA</span><span>POOL</span></p></a></li>
+                    <p><span>OUTDOOR OCEAN SPA</span><span>사업자등록 게시판</span></p></a></li>
                 <li><a href="https://www.busanparadisehotel.co.kr/front/facility/dinebuffet?">
                     <em class="icon5"><i></i></em>
                     <p><span>BUFFET</span><span>ON THE PLATE</span></p></a></li>
@@ -85,13 +89,10 @@
                                     <a href="#">캠핑장 2</a>                                       
                                 </li>
                                 <li class="cell">
-                                    <a href="#">뉴스</a>                                       
+                                    <a href="#">캠핑장 3</a>
                                 </li>
                                 <li class="cell">
-                                    <a href="#">갤러리</a>                                       
-                                </li>
-                                <li class="cell">
-                                    <a href="#">LotteHottel Seoul 위치</a>
+                                    <a href="#">캠핑장 4</a>
                                 </li>
                             </ul>
                         </div>
@@ -105,7 +106,7 @@
                         <div>
                             <ul class="row">
                                 <li class="cell">
-                                    <a href="#">Main Tower</a>
+                                    <a href="#">2인전용</a>
                                     <ul class="row">
                                         <li class="cell"><a href="#" class="block">스탠다드</a></li>
                                         <li class="cell"><a href="#" class="block">슈페리어 룸</a></li>
@@ -113,7 +114,7 @@
                                     </ul>
                                 </li>
                                 <li class="cell">
-                                    <a href="#">Club Floor</a>
+                                    <a href="#">4인전용</a>
                                     <ul class="row">
                                         <li class="cell"><a href="#" class="block">디럭스 룸</a></li>
                                         <li class="cell"><a href="#" class="block">주니어 스위트 룸</a></li>
@@ -336,7 +337,7 @@
             </div>
             <div class="cell block"><a href="#">ABOUT US</a>
             </div>
-            <div class="cell block"><a href="#">로그인</a>
+            <div class="cell block"><a href="login">로그인</a>
             </div>
             <div class="cell block"><a href="#">회원가입</a>
             </div>
@@ -351,7 +352,13 @@
                 </ul>
            </div>
      </div>
- </div> 
+ </div>
+
+
+
+
+
+
         
 </div>
 
@@ -371,11 +378,11 @@
                 <div class="box-2 bg">
                     <ul>
                         <li class="text-view"><a href="#" class="block">
-                            <h2>OCEAN TERRACE</h2>
+                            <h2>숲이 바로 보이는 민지 캠핑장</h2>
                             <p class="text">오션테라스 객실에는 발코니가 구비되어 있어 <br>바다를 보다 가까이서 느낄 수 있습니다.</p>
                             </a></li>
                         <li class="text-view"><a href="#" class="block">
-                            <h2>OCEAN SPA CIMER</h2>
+                            <h2>조용하고 휴가철 편한하게 쉴수있는 캠핑장</h2>
                             <p class="text">탁 트인 하늘과 바다의 화려한 <br>경관을 자랑하는 오션스파</p>
                             </a></li>
                         <li class="text-view"><a href="#" class="block">
@@ -494,7 +501,7 @@
             <div class="cell active-on-visible" data-active-on-visible-diff-y="-200">
                 <div>
                         <div  class="img img-box img-box-1">
-							<img src="../img/pic/bbq.jpg" alt="">
+							<img src="../img//bbq.jpg" alt="">
 		                </div>
 					<div class="one-1 one row ">
 						<span class="cell">BBQ 예약</span>
@@ -854,25 +861,25 @@
                     <img src="https://www.lottehotel.com/content/dam/lottehotel/author/@temp/footer-brand-signiel.png">
                 </a>
             </li>
-        
+
             <li class=" cell">
                 <a href="https://www.lottehotel.com/global/ko/about/lotte-hotel/brand/lotte-hotel.html" target="_blank">
                     <img src="https://www.lottehotel.com/content/dam/lottehotel/author/@temp/footer-brand-lotte-hotels-resorts.png">
                 </a>
             </li>
-        
+
             <li class=" cell">
                 <a href="https://www.lottehotel.com/global/ko/about/lotte-hotel/brand/lotte-city-hotel.html" target="_blank">
                     <img src="https://www.lottehotel.com/content/dam/lottehotel/author/@temp/footer-brand-lotte-city-hotels.png">
                 </a>
             </li>
-        
+
             <li class=" cell">
                 <a href="https://www.lottehotel.com/global/ko/about/lotte-hotel/brand/l7-hotel.html" target="_blank">
                     <img src="https://www.lottehotel.com/content/dam/lottehotel/author/@temp/footer-brand-l7-hotels.png">
                 </a>
             </li>
-        
+
             <li class=" cell">
                 <a href="https://www.lotteresort.com" target="_blank">
                     <img src="https://www.lottehotel.com/content/dam/lotte-hotel/global/main/footer-brand-resort.png" alt="롯데 리조트">
@@ -885,31 +892,31 @@
                     <img class="img-1" src="https://www.lottehotel.com/content/dam/lotte-hotel/global/main/footer-LHM.png" alt="LHM">
                 </a>
             </li>
-        
+
             <li class=" cell">
                 <a href="https://www.tripadvisor.co.kr/Hotel_Review-g294197-d306130-Reviews-Lotte_Hotel_Seoul-Seoul.html" target="_blank">
                     <img class="img-2"src="https://www.lottehotel.com/content/dam/lotte-hotel/common/email/icon-tripad.png">
                 </a>
             </li>
-        
+
             <li class=" cell">
                 <a href="https://www.facebook.com/lotteseoul" target="_blank">
                     <img class="img-3" src="https://www.lottehotel.com/content/dam/lotte-hotel/lotte/seoul/main/footer-sns-facebook.png">
                 </a>
             </li>
-        
+
             <li class=" cell">
                 <a href="https://www.instagram.com/lottehotels/" target="_blank">
                     <img class="img-4" src="https://www.lottehotel.com/content/dam/lotte-hotel/lotte/seoul/main/footer-sns-instagram.png">
                 </a>
             </li>
-        
+
             <li class=" cell">
                 <a href="https://www.youtube.com/user/LotteHotels/" target="_blank">
                     <img class="img-5" src="https://www.lottehotel.com/content/dam/lotte-hotel/lotte/seoul/main/footer-sns-youtube.png">
                 </a>
             </li>
-        
+
             <li class=" cell">
                 <a href="http://blog.lottehotel.com/" target="_blank">
                     <img class="img-6" src="https://www.lottehotel.com/content/dam/lotte-hotel/lotte/seoul/main/footer-sns-blog.png">
@@ -932,23 +939,23 @@
                     <img src="https://www.lottehotel.com/content/dam/lottehotel/author/@temp/footer-logo.png" class="s100__logo">
                 </a>
                 <div class="s100-address">
-                    <p class="s100-address__item"> ㈜호텔롯데</p>
-                    <p class="s100-address__item">서울특별시 중구 을지로 30</p>
-                    <p class="s100-address__item">02-771-1000</p>
+                    <p class="s100-address__item"> ㈜캠퍼스</p>
+                    <p class="s100-address__item">의정부시 호국로 30</p>
+                    <p class="s100-address__item">010-2713-3607</p>
                 </div>
             </div>
             <div class="s100-link">
                 <div class="s100-link__list">
                     <a href="/global/ko/about/lotte-hotel.html" target="_blank" title="새창" class="s100-link__item">롯데호텔 소개</a>
-                
+
                     <a href="/global/ko/about/lotte-hotel/brand.html" target="_blank" title="새창" class="s100-link__item">브랜드 소개</a>
-                
+
                     <a href="/global/ko/about/news.html" target="_blank" title="새창" class="s100-link__item">뉴스</a>
-                
+
                     <a href="/global/ko/about/lotte-hotel/awards.html" target="_blank" title="새창" class="s100-link__item">수상</a>
-                
+
                     <a href="/global/en/download-site.html" target="_blank" title="새창" class="s100-link__item">갤러리</a>
-                
+
                     <a href="/seoul-hotel/ko/sitemap.html" target="_self" class="s100-link__item">사이트맵</a>
                 </div>
                 <div class="s100-link__list">
@@ -995,7 +1002,7 @@
 	         </div>
 	         <div class="footer-company">
 	             <span class="footer-company__item">
-	                 <span class="footer-company__title">대표이사</span> 김현식</span>
+	                 <span class="footer-company__title">대표이사</span>강현석</span>
 	             <span class="footer-company__item">
 	                 <span class="footer-company__title">사업자등록번호</span> 104-81-25980</span>
 	             <span class="footer-company__item">
@@ -1004,7 +1011,7 @@
 	             </span>
 	         </div>
              <div class="tol-inner2">
-            <a href="#" class="tol_livechat" data-loginurl="/global/ko" data-prefixuri="https://chat.lottehotel.com/front/main/jsp/view/chatHotelList.jsp" data-postfixuri="langcd=KO&amp;hotelcd=LTSE" data-logined="false" data-js="#" data-name="footerPopup" data-width="450" data-height="600"></a>
+            /jsp/view/chatHotelList.jsp" data-postfixuri="langcd=KO&amp;hotelcd=LTSE" data-logined="false" data-js="#" data-name="footerPopup" data-width="450" data-height="600"></a>
         </div>
 	     </div>   
      </div>
