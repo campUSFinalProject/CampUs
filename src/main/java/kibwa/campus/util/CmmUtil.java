@@ -1,5 +1,5 @@
 package kibwa.campus.util;
-
+//빈칸이 들어오면 빈 칸을 넘겨주도록 하는 유틸
 public class CmmUtil {
     public static String nvl(String str, String chg_str) {
         String res;
