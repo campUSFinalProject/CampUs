@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import static kibwa.campus.util.CmmUtil.nvl;
 
 @Controller
-public class testController {
-    @RequestMapping(value = "FinalMain")
-    public String FinalMain(HttpServletRequest request, ModelMap model)
+public class CaravanController {
+    @RequestMapping(value = "Caravan")
+    public String Caravan(HttpServletRequest request, ModelMap model)
             throws Exception{
 
         //String name = nvl(request.getParameter("name"));
         //model.addAttribute("name", name);
-        return "/test/FinalMain";
+        return "/Caravan/Caravan";
     }
 }
 
