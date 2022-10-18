@@ -1,6 +1,19 @@
 <%@ page import="kibwa.campus.util.CmmUtil" %>
+<%@ page import="kibwa.campus.dto.BoardDTO" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
+
+<%
+    List<BoardDTO> bList = (List<BoardDTO>) request.getAttribute("bList");
+
+    //게시판 조회 결과 보여주기
+    if(bList == null) {
+        bList = new ArrayList<BoardDTO>();
+    }
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +31,9 @@
         <td> 작성일 </td>
         <td> 조회수 </td>
     </tr>
+
+    <% if %>
+
     <tr><td colspan="5"> 등록된 게시물이 없습니다. </td></tr>
     <tr>
         <td colspan="5">
