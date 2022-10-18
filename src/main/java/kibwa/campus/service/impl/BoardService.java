@@ -3,11 +3,13 @@ package kibwa.campus.service.impl;
 import kibwa.campus.dto.BoardDTO;
 import kibwa.campus.persistance.mapper.IBoardMapper;
 import kibwa.campus.service.IBoardService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Slf4j
 @Service(value = "BoardService")
 public class BoardService implements IBoardService {
 

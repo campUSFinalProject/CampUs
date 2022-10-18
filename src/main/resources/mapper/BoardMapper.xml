@@ -5,13 +5,8 @@
 
     <!-- 게시판 리스트 쿼리 -->
     <select id="getBoardList" resultType="kibwa.campus.dto.BoardDTO">
-        SELECT board_num as boardNum,
-               board_title as boardTitle,
-               board_content as boardContent,
-               board_post_date as boardDate,
-               board_mod_date as boardModDate,
-               board_view_num as boardViewNum
-        FROM BOARD
+        select b.board_num, b.board_title, b.board_post_date, b.board_view_num, m.id
+        from board b, member m
     </select>
 
     <!--게시판 등록 쿼리 -->

@@ -30,11 +30,13 @@ public class BoardListController {
 
         List<BoardDTO> bList = boardService.getBoardList();
 
+
         if (bList == null){
             bList = new ArrayList<>();
         }
 
-        model.addAttribute("bList" + bList);
+        log.info("bList :" + bList);
+        model.addAttribute("bList", bList);
 
         log.info(this.getClass().getName() + ".BoardList End!");
 
