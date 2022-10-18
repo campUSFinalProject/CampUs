@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>노지 캠핑</title>
+    <title>노지 상세 페이지</title>
 </head>
 
 <link href="../css/FinalMain.css" rel="stylesheet" type="text/css" />
@@ -320,30 +320,6 @@
                 </li>
             </ul>
         </nav>
-        <div class="cell-right row">
-            <div class="cell"><a href="#" class=""></a>
-            </div>
-            <div class="cell block"><a href="#">MEMBERSHIP</a>
-            </div>
-            <div class="cell block"><a href="#"></a>
-            </div>
-            <div class="cell block"><a href="#">ABOUT US</a>
-            </div>
-            <div class="cell block"><a href="#">로그인</a>
-            </div>
-            <div class="cell block"><a href="#">회원가입</a>
-            </div>
-            <div class="cell block"><a href="#">예약확인/취소</a>
-            </div>
-            <div class="cell block"><a href="#">KR <i class="fas fa-caret-down"></i></a>
-                <ul>
-                    <li><a href="#">KR</a></li>
-                    <li><a href="#">EN</a></li>
-                    <li><a href="#">JP</a></li>
-                    <li><a href="#">CN</a></li>
-                </ul>
-            </div>
-        </div>
     </div>
 
 </div>
@@ -354,26 +330,23 @@
     <div id="container">
         <div class="conHeader">
             <ul>
-                <li><a href="" class="homeIcon"><em class="blind">홈</em></a></li>
+                <li><a href="/test" class="homeIcon"><em class="blind">홈</em></a></li>
                 <li>></li>
-                <li><a href="" style="color: #666666">객실</a></li>
+                <li><a href="/Outfield" style="color: #666666">노지 목록</a></li>
                 <li>></li>
-                <li><a href="">전체객실보기</a></li>
+                <li><a href="">노지 정보</a></li>
             </ul>
         </div>
 
         <div class="nav">
             <h2>객실</h2>
             <ul>
-                <li><a href="">스탠다드</a></li>
-                <li><a href="">디럭스</a></li>
-                <li><a href="">스위트</a></li>
+                <li><a href="/FinalMain">메인 화면</a></li>
+                <li><a href="/Outfield">노지 리스트</a></li>
             </ul>
-            <a href="" class="plusBtn"><em class="blind">더보기</em></a>
-            <div class="allRoom"><a href="">전체객실보기</a></div>
         </div>
         <div class="contents">
-            <h1>A구역</h1>
+            <h1>노지 상세 정보</h1>
             <div class="mainVisual">
                 <div class="slider">
                     <div class="visual_1"></div>

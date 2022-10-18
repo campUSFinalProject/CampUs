@@ -12,7 +12,7 @@ import static kibwa.campus.util.CmmUtil.nvl;
 @Controller
 public class OutfieldDetailController {
     @RequestMapping(value = "OutfieldDetail")
-    public String get(HttpServletRequest request, ModelMap model) throws Exception {
+    public String OutfieldDetail(HttpServletRequest request, ModelMap model) throws Exception {
         String name = nvl(request.getParameter("name"));
         model.addAttribute("name", name);
         return "/outfield/OutfieldDetail";

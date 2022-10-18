@@ -10,12 +10,12 @@ import static kibwa.campus.util.CmmUtil.nvl;
 
 
 @Controller
-public class OutfieldController {
-    @RequestMapping(value = "Outfield")
+public class test {
+    @RequestMapping(value = "FinalMain")
     public String Outfield(HttpServletRequest request, ModelMap model) throws Exception {
         String name = nvl(request.getParameter("name"));
         model.addAttribute("name", name);
-        return "/outfield/Outfield";
+        return "/test/FinalMain";
     }
 }
 
