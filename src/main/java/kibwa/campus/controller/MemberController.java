@@ -68,6 +68,7 @@ public class MemberController {
             pDTO.setMem_tel(mem_tel);
             pDTO.setEmail(email);
 
+            //데이터베이스에 회원정보 인서트
             int res = memberService.InsertMember(pDTO);
 
             if (res == 1){
@@ -99,7 +100,7 @@ public class MemberController {
         return "/redirect";
     }
 
-
+    //--------------로그인 기능-----------------
     @PostMapping(value = "cu/getMemLoginCheck")
     public String getMemLoginCheck(HttpSession session, HttpServletResponse response, HttpServletRequest request,
                                    ModelMap model) throws Exception{
@@ -127,6 +128,7 @@ public class MemberController {
             pDTO.setEmail(email);
             pDTO.setMem_tel(mem_tel);
 
+            //로그인정보 체크
             MemberDTO rDTO = memberService.getMemLoginCheck(pDTO);
 
             if (rDTO == null){

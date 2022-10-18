@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MainController {
 
+
+    //메인화면으로 넘어가기
     @RequestMapping(value = "cu/Main")
     public String Main(){
 
