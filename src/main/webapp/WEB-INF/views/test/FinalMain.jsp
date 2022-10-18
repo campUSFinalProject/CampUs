@@ -337,10 +337,9 @@
             </div>
             <div class="cell block"><a href="#">ABOUT US</a>
             </div>
-            <div class="cell block"><a href="login">로그인</a>
+            <div class="cell block"><a href="/member/memRegLoginForm">로그인/회원가입</a>
             </div>
-            <div class="cell block"><a href="#">회원가입</a>
-            </div>
+
             <div class="cell block"><a href="#">예약확인/취소</a>
            </div>
            <div class="cell block"><a href="#">KR <i class="fas fa-caret-down"></i></a>
