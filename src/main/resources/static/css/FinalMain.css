@@ -544,7 +544,7 @@ a {
 .top-bar .cell-right > div > ul {
     display:block;
     position:absolute;
-    width:0 auto;
+    width: auto;
     border:1px solid black;
     background-color:white;
     padding-bottom:9px;
@@ -609,8 +609,7 @@ a {
     height:100vh;
     background-size:cover;
 
-}*/
-
+}
 
 /* 임시 */
 body {
