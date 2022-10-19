@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,6 @@ public class BoardListController {
 
         List<BoardDTO> bList = boardService.getBoardList();
 
-
         if (bList == null){
             bList = new ArrayList<>();
         }
@@ -42,5 +42,24 @@ public class BoardListController {
 
         return "/board/FreeBoard";
     }
+
     //게시판 글 작성
+    @GetMapping(value = "board/BoardInsert")
+    public String BoardListInsert(HttpSession session, HttpServletRequest request, ModelMap model) {
+
+        log.info(this.getClass().getName() + ".InsertBoard start!");
+
+        String msg = "";
+        String url = "";
+
+        try{
+
+        } catch (Exception e) {
+
+        } finally {
+            log.info(this.getClass().getName() + ".InsertBoard End!");
+        }
+
+        return "/board/InsertBoard";
+    }
 }

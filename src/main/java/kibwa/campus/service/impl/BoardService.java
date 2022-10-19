@@ -6,6 +6,7 @@ import kibwa.campus.service.IBoardService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -27,8 +28,10 @@ public class BoardService implements IBoardService {
     }
 
     // 게시판 글 작성
+    @Transactional
     @Override
-    public int insertBoard(BoardDTO bDTO) throws Exception {
-        return 0;
+    public void insertBoard(BoardDTO bDTO) throws Exception {
+        log.info(this.getClass().getName() + ".insertBoard!");
+        boardMapper.insertBoard(bDTO);
     }
 }

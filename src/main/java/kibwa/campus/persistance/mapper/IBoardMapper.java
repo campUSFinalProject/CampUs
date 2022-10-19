@@ -7,5 +7,8 @@ import java.util.List;
 
 @Mapper
 public interface IBoardMapper {
+    //게시판 리스트 출력
     List<BoardDTO> getBoardList() throws Exception;
+    //게시판 insert
+    void insertBoard(BoardDTO bDTO) throws Exception;
 }

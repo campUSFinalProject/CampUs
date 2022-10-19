@@ -40,7 +40,7 @@
 <!--게시판 css -->
 <link href="../css/board/FreeBoard.css" rel="stylesheet" type="text/css"/>
 <body>
-<div>
+<div class=mainDiv>
     <!--상단 메뉴바-->
     <div class="top-bar con-min-width row">
         <div class="ride">
@@ -368,47 +368,76 @@
     </div>
 
     <!--게시판 area-->
-    <div class="title">
-        <h3> 게시판 목록 </h3>
-    </div>
-    <div class="content">
-        <table>
-            <tr>
-                <td> 글번호</td>
-                <td> 제 목</td>
-                <td> 작성자</td>
-                <td> 작성일</td>
-                <td> 조회수</td>
-            </tr>
+    <!--codepen board templet-->
+    <div class="notice">
+        <div class="page-title">
+            <div class="container">
+                <h3>자유게시판</h3>
+            </div>
+        </div>
 
-            <% if (bList.isEmpty()) { %>
-            <tr>
-                <td colspan="5"> 등록된 게시물이 없습니다.</td>
-            </tr>
-            <% } else {%>
-            <%for (BoardDTO b : bList) {%>
-            <tr>
-                <td><%=b.getBoard_num()%>
-                </td>
-                <td><a><%=b.getBoard_title()%>
-                </a></td>
-                <td><a><%=b.getId()%>
-                </a></td>
-                <td><a><%=b.getBoard_post_date()%>
-                </a></td>
-                <td><a><%=b.getBoard_view_num()%>
-                </a></td>
-            </tr>
-            <%}%>
-            <%}%>
-            <tr>
-                <td colspan="5">
-                    <a>글쓰기</a>
-                </td>
-            </tr>
-        </table>
+        <!-- board 검색창 area -->
+        <div id="board-search">
+            <div class="container">
+                <div class="search-window">
+                    <form action="">
+                        <div class="search-wrap">
+                            <label for="search" class="blind">공지사항 내용 검색</label>
+                            <input id="search" type="search" name="" placeholder="검색어를 입력해주세요." value="">
+                            <button type="submit" class="btn btn-dark">검색</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- board list area -->
+        <div id="board-list">
+            <div class="container">
+                <table class="board-table">
+                    <thead>
+                    <tr>
+                        <th scope="col" class="th-num">번호</th>
+                        <th scope="col" class="th-title">제목</th>
+                        <th scope="col" class="th-id">작성자</th>
+                        <th scope="col" class="th-date">등록일</th>
+                        <th scope="col" class="th-showNum">조회수</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% if (bList.isEmpty()) { %>
+                    <tr>
+                        <td colspan="5"> 등록된 게시물이 없습니다.</td>
+                    </tr>
+                    <% } else {%>
+                    <%for (BoardDTO b : bList) {%>
+                    <tr>
+                        <td><%=b.getBoard_num()%>
+                        </td>
+                        <td><a><%=b.getBoard_title()%>
+                        </a></td>
+                        <td><a><%=b.getId()%>
+                        </a></td>
+                        <td><a><%=b.getBoard_post_date()%>
+                        </a></td>
+                        <td><a><%=b.getBoard_view_num()%>
+                        </a></td>
+                    </tr>
+                    <%}%>
+                    <%}%>
+                    <tr>
+                        <td colspan="5">
+                            <a>글쓰기</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
-<script type="text/javascript" src= "../js/FinalMain.js"></script>
+
+<!--메뉴바를 위한 JS-->
+<script type="text/javascript" src="../js/FinalMain.js"></script>
 </body>
 </html>
