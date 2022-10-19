@@ -60,7 +60,7 @@
 <!-- 상단 메뉴바 -->
 <div class="top-bar con-min-width row">
     <div class="ride">
-        <a href="#" class="logo cell block img-box">
+        <a href="/FinalMain" class="logo cell block img-box">
             <img src="../img/camlog.jpg" alt="">
         </a>
         <nav class="menu-box-2 cell">
@@ -397,6 +397,8 @@
                 </div>
                 <div class="rightSec">
                     <ul class="detail">
+                        <li></li>
+                        <li></li>
                         <li><a href="" class="btn_3">예약하기</a></li>
                     </ul>
                     <h2>Hotel Info</h2>
