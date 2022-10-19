@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>예약</title>
@@ -353,7 +354,7 @@
 </div>
 <!-- 상단 메뉴바 끝 -->
 
-<!-- 메인 정보창 -->
+<!-- 예약 날짜 -->
 
 <section id="section-main" class="section-reservation" style="margin-top: 300px">
     <div class="w800">
@@ -362,7 +363,7 @@
                 <i class="fa fa-check-circle-o"></i>
                 <div class="lbl">Dates</div>
             </a>
-            <a class="future" href="#"><i class="fa fa-th-list"> </i>
+            <a class="future" href="#"><i class="fa fa-th-list"></i>
                 <div class="lbl">Rooms</div>
             </a>
             <a class="future" href="#"><i class="fa fa-users"></i>
@@ -375,7 +376,6 @@
 
         <form action="#">
             <div id="rcal"></div>
-
             <div class="spacer"></div>
             <div class="actions">
                 <div><a href="">Cancel</a></div>
@@ -383,12 +383,10 @@
             </div>
         </form>
 
-
     </div>
 </section>
 
-
-<!-- 메인 정보창 끝 -->
+<!-- 예약 날짜 끝 -->
 
 <script type="text/javascript" src= "../js/FinalMain.js"></script>
 <script type="text/javascript" src= "../js/RevDate.js"></script>
