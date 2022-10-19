@@ -1,0 +1,184 @@
+body {
+    background-image: none;
+    background: #FDFFFC;
+    color: #011627;
+}
+
+.hide {
+    display: none;
+}
+
+header {
+    background: #efefef;
+    background: linear-gradient(90deg, #43cea2 10%, #185a9d 90%);
+}
+
+header .left span {
+    font-weight: 400;
+}
+/*SECTION RESERVATION//////////*/
+
+.section-reservation a {
+    color: #307EAF;
+}
+
+.section-reservation .actions .btn {
+    color: white;
+}
+
+.section-reservation .section-container {
+    align-self: flex-start;
+    max-width: 800px;
+}
+
+/*STATUS////////////////////////////*/
+#status-track {
+    margin: 3em 1em 2em 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+    -webkit-justify-content: space-between;
+    display: -ms-flexbox;
+    -ms-flex-flow: row;
+    text-transform: uppercase;
+    font-size: 1em;
+}
+
+#status-track .complete {
+    /* color: #fe8125; */
+    /* color: #00c6ff; */
+
+    color: #307EAF;
+    color: #2ec4b6;
+    color: #e71d36;
+    /* color: #ff9f1c; */
+    /* color: #0072ff; */
+}
+
+#status-track .current {
+    color: #011627;
+}
+
+#status-track .future {
+    color: rgba(1,22,39,0.5);
+}
+
+#status-track > * {
+    text-align: center;
+    /* line-height: 3; */
+
+    flex: 2;
+    -webkit-flex: 2;
+    -ms-flex: 0px 2;
+    position: relative;
+}
+
+#status-track > * * {
+    display: block;
+}
+
+#status-track > * label {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.25em 0;
+    margin: 0.4em 0;
+}
+
+#status-track > * i.fa {
+    font-size: 1.667em;
+}
+
+#status-track > *:first-child {
+    /*text-align: left;
+    flex: 1;*/
+    /*-webkit-flex: 1;
+    -ms-flex: 0px 1;*/
+    /* background: green; */
+}
+
+#status-track > *:not(:first-child)::before {
+    display: block;
+    content: "";
+    position: absolute;
+    left: -50%;
+    right: 50%;
+    top: 0.5em;
+    border-top: 0.2em solid;
+    margin: 0 2.1em;
+}
+
+#status-track > *:nth-child(2)::before {
+    margin-left: 2.5em;
+}
+
+#status-track > *:last-child {
+    /*text-align: right;
+    flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 0px 1;*/
+}
+
+#status-track > *:last-child::before {
+    /*right: 0.5em;
+    left: -100%;*/
+}
+
+.section-reservation .actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/*FORM/////////////////////////*/
+
+form h1 {
+    font-weight: 700;
+    text-align: left;
+    line-height: 1;
+    font-size: 1.33em;
+    margin-bottom: 1.33em;
+    color: #011627;
+    margin-left: 0;
+}
+/*ROOMS/////////////////////////*/
+
+#room-types-container, #rooms-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1.667em;
+}
+
+li.rc {
+    border: 1px solid #2EC4B6;
+    margin: 0.667em 0.667em 0.667em 0.667em;
+    border-radius: 4px;
+    background: none;
+    color: #2EC4B6;
+    cursor: pointer;
+    padding: 1em;
+    font-weight: 700;
+}
+
+li.rc.is-selected, .rc:hover {
+    background: #2EC4B6;
+    color: #FDFFFC;
+}
+
+.rc > .rn {
+    font-size: 2em;
+}
+.rc > .rp {
+    font-weight: 400;
+    margin-top: 0.667em;
+}
+
+
+
+
+
+
+.spacer {
+    height: 2em;
+}

@@ -7,7 +7,11 @@
 </head>
 
 <link href="../css/FinalMain.css" rel="stylesheet" type="text/css" />
-<link href=".." />
+<link href="../css/RevDate.css" rel="stylesheet" type="text/css" />
+<link href="../css/RevRooms.css" rel="stylesheet" type="text/css" />
+<link href="../css/RevPayments.css" rel="stylesheet" type="text/css" />
+<link href="../css/RevGuestinfo.css" rel="stylesheet" type="text/css" />
+
 <script src="../4_jquery_class/lib/jquery-1.9.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -351,8 +355,46 @@
 
 <!-- 메인 정보창 -->
 
+<section id="section-main" class="section-reservation" style="margin-top: 300px">
+    <div class="w800">
+        <div id="status-track">
+            <a class="current" href="#">
+                <i class="fa fa-check-circle-o"></i>
+                <div class="lbl">Dates</div>
+            </a>
+            <a class="future" href="#"><i class="fa fa-th-list"> </i>
+                <div class="lbl">Rooms</div>
+            </a>
+            <a class="future" href="#"><i class="fa fa-users"></i>
+                <div class="lbl">Payment</div>
+            </a>
+            <a class="future" href="#"><i class="fa fa-users"></i>
+                <div class="lbl">Guest Info</div>
+            </a>
+        </div>
+
+        <form action="#">
+            <div id="rcal"></div>
+
+            <div class="spacer"></div>
+            <div class="actions">
+                <div><a href="">Cancel</a></div>
+                <div><a class="btn btn-aqua" href="#"><i class="fa fa-angle-left fa"></i> Back</a><a class="btn btn-aqua spacer-v" href="#">Continue <i class="fa fa-angle-right fa"></i></a></div>
+            </div>
+        </form>
+
+
+    </div>
+</section>
+
+
 <!-- 메인 정보창 끝 -->
 
 <script type="text/javascript" src= "../js/FinalMain.js"></script>
+<script type="text/javascript" src= "../js/RevDate.js"></script>
+<script type="text/javascript" src= "../js/RevRooms.js"></script>
+<script type="text/javascript" src= "../js/RevPayments.js"></script>
+<script type="text/javascript" src= "../js/RevGuestinfo.js"></script>
+
 </body>
 </html>
