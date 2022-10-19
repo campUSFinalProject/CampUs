@@ -5,7 +5,7 @@
 
     <!-- 노지 정보 리스트 쿼리 -->
     <select id="getOutfieldList" resultType="kibwa.campus.dto.OutfieldDTO">
-        select outdoor_info_num, location_specific, outdoor_detail_info, location_city_num
+        select outdoor_info_num, location_specific, outdoor_detail_info, location_city_num, outdoor_detail_memo
         from outdoor_info
     </select>
 
