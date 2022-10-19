@@ -1,4 +1,20 @@
+<%@ page import="kibwa.campus.dto.OutfieldDTO" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
+
+<%
+    List<OutfieldDTO> oList = (List<OutfieldDTO>) request.getAttribute("oList");
+
+    //노지 정보 조회 결과 보여주기
+    if (oList == null){
+        oList = new ArrayList<OutfieldDTO>();
+    }
+
+    //주석
+    System.out.println("oList : " + oList);
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -370,7 +386,9 @@
             </div>
             <div class="content_2">
                 <div class="leftSec">
-                    <p class="title">킹사이즈 침대와 샤워부스가 있는 욕실로 구성되어 있으며 1인 또는 커플 투숙에 적합한 공간입니다.</p>
+                    <%for (OutfieldDTO o : oList) {%>
+                    <p class="title"><%=o.getLocation_specific()%></p>
+                    <%}%>
                     <p class="callText">문의전화<span>055-631-2114</span></p>
                     <ul>
                         <li><span>· 전망 : </span>오션뷰, 야드뷰</li>
@@ -393,11 +411,11 @@
                 </div>
                 <div class="rightSec">
                     <ul class="detail">
-                        <li><a href="" class="btn_1">도면보기</a></li>
-                        <li><a href="" class="btn_2">어메니티</a></li>
+                        <li></li>
+                        <li></li>
                         <li><a href="" class="btn_3">예약하기</a></li>
                     </ul>
-                    <h2>Hotel Info</h2>
+                    <h2>Outfield Info</h2>
                     <div class="bottomBox">
                         <ul class="headList">
                             <li>

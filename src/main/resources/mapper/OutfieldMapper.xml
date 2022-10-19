@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kibwa.campus.persistance.mapper.IOutfieldMapper">
+
+    <!-- 노지 정보 리스트 쿼리 -->
+    <select id="getOutfieldList" resultType="kibwa.campus.dto.OutfieldDTO">
+        select outdoor_info_num, location_specific, outdoor_detail_info, location_city_num
+        from outdoor_info
+    </select>
+
+
+
+</mapper>
