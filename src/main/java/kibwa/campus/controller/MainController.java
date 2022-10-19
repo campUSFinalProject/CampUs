@@ -11,10 +11,19 @@ public class MainController {
 
     //메인화면으로 넘어가기
     @RequestMapping(value = "cu/Main")
-    public String Main(){
+    public String Main() {
 
         log.info(this.getClass().getName() + ".MAINPAGE GO!! ");
 
         return "/test/FinalMain";
     }
+        @RequestMapping(value = "cu/mypage")
+        public String mypage(){
+
+            log.info(this.getClass().getName() + ".LoginPage GO!!!! ");
+
+            return "/member/mypage";
+        }
+
+
 }
