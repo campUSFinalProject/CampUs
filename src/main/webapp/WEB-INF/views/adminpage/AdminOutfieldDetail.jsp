@@ -19,7 +19,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>노지 상세 페이지</title>
+    <title>관리자 상세 페이지</title>
 </head>
 
 <link href="../css/FinalMain.css" rel="stylesheet" type="text/css" />
@@ -392,9 +392,9 @@
                 </div>
                 <div class="rightSec">
                     <ul class="detail">
-                        <li></li>
-                        <li></li>
-                        <li><a href="" class="btn_3">예약하기</a></li>
+                        <li><a href="" class="btn_1">등록하기</a></li>
+                        <li><a href="" class="btn_2">수정하기</a></li>
+                        <li><a href="" class="btn_3">삭제하기</a></li>
                     </ul>
                     <h2>Outfield Info</h2>
                     <div class="bottomBox">
