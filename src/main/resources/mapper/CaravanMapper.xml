@@ -3,8 +3,8 @@
 
 <mapper namespace="kibwa.campus.persistance.mapper.ICaravanMapper">
 
-
     <select id="getCaravanList" resultType="kibwa.campus.dto.CaravanDTO">
         SELECT *
         FROM CGROUND_INFO
     </select>
+</mapper>
