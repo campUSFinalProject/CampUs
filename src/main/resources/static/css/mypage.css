@@ -37,6 +37,8 @@ body {
     transform: rotate(-90deg);
     transition: all 0.5s ease-in-out;
     cursor: pointer;
+    border: whitesmoke;
+    font-family: "Open Sans Bold", Noto-lang-Bold, "Malgun Gothic", sans-serif;
 }
 .CTA h1 {
     color: #ffffff;
@@ -120,7 +122,7 @@ p {
     border-image: linear-gradient(to right, #3fb6a8, rgba(126, 211, 134, 0.5)) 1 0%;
     border-top: 0;
     width: 80%;
-    font-family: "Montserrat", sans-serif;
+    font-family: "JetBrains Mono Medium";
     font-size: 0.7em;
     padding: 7px 0;
     color: #070707;

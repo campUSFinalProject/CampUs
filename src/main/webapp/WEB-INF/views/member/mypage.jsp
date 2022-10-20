@@ -35,13 +35,13 @@
         <div class="profile">
             <h1>회원 정보</h1>
             <h2>이름</h2>
-            <p>Julie Park <button class="btn">update</button></p>
+            <p>강 현 석<button class="btn">update</button></p>
             <h2>생일</h2>
-            <p>July 21</p>
+            <p>1996년 3월 21일</p>
             <h2>성별</h2>
-            <p>Female</p>
+            <p>남성</p>
             <h2>이메일</h2>
-            <p>example@example.com <button class="btn">update</button></p>
+            <p>wlfnwlfn123@naver.com<button class="btn">update</button></p>
             <h2>비밀번호</h2>
             <p>••••••• <button class="btn">Change</button></p>
         </div>
