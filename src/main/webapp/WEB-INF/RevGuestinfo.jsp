@@ -438,6 +438,8 @@
         </form>
 
         <div class="spacer"></div>
+
+
     </div>
 
 </section>
@@ -452,9 +454,6 @@
 <!-- 예약 날짜 끝 -->
 
 <script type="text/javascript" src= "../js/FinalMain.js"></script>
-<script type="text/javascript" src= "../js/RevDate.js"></script>
-<script type="text/javascript" src= "../js/RevRooms.js"></script>
-<script type="text/javascript" src= "../js/RevPayments.js"></script>
 <script type="text/javascript" src= "../js/RevGuestinfo.js"></script>
 
 </body>

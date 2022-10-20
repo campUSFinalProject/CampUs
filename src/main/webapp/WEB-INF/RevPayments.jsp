@@ -8,10 +8,7 @@
 </head>
 
 <link href="../css/FinalMain.css" rel="stylesheet" type="text/css" />
-<link href="../css/RevDate.css" rel="stylesheet" type="text/css" />
-<link href="../css/RevRooms.css" rel="stylesheet" type="text/css" />
 <link href="../css/RevPayments.css" rel="stylesheet" type="text/css" />
-<link href="../css/RevGuestinfo.css" rel="stylesheet" type="text/css" />
 
 <script src="../4_jquery_class/lib/jquery-1.9.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -356,7 +353,7 @@
 
 <!-- 예약 날짜 -->
 
-<section id="section-main" class="section-reservation" style="margin-top: 300px;">
+<section id="section-main" class="section-reservation">
     <div class="w800">
         <div id="status-track">
             <a class="complete" href="#">
@@ -368,94 +365,126 @@
                 <div class="lbl">Rooms</div>
                 <div class="sub">NQ1 - #111</div>
             </a>
-            <a class="complete" href="#"><i class="fa fa-credit-card"></i>
+            <a class="current" href="#"><i class="fa fa-credit-card"></i>
                 <div class="lbl">Payment</div>
             </a>
-            <a class="current" href="#"><i class="fa fa-users"></i>
+            <a class="future" href="#"><i class="fa fa-users"></i>
                 <div class="lbl">Guest Info</div>
             </a>
         </div>
 
-        <table class="guests-list" style="margin-left: 35%;">
+        <h5 class="title">Transactions</h5>
+        <table class="trans-list">
             <thead>
             <tr>
-                <th>성함</th>
-                <th>예약 확인</th>
+                <th>Description</th>
+                <th>Charges</th>
+                <th>Credits</th>
             </tr>
             </thead>
             <tbody>
-            <tr class="guest-item">
-                <td class="guest-details-c">
-                    <div class="name">
-                        이지니
-                    </div>
-                    <div class="guest-details">
-                        <div class="phone">010-1111-1111</div>
-                    </div>
-                    <div class="guest-details">
-                        <div class="email">leejh0321@gmail.com</div>
-                    </div>
-                </td>
-                <td>
-                    <div class="guest-actions">
-                        <div><a href="#">예약 확정 확인 &nbsp &nbsp &nbsp &nbsp </a></div>
-                        <div><a href="#">&nbsp &nbsp &nbsp 취소</a></div>
-                    </div>
-                </td>
+            <tr class="trans-item">
+                <td class="desc">Room Charge</td>
+                <td class="amount">$100.00</td>
+                <td class="amount"></td>
             </tr>
-            <tr class="guest-item">
-                <td class="guest-details-c">
-                    <div class="name">
-                        아자나
-                    </div>
-                    <div class="guest-details">
-                        <div class="phone">010-2222-2222</div>
-                    </div>
-                    <div class="guest-details">
-                        <div class="email">ajn0321@gmail.com</div>
-                    </div>
-                </td>
-                <td>
-                    <div class="guest-actions">
-                        <div><a href="#">예약 확정 확인 &nbsp &nbsp &nbsp &nbsp </a></div>
-                        <div><a href="#">&nbsp &nbsp &nbsp 취소</a></div>
-                    </div>
-                </td>
+            <tr class="trans-item">
+                <td class="desc">Tax</td>
+                <td class="amount">$10.00</td>
+                <td class="amount"></td>
             </tr>
-
+            <tr class="trans-item payment">
+                <td class="desc"><i>Payment using Visa 0689</i></td>
+                <td class="amount"></td>
+                <td class="amount">$35.65</td>
+            </tr>
+            <tr class="trans-item">
+                <td class="desc"><b>Total</b></td>
+                <td class="amount"><b>$110.00</b></td>
+                <td class="amount"><b>$35.65</b></td>
+            </tr>
+            <tr class="trans-item">
+                <td class="desc"><b>Balance</b></td>
+                <td class="amount"><b>$74.35</b></td>
+                <td class="amount"></td>
+            </tr>
             </tbody>
         </table>
 
-        <form id="new_guest" style="">
-
-            <div class="spacer"></div>
-            <div class="spacer"></div>
-            <div class="actions">
-                <div><a href="">Print Confirmation</a> <a class="btn btn-aqua" href="#"><i class="fa fa-angle-left fa"></i> Back</a>
-                    <a class="btn btn-aqua spacer-v" href="#">Finish </a></div>
+        <h5 class="title">Add a Charge</h5>
+        <form>
+            <div class="field split">
+                <div>
+                    <label>Description</label>
+                    <input type="text" />
+                </div>
+                <div>
+                    <label>Amount</label>
+                    <input type="number" />
+                </div>
+                <div>
+                    <input type="submit" class="btn" name="hello" />
+                </div>
             </div>
 
+
+            <h5 class="title">Make a Payment</h5>
+
+
+            <div class="split">
+                <div class="card-wrapper"></div>
+
+                <div class="cc-input-c">
+                    <div class="field split">
+                        <div class="equal">
+                            <label>First Name</label>
+                            <input type="text" name="first-name" />
+                        </div>
+                        <div class="equal">
+                            <label>Last name</label>
+                            <input type="text" name="last-name" />
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Card Number</label>
+                        <input type="text" name="number" />
+                    </div>
+                    <div class="field split">
+                        <div>
+                            <label>Expiry</label>
+                            <input type="text" name="expiry" />
+                        </div>
+
+                        <div>
+                            <label>CVC</label>
+                            <input type="text" name="cvc" />
+                        </div>
+
+                    </div>
+                    <div class="field">
+                        <label>Amount</label>
+                        <input type="number" />
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="spacer"></div>
+
+            <div class="actions">
+                <div><a href="">Cancel</a></div>
+                <div><a class="btn btn-aqua" href="#"><i class="fa fa-angle-left fa"></i> Back</a><a class="btn btn-aqua spacer-v" href="#">Continue <i class="fa fa-angle-right fa"></i></a></div>
+            </div>
         </form>
-
-        <div class="spacer"></div>
     </div>
-
+    <!-- w800 -->
 </section>
-<footer>
-    <div class="footer-inner">
-        <div class="footer-item"><a href="#">About</a></div>
-        <div class="footer-item"><a href="#">Privacy Policy</a></div>
-        <div class="footer-item"><a href="#">Terms and Conditions</a></div>
-    </div>
-</footer>
 
 <!-- 예약 날짜 끝 -->
 
 <script type="text/javascript" src= "../js/FinalMain.js"></script>
-<script type="text/javascript" src= "../js/RevDate.js"></script>
-<script type="text/javascript" src= "../js/RevRooms.js"></script>
 <script type="text/javascript" src= "../js/RevPayments.js"></script>
-<script type="text/javascript" src= "../js/RevGuestinfo.js"></script>
+
 
 </body>
 </html>
