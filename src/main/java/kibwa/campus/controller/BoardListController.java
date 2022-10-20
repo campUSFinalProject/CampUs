@@ -1,6 +1,7 @@
 package kibwa.campus.controller;
 import kibwa.campus.dto.BoardDTO;
 import kibwa.campus.service.IBoardService;
+import kibwa.campus.util.CmmUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -53,13 +54,43 @@ public class BoardListController {
         String url = "";
 
         try{
+            //String user_id = CmmUtil.nvl((String) session.getAttribute("SS_ID"));
+            String user_id = "ming";
+            String title = CmmUtil.nvl(request.getParameter("title"));
+            String contents = CmmUtil.nvl(request.getParameter("contents"));
+
+            log.info("user_id : " + user_id);
+            log.info("title : " + title);
+            log.info("contents : " + contents);
+
+            BoardDTO bDTO = new BoardDTO();
+
+            bDTO.setId(user_id);
+            bDTO.setBoard_title(title);
+            bDTO.setBoard_content(contents);
+
+            boardService.insertBoard(bDTO);
+
+            msg = "등록되었습니다";
+            url = "board/BoardList";
 
         } catch (Exception e) {
 
+            msg = "실패하였습니다 : " + e.getMessage();
+            url = "board/BoardList";
+
+            log.info(e.toString());
+            e.printStackTrace();
+
         } finally {
-            log.info(this.getClass().getName() + ".InsertBoard End!");
+            log.info(this.getClass().getName() + ".BoardInsert End!");
+
+            model.addAttribute("url", url);
+            model.addAttribute("msg", msg);
+
+            log.info("model : " + model);
         }
 
-        return "/board/InsertBoard";
+        return "/board/BoardInputForm";
     }
 }
