@@ -1,4 +1,4 @@
-package kibwa.campus.service.impl;
+package kibwa.campus.service;
 
 import kibwa.campus.dto.CaravanDTO;
 

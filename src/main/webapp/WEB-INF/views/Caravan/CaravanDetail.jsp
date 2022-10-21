@@ -1,9 +1,25 @@
+<%@ page import="kibwa.campus.dto.CaravanDTO" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
+
+<%
+    List<CaravanDTO> cList = (List<CaravanDTO>) request.getAttribute("cList");
+
+    //노지 정보 조회 결과 보여주기
+    if (cList == null){
+        cList = new ArrayList<CaravanDTO>();
+    }
+
+    //주석
+    System.out.println("cList : " + cList);
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>상세 페이지</title>
+    <title>소풍캠핑장 상세정보</title>
 </head>
 
 <link href="../css/FinalMain.css" rel="stylesheet" type="text/css" />
@@ -373,8 +389,9 @@
                 </ul>
             </div>
             <div class="content_2">
+                <%for (CaravanDTO c : cList) { %>
                 <div class="leftSec">
-                    <p class="title">킹사이즈 침대와 샤워부스가 있는 욕실로 구성되어 있으며 1인 또는 커플 투숙에 적합한 공간입니다.</p>
+                    <p class="title"> <%= c.getCground_location() %>  </p>
                     <p class="callText">문의전화<span>055-631-2114</span></p>
                     <ul>
                         <li><span>· 전망 : </span>오션뷰, 야드뷰</li>
@@ -394,6 +411,7 @@
                             </ul>
                         </div>
                     </div>
+                    <%}%>
                 </div>
                 <div class="rightSec">
                     <ul class="detail">

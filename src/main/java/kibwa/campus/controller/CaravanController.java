@@ -1,7 +1,6 @@
 package kibwa.campus.controller;
 import kibwa.campus.dto.CaravanDTO;
-import kibwa.campus.service.IOutfieldService;
-import kibwa.campus.service.impl.ICaravanService;
+import kibwa.campus.service.ICaravanService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
