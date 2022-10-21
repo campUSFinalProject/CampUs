@@ -9,4 +9,8 @@ import java.util.List;
 @Mapper
 public interface IRevMapper {
     List<RevDTO> getRevList() throws Exception;
+
+    //예약하기
+    int InsertRev (RevDTO pDTO) throws Exception;
+
 }

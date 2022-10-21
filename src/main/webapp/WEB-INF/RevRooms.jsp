@@ -356,100 +356,101 @@
 
 <!-- 예약 날짜 -->
 
-<section id="section-main" class="section-reservation" style="margin-top: 300px;">
-    <div class="w800">
+<section id="section-main" class="section-reservation">
+    <div class="section-container">
         <div id="status-track">
-            <a class="complete" href="#">
+            <div class="complete">
                 <i class="fa fa-check-circle-o"></i>
-                <div class="lbl">Dates</div>
-                <div class="sub">Jan 21 - Jan 22</div>
-            </a>
-            <a class="complete" href="#"><i class="fa fa-th-list"> </i>
-                <div class="lbl">Rooms</div>
-                <div class="sub">NQ1 - #111</div>
-            </a>
-            <a class="complete" href="#"><i class="fa fa-credit-card"></i>
-                <div class="lbl">Payment</div>
-            </a>
-            <a class="current" href="#"><i class="fa fa-users"></i>
-                <div class="lbl">Guest Info</div>
-            </a>
+                <label>Dates</label>
+            </div>
+            <div class="current"><i class="fa fa-th-list"> </i>
+                <label>Rooms</label>
+            </div>
+            <div class="future"><i class="fa fa-users"></i>
+                <label>Payment</label>
+            </div>
+            <div class="future"><i class="fa fa-users"></i>
+                <label>Guest Info</label>
+            </div>
         </div>
 
-        <table class="guests-list" style="margin-left: 35%;">
-            <thead>
-            <tr>
-                <th>성함</th>
-                <th>예약 확인</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="guest-item">
-                <td class="guest-details-c">
-                    <div class="name">
-                        이지니
-                    </div>
-                    <div class="guest-details">
-                        <div class="phone">010-1111-1111</div>
-                    </div>
-                    <div class="guest-details">
-                        <div class="email">leejh0321@gmail.com</div>
-                    </div>
-                </td>
-                <td>
-                    <div class="guest-actions">
-                        <div><a href="#">예약 확정 확인 &nbsp &nbsp &nbsp &nbsp </a></div>
-                        <div><a href="#">&nbsp &nbsp &nbsp 취소</a></div>
-                    </div>
-                </td>
-            </tr>
-            <tr class="guest-item">
-                <td class="guest-details-c">
-                    <div class="name">
-                        아자나
-                    </div>
-                    <div class="guest-details">
-                        <div class="phone">010-2222-2222</div>
-                    </div>
-                    <div class="guest-details">
-                        <div class="email">ajn0321@gmail.com</div>
-                    </div>
-                </td>
-                <td>
-                    <div class="guest-actions">
-                        <div><a href="#">예약 확정 확인 &nbsp &nbsp &nbsp &nbsp </a></div>
-                        <div><a href="#">&nbsp &nbsp &nbsp 취소</a></div>
-                    </div>
-                </td>
-            </tr>
+        <form action="#">
+            <h1>Filter By Room Type</h1>
+            <ul id="room-types-container">
+                <li class="rc is-selected" data-filter="*">
+                    All
+                </li>
+                <li class="rc" data-filter=".rt1">
+                    NQ1
+                </li>
+                <li class="rc" data-filter=".rt2">
+                    NK1
+                </li>
+                <li class="rc" data-filter=".rt3">
+                    Q1
+                </li>
+                <li class="rc" data-filter=".rt4">
+                    K1
+                </li>
+            </ul>
 
-            </tbody>
-        </table>
+            <h1>Room Number</h1>
+            <ul id="rooms-container">
+                <li class="rc rt1">
+                    <input type="radio" name="room-number" data-room-price="125" class="hide" value="101" />
+                    <div class="rn">101</div>
+                    <div class="rp">$125.00</div>
+                </li>
+                <li class="rc rt1">
+                    <input type="radio" name="room-number" data-room-price="125" class="hide" value="102" /> <div class="rn">102</div>
+                    <div class="rp">$125.00</div>
+                </li>
+                <li class="rc rt1">
+                    <input type="radio" name="room-number" data-room-price="125" class="hide" value="103" /> <div class="rn">103</div>
+                    <div class="rp">$125.00</div>
+                </li>
+                <li class="rc rt2">
+                    <input type="radio" name="room-number" data-room-price="145" class="hide" value="104" /> <div class="rn">104</div>
+                    <div class="rp">$145.00</div>
+                </li>
+                <li class="rc rt3">
+                    <input type="radio" name="room-number" data-room-price="175" class="hide" value="105" /> <div class="rn">105</div>
+                    <div class="rp">$175.00</div>
+                </li>
+                <li class="rc rt2">
+                    <input type="radio" name="room-number" data-room-price="145" class="hide" value="106" /> <div class="rn">106</div>
+                    <div class="rp">$145.00</div>
+                </li>
+                <li class="rc rt1">
+                    <input type="radio" name="room-number" data-room-price="125" class="hide" value="107" /> <div class="rn">107</div>
+                    <div class="rp">$125.00</div>
+                </li>
+                <li class="rc rt4">
+                    <input type="radio" name="room-number" data-room-price="195" class="hide" value="108" /> <div class="rn">108</div>
+                    <div class="rp">$195.00</div>
+                </li>
+                <li class="rc rt4">
+                    <input type="radio" name="room-number" data-room-price="195" class="hide" value="109" /> <div class="rn">109</div>
+                    <div class="rp">$195.00</div>
+                </li>
+                <li class="rc rt3">
+                    <input type="radio" name="room-number" data-room-price="165" class="hide" value="110" /> <div class="rn">110</div>
+                    <div class="rp">$165.00</div>
+                </li>
+            </ul>
 
-        <form id="new_guest" style="">
+            <h1>Price</h1>
+            <input type="text" id="room-price" />
 
-            <div class="spacer"></div>
-            <div class="spacer"></div>
             <div class="actions">
-                <div><a href="">Print Confirmation</a> <a class="btn btn-aqua" href="#"><i class="fa fa-angle-left fa"></i> Back</a>
-                    <a class="btn btn-aqua spacer-v" href="#">Finish </a></div>
+                <div><a href="">Cancel</a></div>
+                <div><a class="btn" href="#"><i class="fa fa-angle-left fa-fw"></i> Back</a><a class="btn" href="#">Continue <i class="fa fa-angle-right fa-fw"></i></a></div>
             </div>
-
         </form>
 
-        <div class="spacer"></div>
-
 
     </div>
-
 </section>
-<footer>
-    <div class="footer-inner">
-        <div class="footer-item"><a href="#">About</a></div>
-        <div class="footer-item"><a href="#">Privacy Policy</a></div>
-        <div class="footer-item"><a href="#">Terms and Conditions</a></div>
-    </div>
-</footer>
 
 <!-- 예약 날짜 끝 -->
 

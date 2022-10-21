@@ -9,8 +9,10 @@ import org.springframework.stereotype.Controller;
 public class RevDTO {
 
     private Integer rev_num;
+    private Integer mem_num;
     private Integer rev_people;
     private Integer help_check;
+    private Integer sector_num;
     private String  rev_date;
     private String  rev_review;
     private String  enter_date;
