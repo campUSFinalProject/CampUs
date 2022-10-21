@@ -506,9 +506,9 @@
 
 <div class="rightSec">
     <ul class="detail">
-        <li><a href="" class="btn_1">등록하기</a></li>
-        <li><a href="" class="btn_2">수정하기</a></li>
-        <li><a href="" class="btn_3">삭제하기</a></li>
+        <li></li>
+        <li></li>
+        <li><a href="" class="btn_3">등록하기</a></li>
     </ul>
 </div>
 
