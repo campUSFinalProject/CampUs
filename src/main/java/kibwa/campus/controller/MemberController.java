@@ -22,8 +22,8 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class MemberController {
 
+    //--- service 연결 ------
     @Resource(name = "MemberService")
-
     private IMemberService memberService;
 
     //---------------회원가입/로그인 페이지로 이동---------------
