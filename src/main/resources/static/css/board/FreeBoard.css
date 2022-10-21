@@ -1,0 +1,15 @@
+table,
+td {
+    border: 1px solid #333;
+}
+
+thead,
+tfoot {
+    background-color: #333;
+    color: #fff;
+}
+
+.title {
+    width: 1100px;
+    margin: 0 auto;
+}
