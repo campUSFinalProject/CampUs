@@ -10,4 +10,7 @@ public interface IMemberService {
 
     //로그인 시 아이디 비밀번호 일치하는지 확인하기
     MemberDTO getMemLoginCheck(MemberDTO pDTO) throws Exception;
+
+    //회원탈퇴
+    int deleteMember(MemberDTO pDTO) throws Exception;
 }

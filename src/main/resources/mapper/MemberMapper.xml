@@ -40,4 +40,11 @@
         AND PASSWORD = #{password}
     </select>
 
+
+    <!-- 회원탈퇴 -->
+    <delete id="deleteMember" parameterType="kibwa.campus.dto.MemberDTO">
+            DELETE FROM MEMBER
+            WHERE ID = #{id}
+    </delete>
+
 </mapper>
