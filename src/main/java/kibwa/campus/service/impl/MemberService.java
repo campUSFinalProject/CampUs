@@ -70,4 +70,15 @@ public class MemberService implements IMemberService {
 
         return res;
     }
+
+    @Transactional
+    @Override
+    public void updateMember(MemberDTO pDTO) throws Exception {
+
+        log.info(this.getClass().getName() + ".updateMember START!");
+
+        memberMapper.updateMember(pDTO);
+
+        log.info(this.getClass().getName() + ".updateMember End!");
+    }
 }

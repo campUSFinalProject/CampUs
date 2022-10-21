@@ -47,4 +47,13 @@
             WHERE ID = #{id}
     </delete>
 
+    <!-- 회원정보 수정 -->
+    <update id="updateMember" parameterType="kibwa.campus.dto.MemberDTO">
+        UPDATE MEMBER SET
+            NAME = #{name},
+            MEM_TEL = #{mem_tel}
+        WHERE
+            MEM_NUM = #{mem_num}
+    </update>
+
 </mapper>
