@@ -427,7 +427,7 @@
                     <%}%>
                     <tr>
                         <td colspan="5">
-                            <a href="/board/BoardInsert">글쓰기</a>
+                            <a href="/board/BoardInsertFrom">글쓰기</a>
                         </td>
                     </tr>
                     </tbody>

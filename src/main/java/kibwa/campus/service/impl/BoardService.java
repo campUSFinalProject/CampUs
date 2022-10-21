@@ -32,7 +32,6 @@ public class BoardService implements IBoardService {
     @Override
     public void insertBoard(BoardDTO bDTO) throws Exception {
         log.info(this.getClass().getName() + ".insertBoard!");
-
         boardMapper.insertBoard(bDTO);
     }
 }

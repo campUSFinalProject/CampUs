@@ -380,7 +380,7 @@
     <!--BoardInputForm area-->
     <h4> 게시판 글 쓰기 </h4><br/>
     나중에 이쁘게 만드시오 <br/><br/>
-    <form name='frm' action="/board/BoardList">
+    <form name='frm' action="/board/BoardInsert">
         제  목 : <input type='text' name="title" required><br/><br/>
         내  용 : <textarea name="contents" rows='10' cols='40' required></textarea><br/><br/>
         <input type='button' value='작성' onclick="javascript:checkFields()">

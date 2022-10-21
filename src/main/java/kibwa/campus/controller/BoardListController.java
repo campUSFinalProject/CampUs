@@ -44,46 +44,58 @@ public class BoardListController {
         return "/board/FreeBoard";
     }
 
-    //게시판 글 작성
+    //게시판에 글을 작성할 수 있는 페이지
+    @GetMapping(value = "board/BoardInsertFrom")
+    public String BoardInsertForm(ModelMap model)
+            throws Exception{
+        log.info(this.getClass().getName() + ".BoardInsertForm is here!");
+        return "/board/BoardInputForm";
+    }
+
+    //게시판 글 작성 완료
     @GetMapping(value = "board/BoardInsert")
     public String BoardListInsert(HttpSession session, HttpServletRequest request, ModelMap model) {
 
-        log.info(this.getClass().getName() + ".InsertBoard start!");
+        log.info(this.getClass().getName() + ".Board Insert start!");
 
         String msg = "";
         String url = "";
 
         try{
             //String user_id = CmmUtil.nvl((String) session.getAttribute("SS_ID"));
+            //String mem_num = CmmUtil.nvl((String) session.getAttribute("SS_ID"));
             String user_id = "ming";
+            int mem_num = 1;
             String title = CmmUtil.nvl(request.getParameter("title"));
             String contents = CmmUtil.nvl(request.getParameter("contents"));
 
             log.info("user_id : " + user_id);
+            log.info("mem_num : " + mem_num);
             log.info("title : " + title);
             log.info("contents : " + contents);
 
             BoardDTO bDTO = new BoardDTO();
 
             bDTO.setId(user_id);
+            bDTO.setMem_num(mem_num);
             bDTO.setBoard_title(title);
             bDTO.setBoard_content(contents);
 
             boardService.insertBoard(bDTO);
 
             msg = "등록되었습니다";
-            url = "board/BoardList";
+            url = "/board/BoardList";
 
         } catch (Exception e) {
 
             msg = "실패하였습니다 : " + e.getMessage();
-            url = "board/BoardList";
+            url = "/board/BoardList";
 
             log.info(e.toString());
             e.printStackTrace();
 
         } finally {
-            log.info(this.getClass().getName() + ".BoardInsert End!");
+            log.info(this.getClass().getName() + ".Board Insert End!");
 
             model.addAttribute("url", url);
             model.addAttribute("msg", msg);
@@ -91,6 +103,6 @@ public class BoardListController {
             log.info("model : " + model);
         }
 
-        return "/board/BoardInputForm";
+        return "/redirect";
     }
 }

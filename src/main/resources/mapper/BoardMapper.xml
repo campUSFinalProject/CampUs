@@ -6,22 +6,35 @@
     <!-- 게시판 리스트 쿼리 -->
     <select id="getBoardList" resultType="kibwa.campus.dto.BoardDTO">
         select b.board_num, b.board_title, b.board_post_date, b.board_view_num, m.id
-        from board b, member m
+        from board b,
+             member m
     </select>
     <!--게시판 게시물 등록 쿼리 -->
     <!--나중에 board_type_num 가져와서 넣기-->
     <insert id="insertBoard" parameterType="kibwa.campus.dto.BoardDTO">
-        insert into board
-            (
-             board_num, board_title, board_content, board_post_date, board_mod_date,
-             board_view_num, notice_check, mem_num, board_type_num
-             )
-        values
-            (
-             (SELECT NULLIF (MAX(A.board_num),0)+1 FROM board A),
-             #{board_title}, #{board_content}, sysdate(), sysdate(), 0, 0,
-             #{mem_num}, 1
-            );
+        INSERT INTO BOARD
+        (
+         board_num,
+         board_title,
+         board_content,
+         board_post_date,
+         board_mod_date,
+         board_view_num,
+         notice_check,
+         mem_num,
+         board_type_num
+        )
+        VALUES (
+            (SELECT NULLIF(MAX(A.board_num), 0) + 1 FROM board A),
+            #{board_title},
+            #{board_content},
+            sysdate,
+            sysdate,
+            0,
+            'N',
+            #{mem_num},
+            1
+            )
     </insert>
 
     <!--게시판 상세보기 쿼리 -->
@@ -31,6 +44,4 @@
     <!--게시판 수정 쿼리-->
 
     <!--게시판 삭제 쿼리 -->
-
-
 </mapper>
