@@ -17,64 +17,71 @@
         <div>
             <p>
                 <label>
+                    지역 선택<br>
+                    <select>
+                        <option value="" name="location" disabled selected>시군구</option>
+                        <option> 서울 </option>
+                    </select>
+                </label>
+
+                <label>
                     캠핑장 이름<br>
-                    <input type="text" placeholder="ㅇㅇ캠핑장" >
+                    <input type="text" name= "cground_name" placeholder="ㅇㅇ캠핑장" >
                 </label>
             </p>
 
             <p>
                 <label>
                     tel<br>
-                    <input type="tel" placeholder="(123) 456-7890">
+                    <input type="tel" name="cground_tel" placeholder="(123) 456-7890">
                 </label>
             </p>
 
             <p>
                 <label>
                     주소<br>
-                    <input type="email" placeholder="00도00군">
+                    <input type="email" name="cground_loacation" placeholder="00도00군">
                 </label>
             </p>
 
             <p>
                 <label>
                     금액<br>
-                    <input type="url" placeholder="~원">
+                    <input type="url" name="cground_deposit" placeholder="~원">
                 </label>
             </p>
 
             <p>
                 <label>
                     입실시간<br>
-                    <input type="search"  placeholder="00:00">
+                    <input type="search" name="campinng_enter"  placeholder="00:00">
                 </label>
             </p>
 
             <p>
                 <label>
                     퇴실시간<br>
-                    <input type="search"  placeholder="00:00">
+                    <input type="search" name="camping_exit"  placeholder="00:00">
                 </label>
             </p>
 
             <p>
                 <label>
                     특이사항<br>
-                    <textarea rows="5" cols="40" placeholder="화장실 , 샤워실 , 매점 반려둥물동반 가능여부 등 .."></textarea>
+                    <textarea rows="5" cols="40" name="cground_detail_info" placeholder="화장실 , 샤워실 , 매점 반려둥물동반 가능여부 등 .."></textarea>
                 </label>
             </p>
 
             <p>
                 <label>
                     주변시설<br>
-                    <textarea rows="5" cols="40" placeholder="주변 계곡 , 마트 등 .."></textarea>
+                    <textarea rows="5" cols="40" name="add_facil" placeholder="주변 계곡 , 마트 등 .."></textarea>
                 </label>
             </p>
 
             <p>
                 <input type="file" name="file" id="file">
             </p>
-
 
             <p>
                 <input type="submit">

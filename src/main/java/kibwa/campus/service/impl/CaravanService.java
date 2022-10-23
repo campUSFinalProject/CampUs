@@ -25,4 +25,9 @@ public class CaravanService implements ICaravanService {
 
         return CaravanMapper.getCaravanList();
     }
+
+    @Override
+    public void insertCampingInfo(CaravanDTO cDTO) throws Exception {
+        CaravanMapper.insertCampingInfo(cDTO);
+    }
 }

@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ICaravanService {
     List<CaravanDTO> getCaravanList() throws Exception;
+
+    void insertCampingInfo(CaravanDTO cDTO) throws Exception;
 }
