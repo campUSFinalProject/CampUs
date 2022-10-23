@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,7 +36,7 @@ public class MemberController {
 
 
     //---------------회원가입 로직---------------
-    @RequestMapping(value = "cu/insertMember", method = RequestMethod.POST)
+    @PostMapping(value = "cu/insertMember")
     public String insertMember (HttpServletRequest request, HttpServletResponse response,
                                 ModelMap model) throws Exception{
 
@@ -52,7 +53,7 @@ public class MemberController {
             String password = CmmUtil.nvl(request.getParameter("password"));
             String name = CmmUtil.nvl(request.getParameter("name"));
             String mem_tel = CmmUtil.nvl(request.getParameter("mem_tel"));
-            String email = CmmUtil.nvl(request.getParameter("emial"));
+            String email = CmmUtil.nvl(request.getParameter("email"));
 
             log.info("id : " + id);
             log.info("password : " + password);
@@ -84,6 +85,7 @@ public class MemberController {
 
             //저장 실패 시 사용자에게 보여줄 메세지
             msg = "실패하였습니다 : " + e.toString();
+            url = "/member/memRegLoginForm";
             log.info(e.toString());
             e.printStackTrace();
 
@@ -159,6 +161,68 @@ public class MemberController {
             model.addAttribute("msg", msg);
             model.addAttribute("url", url);
         }
+
+        return "/redirect";
+    }
+
+
+    //------회원탈퇴 (회원정보 삭제)------------
+    @GetMapping(value = "cu/deleteMember")
+    public String deleteMember(HttpSession session, HttpServletResponse response,HttpServletRequest request, ModelMap model) {
+
+        log.info(this.getClass().getName() + ".DELETE MEMBER START!!");
+
+        String msg = "";
+        String url = "";
+
+        try{
+
+            String id = CmmUtil.nvl((String) session.getAttribute("SS_ID"));
+
+            log.info("id : " + id);
+
+            MemberDTO pDTO = new MemberDTO();
+            pDTO.setId(id);
+
+            //회원정보 삭제
+            int res = memberService.deleteMember(pDTO);
+
+            log.info("res : " + res);
+            msg = "회원탈퇴가 완료되었습니다.";
+            url = "/member/memRegLoginForm";
+
+            session.invalidate();; //session clear
+
+        }catch (Exception e){
+            msg = "회원탈퇴 실패 : " + e.toString();
+            url = "/cu/Main";
+            log.info(e.toString());
+            e.printStackTrace();
+
+        }finally {
+
+            log.info(this.getClass().getName() + ".DELETE MEMBER END!");
+
+            model.addAttribute("msg", msg);
+            model.addAttribute("url", url);
+
+        }
+        return "/redirect";
+    }
+
+    //------------- 로그아웃 -----------
+    @RequestMapping(value = "cu/Logout")
+    public String Logout(HttpServletRequest request, ModelMap model){
+        log.info(this.getClass().getName() + ".LOGOUT START!!!");
+        HttpSession session = request.getSession();
+
+        String url = "/member/memRegLoginForm";
+        String msg = "로그아웃 성공";
+
+        session.invalidate(); // session clear
+
+        model.addAttribute("msg", msg);
+        model.addAttribute("url", url);
 
         return "/redirect";
     }
