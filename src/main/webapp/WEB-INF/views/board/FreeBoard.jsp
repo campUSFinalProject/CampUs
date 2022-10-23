@@ -426,7 +426,7 @@
                     <%}%>
                     <%}%>
                     <tr>
-                        <td colspan="5">
+                        <td class = "insertBoard" colspan="5">
                             <a href="/board/BoardInsertFrom">글쓰기</a>
                         </td>
                     </tr>
