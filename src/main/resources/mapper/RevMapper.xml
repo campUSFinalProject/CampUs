@@ -5,8 +5,8 @@
 
     <!-- 예약 쿼리 -->
     <select id="getRevList" resultType="kibwa.campus.dto.RevDTO">
-        select outdoor_info_num, location_specific, outdoor_detail_info, location_city_num
-        from outdoor_info
+        select m.name, r.rev_people, r.help_check, r.sector_num, r.rev_date, r.enter_date, r.exit_date
+        from rev r, member m
     </select>
 
 

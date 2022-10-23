@@ -21,5 +21,6 @@ public class RevDTO {
     private String  rev_review;
     private String  enter_date;
     private String  exit_date;
+    private String  name;
 
 }

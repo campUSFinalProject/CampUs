@@ -371,78 +371,115 @@
 
 <!-- 예약 날짜 -->
 
-<section id="section-main" class="section-reservation" style="margin-top: 300px">
+<section id="section-main" class="section-reservation">
+    <% for (RevDTO r : rList) { %>
     <div class="w800">
         <div id="status-track">
-            <a class="current" href="#">
+            <a class="complete" href="#">
                 <i class="fa fa-check-circle-o"></i>
                 <div class="lbl">Dates</div>
+                <div class="sub">Jan 21 - Jan 22</div>
             </a>
-            <a class="future" href="#"><i class="fa fa-th-list"> </i>
+            <a class="complete" href="#"><i class="fa fa-th-list"> </i>
                 <div class="lbl">Rooms</div>
+                <div class="sub">NQ1 - #111</div>
             </a>
-            <a class="future" href="#"><i class="fa fa-users"></i>
+            <a class="complete" href="#"><i class="fa fa-credit-card"></i>
                 <div class="lbl">Payment</div>
             </a>
-            <a class="future" href="#"><i class="fa fa-users"></i>
+            <a class="current" href="#"><i class="fa fa-users"></i>
                 <div class="lbl">Guest Info</div>
             </a>
         </div>
 
-        <form action="#">
-            <fieldset id="date-box">
-                <div class="split field">
-                    <div class="equal">
-                        <label id="txtcheckin">Check In</label>
-                        <input type="date" id="txtcheckin" />
+        <table class="guests-list" style="margin-left: 30%">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="guest-item">
+                <td class="guest-details-c">
+                    <div class="name">
+                        Dipen Chauhan
                     </div>
-                    <div class="equal">
-                        <label id="txtcheckout">Check Out</label>
-                        <input type="date" id="txtcheckout" />
+                    <div class="guest-details">
+                        <div class="phone">(530)-896-5678</div>
                     </div>
-                </div>
-            </fieldset>
-            <fieldset>
-                <div class="split field">
-                    <div>
-                        <label for="numadults">Adults</label>
-                        <input type="number" id="numadults" />
+                    <div class="guest-details">
+                        <div class="email">firstname.lastname@ gmail.com</div>
                     </div>
-                    <div>
-                        <label for="numchildren">Children</label>
-                        <input type="number" id="numchildren" />
+                </td>
+                <td>
+                    <div class="guest-actions">
+                        <div><a href="#">Send Confirmation</a></div>
+                        <div><a href="#">Remove</a></div>
                     </div>
+                </td>
+            </tr>
+            <tr class="guest-item">
+                <td class="guest-details-c">
+                    <div class="name">
+                        <%=r.getName()%>
+                    </div>
+                    <div class="guest-details">
+                        <div class="phone">
+                            (530)-896-5678
+                        </div>
+                    </div>
+                    <div class="guest-details">
+                        <div class="email">firstname.lastname@ gmail.com</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="guest-actions">
+                        <div><a href="#">Send Confirmation</a></div>
+                        <div><a href="#">Remove</a></div>
+                    </div>
+                </td>
+            </tr>
 
-                </div>
-            </fieldset>
+            </tbody>
+        </table>
 
-            <fieldset>
-                <div class="split field">
-                    <div>
-                        <label for="txtroomtype">Room Type</label>
-                        <input type="text" id="txtroomtype" />
-                    </div>
-                    <div>
-                        <label for="txtroomnum">Room Number</label>
-                        <input type="text" id="txtroomnum" />
-                    </div>
-
+        <form id="new_guest">
+            <div class="field split">
+                <div class="equal">
+                    <label for="">First Name</label>
+                    <input type="text" />
                 </div>
-            </fieldset>
-            <fieldset>
-                <label for="txtroomprice">Price</label>
-                <input type="number" id="txtroomprice" />
-            </fieldset>
+                <div class="equal">
+                    <label for="">Last Name</label>
+                    <input type="text" />
+                </div>
+            </div>
+            <div class="field">
+                <label for="">Phone</label>
+                <input type="text" />
+            </div>
+            <div class="field">
+                <label for="">Email</label>
+                <input type="text" />
+            </div>
+
+            <a href="#" class="btn">Add New guest</a>
 
             <div class="spacer"></div>
+            <div class="spacer"></div>
             <div class="actions">
-                <div><a href="">Cancel</a></div>
-                <div><a class="btn btn-aqua" href="#"><i class="fa fa-angle-left fa"></i> Back</a><a class="btn btn-aqua spacer-v" href="#">Continue <i class="fa fa-angle-right fa"></i></a></div>
+                <div><a href="">Print Confirmation</a></div>
+                <div><a class="btn btn-aqua" href="#"><i class="fa fa-angle-left fa"></i> Back</a><a class="btn btn-aqua spacer-v" href="#">Finish </a></div>
             </div>
+
         </form>
+
+        <div class="spacer"></div>
 
 
     </div>
+    <% } %>
 </section>
 
 <!-- 예약 날짜 끝 -->
