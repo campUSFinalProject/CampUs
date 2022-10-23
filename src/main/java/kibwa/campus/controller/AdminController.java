@@ -30,11 +30,21 @@ public class AdminController {
         return "/adminpage/AdminOutfield";
     }
 
-    @RequestMapping(value = "Admin_in_up_de")
+    @RequestMapping(value = "Admin_CRUD")
     public String Admin_in_up_del(HttpServletRequest request, ModelMap model) throws Exception {
-        String name = nvl(request.getParameter("name"));
-        model.addAttribute("name", name);
-        return "/adminpage/Admin_in_up_de";
+        log.info(this.getClass().getName() + ".OutfieldList start!");
+
+        List<OutfieldDTO> oList = outfieldService.getOutfieldList();
+
+        if (oList == null){
+            oList = new ArrayList<>();
+        }
+
+        log.info("oList : " + oList);
+        model.addAttribute("oList", oList);
+
+        log.info(this.getClass().getName() + ".OutfieldList End!");
+        return "/adminpage/Admin_CRUD";
     }
 
     @RequestMapping(value = "AdminOutfieldDetail")
