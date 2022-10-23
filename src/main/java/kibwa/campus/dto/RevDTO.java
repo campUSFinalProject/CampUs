@@ -1,11 +1,15 @@
 package kibwa.campus.dto;
 
 
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 
 @Slf4j
 @Controller
+@Getter
+@Setter
 public class RevDTO {
 
     private Integer rev_num;

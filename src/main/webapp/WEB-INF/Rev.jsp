@@ -1,4 +1,18 @@
+<%@ page import="kibwa.campus.dto.RevDTO" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
+<%
+    List<RevDTO> rList = (List<RevDTO>) request.getAttribute("rList");
+
+    // 예약 정보 불러오기
+    if (rList == null){
+        rList = new ArrayList<>(RevDTO);
+    }
+
+    // 주석
+    System.out.println("rList : " + rList);
+%>
+
 <!DOCTYPE html>
 <html>
 
@@ -357,6 +371,7 @@
 <!-- 예약 날짜 -->
 
 <section id="section-main" class="section-reservation" style="margin-top: 300px;">
+    <%
     <div class="w800">
         <div id="status-track">
             <a class="complete" href="#">
