@@ -228,4 +228,11 @@ public class MemberController {
     }
 
 
+    @RequestMapping(value = "cu/mypage")
+    public String mypage(HttpSession session, HttpServletResponse response,HttpServletRequest request, ModelMap model){
+
+        log.info(this.getClass().getName() + ".MyPage GO!!!! ");
+
+        return "/member/mypage";
+    }
 }

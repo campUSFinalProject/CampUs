@@ -1,6 +1,16 @@
+<%@ page import="kibwa.campus.util.CmmUtil" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
                     pageEncoding="utf-8" %>
+<%
+
+    String SS_ID = CmmUtil.nvl((String) session.getAttribute("SS_ID"));
+    String SS_NAME = CmmUtil.nvl((String) session.getAttribute("SS_NAME"));
+    String SS_MEM_TEL = CmmUtil.nvl((String) session.getAttribute("SS_MEM_TEL"));
+    String SS_EMAIL = CmmUtil.nvl((String) session.getAttribute("SS_EMAIL"));
+
+
+%>
 <!DOCTYPE html>
            
 <html>
@@ -34,16 +44,16 @@
     <div class="rightbox">
         <div class="profile">
             <h1>회원 정보</h1>
+            <h2>회원 등급</h2>
+            <p>일반 회원<button class="btn">사업자 등급 변환</button></p>
             <h2>이름</h2>
-            <p>강 현 석<button class="btn">update</button></p>
-            <h2>생일</h2>
-            <p>1996년 3월 21일</p>
-            <h2>성별</h2>
-            <p>남성</p>
+            <p><%=SS_NAME%></p>
+            <h2>아이디</h2>
+            <p><%=SS_ID%></p>
             <h2>이메일</h2>
-            <p>wlfnwlfn123@naver.com<button class="btn">update</button></p>
-            <h2>비밀번호</h2>
-            <p>••••••• <button class="btn">Change</button></p>
+            <p><%=SS_EMAIL%><button class="btn">update</button></p>
+            <h2>전화번호</h2>
+            <p><%=SS_MEM_TEL%><button class="btn">Change</button></p>
         </div>
 
         <div class="payment noshow">

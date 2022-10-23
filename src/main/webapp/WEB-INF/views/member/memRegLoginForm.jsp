@@ -40,6 +40,7 @@
                 return false;
             }
         }
+
         function password() {
             var p1 = document.getElementById('password').value;
             var p2 = document.getElementById('password2').value;
@@ -121,7 +122,7 @@
 
                 </form>
 
-                <form class="cont_form_sign_up" name="f" method="post" action="/cu/insertMember" onclick="return doRegUserCheck(this);">
+                <form class="cont_form_sign_up" name="f" method="post" action="/cu/insertMember" onsubmit="return doRegUserCheck(this);">
 
                     <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
 
