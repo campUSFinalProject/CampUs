@@ -426,7 +426,6 @@
                     </div>
                     <div class="guest-details">
                         <div class="phone">
-                            (530)-896-5678
                         </div>
                     </div>
                     <div class="guest-details">

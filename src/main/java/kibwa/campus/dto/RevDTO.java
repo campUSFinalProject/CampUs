@@ -22,5 +22,6 @@ public class RevDTO {
     private String  enter_date;
     private String  exit_date;
     private String  name;
+    private String  mem_tel;
 
 }
