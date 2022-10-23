@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>관리자 페이지</title>
+    <title>사업자 관리 페이지</title>
 </head>
 
 <link href="../css/Admin_in_up_de.css" rel="stylesheet" type="text/css" />
