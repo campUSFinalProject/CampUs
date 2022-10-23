@@ -43,9 +43,13 @@
 <!--게시판 css -->
 <link href="../css/board/FreeBoard.css" rel="stylesheet" type="text/css"/>
 
+<!-- JS파일로 독립시키기-->
 <script type="text/javascript">
-    function checkFields(){
+    function contentIsInsert(){
         document.frm.submit();
+    }
+    function goToBoardList(){
+        location.href="/board/BoardList";
     }
 </script>
 
@@ -383,8 +387,8 @@
     <form name='frm' action="/board/BoardInsert">
         제  목 : <input type='text' name="title" required><br/><br/>
         내  용 : <textarea name="contents" rows='10' cols='40' required></textarea><br/><br/>
-        <input type='button' value='작성' onclick="javascript:checkFields()">
-        <input type='reset' value='취소'>
+        <input type='button' value='작성' onclick="javascript:contentIsInsert()">
+        <input type='reset' value='취소' onclick="javascript:goToBoardList()">
     </form>
 </div>
 

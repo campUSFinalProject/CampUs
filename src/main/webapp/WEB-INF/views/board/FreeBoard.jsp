@@ -22,6 +22,14 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html" ; charset="UTF-8">
     <title>자유게시판</title>
+
+    <!--나중에 JS독립시키기-->
+    <script type="text/javascript">
+        //제목 누르면 게시글 보게 함
+        function goToBoardView(board_num){
+            location.href="/board/BoardView?board_num=" + board_num;
+        }
+    </script>
 </head>
 
 <!--상단, 라이트바 위한 css-->
@@ -414,7 +422,7 @@
                     <tr>
                         <td><%=b.getBoard_num()%>
                         </td>
-                        <td><a><%=b.getBoard_title()%>
+                        <td><a href="javascript:goToBoardView('<%=b.getBoard_num()%>')"><%=b.getBoard_title()%>
                         </a></td>
                         <td><a><%=b.getId()%>
                         </a></td>

@@ -13,8 +13,7 @@
     <!--나중에 board_type_num 가져와서 넣기-->
     <insert id="insertBoard" parameterType="kibwa.campus.dto.BoardDTO">
         INSERT INTO BOARD
-        (
-         board_num,
+        (board_num,
          board_title,
          board_content,
          board_post_date,
@@ -22,23 +21,24 @@
          board_view_num,
          notice_check,
          mem_num,
-         board_type_num
-        )
-        VALUES (
-            (SELECT NULLIF(MAX(A.board_num), 0) + 1 FROM board A),
-            #{board_title},
-            #{board_content},
-            sysdate,
-            sysdate,
-            0,
-            'N',
-            #{mem_num},
-            1
-            )
+         board_type_num)
+        VALUES ((SELECT NULLIF(MAX(A.board_num), 0) + 1 FROM board A),
+                #{board_title},
+                #{board_content},
+                sysdate,
+                sysdate,
+                0,
+                'N',
+                #{mem_num},
+                1)
     </insert>
 
     <!--게시판 상세보기 쿼리 -->
-
+    <select id="getBoardView" resultType="kibwa.campus.dto.BoardDTO">
+        select board_num, board_title, board_title, board_content, board_post_date, board_view_num
+        from board
+        where board_num = #{board_num}
+    </select>
     <!--조회수 증가 쿼리 -->
 
     <!--게시판 수정 쿼리-->

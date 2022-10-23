@@ -62,10 +62,10 @@ public class BoardListController {
         String url = "";
 
         try{
-            //String user_id = CmmUtil.nvl((String) session.getAttribute("SS_ID"));
-            //String mem_num = CmmUtil.nvl((String) session.getAttribute("SS_ID"));
-            String user_id = "ming";
-            int mem_num = 1;
+            String user_id = CmmUtil.nvl((String) session.getAttribute("SS_ID"));
+            String mem_num = CmmUtil.nvl((String)session.getAttribute("SS_NUM"));
+            //String user_id = "ming";
+            //int mem_num = 1;
             String title = CmmUtil.nvl(request.getParameter("title"));
             String contents = CmmUtil.nvl(request.getParameter("contents"));
 
@@ -104,5 +104,42 @@ public class BoardListController {
         }
 
         return "/redirect";
+    }
+
+    //게시판 글 내용 조회
+    @GetMapping(value = "board/BoardView")
+    public String BoardView(HttpSession session, HttpServletRequest request, ModelMap model)
+            throws Exception{
+        log.info(this.getClass().getName() + ".BoardView Start!");
+
+        String msg = "";
+
+        try{
+            String board_num = CmmUtil.nvl(request.getParameter("board_num"));
+
+            log.info("board_num : " + board_num);
+
+            BoardDTO bDTO = new BoardDTO();
+            bDTO.setBoard_num(board_num);
+
+            BoardDTO boDTO = boardService.getBoardView(bDTO);
+
+            if (boDTO == null){
+                boDTO = new BoardDTO();
+            }
+
+            log.info("getBoardView success");
+            model.addAttribute("boDTO", boDTO);
+
+        }catch (Exception e) {
+            msg = "실패하였습니다. : " +  e.getMessage();
+            log.info(e.toString());
+            e.printStackTrace();
+        }finally {
+            log.info(this.getClass().getName() + ".BoardView End!");
+            model.addAttribute("msg", msg);
+        }
+
+        return "/board/BoardView";
     }
 }

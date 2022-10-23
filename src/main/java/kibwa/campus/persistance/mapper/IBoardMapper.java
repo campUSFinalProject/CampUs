@@ -11,4 +11,5 @@ public interface IBoardMapper {
     List<BoardDTO> getBoardList() throws Exception;
     //게시판 insert
     void insertBoard(BoardDTO bDTO) throws Exception;
+    BoardDTO getBoardView(BoardDTO bDTO) throws Exception;
 }

@@ -16,7 +16,6 @@
 <script type="text/javascript">
     location.href="<%=url%>";
     alert("<%=msg%>");
-
 </script>
 </body>
 </html>

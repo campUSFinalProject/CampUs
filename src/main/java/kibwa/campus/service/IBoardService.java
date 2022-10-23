@@ -8,4 +8,6 @@ public interface IBoardService {
     // 게시판 글 조회
     List<BoardDTO> getBoardList() throws Exception;
     void insertBoard(BoardDTO bDTO) throws Exception;
+    //게시글 조회
+    BoardDTO getBoardView(BoardDTO bDTO) throws Exception;
 }

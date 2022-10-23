@@ -34,4 +34,11 @@ public class BoardService implements IBoardService {
         log.info(this.getClass().getName() + ".insertBoard!");
         boardMapper.insertBoard(bDTO);
     }
+
+    //게시글 내용 조회
+    @Override
+    public BoardDTO getBoardView(BoardDTO bDTO) throws Exception {
+        log.info(this.getClass().getName() + ".BoardViewService");
+        return boardMapper.getBoardView(bDTO);
+    }
 }
