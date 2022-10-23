@@ -13,7 +13,6 @@ public class EncryptUtil {
 
     /*
     암호화 알고리즘에 추가시킬 암호화 문구
-
     일반적인 암호화 알고리즘 SHA-256을 통해서만 암호화 시킬 경우, 암호화 된 값만 보고 일반적인 비밀번호에 대한 값을 쉽게
     예측이 가능함 따라서, 암호화할 때 암호화되는 값에 추가적인 문자열을 붙여서 함께 암호화를 진행함
      */
@@ -32,7 +31,7 @@ public class EncryptUtil {
     /**
      * 해시 알고리즘(단방향 암호화 알고리즘)-SHA-256
      *
-     * @param 암호화 시킬 값
+     * @param `암호화 시킬 값
      * @return 암호화된 값
      */
     public static String encHashSHA256(String str) throws Exception{

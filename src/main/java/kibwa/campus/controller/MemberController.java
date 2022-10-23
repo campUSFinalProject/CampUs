@@ -36,7 +36,7 @@ public class MemberController {
 
 
     //---------------회원가입 로직---------------
-    @RequestMapping(value = "cu/insertMember", method = RequestMethod.POST)
+    @PostMapping(value = "cu/insertMember")
     public String insertMember (HttpServletRequest request, HttpServletResponse response,
                                 ModelMap model) throws Exception{
 
@@ -53,7 +53,7 @@ public class MemberController {
             String password = CmmUtil.nvl(request.getParameter("password"));
             String name = CmmUtil.nvl(request.getParameter("name"));
             String mem_tel = CmmUtil.nvl(request.getParameter("mem_tel"));
-            String email = CmmUtil.nvl(request.getParameter("emial"));
+            String email = CmmUtil.nvl(request.getParameter("email"));
 
             log.info("id : " + id);
             log.info("password : " + password);
@@ -85,6 +85,7 @@ public class MemberController {
 
             //저장 실패 시 사용자에게 보여줄 메세지
             msg = "실패하였습니다 : " + e.toString();
+            url = "/member/memRegLoginForm";
             log.info(e.toString());
             e.printStackTrace();
 
