@@ -391,55 +391,48 @@
             <div class="content_2">
                 <%for (CaravanDTO c : cList) { %>
                 <div class="leftSec">
-                    <p class="title"> <%= c.getCground_location() %>  </p>
-                    <p class="callText">문의전화<span>055-631-2114</span></p>
+                    <p class="title">    <%= c.getCground_name() %>  </p>
+                    <p class="callText"> <%= c.getCground_location() %> </p>
                     <ul>
-                        <li><span>· 전망 : </span>오션뷰, 야드뷰</li>
-                        <li><span>· 침대타입 : </span>더블, 트윈</li>
-                        <li><span>· 객실수 : </span>67</li>
-                        <li><span>· 크기 : </span>26㎡</li>
+                        <li><span>· 전화번호 : </span> <%= c.getCground_tel()%> </li>
+                        <li><span>· 예약금액 : </span> <%= c.getCground_deposit() %> </li>
+                        <li><span>· 조회수 : </span> <%= c.getRev_count() %> </li>
+
                     </ul>
                     <div class="bottomSec">
                         <div class="leftSec"><h3>객실서비스</h3></div>
                         <div class="rightSec1">
                             <ul>
-                                <li>· 프리미엄 거위털 듀벳과 60수 침구류</li>
-                                <li>· 객실 내 무료 와이파이</li>
-                                <li>· 개별 샤워부스</li>
-                                <li>· 개인 금고</li>
-                                <li>· 고급 브랜드의 욕실 용품</li>
+                                <li>· <%= c.getCground_detail_info() %> </li>
                             </ul>
                         </div>
                     </div>
                     <%}%>
                 </div>
+
                 <div class="rightSec">
                     <ul class="detail">
                         <li></li>
                         <li></li>
                         <li><a href="" class="btn_3">예약하기</a></li>
                     </ul>
-                    <h2>Hotel Info</h2>
+                    <h2>객실 정보</h2>
+
                     <div class="bottomBox">
+                        <%for (CaravanDTO c : cList) { %>
                         <ul class="headList">
                             <li>
                                 <p>· 체크인/체크아웃 시간</p>
                                 <ul>
-                                    <li>- 체크인 : 오후 3시 이후</li>
-                                    <li>- 체크아웃 : 오전 11시</li>
+                                    <li>- 체크인 : <%= c.getCamping_enter() %> </li>
+                                    <li>- 체크아웃 : <%= c.getCamping_exit() %></li>
                                 </ul>
                             </li>
+
                             <li>
-                                <p>· 조식 레스토랑 안내</p>
+                                <p>· 추가 시설</p>
                                 <ul>
-                                    <li>- 본관 1층, 모닝 아일랜드 (06:00 ~ 09:30)</li>
-                                    <li>(토 ,일 : 06:00 ~ 10:00)</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <p>· 피트니스 안내</p>
-                                <ul>
-                                    <li>- 본관 1층 (05:30 ~ 22:00)</li>
+                                    <li>- <%= c.getAdd_facil() %></li>
                                 </ul>
                             </li>
                             <li>
@@ -453,18 +446,19 @@
                         </ul>
                     </div>
                 </div>
+                <%}%>
             </div>
             <div class="content_3">
-                <h2>Package</h2>
+                <h2>후기</h2>
                 <div class="contentBox">
                     <a href="" class="visual"><em class="blind">사진</em></a>
                     <div class="rightSec">
                         <dl>
-                            <dt>[Season Package] Tasty Chinese Cuisine</dt>
-                            <dd>2016.01.14 ~ 2016.12.31</dd>
+                            <dt>여기에 후기테이블 제목</dt>
+                            <dd>후기 내용</dd>
                         </dl>
                     </div>
-                    <a href="" class="plusBtn"><em class="blind">더보기</em></a>
+                    <a href="" class="plusBtn"><em class="blind">후기게시판</em></a>
                 </div>
             </div>
             <div class="snsSec">

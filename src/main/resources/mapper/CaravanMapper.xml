@@ -7,4 +7,6 @@
         SELECT *
         FROM CGROUND_INFO
     </select>
+
+
 </mapper>
