@@ -6,3 +6,9 @@ html {
 *, *:before, *:after {
     box-sizing: inherit;
 }
+
+#date-box {
+    border-color:darkolivegreen;
+    width: 400px;
+    height: 40px;
+}

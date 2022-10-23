@@ -1,12 +1,13 @@
 <%@ page import="kibwa.campus.dto.RevDTO" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
 <%
     List<RevDTO> rList = (List<RevDTO>) request.getAttribute("rList");
 
     // 예약 정보 불러오기
     if (rList == null){
-        rList = new ArrayList<>(RevDTO);
+        rList = new ArrayList<>();
     }
 
     // 주석
@@ -370,99 +371,79 @@
 
 <!-- 예약 날짜 -->
 
-<section id="section-main" class="section-reservation" style="margin-top: 300px;">
-    <%
+<section id="section-main" class="section-reservation" style="margin-top: 300px">
     <div class="w800">
         <div id="status-track">
-            <a class="complete" href="#">
+            <a class="current" href="#">
                 <i class="fa fa-check-circle-o"></i>
                 <div class="lbl">Dates</div>
-                <div class="sub">Jan 21 - Jan 22</div>
             </a>
-            <a class="complete" href="#"><i class="fa fa-th-list"> </i>
+            <a class="future" href="#"><i class="fa fa-th-list"> </i>
                 <div class="lbl">Rooms</div>
-                <div class="sub">NQ1 - #111</div>
             </a>
-            <a class="complete" href="#"><i class="fa fa-credit-card"></i>
+            <a class="future" href="#"><i class="fa fa-users"></i>
                 <div class="lbl">Payment</div>
             </a>
-            <a class="current" href="#"><i class="fa fa-users"></i>
+            <a class="future" href="#"><i class="fa fa-users"></i>
                 <div class="lbl">Guest Info</div>
             </a>
         </div>
 
-        <table class="guests-list" style="margin-left: 35%;">
-            <thead>
-            <tr>
-                <th>성함</th>
-                <th>예약 확인</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="guest-item">
-                <td class="guest-details-c">
-                    <div class="name">
-                        이지니
+        <form action="#">
+            <fieldset id="date-box">
+                <div class="split field">
+                    <div class="equal">
+                        <label id="txtcheckin">Check In</label>
+                        <input type="date" id="txtcheckin" />
                     </div>
-                    <div class="guest-details">
-                        <div class="phone">010-1111-1111</div>
+                    <div class="equal">
+                        <label id="txtcheckout">Check Out</label>
+                        <input type="date" id="txtcheckout" />
                     </div>
-                    <div class="guest-details">
-                        <div class="email">leejh0321@gmail.com</div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="split field">
+                    <div>
+                        <label for="numadults">Adults</label>
+                        <input type="number" id="numadults" />
                     </div>
-                </td>
-                <td>
-                    <div class="guest-actions">
-                        <div><a href="#">예약 확정 확인 &nbsp &nbsp &nbsp </a></div>
-                        <div><a href="#">&nbsp &nbsp &nbsp 취소</a></div>
+                    <div>
+                        <label for="numchildren">Children</label>
+                        <input type="number" id="numchildren" />
                     </div>
-                </td>
-            </tr>
-            <tr class="guest-item">
-                <td class="guest-details-c">
-                    <div class="name">
-                        아자나
-                    </div>
-                    <div class="guest-details">
-                        <div class="phone">010-2222-2222</div>
-                    </div>
-                    <div class="guest-details">
-                        <div class="email">ajn0321@gmail.com</div>
-                    </div>
-                </td>
-                <td>
-                    <div class="guest-actions">
-                        <div><a href="#">예약 확정 확인 &nbsp &nbsp &nbsp &nbsp </a></div>
-                        <div><a href="#">&nbsp &nbsp &nbsp 취소</a></div>
-                    </div>
-                </td>
-            </tr>
 
-            </tbody>
-        </table>
+                </div>
+            </fieldset>
 
-        <form id="new_guest" style="">
+            <fieldset>
+                <div class="split field">
+                    <div>
+                        <label for="txtroomtype">Room Type</label>
+                        <input type="text" id="txtroomtype" />
+                    </div>
+                    <div>
+                        <label for="txtroomnum">Room Number</label>
+                        <input type="text" id="txtroomnum" />
+                    </div>
 
-            <div class="spacer"></div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <label for="txtroomprice">Price</label>
+                <input type="number" id="txtroomprice" />
+            </fieldset>
+
             <div class="spacer"></div>
             <div class="actions">
-                <div><a href="">Print Confirmation</a> <a class="btn btn-aqua" href="#"><i class="fa fa-angle-left fa"></i> Back</a>
-                    <a class="btn btn-aqua spacer-v" href="#">Finish </a></div>
+                <div><a href="">Cancel</a></div>
+                <div><a class="btn btn-aqua" href="#"><i class="fa fa-angle-left fa"></i> Back</a><a class="btn btn-aqua spacer-v" href="#">Continue <i class="fa fa-angle-right fa"></i></a></div>
             </div>
-
         </form>
 
-        <div class="spacer"></div>
-    </div>
 
-</section>
-<footer>
-    <div class="footer-inner">
-        <div class="footer-item"><a href="#">About</a></div>
-        <div class="footer-item"><a href="#">Privacy Policy</a></div>
-        <div class="footer-item"><a href="#">Terms and Conditions</a></div>
     </div>
-</footer>
+</section>
 
 <!-- 예약 날짜 끝 -->
 
