@@ -30,6 +30,13 @@ public class AdminController {
         return "/adminpage/AdminOutfield";
     }
 
+    @RequestMapping(value = "Admin_in_up_de")
+    public String Admin_in_up_del(HttpServletRequest request, ModelMap model) throws Exception {
+        String name = nvl(request.getParameter("name"));
+        model.addAttribute("name", name);
+        return "/adminpage/Admin_in_up_de";
+    }
+
     @RequestMapping(value = "AdminOutfieldDetail")
     public String OutfieldDetail(HttpServletRequest request, ModelMap model) throws Exception {
         log.info(this.getClass().getName() + ".OutfieldList start!");
