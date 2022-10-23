@@ -10,4 +10,5 @@ public class OutfieldDTO {
     private String location_specific;
     private String Outdoor_detail_info;
     private int location_city_num;
+    private String outdoor_detail_memo;
 }
