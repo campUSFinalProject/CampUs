@@ -15,7 +15,7 @@
                  Email
                 )
             VALUES(
-                   MEM_SEQ.nextval,
+                   MEMBER_SEQ.nextval,
                    #{id},
                    #{password},
                    #{name},
