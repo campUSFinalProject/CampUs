@@ -22,7 +22,7 @@
     <title>노지 관리자 페이지</title>
 </head>
 
-<link href="../css/Admin_CRUD.css" rel="stylesheet" type="text/css" />
+<link href="../css/Admin_insert.css" rel="stylesheet" type="text/css" />
 
 <body>
 
@@ -33,6 +33,13 @@
             <%for (OutfieldDTO o : oList) {%>
         <br>
             <p>
+                <label>
+                    지역 선택<br>
+                    <select>
+                        <option value="" disabled selected>시군구</option>
+                        <option>서울</option>
+                    </select>
+                </label>
                 <label>
                     야영지 선택<br>
                     <select>
@@ -85,6 +92,6 @@
     </form>
 </div>
 
-<script type="text/javascript" src= "../js/Admin_CRUD.js"></script>
+<script type="text/javascript" src= "../js/Admin_insert.js"></script>
 </body>
 </html>

@@ -387,8 +387,8 @@
             <div class="content_2">
                 <%for (OutfieldDTO o : oList) {%>
                 <div class="leftSec">
-                    <p class="title"><input type="text" placeholder="상세주소 입력" value="<%=o.getLocation_specific()%>"></p>
-                    <p class="callText"><textarea rows="5" cols="40" placeholder="야영지 특이사항에 대해 적어주세요."><%=o.getOutdoor_detail_info()%></textarea></p>
+                    <p class="title"><input type="text" name="location_specific" placeholder="상세주소 입력" value="<%=o.getLocation_specific()%>"></p>
+                    <p class="callText"><textarea rows="5" cols="40" name="outdoor_detail_info" placeholder="야영지 특이사항에 대해 적어주세요."><%=o.getOutdoor_detail_info()%></textarea></p>
                 </div>
                 <div class="rightSec">
                     <ul class="detail">
@@ -400,7 +400,7 @@
                     <div class="bottomBox">
                         <ul class="headList">
                             <li>
-                                <textarea rows="5" cols="40" placeholder="야영지 특이사항에 대해 적어주세요."><%=o.getOutdoor_detail_memo()%></textarea>
+                                <textarea rows="5" cols="40" name="outdoor_detail_memo" placeholder="야영지 특이사항에 대해 적어주세요."><%=o.getOutdoor_detail_memo()%></textarea>
                             </li>
                         </ul>
                     </div>

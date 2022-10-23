@@ -30,7 +30,7 @@ public class AdminController {
         return "/adminpage/AdminOutfield";
     }
 
-    @RequestMapping(value = "Admin_CRUD")
+    @RequestMapping(value = "Admin_insert")
     public String Admin_in_up_del(HttpServletRequest request, ModelMap model) throws Exception {
         log.info(this.getClass().getName() + ".OutfieldList start!");
 
@@ -44,7 +44,7 @@ public class AdminController {
         model.addAttribute("oList", oList);
 
         log.info(this.getClass().getName() + ".OutfieldList End!");
-        return "/adminpage/Admin_CRUD";
+        return "/adminpage/Admin_insert";
     }
 
     @RequestMapping(value = "AdminOutfieldDetail")
