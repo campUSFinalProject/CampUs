@@ -413,7 +413,7 @@
                 </td>
                 <td>
                     <div class="guest-actions">
-                        <div><a href="#">예약 확정 확인 &nbsp &nbsp &nbsp &nbsp </a></div>
+                        <div><a href="#">예약 확정 확인 &nbsp &nbsp &nbsp </a></div>
                         <div><a href="#">&nbsp &nbsp &nbsp 취소</a></div>
                     </div>
                 </td>
