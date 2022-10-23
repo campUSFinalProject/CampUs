@@ -216,7 +216,7 @@ public class MemberController {
         log.info(this.getClass().getName() + ".LOGOUT START!!!");
         HttpSession session = request.getSession();
 
-        String url = "/member/memRegLoginForm";
+        String url = "/cu/Main";
         String msg = "로그아웃 성공";
 
         session.invalidate(); // session clear
