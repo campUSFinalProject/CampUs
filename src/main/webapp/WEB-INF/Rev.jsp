@@ -426,6 +426,7 @@
                     </div>
                     <div class="guest-details">
                         <div class="phone">
+                            <%=r.getMem_tel()%>
                         </div>
                     </div>
                     <div class="guest-details">
@@ -446,20 +447,20 @@
         <form id="new_guest">
             <div class="field split">
                 <div class="equal">
-                    <label for="">First Name</label>
+                    <label>First Name</label>
                     <input type="text" />
                 </div>
                 <div class="equal">
-                    <label for="">Last Name</label>
+                    <label>Last Name</label>
                     <input type="text" />
                 </div>
             </div>
             <div class="field">
-                <label for="">Phone</label>
+                <label>Phone</label>
                 <input type="text" />
             </div>
             <div class="field">
-                <label for="">Email</label>
+                <label>Email</label>
                 <input type="text" />
             </div>
 
