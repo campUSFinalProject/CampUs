@@ -279,4 +279,14 @@ public class MemberController {
 
         return "/redirect";
     }
+
+
+    //사업자 전환요청 페이지
+    @RequestMapping(value = "cu/changeMem")
+    public String changeMem(){
+
+        log.info(this.getClass().getName() + "..ChangeMEM GO!!!! ");
+
+        return "/member/changeMem";
+    }
 }
