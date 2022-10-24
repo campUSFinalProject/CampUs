@@ -24,4 +24,9 @@ public class OutfieldService implements IOutfieldService {
     public List<OutfieldDTO> getOutfieldList() throws Exception {
         return outfieldMapper.getOutfieldList();
     }
+
+    @Override
+    public List<OutfieldDTO> updateOutfield() throws Exception {
+        return outfieldMapper.updateOutfield();
+    }
 }

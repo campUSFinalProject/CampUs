@@ -10,7 +10,7 @@
     </select>
 
     <!-- 노지 정보 인서트 쿼리 -->
-    <insert id="insertOutfield" parameterType="OutfieldDTO">
+    <insert id="insertOutfield" parameterType="kibwa.campus.dto.OutfieldDTO">
         insert into outdoor_info
         (outdoor_info_num,
          location_city_num,
@@ -24,7 +24,7 @@
         #{outdoor_detail_memo})
     </insert>
 
-    <update id="updateOutfield" parameterType="OutfieldDTO">
+    <update id="updateOutfield" parameterType="kibwa.campus.dto.OutfieldDTO">
         update outdoor_info set location_specific=#{location_specific}, outdoor_detail_info=#{outdoor_detail_info}, outdoor_detail_memo=#{outdoor_detail_memo} where location_specific=#{location_specific};
     </update>
 
