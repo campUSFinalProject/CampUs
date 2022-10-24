@@ -6,14 +6,14 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>마이페이지</title>
        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
 
        <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
        <link href="../css/mypage.css" rel="stylesheet" type="text/css" />
        <script src="../4_jquery_class/lib/jquery-1.9.1.min.js"></script>
-       
+       <script src="https://kit.fontawesome.com/c49ea42a2f.js" crossorigin="anonymous"></script>
    </head>
    <body>
     <div class="container">
@@ -25,10 +25,10 @@
     <div class="leftbox">
         <nav>
             <a id="profile" class="active"><i class="fa fa-user"></i></a>
-            <a id="payment"><i class="fa fa-credit-card"></i></a>
-            <a id="subscription"><i class="fa fa-tv"></i></a>
-            <a id="privacy"><i class="fa fa-tasks"></i></a>
-            <a id="settings"><i class="fa fa-cog"></i></a>
+            <a id="payment"><i class="fa-solid fa-pen"></i></a> <!-- 회원정보수정 아이콘 -->
+            <a id="subscription"><i class="fa-solid fa-user-plus"></i></a>   <!-- 사업자 전환 아이콘 -->
+            <a id="privacy"><i class="fa-solid fa-key"></i></a> <!-- 비밀번호 변경 아이콘 -->
+            <a id="settings"><i class="fa-solid fa-user-minus"></i></a> <!-- 회원탈퇴 아이콘 -->
         </nav>
     </div>
     <div class="rightbox">
