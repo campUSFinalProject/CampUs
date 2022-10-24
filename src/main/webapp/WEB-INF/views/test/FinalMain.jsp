@@ -1,7 +1,24 @@
-
+<%@ page import="kibwa.campus.util.CmmUtil" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
+
+<%
+    String SS_ID = CmmUtil.nvl((String) session.getAttribute("SS_ID"));
+
+%>
+
+<%
+    int id = 0;
+
+    //Session을 받을때는 값이 null로 올때를 생각해서 조건문을 사용한다.
+    if (session.getAttribute("SS_ID") != null) {
+    //세션의 값을 가져오기
+        id = 1;
+    }
+%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,7 +89,7 @@
 <div class="top-bar con-min-width row">
     <div class="ride">
     <a href="#" class="logo cell block img-box"> 
-        <img src="../img/camlog.jpg" alt="">
+        <img src="../img/camplogg.png" alt="">
     </a>
     <nav class="menu-box-2 cell">
         <ul class="row">
@@ -328,7 +345,53 @@
             </li>
         </ul>
     </nav>
-    <div class="cell-right row">
+    </div>
+
+    <!--로그인 전 화면  -->
+
+        <div class="cell-right row">
+            <%if (id == 0) {%>
+        <ul>
+            <div class="cell"><a href="/member/memRegLoginForm" class="">로그인/회원가입</a>
+            </div>
+            <div class="cell block"><a href="">예약확인/취소</a>
+            </div>
+            <div class="cell block"><a href="#">ABOUT US</a>
+            </div>
+            <div class="cell block"><a href="#">CAMP US</a>
+            </div>
+            <div class="cell block"><a href="#">asdasd</a>
+            </div>
+            <div class="cell block"><a href="#"></a>
+            </div>
+        </ul>
+
+
+        <!--로그인 후 화면  -->
+
+        <%} else if (id > 0) {%>
+        <ul>
+            <div class="cell"><a href="/cu/mypage" class="">내정보</a>
+            </div>
+            <div class="cell block"><a href="/cu/Logout">로그아웃</a>
+            </div>
+            <div class="cell block"><a href="">예약확인/취소</a>
+            </div>
+            <div class="cell block"><a href="#">ABOUT US</a>
+            </div>
+            <div class="cell block"><a href="/member/memRegLoginForm">asdasd</a>
+            </div>
+            <div class="cell block"><a href="#"></a>            </div>
+
+        </ul>
+            <%};%>
+        </div>
+</div>
+
+
+
+
+        <%--<div class="cell-right row">
             <div class="cell"><a href="#" class=""></a>
             </div>
             <div class="cell block"><a href="#">MEMBERSHIP</a>
@@ -354,12 +417,7 @@
  </div>
 
 
-
-
-
-
-        
-</div>
+</div>--%>
 
 
 <!--메인 페이지-->
