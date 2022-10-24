@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,19 +8,24 @@
 
 <link href="../css/business.css" rel="stylesheet" type="text/css" />
 
-<body>
+<script type="text/javascript">
+    function businessIsInsert(){
+        document.frm.submit();
+    }
+</script>
 
+<body>
 <div class="container">
     <h1>캠핑장 등록</h1>
 
-    <form>
+    <form name='frm' action="/businesscrud">
         <div>
             <p>
                 <label>
                     지역 선택<br>
-                    <select>
-                        <option value="" name="location" disabled selected>시군구</option>
-                        <option> 서울 </option>
+                    <select name="city_name">
+                        <option value=""  disabled selected> 시군구 </option>
+                        <option value="가평" > 가평 </option>
                     </select>
                 </label>
 
@@ -40,28 +45,28 @@
             <p>
                 <label>
                     주소<br>
-                    <input type="email" name="cground_loacation" placeholder="00도00군">
+                    <input type="text" name="cground_loacation" placeholder="00도00군">
                 </label>
             </p>
 
             <p>
                 <label>
                     금액<br>
-                    <input type="url" name="cground_deposit" placeholder="~원">
+                    <input type="text" name="cground_deposit" placeholder="~원">
                 </label>
             </p>
 
             <p>
                 <label>
                     입실시간<br>
-                    <input type="search" name="campinng_enter"  placeholder="00:00">
+                    <input type="text" name="campinng_enter"  placeholder="00:00">
                 </label>
             </p>
 
             <p>
                 <label>
                     퇴실시간<br>
-                    <input type="search" name="camping_exit"  placeholder="00:00">
+                    <input type="text" name="camping_exit"  placeholder="00:00">
                 </label>
             </p>
 
@@ -84,7 +89,7 @@
             </p>
 
             <p>
-                <input type="submit">
+                <input type="submit" onclick="javascript:businessIsInsert()">
             </p>
 
             <p>

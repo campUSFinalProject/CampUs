@@ -24,6 +24,14 @@ public class BusinessController {
     @Resource(name = "CaravanService")
     private ICaravanService CaravanService;
 
+    //관리자 캠핑장 정보 insertForm
+    @RequestMapping(value = "busineInsertForm")
+    public String BusinessInsertForm(ModelMap model)
+        throws Exception{
+        log.info(this.getClass().getName() + ".CampingInfo insertForm start!");
+        return "businesspage/Business_CRUD";
+    }
+
     //관리자 캠핑장정보 insert
     @RequestMapping(value = "businesscrud")
     public String Business_CRUD(HttpServletRequest request, ModelMap model) throws Exception {
@@ -33,7 +41,7 @@ public class BusinessController {
         String url = "";
 
         try {
-            String location = CmmUtil.nvl(request.getParameter("location"));
+            String city_name = CmmUtil.nvl(request.getParameter("city_name"));
             String cground_name = CmmUtil.nvl(request.getParameter("cground_name"));
             String cground_tel = CmmUtil.nvl(request.getParameter("cground_tel"));
             String cground_loacation = CmmUtil.nvl(request.getParameter("cground_loacation"));
@@ -42,14 +50,22 @@ public class BusinessController {
             String camping_exit = CmmUtil.nvl(request.getParameter("camping_exit"));
             String cground_detail_info = CmmUtil.nvl(request.getParameter("cground_detail_info"));
             String add_facil = CmmUtil.nvl(request.getParameter("add_facil"));
+            String business_num = "1";
 
-            log.info("location : " + location);
+            log.info("city_name : " + city_name);
             log.info("cground_name : " + cground_name);
+            log.info("cground_tel : " + cground_tel);
+            log.info("cground_loacation : " + cground_loacation);
+            log.info("cground_deposit : " + cground_deposit);
+            log.info("campinng_enter : " + campinng_enter);
+            log.info("camping_exit : " + camping_exit);
+            log.info("cground_detail_info : " + cground_detail_info);
+            log.info("add_facil : " + add_facil);
+            log.info("business_num : " + business_num);
 
             CaravanDTO cDTO = new CaravanDTO();
 
-            cDTO.setCity_name(location);
-            cDTO.setLocation(location);
+            cDTO.setCity_name(city_name);
             cDTO.setCground_name(cground_name);
             cDTO.setCground_tel(cground_tel);
             cDTO.setCground_location(cground_loacation);
@@ -58,15 +74,16 @@ public class BusinessController {
             cDTO.setCamping_exit(camping_exit);
             cDTO.setCground_detail_info(cground_detail_info);
             cDTO.setAdd_facil(add_facil);
+            cDTO.setBusiness_num(business_num);
 
             CaravanService.insertCampingInfo(cDTO);
 
             msg = "등록되었습니다.";
-            url = "/businesspage/Business_CRUD";
+            url = "/busineInsertForm";
 
         } catch (Exception e) {
             msg = "실패하였습니다 : " + e.getMessage();
-            url = "/businesspage/Business_CRUD";
+            url = "/busineInsertForm";
 
             log.info(e.toString());
             e.printStackTrace();
@@ -77,10 +94,10 @@ public class BusinessController {
             model.addAttribute("url", url);
             model.addAttribute("msg", msg);
 
-            log.info("mode : " + model);
+            log.info("model : " + model);
         }
 
-        return "/businesspage/Business_CRUD";
+        return "/redirect";
     }
 
 

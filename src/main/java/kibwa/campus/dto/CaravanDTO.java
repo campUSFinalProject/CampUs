@@ -9,7 +9,6 @@ public class CaravanDTO {
     private String city_name;
     private int cground_info_num;
     private int location_city_num;
-    private String location;
     private String cground_location;
     private String cground_name;
     private String cground_tel;

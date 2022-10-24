@@ -22,7 +22,6 @@ public class CaravanService implements ICaravanService {
 
     @Override
     public List<CaravanDTO> getCaravanList() throws Exception {
-
         return CaravanMapper.getCaravanList();
     }
 
