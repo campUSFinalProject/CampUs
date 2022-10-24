@@ -228,11 +228,20 @@ public class MemberController {
     }
 
 
+    //마이페이지 이동
     @RequestMapping(value = "cu/mypage")
     public String mypage(HttpSession session, HttpServletResponse response,HttpServletRequest request, ModelMap model){
 
         log.info(this.getClass().getName() + ".MyPage GO!!!! ");
 
         return "/member/mypage";
+    }
+    //사업자 전환요청 페이지
+    @RequestMapping(value = "cu/changeMem")
+    public String changeMem(){
+
+        log.info(this.getClass().getName() + "..ChangeMEM GO!!!! ");
+
+        return "/member/changeMem";
     }
 }

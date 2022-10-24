@@ -3,7 +3,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
 <%
-    String SS_ID = CmmUtil.nvl((String) session.getAttribute("SS_ID"));
     String SS_EMAIL = CmmUtil.nvl((String) session.getAttribute("SS_EMAIL"));
     String SS_MEM_TEL = CmmUtil.nvl((String) session.getAttribute("SS_MEM_TEL"));
 %>
@@ -55,7 +54,7 @@
                     <h2>전화번호</h2>
                     <input type="text" value="<%=SS_MEM_TEL%>" name="business_tel" id="business_tel"/>
                     <button type="submit" class="btn2">사업자 변환 요청</button>
-            </form>
+                </form>
         </div>
 
         <div class="payment noshow">
