@@ -39,7 +39,7 @@ public class RevController {
         model.addAttribute("rList", rList);
 
         log.info(this.getClass().getName() + ".RevList End!");
-        return "../Rev";12321`
+        return "../Rev";
     }
 
 }
