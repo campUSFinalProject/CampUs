@@ -15,7 +15,7 @@
                  Email
                 )
             VALUES(
-                   MEM_SEQ.nextval(),
+                   MEMBER_SEQ.nextval,
                    #{id},
                    #{password},
                    #{name},
@@ -27,7 +27,7 @@
 
     <!-- 이메일로 회원가입 중복 방지하기 -->
     <select id="getMemberExists" parameterType="kibwa.campus.dto.MemberDTO" resultType="kibwa.campus.dto.MemberDTO">
-        SELECT IF(COUNT(1) = 0, 'N', 'Y') AS EXISTS_YN
+        SELECT DECODE(COUNT(1), 0, 'N', 'Y') AS EXISTS_YN
         FROM MEMBER
         WHERE EMAIL = #{email}
     </select>

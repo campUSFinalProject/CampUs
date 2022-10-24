@@ -14,7 +14,6 @@
     <script src="../4_jquery_class/lib/jquery-1.9.1.min.js"></script>
     <script type="text/javascript">
         function doRegUserCheck(f) {
-
             if (f.id.value === "") {
                 alert("아이디를 입력하세요");
                 f.id.focus();
@@ -41,7 +40,6 @@
                 return false;
             }
         }
-
         function password() {
             var p1 = document.getElementById('password').value;
             var p2 = document.getElementById('password2').value;
@@ -50,6 +48,21 @@
                 return false;
             }else{
                 return true;
+            }
+        }
+
+        function doLoginUserCheck(f){
+
+            if (f.id.value == ""){
+                alert("아이디를 입력하세요");
+                f.id.focus();
+                return false;
+            }
+
+            if (f.password.value == ""){
+                alert("비밀번호를 입력하세요");
+                f.password.focus();
+                return false;
             }
         }
     </script>
@@ -97,15 +110,16 @@
                 <div class="cont_img_back_">
                     <img src="../img/fire.jpg" alt="" />
                 </div>
-                <div class="cont_form_login">
+                <form class="cont_form_login" method="post" action="/cu/getMemLoginCheck" onsubmit="return doLoginUserCheck(this);">
                     <a href="#" onclick="ocultar_login_sign_up()" ><i class="material-icons">&#xE5C4;</i></a>
                     <h2>LOGIN</h2>
-                    <input type="text" placeholder="아이디" />
-                    <input type="password" placeholder="비밀번호" />
-                    <button class="btn_login" onclick="cambiar_login()">사용자 로그인</button>
-                    <button class="btn_login" onclick="cambiar_login()">사업자 로그인</button>
-                </div>
 
+                        <input type="text" placeholder="아이디" name="id" id="id"/>
+                        <input type="password" placeholder="비밀번호" name="password" id="password"/>
+                        <button type="submit" class="btn_login" onclick="cambiar_login()">사용자 로그인</button>
+                        <button type="submit" class="btn_login" onclick="cambiar_login()">사업자 로그인</button>
+
+                </form>
 
                 <form class="cont_form_sign_up" name="f" method="post" action="/cu/insertMember" onclick="return doRegUserCheck(this);">
 
@@ -113,9 +127,10 @@
 
                     <h2>SIGN UP</h2>
                     <input type="text" placeholder="아이디" name="id"/>
-                    <input type="text" placeholder="이름" name="이름"/>
                     <input type="password" placeholder="비밀번호" name="password" />
                     <input type="password" placeholder="비밀번호 확인" name="password2" />
+                    <input type="text" placeholder="이름" name="name"/>
+                    <input type="email" placeholder="이메일" name="email"/>
                     <input type="text" placeholder="전화번호" name="mem_tel">
                     <button class="btn_sign_up" onclick="cambiar_sign_up()" type="submit">회원가입 완료</button>
                 </form>

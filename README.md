@@ -2,7 +2,7 @@
 ## Development   
 * Java
 * Spring Boot
-* MariaDB v10.5.17  
+* Oracle v  
 * IntellJ v17.0.4.1
 ### Page routing path   
 ### Commit Message Convention   
