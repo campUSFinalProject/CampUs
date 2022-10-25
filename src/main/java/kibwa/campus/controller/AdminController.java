@@ -1,6 +1,9 @@
 package kibwa.campus.controller;
+import kibwa.campus.dto.CaravanDTO;
 import kibwa.campus.dto.OutfieldDTO;
 import kibwa.campus.service.IOutfieldService;
+import kibwa.campus.service.impl.OutfieldService;
+import kibwa.campus.util.CmmUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -49,18 +52,48 @@ public class AdminController {
 
     @RequestMapping(value = "AdminOutfieldDetail")
     public String OutfieldDetail(HttpServletRequest request, ModelMap model) throws Exception {
-        log.info(this.getClass().getName() + ".OutfieldList start!");
+        log.info(this.getClass().getName() + ".AdminOutfieldDetail start!");
 
-        List<OutfieldDTO> oList = outfieldService.getOutfieldList();
+        String msg = "";
+        String url = "";
 
-        if (oList == null){
-            oList = new ArrayList<>();
+        try {
+            String location = CmmUtil.nvl(request.getParameter("location"));
+            String location_specific = CmmUtil.nvl(request.getParameter("location_specific"));
+            String Outdoor_detail_info = CmmUtil.nvl(request.getParameter("Outdoor_detail_info"));
+            String outdoor_detail_memo = CmmUtil.nvl(request.getParameter("outdoor_detail_memo"));
+
+            log.info("location : " + location);
+            log.info("location_specific : " + location_specific);
+
+            OutfieldDTO oDTO = new OutfieldDTO();
+
+            oDTO.setCity_name(location);
+            oDTO.setLocation(location);
+            oDTO.setLocation_specific(location_specific);
+            oDTO.setOutdoor_detail_info(Outdoor_detail_info);
+            oDTO.setOutdoor_detail_memo(outdoor_detail_memo);
+
+            outfieldService.updateOutfield(oDTO);
+
+            msg = "수정되었습니다.";
+            url = "/adminpage/AdminOutfieldDetail";
+
+        } catch (Exception e) {
+            msg = "실패하였습니다 : " + e.getMessage();
+            url = "/adminpage/AdminOutfieldDetail";
+
+            log.info(e.toString());
+            e.printStackTrace();
+
+        } finally {
+            log.info(this.getClass().getName() + ".AdminOutfieldDetail update End!");
+
+            model.addAttribute("url", url);
+            model.addAttribute("msg", msg);
+
+            log.info("mode : " + model);
         }
-
-        log.info("oList : " + oList);
-        model.addAttribute("oList", oList);
-
-        log.info(this.getClass().getName() + ".OutfieldList End!");
 
         return "/adminpage/AdminOutfieldDetail";
     }
