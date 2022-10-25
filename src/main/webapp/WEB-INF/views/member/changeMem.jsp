@@ -20,8 +20,10 @@
     <script src="../4_jquery_class/lib/jquery-1.9.1.min.js"></script>
     <script src="https://kit.fontawesome.com/c49ea42a2f.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
+        var anText_sub1 = document.getElementById('business_num').value;
 
     </script>
+
 </head>
 <body>
 <div class="container">
@@ -34,7 +36,7 @@
         <nav>
             <a id="profile" href="/cu/mypage"><i class="fa fa-user"></i></a> <!-- 마이페이지 -->
             <a id="payment"><i class="fa-solid fa-pen"></i></a> <!-- 회원정보수정 아이콘 -->
-            <a id="subscription" class="active"><i class="fa-solid fa-user-plus"></i></a>   <!-- 사업자 전환 아이콘 -->
+            <a id="subscription" <i class="active"><i class="fa-solid fa-user-plus"></i></a>   <!-- 사업자 전환 아이콘 -->
             <a id="privacy"><i class="fa-solid fa-key"></i></a> <!-- 비밀번호 변경 아이콘 -->
             <a id="settings"><i class="fa-solid fa-user-minus"></i></a> <!-- 회원탈퇴 아이콘 -->
         </nav>
@@ -46,7 +48,8 @@
                 <h1>사업자 전환 요청</h1>
                 <form method="post" action="">
                     <h2>사업자 번호 (10자리 / - 포함)</h2>
-                    <input type="text" placeholder="ex) 000-00-00000" name="business_num" id="business_num"/>
+                    <input type="text" placeholder="여기에 적으세요." autofocus name="business_num" id="business_num">
+                    <%--<input type="text" placeholder="ex) 000-00-00000" name="business_num" id="business_num"/>--%>
                     <h2>회사 명</h2>
                     <input type="text" placeholder="ex) CampUs" name="business_title" id="business_title"/>
                     <h2>이메일</h2>
