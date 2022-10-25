@@ -73,7 +73,7 @@
             <p>
                 <label>
                     특이사항<br>
-                    <textarea rows="5" cols="40" name="cground_detail_info" placeholder="화장실 , 샤워실 , 매점 반려둥물동반 가능여부 등 .."></textarea>
+                    <textarea rows="5" cols="40" name="cground_detail_info" placeholder="화장실 , 샤워실 , 매점 , 반려동물동반 가능여부 등 .."></textarea>
                 </label>
             </p>
 

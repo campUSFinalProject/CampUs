@@ -25,7 +25,7 @@ public class BusinessController {
     private ICaravanService CaravanService;
 
     //관리자 캠핑장 정보 insertForm
-    @RequestMapping(value = "busineInsertForm")
+    @RequestMapping(value = "businessInsertForm")
     public String BusinessInsertForm(ModelMap model)
         throws Exception{
         log.info(this.getClass().getName() + ".CampingInfo insertForm start!");
@@ -79,11 +79,11 @@ public class BusinessController {
             CaravanService.insertCampingInfo(cDTO);
 
             msg = "등록되었습니다.";
-            url = "/busineInsertForm";
+            url = "/businessInsertForm";
 
         } catch (Exception e) {
             msg = "실패하였습니다 : " + e.getMessage();
-            url = "/busineInsertForm";
+            url = "/businessInsertForm";
 
             log.info(e.toString());
             e.printStackTrace();
