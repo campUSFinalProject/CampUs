@@ -36,7 +36,7 @@
         <nav>
             <a id="profile" href="/cu/mypage"><i class="fa fa-user"></i></a> <!-- 마이페이지 -->
             <a id="payment"><i class="fa-solid fa-pen"></i></a> <!-- 회원정보수정 아이콘 -->
-            <a id="subscription" <i class="active"><i class="fa-solid fa-user-plus"></i></a>   <!-- 사업자 전환 아이콘 -->
+            <a id="subscription" class="active"><i class="fa-solid fa-user-plus"></i></a>   <!-- 사업자 전환 아이콘 -->
             <a id="privacy"><i class="fa-solid fa-key"></i></a> <!-- 비밀번호 변경 아이콘 -->
             <a id="settings"><i class="fa-solid fa-user-minus"></i></a> <!-- 회원탈퇴 아이콘 -->
         </nav>
@@ -51,7 +51,7 @@
                     <input type="text" placeholder="여기에 적으세요." autofocus name="business_num" id="business_num">
                     <%--<input type="text" placeholder="ex) 000-00-00000" name="business_num" id="business_num"/>--%>
                     <h2>회사 명</h2>
-                    <input type="text" placeholder="ex) CampUs" name="business_name" id="business_name"/>
+                    <input type="text" placeholder="ex) CampUs" name="business_title" id="business_title"/>
                     <h2>이메일</h2>
                     <input type="text" value="<%=SS_EMAIL%>" name="business_email" id="business_email"/>
                     <h2>전화번호</h2>
