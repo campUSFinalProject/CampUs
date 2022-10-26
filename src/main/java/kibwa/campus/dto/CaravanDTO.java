@@ -6,8 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CaravanDTO {
-    private String city_name;
     private int cground_info_num;
+    private String city_name;
     private int location_city_num;
     private String cground_location;
     private String cground_name;

@@ -26,6 +26,20 @@
                     <select name="city_name">
                         <option value=""  disabled selected> 시군구 </option>
                         <option value="가평" > 가평 </option>
+                        <option value="가평시" > 가평시 </option>
+                        <option value="파주시" > 파주시 </option>
+                        <option value="속초시" > 속초시 </option>
+                        <option value="강릉시" > 강릉시 </option>
+                        <option value="목포시" > 목포시 </option>
+                        <option value="여수시" > 여수시 </option>
+                        <option value="서구" > 서구 </option>
+                        <option value="중구" > 중구 </option>
+                        <option value="천안시" > 천안시 </option>
+                        <option value="아산시" > 아산시 </option>
+                        <option value="논산시" > 논산시 </option>
+                        <option value="청주시" > 청주시 </option>
+                        <option value="충주시" > 충주시 </option>
+
                     </select>
                 </label>
 

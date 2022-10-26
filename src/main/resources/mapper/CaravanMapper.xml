@@ -5,7 +5,7 @@
 
     <select id="getCaravanList" resultType="kibwa.campus.dto.CaravanDTO">
         SELECT *
-        FROM CGROUND_INFO where cground_info_num = 65
+        FROM CGROUND_INFO where cground_info_num = 21
     </select>
 
     <!-- 관리자 캠핑장정보 insert -->
@@ -24,7 +24,7 @@
          rev_count,
          business_num)
         VALUES (cground_seq.nextval,
-                1,
+                (select location_city_num from location_city where city_name = #{city_name}),
                 #{cground_location},
                 #{cground_name},
                 #{cground_tel},
