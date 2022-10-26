@@ -4,7 +4,7 @@
 <mapper namespace="kibwa.campus.persistance.mapper.IRevDateMapper">
 
     <!-- 예약 쿼리 -->
-    <select id="getRevDateList" resultType="kibwa.campus.dto.RevDateDTO">
+    <select id="getRevDateList" resultType="RevDateDTO">
         select *
         from MEMBER
     </select>

@@ -20,7 +20,8 @@
     <title>예약</title>
 </head>
 
-
+<link href="../css/FinalMain.css" rel="stylesheet" type="text/css" />
+<link href="../css/RevDate.css" rel="stylesheet" type="text/css" />
 
 <script src="../4_jquery_class/lib/jquery-1.9.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -415,6 +416,8 @@
 
 <!-- 메인 정보창 끝 -->
 
+<script type="text/javascript" src= ".  ./js/FinalMain.js"></script>
+<script type="text/javascript" src= "../js/RevDate.js"></script>
 
 </body>
 </html>

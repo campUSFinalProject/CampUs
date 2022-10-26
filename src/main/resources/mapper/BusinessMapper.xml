@@ -5,7 +5,7 @@
 
 
     <!-- 사업자로 전환신청 -->
-    <insert id="InsertChangeRequest" parameterType="kibwa.campus.dto.BusinessDTO">
+    <insert id="InsertChangeRequest" parameterType="BusinessDTO">
         INSERT INTO BUSINESS
             (
              BUSINESS_NUM,

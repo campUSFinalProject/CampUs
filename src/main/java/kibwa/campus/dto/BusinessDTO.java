@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class BusinessDTO {
 
-    private String business_num;
+    private String business_num; // 이거 businessNum 으로 바꾸고
     private String business_id;
     private String business_pw;
     private String business_name;

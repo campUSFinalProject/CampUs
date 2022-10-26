@@ -25,17 +25,17 @@ public class RevDateController {
     @RequestMapping(value = "RevDate")
     public String RevDate(HttpServletRequest request, ModelMap model) throws Exception {
        log.info(this.getClass().getName() + ".RevDate ");
-
+       log.info("{}.RevDate ", this.getClass().getName());
        List<RevDateDTO> rdList = revDateService.getRevDateList();
 
        if (rdList == null) {
            rdList = new ArrayList<>();
        }
-
-       log.info("rdList : " + rdList);
+        rdList.forEach(rd -> log.info("rdList : {}", rd.toString()));
+        System.out.println("야아아아아아 이거 왜 안찍혀");
+        rdList.forEach(System.out::println);
+       //이거 왜 주소값으로 자꾸 나와??
        model.addAttribute("rdList", rdList);
-
-       log.info(this.getClass().getName()+ ".RevDate End");
 
        return "/RevDate";
     }

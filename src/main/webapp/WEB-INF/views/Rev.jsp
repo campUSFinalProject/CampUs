@@ -407,7 +407,7 @@
                     </div>
                     <div class="guest-details">
                         <div class="phone">
-                            <%=r.getMem_tel()%>
+                            <%=r.getMem_Tel()%>
                         </div>
                     </div>
                     <div class="guest-details">
@@ -426,36 +426,6 @@
             </tr>
             </tbody>
         </table>
-
-        <form id="new_guest">
-            <div class="field split">
-                <div class="equal">
-                    <label>First Name</label>
-                    <input type="text" />
-                </div>
-                <div class="equal">
-                    <label>Last Name</label>
-                    <input type="text" />
-                </div>
-            </div>
-            <div class="field">
-                <label>Phone</label>
-                <input type="text" />
-            </div>
-            <div class="field">
-                <label>Email</label>
-                <input type="text" />
-            </div>
-
-            <a href="#" class="btn">Add New guest</a>
-
-            <div class="spacer"></div>
-            <div class="spacer"></div>
-            <div class="actions">
-                <div><a href="">Print Confirmation</a></div>
-                <div><a class="btn btn-aqua" href="#"><i class="fa fa-angle-left fa"></i> Back</a><a class="btn btn-aqua spacer-v" href="#">Finish </a></div>
-            </div>
-        </form>
         <div class="spacer"></div>
     </div>
 </section>

@@ -31,11 +31,10 @@ public class RevController {
             rList = new ArrayList<>();
         }
 
-        log.info("rList : " + rList);
+        log.info("rList : {}", rList);
         model.addAttribute("rList", rList);
 
-        log.info(this.getClass().getName() + ".RevList End!");
-
+        log.info("{} .RevList End! {} {}", this.getClass().getName(), "이맛이야", "세번째맛이야");
         return "/Rev";
     }
 
