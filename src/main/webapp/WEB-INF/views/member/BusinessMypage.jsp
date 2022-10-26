@@ -45,7 +45,7 @@
         <div class="profile">
             <h1>회원 정보</h1>
             <h2>회원 등급</h2>
-            <p>일반 회원<button class="btn">사업자 등급 변환</button></p>
+            <p>사업자<button class="btn"></button></p>
             <h2>이름</h2>
             <p><%=SS_NAME%></p>
             <h2>아이디</h2>
