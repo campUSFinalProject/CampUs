@@ -98,6 +98,11 @@ nav a:first-child {
     width: 70%;
 }
 
+.profile2 {
+    transition: opacity 0.5s ease-in;
+    width: 70%;
+}
+
 h1 {
     font-family: "Montserrat", sans-serif;
     color: #7ed386;
@@ -138,6 +143,7 @@ input[type=text] {
     font-size: 0.7em;
     padding: 7px 0;
     color: #070707;
+    background: white;
 }
 
 span {

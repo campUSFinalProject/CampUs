@@ -42,7 +42,7 @@
     </div>
     <div class="rightbox">
 
-        <div class="profile">
+        <div class="profile2">
 
                 <h1>사업자 전환 요청</h1>
                 <form method="post" action="">
