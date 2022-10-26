@@ -4,12 +4,10 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
 <%
     List<RevDTO> rList = (List<RevDTO>) request.getAttribute("rList");
-
     // 예약 정보 불러오기
     if (rList == null){
         rList = new ArrayList<>();
     }
-
     // 주석
     System.out.println("rList : " + rList);
 %>
@@ -370,9 +368,7 @@
 <!-- 상단 메뉴바 끝 -->
 
 <!-- 예약 날짜 -->
-
 <section id="section-main" class="section-reservation">
-    <% for (RevDTO r : rList) { %>
     <div class="w800">
         <div id="status-track">
             <a class="complete" href="#">
@@ -400,26 +396,11 @@
             </tr>
             </thead>
             <tbody>
+
+
             <tr class="guest-item">
-                <td class="guest-details-c">
-                    <div class="name">
-                        Dipen Chauhan
-                    </div>
-                    <div class="guest-details">
-                        <div class="phone">(530)-896-5678</div>
-                    </div>
-                    <div class="guest-details">
-                        <div class="email">firstname.lastname@ gmail.com</div>
-                    </div>
-                </td>
-                <td>
-                    <div class="guest-actions">
-                        <div><a href="#">Send Confirmation</a></div>
-                        <div><a href="#">Remove</a></div>
-                    </div>
-                </td>
-            </tr>
-            <tr class="guest-item">
+                <%for (RevDTO r : rList){%>
+
                 <td class="guest-details-c">
                     <div class="name">
                         <%=r.getName()%>
@@ -430,9 +411,12 @@
                         </div>
                     </div>
                     <div class="guest-details">
-                        <div class="email">firstname.lastname@ gmail.com</div>
+                        <div class="email">
+                            <%=r.getEmail()%>
+                        </div>
                     </div>
                 </td>
+                <%}%>
                 <td>
                     <div class="guest-actions">
                         <div><a href="#">Send Confirmation</a></div>
@@ -440,7 +424,6 @@
                     </div>
                 </td>
             </tr>
-
             </tbody>
         </table>
 
@@ -472,14 +455,9 @@
                 <div><a href="">Print Confirmation</a></div>
                 <div><a class="btn btn-aqua" href="#"><i class="fa fa-angle-left fa"></i> Back</a><a class="btn btn-aqua spacer-v" href="#">Finish </a></div>
             </div>
-
         </form>
-
         <div class="spacer"></div>
-
-
     </div>
-    <% } %>
 </section>
 
 <!-- 예약 날짜 끝 -->

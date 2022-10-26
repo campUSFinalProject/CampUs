@@ -1,6 +1,5 @@
 package kibwa.campus.service.impl;
 
-
 import kibwa.campus.dto.RevDTO;
 import kibwa.campus.persistance.mapper.IRevMapper;
 import kibwa.campus.service.IRevService;
@@ -23,6 +22,11 @@ public class RevService implements IRevService {
 
     @Override
     public List<RevDTO> getRevList() throws Exception {
+
+        List<RevDTO> rList = revMapper.getRevList();
+
+        log.info(this.getClass().getName() + " rList : " + rList);
+
         return revMapper.getRevList();
     }
 

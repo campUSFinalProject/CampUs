@@ -6,7 +6,6 @@ import java.util.List;
 
 public interface IRevService {
 
-
     List<RevDTO> getRevList() throws Exception;
 }
 
