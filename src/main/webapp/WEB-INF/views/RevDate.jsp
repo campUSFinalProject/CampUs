@@ -17,11 +17,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>노지 상세 페이지</title>
+    <title>예약</title>
 </head>
 
-<link href="../css/FinalMain.css" rel="stylesheet" type="text/css" />
-<link href="../css/OutfieldDetail.css" rel="stylesheet" type="text/css" />
+
+
 <script src="../4_jquery_class/lib/jquery-1.9.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -340,118 +340,81 @@
 <!-- 상단 메뉴바 끝 -->
 
 <!-- 메인 정보창 -->
-<div id="wrap">
-    <div id="container">
-        <div class="conHeader">
-            <ul>
-                <li><a href="/test" class="homeIcon"><em class="blind">홈</em></a></li>
-                <li>></li>
-                <li><a href="/Outfield" style="color: #666666">노지 목록</a></li>
-                <li>></li>
-                <li><a href="">노지 정보</a></li>
-            </ul>
+
+<section id="section-main" class="section-reservation">
+    <div class="w800">
+        <div id="status-track">
+            <a class="current" href="#">
+                <i class="fa fa-check-circle-o"></i>
+                <div class="lbl">Dates</div>
+            </a>
+            <a class="future" href="#"><i class="fa fa-th-list"> </i>
+                <div class="lbl">Rooms</div>
+            </a>
+            <a class="future" href="#"><i class="fa fa-users"></i>
+                <div class="lbl">Payment</div>
+            </a>
+            <a class="future" href="#"><i class="fa fa-users"></i>
+                <div class="lbl">Guest Info</div>
+            </a>
         </div>
 
-        <div class="nav">
-            <h2>객실</h2>
-            <ul>
-                <li><a href="/FinalMain">메인 화면</a></li>
-                <li><a href="/Outfield">노지 리스트</a></li>
-            </ul>
-        </div>
-        <div class="contents">
-            <h1>노지 상세 정보</h1>
-            <div class="mainVisual">
-                <div class="slider">
-                    <div class="visual_1"></div>
-                    <div class="visual_1"></div>
-                    <div class="visual_1"></div>
-                    <div class="visual_1"></div>
-                </div>
-
-                <div class="btnsArea">
-                    <a href="#" class="previousPage"><span class="mark"><em class="blind">이전페이지</em></span></a>
-                    <a href="#" class="nextPage"><span class="mark"><em class="blind">다음페이지</em></span></a>
-                </div>
-            </div>
-            <div class="subVisual">
-                <ul>
-                    <li><a href="" class="visual_1"><em class="blind">사진</em></a></li>
-                    <li><a href="" class="visual_1"><em class="blind">사진</em></a></li>
-                    <li><a href="" class="visual_1"><em class="blind">사진</em></a></li>
-                    <li><a href="" class="visual_1"><em class="blind">사진</em></a></li>
-                </ul>
-            </div>
-            <div class="content_2">
-                <%for (OutfieldDTO o : oList) {%>
-                <div class="leftSec">
-                    <p class="title"><%=o.getLocation_specific()%></p>
-                    <p class="callText"><%=o.getOutdoor_detail_info()%></p>
-                </div>
-                <div class="rightSec">
-                    <ul class="detail">
-                        <li></li>
-                        <li></li>
-                        <li><a href="" class="btn_3">예약하기</a></li>
-                    </ul>
-                    <h2>Outfield Info</h2>
-                    <div class="bottomBox">
-                        <ul class="headList">
-                            <li>
-                                <%=o.getOutdoor_detail_memo()%>
-                            </li>
-                        </ul>
+        <form action="#">
+            <fieldset>
+                <div class="split field">
+                    <div class="equal">
+                        <label id="txtcheckin">Check In</label>
+                        <input type="date" id="txtcheckin" />
+                    </div>
+                    <div class="equal">
+                        <label id="txtcheckout">Check Out</label>
+                        <input type="date" id="txtcheckout" />
                     </div>
                 </div>
-                <%}%>
-            </div>
-            <div class="snsSec">
-                <ul>
-                    <li><a href="" class="facebook"><em class="blind">페이스북</em></a></li>
-                    <li><a href="" class="blog"><em class="blind">블로그</em></a></li>
-                    <li><a href="" class="kakao"><em class="blind">카카오스토리</em></a></li>
-                </ul>
-            </div>
-        </div>
+            </fieldset>
+            <fieldset>
+                <div class="split field">
+                    <div>
+                        <label for="numadults">Adults</label>
+                        <input type="number" id="numadults" />
+                    </div>
+                    <div>
+                        <label for="numchildren">Children</label>
+                        <input type="number" id="numchildren" />
+                    </div>
 
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div class="split field">
+                    <div>
+                        <label for="txtroomtype">Room Type</label>
+                        <input type="text" id="txtroomtype" />
+                    </div>
+                    <div>
+                        <label for="txtroomnum">Room Number</label>
+                        <input type="text" id="txtroomnum" />
+                    </div>
+
+                </div>
+            </fieldset>
+            <fieldset>
+                <label for="txtroomprice">Price</label>
+                <input type="number" id="txtroomprice" />
+            </fieldset>
+
+            <div class="spacer"></div>
+            <div class="actions">
+                <div><a href="">Cancel</a></div>
+                <div><a class="btn btn-aqua" href="#"><i class="fa fa-angle-left fa"></i> Back</a><a class="btn btn-aqua spacer-v" href="#">Continue <i class="fa fa-angle-right fa"></i></a></div>
+            </div>
+        </form>
     </div>
+</section>
 
-    <footer>
-        <div class="topCon">
-            <div class="test1">
-                <div class="logo_1"><em class="blind">로고</em></div>
-                <ul>
-                    <li><a href="">호텔소개</a></li>
-                    <li><a href="">호텔사진</a></li>
-                    <li><a href="">호텔안내도</a></li>
-                    <li><a href="">오시는길</a></li>
-                    <li><a href="">채용</a></li>
-                    <li><a href="">의견&문의</a></li>
-                </ul>
-                <div class="logo_2"><em class="blind">삼성중공업</em></div>
-            </div>
-            <div class="bottomCon">
-                <ul class="information">
-                    <li>개인정보처리방침</li>
-                    <li>개인정보취급방침</li>
-                    <li>이메일무단수집금지</li>
-                </ul>
-                <hr class="line">
-                <ul class="information_2">
-                    <li>삼성중공업(거제호텔)</li>
-                    <li>경상남도 거제시 장평3로 80-37 (우 53261)</li>
-                    <li>TEL 055-631-2114</li>
-                    <li>FAX 055-631-2010</li>
-                    <li>사업자번호 612-85-00343</li>
-                    <li>대표이사 박대영</li>
-                </ul>
-                <p>COPYRIGHT ⓒ 2015 SAMSUNG HOTEL GEOJE LIMITED, ALL RIGHTS RESERVED. </p>
-            </div>
-        </div>
-    </footer>
-</div>
 <!-- 메인 정보창 끝 -->
 
-<script type="text/javascript" src= "../js/FinalMain.js"></script>
+
 </body>
 </html>

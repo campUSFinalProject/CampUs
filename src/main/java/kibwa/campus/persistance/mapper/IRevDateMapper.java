@@ -8,5 +8,4 @@ import java.util.List;
 @Mapper
 public interface IRevDateMapper {
     List<RevDateDTO> getRevDateList() throws Exception;
-
 }

@@ -15,19 +15,21 @@ import java.util.List;
 
 @Slf4j
 @Controller
+
+
 public class RevDateController {
 
     @Resource(name = "RevDateService")
     private IRevDateService revDateService;
 
     @RequestMapping(value = "RevDate")
-    public String RevDate(HttpServletRequest request, ModelMap model throws Exception {
+    public String RevDate(HttpServletRequest request, ModelMap model) throws Exception {
        log.info(this.getClass().getName() + ".RevDate ");
 
        List<RevDateDTO> rdList = revDateService.getRevDateList();
 
-       if (rdlist == null) {
-           rdlist = new ArrayList<>();
+       if (rdList == null) {
+           rdList = new ArrayList<>();
        }
 
        log.info("rdList : " + rdList);
