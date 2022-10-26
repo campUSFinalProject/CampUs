@@ -25,6 +25,10 @@ public class OutfieldService implements IOutfieldService {
         return outfieldMapper.getOutfieldList();
     }
     @Override
+    public void insertOutfield(OutfieldDTO oDTO) throws Exception {
+        outfieldMapper.insertOutfield(oDTO);
+    }
+    @Override
     public void updateOutfield(OutfieldDTO oDTO) throws Exception {
         outfieldMapper.updateOutfield(oDTO);
     }

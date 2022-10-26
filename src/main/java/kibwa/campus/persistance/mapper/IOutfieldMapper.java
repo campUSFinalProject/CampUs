@@ -9,5 +9,6 @@ import java.util.List;
 @Mapper
 public interface IOutfieldMapper {
     List<OutfieldDTO> getOutfieldList() throws Exception;
+    void insertOutfield(OutfieldDTO oDTO) throws Exception;
     void updateOutfield(OutfieldDTO oDTO) throws Exception;
 }

@@ -35,18 +35,48 @@ public class AdminController {
 
     @RequestMapping(value = "Admin_insert")
     public String Admin_in_up_del(HttpServletRequest request, ModelMap model) throws Exception {
-        log.info(this.getClass().getName() + ".OutfieldList start!");
+        log.info(this.getClass().getName() + ".Admin_insert start!");
 
-        List<OutfieldDTO> oList = outfieldService.getOutfieldList();
+        String msg = "";
+        String url = "";
 
-        if (oList == null){
-            oList = new ArrayList<>();
+        try {
+            String location = CmmUtil.nvl(request.getParameter("location"));
+            String location_specific = CmmUtil.nvl(request.getParameter("location_specific"));
+            String Outdoor_detail_info = CmmUtil.nvl(request.getParameter("Outdoor_detail_info"));
+            String outdoor_detail_memo = CmmUtil.nvl(request.getParameter("outdoor_detail_memo"));
+
+            log.info("location : " + location);
+            log.info("location_specific : " + location_specific);
+
+            OutfieldDTO oDTO = new OutfieldDTO();
+
+            oDTO.setCity_name(location);
+            oDTO.setLocation(location);
+            oDTO.setLocation_specific(location_specific);
+            oDTO.setOutdoor_detail_info(Outdoor_detail_info);
+            oDTO.setOutdoor_detail_memo(outdoor_detail_memo);
+
+            outfieldService.insertOutfield(oDTO);
+
+            msg = "수정되었습니다.";
+            url = "/adminpage/Admin_insert";
+
+        } catch (Exception e) {
+            msg = "실패하였습니다 : " + e.getMessage();
+            url = "/adminpage/Admin_insert";
+
+            log.info(e.toString());
+            e.printStackTrace();
+
+        } finally {
+            log.info(this.getClass().getName() + ".Admin_insert insert End!");
+
+            model.addAttribute("url", url);
+            model.addAttribute("msg", msg);
+
+            log.info("mode : " + model);
         }
-
-        log.info("oList : " + oList);
-        model.addAttribute("oList", oList);
-
-        log.info(this.getClass().getName() + ".OutfieldList End!");
         return "/adminpage/Admin_insert";
     }
 
