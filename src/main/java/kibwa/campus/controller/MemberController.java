@@ -147,6 +147,9 @@ public class MemberController {
                 session.setAttribute("SS_MEM_TEL", rDTO.getMem_tel());
                 session.setAttribute("SS_EMAIL", rDTO.getEmail());
                 session.setAttribute("SS_NAME", rDTO.getName());
+                session.setAttribute("SS_PASSWORD", rDTO.getPassword());
+
+
             }
             rDTO = null;
 

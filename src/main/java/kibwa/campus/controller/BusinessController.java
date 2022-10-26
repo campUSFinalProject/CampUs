@@ -37,11 +37,19 @@ public class BusinessController {
         try {
 
             String business_num = CmmUtil.nvl(request.getParameter("business_num"));
-            String business_id = CmmUtil.nvl((String) session.getAttribute("id"));
-            String business_pw = CmmUtil.nvl((String) session.getAttribute("password"));
+            String business_id = CmmUtil.nvl((String) session.getAttribute("SS_ID"));
+            String business_pw = CmmUtil.nvl((String) session.getAttribute("SS_PASSWORD"));
             String business_name = CmmUtil.nvl(request.getParameter("business_name"));
             String business_tel = CmmUtil.nvl(request.getParameter("business_tel"));
             String business_email = CmmUtil.nvl(request.getParameter("business_email"));
+
+            log.info("business_num : " + business_num);
+            log.info("id : " + business_id);
+            log.info("password : " + business_pw);
+            log.info("name : " + business_name);
+            log.info("tel : " + business_tel);
+            log.info("email : " + business_email);
+
 
             pDTO = new BusinessDTO();
 

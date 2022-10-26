@@ -18,6 +18,20 @@ public class MainController {
         return "/test/FinalMain";
     }
 
+    @RequestMapping(value = "cu/businessMain")
+    public String businMain() {
 
+        log.info(this.getClass().getName() + ".MAINPAGE GO!! ");
+
+        return "/business/businessMain";
+    }
+
+    @RequestMapping(value = "cu/adminMain")
+    public String adminMain() {
+
+        log.info(this.getClass().getName() + ".MAINPAGE GO!! ");
+
+        return "/admin/adminMain";
+    }
 
 }

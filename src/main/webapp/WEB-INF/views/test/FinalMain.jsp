@@ -5,6 +5,9 @@
 
 <%
     String SS_ID = CmmUtil.nvl((String) session.getAttribute("SS_ID"));
+    String SS_PASSWORD = CmmUtil.nvl((String) session.getAttribute("SS_PASSWORD"));
+
+    System.out.println("SS_PASWORD : " + SS_PASSWORD);
 
 %>
 
