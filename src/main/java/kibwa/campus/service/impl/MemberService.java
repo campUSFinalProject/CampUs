@@ -1,7 +1,7 @@
 package kibwa.campus.service.impl;
 
 import kibwa.campus.dto.MemberDTO;
-import kibwa.campus.persistance.IMemberMapper;
+import kibwa.campus.persistance.mapper.IMemberMapper;
 import kibwa.campus.service.IMemberService;
 import kibwa.campus.util.CmmUtil;
 import lombok.RequiredArgsConstructor;
@@ -69,5 +69,16 @@ public class MemberService implements IMemberService {
         int res = memberMapper.deleteMember(pDTO);
 
         return res;
+    }
+
+    @Transactional
+    @Override
+    public void updateMember(MemberDTO pDTO) throws Exception {
+
+        log.info(this.getClass().getName() + ".updateMember START!");
+
+        memberMapper.updateMember(pDTO);
+
+        log.info(this.getClass().getName() + ".updateMember End!");
     }
 }
