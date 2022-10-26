@@ -6,6 +6,7 @@ import kibwa.campus.service.IBoardService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -27,8 +28,39 @@ public class BoardService implements IBoardService {
     }
 
     // 게시판 글 작성
+    @Transactional
     @Override
-    public int insertBoard(BoardDTO bDTO) throws Exception {
-        return 0;
+    public void insertBoard(BoardDTO bDTO) throws Exception {
+        log.info(this.getClass().getName() + ".insertBoard!");
+        boardMapper.insertBoard(bDTO);
+    }
+
+    //게시글 내용 조회
+    @Override
+    public BoardDTO getBoardView(BoardDTO bDTO) throws Exception {
+        log.info(this.getClass().getName() + ".BoardViewService");
+        return boardMapper.getBoardView(bDTO);
+    }
+
+    //게시글 내용 삭제
+    @Override
+    public int deleteBoard(BoardDTO bDTO) throws Exception {
+        log.info(this.getClass().getName() + ".deleteBoardService");
+        int res = boardMapper.deleteBoard(bDTO);
+        return res;
+    }
+
+    //게시글 내용 수정
+    @Override
+    public void updateBoard(BoardDTO bDTO) throws Exception {
+        log.info(this.getClass().getName() + ".updateBoardService");
+        boardMapper.updateBoard(bDTO);
+    }
+
+    //게시글 조회수 증가
+    @Override
+    public void updateBoardViewNum(BoardDTO bDTO) throws Exception {
+        log.info(this.getClass().getName() + ".updateBoardViewNumService");
+        boardMapper.updateBoardViewNum(bDTO);
     }
 }

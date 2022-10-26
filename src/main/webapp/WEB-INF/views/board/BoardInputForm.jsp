@@ -6,30 +6,25 @@
          pageEncoding="utf-8" %>
 
 <%
-    List<BoardDTO> bList = (List<BoardDTO>) request.getAttribute("bList");
+    BoardDTO bDTO = (BoardDTO)request.getAttribute("bDTO");
 
-    //게시판 조회 결과 보여주기
-    if (bList == null) {
-        bList = new ArrayList<BoardDTO>();
+    if(bDTO == null){
+        bDTO = new BoardDTO();
     }
 
-    //주석
-    System.out.println("bList :" + bList);
+    int access = 1;
+    if (CmmUtil.nvl((String)session.getAttribute("SS_ID")).equals(
+            CmmUtil.nvl(bDTO.getId()))){
+        access = 2;
+    }
+    //String SS_ID = CmmUtil.nvl((String) session.getAttribute("SS_ID"));
 %>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html" ; charset="UTF-8">
-    <title>자유게시판</title>
-
-    <!--나중에 JS독립시키기-->
-    <script type="text/javascript">
-        //제목 누르면 게시글 보게 함
-        function goToBoardView(board_num){
-            location.href="/board/BoardView?board_num=" + board_num;
-        }
-    </script>
+    <title>게시판 글쓰기</title>
 </head>
 
 <!--상단, 라이트바 위한 css-->
@@ -47,6 +42,17 @@
 
 <!--게시판 css -->
 <link href="../css/board/FreeBoard.css" rel="stylesheet" type="text/css"/>
+
+<!-- JS파일로 독립시키기-->
+<script type="text/javascript">
+    function contentIsInsert(){
+        document.frm.submit();
+    }
+    function goToBoardList(){
+        location.href="/board/BoardList";
+    }
+</script>
+
 <body>
 <div class=mainDiv>
     <!--상단 메뉴바-->
@@ -375,74 +381,15 @@
         </div>
     </div>
 
-    <!--게시판 area-->
-    <!--codepen board templet-->
-    <div class="notice">
-        <div class="page-title">
-            <div class="container">
-                <h3>자유게시판</h3>
-            </div>
-        </div>
-
-        <!-- board 검색창 area -->
-        <div id="board-search">
-            <div class="container">
-                <div class="search-window">
-                    <form action="">
-                        <div class="search-wrap">
-                            <label for="search" class="blind">공지사항 내용 검색</label>
-                            <input id="search" type="search" name="" placeholder="검색어를 입력해주세요." value="">
-                            <button type="submit" class="btn btn-dark">검색</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- board list area -->
-        <div id="board-list">
-            <div class="container">
-                <table class="board-table">
-                    <thead>
-                    <tr>
-                        <th scope="col" class="th-num">번호</th>
-                        <th scope="col" class="th-title">제목</th>
-                        <th scope="col" class="th-id">작성자</th>
-                        <th scope="col" class="th-date">등록일</th>
-                        <th scope="col" class="th-showNum">조회수</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <% if (bList.isEmpty()) { %>
-                    <tr>
-                        <td colspan="5"> 등록된 게시물이 없습니다.</td>
-                    </tr>
-                    <% } else {%>
-                    <%for (BoardDTO b : bList) {%>
-                    <tr>
-                        <td><%=b.getBoard_num()%>
-                        </td>
-                        <td><a href="javascript:goToBoardView('<%=b.getBoard_num()%>')"><%=b.getBoard_title()%>
-                        </a></td>
-                        <td><a><%=b.getId()%>
-                        </a></td>
-                        <td><a><%=b.getBoard_post_date()%>
-                        </a></td>
-                        <td><a><%=b.getBoard_view_num()%>
-                        </a></td>
-                    </tr>
-                    <%}%>
-                    <%}%>
-                    <tr>
-                        <td class = "insertBoard" colspan="5">
-                            <a href="/board/BoardInsertFrom">글쓰기</a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+    <!--BoardInputForm area-->
+    <h4> 게시판 글 쓰기 </h4><br/>
+    나중에 이쁘게 만드시오 <br/><br/>
+    <form name='frm' action="/board/BoardInsert">
+        제  목 : <input type='text' name="title" required><br/><br/>
+        내  용 : <textarea name="contents" rows='10' cols='40' required></textarea><br/><br/>
+        <input type='button' value='작성' onclick="javascript:contentIsInsert()">
+        <input type='reset' value='취소' onclick="javascript:goToBoardList()">
+    </form>
 </div>
 
 <!--메뉴바를 위한 JS-->
