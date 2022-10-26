@@ -12,19 +12,18 @@
         boDTO = new BoardDTO();
     }
 
+    String SS_NUM = CmmUtil.nvl((String) session.getAttribute("SS_NUM"));
+
     int access = 1;
     if (CmmUtil.nvl((String) session.getAttribute("SS_NUM")).equals(
             CmmUtil.nvl(boDTO.getMem_num()))) {
         access = 2;
     }
-    //String SS_ID = CmmUtil.nvl((String) session.getAttribute("SS_ID"));
-    String SS_NUM = CmmUtil.nvl((String) session.getAttribute("SS_NUM"));
 
     System.out.println("boDTO : " + boDTO);
-    System.out.println("board_num : " + boDTO.getBoard_num());
+    System.out.println("bo.mem_num : " + boDTO.getMem_num());
     System.out.println("SS_NUM : " + SS_NUM);
-    System.out.println("access : " + access);
-    System.out.println(boDTO.getMem_num());
+    System.out.println("View access : " + access);
 %>
 
 <!DOCTYPE html>
@@ -57,12 +56,10 @@
     }
 
     function doEdit(){
-        if("<%=access%> == 2"){
-            if(confirm("작성한 글을 수정하시겠습니까?")){
-                location.href="/board/BoardEditForm?board_num=<%=CmmUtil.nvl(boDTO.getBoard_num())%>";
-            }
-        }else{
-            alert("본인이 작성한 게시글만 수정할 수 있습니다.");
+        if ("<%=access%>"=="1"){
+            alert("작성자만 수정할 수 있습니다.");
+        }else {
+            location.href="/board/BoardEditForm?board_num=<%=CmmUtil.nvl(boDTO.getBoard_num())%>"
         }
     }
 

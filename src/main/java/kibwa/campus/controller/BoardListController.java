@@ -118,11 +118,14 @@ public class BoardListController {
         String msg = "";
 
         try{
+            String mem_num = CmmUtil.nvl(request.getParameter("SS_NUM"));
             String board_num = CmmUtil.nvl(request.getParameter("board_num"));
 
+            log.info("mem_num : " + mem_num);
             log.info("board_num : " + board_num);
 
             BoardDTO bDTO = new BoardDTO();
+            bDTO.setMem_num(mem_num);
             bDTO.setBoard_num(board_num);
 
             BoardDTO boDTO = boardService.getBoardView(bDTO);
@@ -133,6 +136,8 @@ public class BoardListController {
 
             log.info("getBoardView success");
             model.addAttribute("boDTO", boDTO);
+            log.info("bo.mem_num : " + boDTO.getMem_num());
+            log.info("bo.title : " + boDTO.getBoard_title());
 
         }catch (Exception e) {
             msg = "실패하였습니다. : " +  e.getMessage();
@@ -192,6 +197,7 @@ public class BoardListController {
     public String BoardUpdateForm(HttpSession session, HttpServletRequest request, ModelMap model) throws Exception{
 
         log.info(this.getClass().getName() + ".NoticeEditForm Start!");
+
         log.info(this.getClass().getName() + ".NoticeEditForm End!");
 
         return "/board/BoardEditForm";
@@ -206,21 +212,18 @@ public class BoardListController {
         String url = "";
 
         try{
-            String id = CmmUtil.nvl((String) session.getAttribute("SS_ID"));
             String mem_num = CmmUtil.nvl((String) session.getAttribute("SS_NUM"));
             String board_num = CmmUtil.nvl(request.getParameter("board_num"));
             String title = CmmUtil.nvl(request.getParameter("title"));
             String contents = CmmUtil.nvl(request.getParameter("contents"));
 
-            log.info("id : " + id);
-            log.info("mem_num : " + mem_num);
+            log.info("Control Edit mem_num : " + mem_num);
             log.info("board_num : " + board_num);
             log.info("title : " + title);
             log.info("contents : " + contents);
 
             BoardDTO bDTO = new BoardDTO();
 
-            bDTO.setId(id);
             bDTO.setMem_num(mem_num);
             bDTO.setBoard_num(board_num);
             bDTO.setBoard_title(title);
@@ -229,13 +232,13 @@ public class BoardListController {
             boardService.updateBoard(bDTO);
 
             msg = "수정되었습니다";
-            url = "/board/BoardView";
+            url = "/board/BoardView?board_num=" + bDTO.getBoard_num();
 
         }catch (Exception e){
             msg = "실패하였습니다 : " + e.getMessage();
             log.info(e.toString());
             e.printStackTrace();
-            url = "/board/BoardView";
+            url = "/board/BoardList";
 
         }finally {
             log.info(this.getClass().getName() + ".BoardUpdate end");

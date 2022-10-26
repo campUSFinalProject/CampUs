@@ -3,19 +3,16 @@
 <%@ page import="kibwa.campus.util.CmmUtil" %>
 <%@ page import="kibwa.campus.dto.BoardDTO" %>
 <%
-    BoardDTO bDTO = (BoardDTO)request.getAttribute("bDTO");
-//공지글 정보를 못불러왔다면, 객체 생성
+    //String mem_num = CmmUtil.nvl((String) session.getAttribute("SS_NUM"));
+    BoardDTO bDTO = (BoardDTO)request.getAttribute("boDTO");
+
+    //공지글 정보를 못불러왔다면, 객체 생성
     if (bDTO==null){
         bDTO = new BoardDTO();
     }
-    int access = 1; //(작성자 : 2 / 다른 사용자: 1)
-    if (CmmUtil.nvl((String)session.getAttribute("SS_NUM")).equals(
-            CmmUtil.nvl(bDTO.getMem_num()))){
-        access = 2;
-    }
-    String mem_num = CmmUtil.nvl((String) session.getAttribute("SS_NUM"));
-    System.out.println("mem_num : " + mem_num);
-    System.out.println("access : " + access);
+
+    System.out.println(bDTO.getBoard_title());
+    System.out.println(bDTO.getBoard_content());
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -23,13 +20,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
     <title>게시판 글쓰기</title>
     <script type="text/javascript">
-        //작성자 여부체크
-        function doOnload(){
-            if ("<%=access%>"=="1"){
-                alert("작성자만 수정할 수 있습니다.");
-                location.href="/board/BoardView";
-            }
-        }
         //전송시 유효성 체크
         function doSubmit(f){
             if(f.title.value == ""){
@@ -89,7 +79,7 @@
         }
     </script>
 </head>
-<body onload="doOnload();">
+<body>
 <h2>글 수정!</h2>
 <form name="f" method="post" action="/board/BoardUpdate" onsubmit="return doSubmit(this);">
     <input type="hidden" name="board_num" value="<%=CmmUtil.nvl(request.getParameter("board_num")) %>"/>
@@ -99,7 +89,7 @@
         <div align="left">제목</div>
         <div>
             <input type="text" name="title" maxlength="100"
-                   value="<%=CmmUtil.nvl(bDTO.getBoard_title()) %>" style="width: 450px"/>
+                   value="<%=CmmUtil.nvl(boDTO.getBoard_title()) %>" style="width: 450px"/>
         </div>
     </div>
     <div>
@@ -109,7 +99,7 @@
         <div colspan="2">
 				<textarea
                         name="contents" style="width: 550px; height: 400px"
-                ><%=CmmUtil.nvl(bDTO.getBoard_content()) %></textarea>
+                ><%=CmmUtil.nvl(boDTO.getBoard_content()) %></textarea>
         </div>
     </div>
     <div>
