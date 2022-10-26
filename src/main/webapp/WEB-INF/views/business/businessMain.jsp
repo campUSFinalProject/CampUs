@@ -4,10 +4,10 @@
          pageEncoding="utf-8" %>
 
 <%
-    String SS_ID = CmmUtil.nvl((String) session.getAttribute("SS_ID"));
-    String SS_PASSWORD = CmmUtil.nvl((String) session.getAttribute("SS_PASSWORD"));
+    String SS_business_ID = CmmUtil.nvl((String) session.getAttribute("SS_business_ID"));
+    String SS_business_PASSWORD = CmmUtil.nvl((String) session.getAttribute("SS_business_PASSWORD"));
 
-    System.out.println("SS_PASWORD : " + SS_PASSWORD);
+    System.out.println("SS_business_PASSWORD : " + SS_business_PASSWORD);
 
 %>
 
@@ -15,7 +15,7 @@
     int id = 0;
 
     //Session을 받을때는 값이 null로 올때를 생각해서 조건문을 사용한다.
-    if (session.getAttribute("SS_ID") != null) {
+    if (session.getAttribute("SS_business_ID") != null) {
         //세션의 값을 가져오기
         id = 1;
     }
@@ -374,7 +374,7 @@
 
         <%} else if (id > 0) {%>
         <ul>
-            <div class="cell"><a href="/cu/mypage" class="">내정보</a>
+            <div class="cell"><a href="/cu/businessMypage" class="">내정보</a>
             </div>
             <div class="cell block"><a href="/cu/Logout">로그아웃</a>
             </div>
