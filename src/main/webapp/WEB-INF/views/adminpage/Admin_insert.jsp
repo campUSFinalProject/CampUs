@@ -3,18 +3,6 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%
-    List<OutfieldDTO> oList = (List<OutfieldDTO>) request.getAttribute("oList");
-
-    //노지 정보 조회 결과 보여주기
-    if (oList == null){
-        oList = new ArrayList<OutfieldDTO>();
-    }
-
-    //주석
-    System.out.println("oList : " + oList);
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,8 +23,8 @@
             <p>
                 <label>
                     지역 선택<br>
-                    <select>
-                        <option value="" name="location" selected>시군구</option>
+                    <select name="city_name">
+                        <option value="" disabled selected>시군구</option>
                         <option value="고양시">고양시</option>
                         <option value="가평시">가평시</option>
                     </select>
@@ -66,16 +54,7 @@
                 <input type="file" name="file" id="file">
             </p>
             <p>
-                <input type="submit">
-            </p>
-            <p>
-                <input type="reset">
-            </p>
-            <p>
-                <input type="button" value="Button (input tag)">
-            </p>
-            <p>
-                <button>Button (button tag)</button>
+                <input type="submit" >
             </p>
         </div>
         <fieldset>

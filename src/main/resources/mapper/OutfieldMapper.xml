@@ -18,7 +18,7 @@
          outdoor_detail_info,
          outdoor_detail_memo)
         VALUES (outdoor_seq.nextval,
-        1,<!-- select location_num from location_city where city_name = #{city_name} -->
+        (select location_city_num from location_city where city_name = #{city_name}),
         #{location_specific},
         #{outdoor_detail_info},
         #{outdoor_detail_memo})
