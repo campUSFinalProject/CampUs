@@ -5,7 +5,7 @@
 
     <select id="getCaravanList" resultType="kibwa.campus.dto.CaravanDTO">
         SELECT *
-        FROM CGROUND_INFO
+        FROM CGROUND_INFO where cground_info_num = 65
     </select>
 
     <!-- 관리자 캠핑장정보 insert -->
@@ -37,7 +37,7 @@
                 #{business_num})
     </insert>
 
-    <!-- insert 데이터 삽입 실시 : 이미지 저장 -->
-    <insert
+
+
 
 </mapper>
