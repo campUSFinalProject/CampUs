@@ -51,7 +51,7 @@
                     <input type="text" placeholder="여기에 적으세요." autofocus name="business_num" id="business_num">
                     <%--<input type="text" placeholder="ex) 000-00-00000" name="business_num" id="business_num"/>--%>
                     <h2>회사 명</h2>
-                    <input type="text" placeholder="ex) CampUs" name="business_title" id="business_title"/>
+                    <input type="text" placeholder="ex) CampUs" name="business_name" id="business_name"/>
                     <h2>이메일</h2>
                     <input type="text" value="<%=SS_EMAIL%>" name="business_email" id="business_email"/>
                     <h2>전화번호</h2>

@@ -1,7 +1,7 @@
 package kibwa.campus.service.impl;
 
 import kibwa.campus.dto.MemberDTO;
-import kibwa.campus.persistance.IMemberMapper;
+import kibwa.campus.persistance.mapper.IMemberMapper;
 import kibwa.campus.service.IMemberService;
 import kibwa.campus.util.CmmUtil;
 import lombok.RequiredArgsConstructor;

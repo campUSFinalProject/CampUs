@@ -1,4 +1,4 @@
-package kibwa.campus.persistance;
+package kibwa.campus.persistance.mapper;
 
 import kibwa.campus.dto.MemberDTO;
 import org.apache.ibatis.annotations.Mapper;
