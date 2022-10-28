@@ -35,7 +35,6 @@ public class OutfieldController {
 
         log.info("oList : " + oList);
         model.addAttribute("oList", oList);
-
         log.info(this.getClass().getName() + ".OutfieldList End!");
         return "/outfield/Outfield";
     }

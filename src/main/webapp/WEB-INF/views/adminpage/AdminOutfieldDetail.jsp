@@ -4,7 +4,7 @@
 <%@ page import="kibwa.campus.util.CmmUtil" %>
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
 
-<%
+<%--<%
     List<OutfieldDTO> oList = (List<OutfieldDTO>) request.getAttribute("oList");
 
     //노지 정보 조회 결과 보여주기
@@ -14,7 +14,7 @@
 
     //주석
     System.out.println("oList : " + oList);
-%>
+%>--%>
 
 <!DOCTYPE html>
 <html>

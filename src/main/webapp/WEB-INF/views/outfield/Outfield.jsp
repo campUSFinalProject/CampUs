@@ -13,6 +13,7 @@
 
     //주석
     System.out.println("oList : " + oList);
+    //System.out.println("oList.location : " + oList.);
 %>
 
 <!DOCTYPE html>
