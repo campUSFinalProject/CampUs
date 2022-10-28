@@ -9,5 +9,18 @@
         from MEMBER
     </select>
 
+    <insert id="save" parameterType="RevDateDTO">
+        INSERT INTO REV (
+            REV_PEOPLE,
+            ENTER_DATE,
+            EXIT_DATE
+        )
+        values(
+            #{rev_People},
+            #{enter_Date},
+            #{exit_Date}
+        )
+   </insert>
+
 
 </mapper>

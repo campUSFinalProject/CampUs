@@ -1,17 +1,16 @@
-<%@ page import="kibwa.campus.dto.RevDTO" %>
+<%@ page import="kibwa.campus.dto.RevGIDTO" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
 <%
-    List<RevDTO> rList = (List<RevDTO>) request.getAttribute("rList");
+    List<RevGIDTO> rList = (List<RevGIDTO>) request.getAttribute("rgiList");
     // 예약 정보 불러오기
-    if (rList == null){
-        rList = new ArrayList<>();
+    if (rgiList == null){
+        rgiList = new ArrayList<RevGIDTO>();
     }
     // 주석
-    System.out.println("rList : " + rList);
+    System.out.println("rgiList : " + rgiList);
 %>
-
 <!DOCTYPE html>
 <html>
 
@@ -368,31 +367,31 @@
 <!-- 상단 메뉴바 끝 -->
 
 <!-- 예약 날짜 -->
-<section id="section-main" class="section-reservation">
+<section id="section-main" class="section-reservation" style="margin-top: 20%">
     <div class="w800">
         <div id="status-track">
             <a class="complete" href="#">
                 <i class="fa fa-check-circle-o"></i>
-                <div class="lbl">Dates</div>
+                <div class="lbl"> 날짜 </div> </br>
                 <div class="sub">Jan 21 - Jan 22</div>
             </a>
             <a class="complete" href="#"><i class="fa fa-th-list"> </i>
-                <div class="lbl">Rooms</div>
+                <div class="lbl"> 구역 </div>
                 <div class="sub">NQ1 - #111</div>
             </a>
             <a class="complete" href="#"><i class="fa fa-credit-card"></i>
-                <div class="lbl">Payment</div>
+                <div class="lbl"> 결제 </div>
             </a>
             <a class="current" href="#"><i class="fa fa-users"></i>
-                <div class="lbl">Guest Info</div>
+                <div class="lbl"> 예약 확인 </div>
             </a>
         </div>
 
         <table class="guests-list" style="margin-left: 30%">
             <thead>
             <tr>
-                <th>Name</th>
-                <th>Actions</th>
+                <th>고객 명</th>
+                <th>예약 확인</th>
             </tr>
             </thead>
             <tbody>
@@ -419,8 +418,8 @@
                 <%}%>
                 <td>
                     <div class="guest-actions">
-                        <div><a href="#">Send Confirmation</a></div>
-                        <div><a href="#">Remove</a></div>
+                        <div><button type="button" onclick="location.href='RevConf.jsp' ">예약 확정</button></div>
+                        <div><button type="button" onclick="location.href='RevConf.jsp' ">예약 취소</button></div>
                     </div>
                 </td>
             </tr>

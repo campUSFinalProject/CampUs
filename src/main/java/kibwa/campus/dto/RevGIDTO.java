@@ -8,7 +8,7 @@ import lombok.ToString;
 @Setter
 @ToString
 
-public class RevDTO {
+public class RevGIDTO {
 
     private String mem_Num;
     private String name;

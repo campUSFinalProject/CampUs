@@ -17,7 +17,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>예약</title>
+    <title>예약 확인</title>
 </head>
 
 <link href="../css/FinalMain.css" rel="stylesheet" type="text/css" />
@@ -342,45 +342,45 @@
 
 <!-- 메인 정보창 -->
 
-<section id="section-main" class="section-reservation">
+<section id="section-main" class="section-reservation" style="margin-top: 15%">
     <div class="w800">
         <div id="status-track">
             <a class="current" href="#">
                 <i class="fa fa-check-circle-o"></i>
-                <div class="lbl">Dates</div>
+                <div class="lbl"> 날짜 </div>
             </a>
             <a class="future" href="#"><i class="fa fa-th-list"> </i>
-                <div class="lbl">Rooms</div>
+                <div class="lbl"> 구역 </div>
             </a>
             <a class="future" href="#"><i class="fa fa-users"></i>
-                <div class="lbl">Payment</div>
+                <div class="lbl"> 결제 </div>
             </a>
             <a class="future" href="#"><i class="fa fa-users"></i>
-                <div class="lbl">Guest Info</div>
+                <div class="lbl"> 예약 확인 </div>
             </a>
         </div>
 
-        <form action="#">
+        <form action="${pageContext.request.contextPath}/RevDate" method="post">
             <fieldset>
                 <div class="split field">
                     <div class="equal">
-                        <label id="txtcheckin">Check In</label>
-                        <input type="date" id="txtcheckin" />
+                        <label for="txtcheckin"> 체크 인</label>
+                        <input type="date" name="enter_Date" id="txtcheckin" />
                     </div>
                     <div class="equal">
-                        <label id="txtcheckout">Check Out</label>
-                        <input type="date" id="txtcheckout" />
+                        <label for="txtcheckout"> 체크 아웃</label>
+                        <input type="date" name="exit_Date" id="txtcheckout" />
                     </div>
                 </div>
             </fieldset>
             <fieldset>
                 <div class="split field">
                     <div>
-                        <label for="numadults">Adults</label>
-                        <input type="number" id="numadults" />
+                        <label for="numadults"> 성인 </label>
+                        <input type="number" name="rev_People" id="numadults" />
                     </div>
                     <div>
-                        <label for="numchildren">Children</label>
+                        <label for="numchildren"> 아동 </label>
                         <input type="number" id="numchildren" />
                     </div>
 
@@ -390,25 +390,22 @@
             <fieldset>
                 <div class="split field">
                     <div>
-                        <label for="txtroomtype">Room Type</label>
+                        <label for="txtroomtype">  </label>
                         <input type="text" id="txtroomtype" />
                     </div>
                     <div>
-                        <label for="txtroomnum">Room Number</label>
+                        <label for="txtroomnum">  </label>
                         <input type="text" id="txtroomnum" />
                     </div>
 
                 </div>
-            </fieldset>
-            <fieldset>
-                <label for="txtroomprice">Price</label>
-                <input type="number" id="txtroomprice" />
             </fieldset>
 
             <div class="spacer"></div>
             <div class="actions">
                 <div><a href="">Cancel</a></div>
                 <div><a class="btn btn-aqua" href="#"><i class="fa fa-angle-left fa"></i> Back</a><a class="btn btn-aqua spacer-v" href="#">Continue <i class="fa fa-angle-right fa"></i></a></div>
+                <input class="btn btn-aqua spacer-v" value="Continue" type="submit">
             </div>
         </form>
     </div>
@@ -416,8 +413,8 @@
 
 <!-- 메인 정보창 끝 -->
 
-<script type="text/javascript" src= ".  ./js/FinalMain.js"></script>
-<script type="text/javascript" src= "../js/RevDate.js"></script>
+<script type="text/javascript" src= "<%=request.getContextPath()%>/resources/static/js/FinalMain.js"></script>
+<script type="text/javascript" src= "<%=request.getContextPath()%>/resources/static/js/RevDate.js"></script>
 
 </body>
 </html>
