@@ -25,8 +25,18 @@ public class OutfieldController {
 
     @RequestMapping(value = "Outfield")
     public String Outfield(HttpServletRequest request, ModelMap model) throws Exception {
-        String name = nvl(request.getParameter("name"));
-        model.addAttribute("name", name);
+        log.info(this.getClass().getName() + ".OutfieldList start!");
+
+        List<OutfieldDTO> oList = outfieldService.getOutfieldList();
+
+        if (oList == null){
+            oList = new ArrayList<>();
+        }
+
+        log.info("oList : " + oList);
+        model.addAttribute("oList", oList);
+
+        log.info(this.getClass().getName() + ".OutfieldList End!");
         return "/outfield/Outfield";
     }
 

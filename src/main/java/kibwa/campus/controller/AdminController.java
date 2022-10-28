@@ -34,7 +34,7 @@ public class AdminController {
     }
 
     @RequestMapping(value = "Admin_insert")
-    public String Admin_in_up_del(HttpServletRequest request, ModelMap model) throws Exception {
+    public String Admin_insert(HttpServletRequest request, ModelMap model) throws Exception {
         log.info(this.getClass().getName() + ".Admin_insert start!");
 
         String msg = "";
@@ -87,17 +87,17 @@ public class AdminController {
         String url = "";
 
         try {
-            String location = CmmUtil.nvl(request.getParameter("location"));
+            String city_name = CmmUtil.nvl(request.getParameter("city_name"));
             String location_specific = CmmUtil.nvl(request.getParameter("location_specific"));
             String Outdoor_detail_info = CmmUtil.nvl(request.getParameter("Outdoor_detail_info"));
             String outdoor_detail_memo = CmmUtil.nvl(request.getParameter("outdoor_detail_memo"));
 
-            log.info("location : " + location);
+            log.info("city_name : " + city_name);
             log.info("location_specific : " + location_specific);
 
             OutfieldDTO oDTO = new OutfieldDTO();
 
-            oDTO.setCity_name(location);
+            oDTO.setCity_name(city_name);
             oDTO.setLocation_specific(location_specific);
             oDTO.setOutdoor_detail_info(Outdoor_detail_info);
             oDTO.setOutdoor_detail_memo(outdoor_detail_memo);

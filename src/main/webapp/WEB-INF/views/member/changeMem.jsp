@@ -1,32 +1,32 @@
 <%@ page import="kibwa.campus.util.CmmUtil" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
-                    pageEncoding="utf-8" %>
+         pageEncoding="utf-8" %>
 <%
-
-    String SS_ID = CmmUtil.nvl((String) session.getAttribute("SS_ID"));
-    String SS_NAME = CmmUtil.nvl((String) session.getAttribute("SS_NAME"));
-    String SS_MEM_TEL = CmmUtil.nvl((String) session.getAttribute("SS_MEM_TEL"));
     String SS_EMAIL = CmmUtil.nvl((String) session.getAttribute("SS_EMAIL"));
-
-
+    String SS_MEM_TEL = CmmUtil.nvl((String) session.getAttribute("SS_MEM_TEL"));
 %>
 <!DOCTYPE html>
-           
+
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>마이페이지</title>
-       <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <title>사업자 전환 신청</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
 
-       <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
-       <link href="../css/mypage.css" rel="stylesheet" type="text/css" />
-       <script src="../4_jquery_class/lib/jquery-1.9.1.min.js"></script>
-       <script src="https://kit.fontawesome.com/c49ea42a2f.js" crossorigin="anonymous"></script>
-   </head>
-   <body>
-    <div class="container">
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+    <link href="../css/mypage.css" rel="stylesheet" type="text/css" />
+    <script src="../4_jquery_class/lib/jquery-1.9.1.min.js"></script>
+    <script src="https://kit.fontawesome.com/c49ea42a2f.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        var anText_sub1 = document.getElementById('business_num').value;
+
+    </script>
+
+</head>
+<body>
+<div class="container">
     <div id="logo"><h1 class="logo">CAMP US</h1>
         <button class="CTA" onclick="location.href='/cu/Main'">
             <h1>MAIN PAGE</h1>
@@ -34,26 +34,30 @@
     </div>
     <div class="leftbox">
         <nav>
-            <a id="profile" class="active"><i class="fa fa-user"></i></a>
+            <a id="profile" href="/cu/mypage"><i class="fa fa-user"></i></a> <!-- 마이페이지 -->
             <a id="payment"><i class="fa-solid fa-pen"></i></a> <!-- 회원정보수정 아이콘 -->
-            <a id="subscription" href="/cu/changeMem"><i class="fa-solid fa-user-plus"></i></a>   <!-- 사업자 전환 아이콘 -->
+            <a id="subscription" class="active"><i class="fa-solid fa-user-plus"></i></a>   <!-- 사업자 전환 아이콘 -->
             <a id="privacy"><i class="fa-solid fa-key"></i></a> <!-- 비밀번호 변경 아이콘 -->
             <a id="settings"><i class="fa-solid fa-user-minus"></i></a> <!-- 회원탈퇴 아이콘 -->
         </nav>
     </div>
     <div class="rightbox">
+
         <div class="profile">
-            <h1>회원 정보</h1>
-            <h2>회원 등급</h2>
-            <p>일반 회원<button class="btn">사업자 등급 변환</button></p>
-            <h2>이름</h2>
-            <p><%=SS_NAME%></p>
-            <h2>아이디</h2>
-            <p><%=SS_ID%></p>
-            <h2>이메일</h2>
-            <p><%=SS_EMAIL%><button class="btn">update</button></p>
-            <h2>전화번호</h2>
-            <p><%=SS_MEM_TEL%><button class="btn">Change</button></p>
+
+                <h1>사업자 전환 요청</h1>
+                <form method="post" action="">
+                    <h2>사업자 번호 (10자리 / - 포함)</h2>
+                    <input type="text" placeholder="여기에 적으세요." autofocus name="business_num" id="business_num">
+                    <%--<input type="text" placeholder="ex) 000-00-00000" name="business_num" id="business_num"/>--%>
+                    <h2>회사 명</h2>
+                    <input type="text" placeholder="ex) CampUs" name="business_title" id="business_title"/>
+                    <h2>이메일</h2>
+                    <input type="text" value="<%=SS_EMAIL%>" name="business_email" id="business_email"/>
+                    <h2>전화번호</h2>
+                    <input type="text" value="<%=SS_MEM_TEL%>" name="business_tel" id="business_tel"/>
+                    <button type="submit" class="btn2">사업자 변환 요청</button>
+                </form>
         </div>
 
         <div class="payment noshow">
@@ -113,6 +117,6 @@
 
     </div>
 </div>
- <script type="text/javascript" src= "../js/mypage.js"></script>
+<script type="text/javascript" src= "../js/mypage.js"></script>
 </body>
 </html>

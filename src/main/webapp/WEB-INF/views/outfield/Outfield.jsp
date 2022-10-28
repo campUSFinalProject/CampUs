@@ -1,4 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
+<%@ page import="kibwa.campus.dto.OutfieldDTO" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%
+    List<OutfieldDTO> oList = (List<OutfieldDTO>) request.getAttribute("oList");
+
+    //노지 정보 조회 결과 보여주기
+    if (oList == null){
+        oList = new ArrayList<OutfieldDTO>();
+    }
+
+    //주석
+    System.out.println("oList : " + oList);
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -350,19 +366,20 @@
 <!-- 상단 메뉴바 끝 -->
 
 <!-- 메인 정보창 -->
+<%for (OutfieldDTO o : oList) {%>
 <div class="card">
     <div class="card__thumb"><a href="javascript:;"><img class="animate" src="https://picsum.photos/800?random=1"/></a></div>
     <div class="card__content">
-        <h2 class="card__title animate"><a href="javascript:;">Card Title</a></h2>
-        <p class="card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum veritatis eaque necessitatibus, explicabo vero hic, perspiciatis unde minus error consectetur, quos sunt officiis ad.</p>
+        <h2 class="card__title animate"><a href="javascript:;"><%=o.getLocation_specific()%></a></h2>
+        <p class="card__text"><%=o.getOutdoor_detail_info()%></p>
         <button class="card__btn"><i class="fa-solid fa-arrow-right fa-fw"></i></button>
     </div>
 </div>
 <div class="card">
     <div class="card__thumb"><a href="javascript:;"><img class="animate" src="https://picsum.photos/800?random=2"/></a></div>
     <div class="card__content">
-        <h2 class="card__title animate"><a href="javascript:;">Card Title</a></h2>
-        <p class="card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum veritatis eaque necessitatibus, explicabo vero hic, perspiciatis.</p>
+        <h2 class="card__title animate"><a href="javascript:;"><%=o.getLocation_specific()%></a></h2>
+        <p class="card__text"><%=o.getOutdoor_detail_info()%></p>
         <button class="card__btn"><i class="fa-solid fa-arrow-right fa-fw"></i></button>
     </div>
 </div>
@@ -502,6 +519,7 @@
         <button class="card__btn"><i class="fa-solid fa-arrow-right fa-fw"></i></button>
     </div>
 </div>
+<%}%>
 <!-- 메인 정보창 끝 -->
 
 <script type="text/javascript" src= "../js/FinalMain.js"></script>

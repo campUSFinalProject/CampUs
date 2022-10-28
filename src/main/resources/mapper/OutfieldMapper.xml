@@ -25,7 +25,11 @@
     </insert>
 
     <update id="updateOutfield" parameterType="kibwa.campus.dto.OutfieldDTO">
-        update outdoor_info set location_specific=#{location_specific}, outdoor_detail_info=#{outdoor_detail_info}, outdoor_detail_memo=#{outdoor_detail_memo} where location_specific=#{location_specific};
+        update outdoor_info
+        set location_specific=#{location_specific},
+            outdoor_detail_info=#{outdoor_detail_info},
+            outdoor_detail_memo=#{outdoor_detail_memo}
+        where location_specific=#{location_specific};
     </update>
 
 

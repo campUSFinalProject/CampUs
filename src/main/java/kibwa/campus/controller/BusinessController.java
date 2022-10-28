@@ -1,91 +1,85 @@
 package kibwa.campus.controller;
 
-import kibwa.campus.dto.CaravanDTO;
-import kibwa.campus.service.ICaravanService;
+import kibwa.campus.dto.BusinessDTO;
+import kibwa.campus.service.IBusinessService;
 import kibwa.campus.util.CmmUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static kibwa.campus.util.CmmUtil.nvl;
-
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @Slf4j
 @Controller
 public class BusinessController {
 
-    @Resource(name = "CaravanService")
-    private ICaravanService CaravanService;
 
-    //관리자 캠핑장정보 insert
-    @RequestMapping(value = "businesscrud")
-    public String Business_CRUD(HttpServletRequest request, ModelMap model) throws Exception {
-        log.info(this.getClass().getName() + ".CampingInfo insert start!");
+    @Resource(name = "BusinessService")
+    private IBusinessService businessService;
+
+
+    //------------- 일반사용자에서 사업자전환요청 -----------------
+    @PostMapping(value = "member/InsertChangeRequest")
+    public String InsertChangeRequest (HttpServletRequest request,HttpSession session, HttpServletResponse response,
+                                       ModelMap model) throws Exception {
+
+        log.info(this.getClass().getName() + ".InsertChangeRequest START!!!");
 
         String msg = "";
         String url = "";
 
+        BusinessDTO pDTO = null;
         try {
-            String location = CmmUtil.nvl(request.getParameter("location"));
-            String cground_name = CmmUtil.nvl(request.getParameter("cground_name"));
-            String cground_tel = CmmUtil.nvl(request.getParameter("cground_tel"));
-            String cground_loacation = CmmUtil.nvl(request.getParameter("cground_loacation"));
-            String cground_deposit = CmmUtil.nvl(request.getParameter("cground_deposit"));
-            String campinng_enter = CmmUtil.nvl(request.getParameter("campinng_enter"));
-            String camping_exit = CmmUtil.nvl(request.getParameter("camping_exit"));
-            String cground_detail_info = CmmUtil.nvl(request.getParameter("cground_detail_info"));
-            String add_facil = CmmUtil.nvl(request.getParameter("add_facil"));
 
-            log.info("location : " + location);
-            log.info("cground_name : " + cground_name);
+            String business_num = CmmUtil.nvl(request.getParameter("business_num"));
+            String business_id = CmmUtil.nvl((String) session.getAttribute("id"));
+            String business_pw = CmmUtil.nvl((String) session.getAttribute("password"));
+            String business_name = CmmUtil.nvl(request.getParameter("business_name"));
+            String business_tel = CmmUtil.nvl(request.getParameter("business_tel"));
+            String business_email = CmmUtil.nvl(request.getParameter("business_email"));
 
-            CaravanDTO cDTO = new CaravanDTO();
+            pDTO = new BusinessDTO();
 
-            cDTO.setCity_name(location);
-            cDTO.setLocation(location);
-            cDTO.setCground_name(cground_name);
-            cDTO.setCground_tel(cground_tel);
-            cDTO.setCground_location(cground_loacation);
-            cDTO.setCground_deposit(cground_deposit);
-            cDTO.setCamping_enter(campinng_enter);
-            cDTO.setCamping_exit(camping_exit);
-            cDTO.setCground_detail_info(cground_detail_info);
-            cDTO.setAdd_facil(add_facil);
+            pDTO.setBusiness_num(business_num);
+            pDTO.setBusiness_id(business_id);
+            pDTO.setBusiness_pw(business_pw);
+            pDTO.setBusiness_name(business_name);
+            pDTO.setBusiness_tel(business_tel);
+            pDTO.setBusiness_email(business_email);
 
-            CaravanService.insertCampingInfo(cDTO);
+            int res = businessService.InsertChangeRequest(pDTO);
 
-            msg = "등록되었습니다.";
-            url = "/businesspage/Business_CRUD";
+            if (res == 1) {
+                msg = "사업자 전환요청이 완료되었습니다.";
+                url = "/cu/Main";
+            } else {
+                msg = "오류로 인해 사업자 전환요청에 실패하였습니다.";
+                url = "/cu/changeMem";
+            }
 
         } catch (Exception e) {
-            msg = "실패하였습니다 : " + e.getMessage();
-            url = "/businesspage/Business_CRUD";
 
+            msg = "실패하였습니다 : " + e.toString();
+            url = "/cu/changeMem";
             log.info(e.toString());
             e.printStackTrace();
 
         } finally {
-            log.info(this.getClass().getName() + ".CampingInfo Insert End!");
+            log.info(this.getClass().getName() + ".InsertChangeRequest end!!");
 
-            model.addAttribute("url", url);
             model.addAttribute("msg", msg);
+            model.addAttribute("url", url);
+            model.addAttribute("pDTO", pDTO);
 
-            log.info("mode : " + model);
+            pDTO = null;
         }
 
-        return "/businesspage/Business_CRUD";
+        return "/redirect";
     }
 
-
 }
-
-//지니 수정
-//민지가 오류나는거 수정함
-//건우 push test

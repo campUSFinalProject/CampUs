@@ -12,15 +12,18 @@
         boDTO = new BoardDTO();
     }
 
+    String SS_NUM = CmmUtil.nvl((String) session.getAttribute("SS_NUM"));
+
     int access = 1;
-    if (CmmUtil.nvl((String) session.getAttribute("SS_ID")).equals(
-            CmmUtil.nvl(boDTO.getId()))) {
+    if (CmmUtil.nvl((String) session.getAttribute("SS_NUM")).equals(
+            CmmUtil.nvl(boDTO.getMem_num()))) {
         access = 2;
     }
-    //String SS_ID = CmmUtil.nvl((String) session.getAttribute("SS_ID"));
 
     System.out.println("boDTO : " + boDTO);
-    System.out.println("board_num : " + boDTO.getBoard_num());
+    System.out.println("bo.mem_num : " + boDTO.getMem_num());
+    System.out.println("SS_NUM : " + SS_NUM);
+    System.out.println("View access : " + access);
 %>
 
 <!DOCTYPE html>
@@ -53,11 +56,22 @@
     }
 
     function doEdit(){
-
+        if ("<%=access%>"=="1"){
+            alert("작성자만 수정할 수 있습니다.");
+        }else {
+            location.href="/board/BoardEditForm?board_num=<%=CmmUtil.nvl(boDTO.getBoard_num())%>"
+        }
     }
 
+    //게시글 삭제 함수
     function doDelete(){
-
+        if("<%=access%> == 2"){
+            if(confirm("작성한 글을 삭제하시겠습니까?")){
+                location.href="/board/BoardDelete?board_num=<%=CmmUtil.nvl(boDTO.getBoard_num())%>";
+            }
+        }else{
+            alert("본인이 작성한 게시글만 삭제할 수 있습니다.");
+        }
     }
 </script>
 

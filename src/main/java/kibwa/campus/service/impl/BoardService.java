@@ -41,4 +41,26 @@ public class BoardService implements IBoardService {
         log.info(this.getClass().getName() + ".BoardViewService");
         return boardMapper.getBoardView(bDTO);
     }
+
+    //게시글 내용 삭제
+    @Override
+    public int deleteBoard(BoardDTO bDTO) throws Exception {
+        log.info(this.getClass().getName() + ".deleteBoardService");
+        int res = boardMapper.deleteBoard(bDTO);
+        return res;
+    }
+
+    //게시글 내용 수정
+    @Override
+    public void updateBoard(BoardDTO bDTO) throws Exception {
+        log.info(this.getClass().getName() + ".updateBoardService");
+        boardMapper.updateBoard(bDTO);
+    }
+
+    //게시글 조회수 증가
+    @Override
+    public void updateBoardViewNum(BoardDTO bDTO) throws Exception {
+        log.info(this.getClass().getName() + ".updateBoardViewNumService");
+        boardMapper.updateBoardViewNum(bDTO);
+    }
 }

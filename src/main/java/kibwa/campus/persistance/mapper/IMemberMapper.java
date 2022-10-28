@@ -1,4 +1,4 @@
-package kibwa.campus.persistance;
+package kibwa.campus.persistance.mapper;
 
 import kibwa.campus.dto.MemberDTO;
 import org.apache.ibatis.annotations.Mapper;
@@ -18,5 +18,8 @@ public interface IMemberMapper {
 
     //회원탈퇴
     int deleteMember(MemberDTO pDTO) throws Exception;
+
+    //회원정보 수정
+    void updateMember(MemberDTO pDTO) throws Exception;
 
 }

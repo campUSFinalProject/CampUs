@@ -1,6 +1,7 @@
 <%@ page import="kibwa.campus.dto.OutfieldDTO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="kibwa.campus.util.CmmUtil" %>
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
 
 <%
@@ -392,27 +393,25 @@
                     </ul>
                 </div>
                 <div class="content_2">
-                    <%for (OutfieldDTO o : oList) {%>
                     <div class="leftSec">
-                        <p class="title"><input type="text" name="location_specific" value="<%=o.getLocation_specific()%>"></p>
-                        <p class="callText"><textarea rows="5" cols="40" name="outdoor_detail_info"><%=o.getOutdoor_detail_info()%></textarea></p>
+                        <p class="title"><input type="text" name="location_specific" value="<%=CmmUtil.nvl(request.getParameter("location_specific"))%>"></p>
+                        <p class="callText"><textarea rows="5" cols="40" name="outdoor_detail_info"><%=CmmUtil.nvl(request.getParameter("Outdoor_detail_info"))%></textarea></p>
                     </div>
                     <div class="rightSec">
                         <ul class="detail">
                             <li></li>
-                            <li><a type="submit" href="javascript:Adminupdate()" class="btn_2">수정하기</a></li>
+                            <li><a type="submit" class="btn_2">수정하기</a></li>
                             <li><a href="" class="btn_3">삭제하기</a></li>
                         </ul>
                         <h2>Outfield Info</h2>
                         <div class="bottomBox">
                             <ul class="headList">
                                 <li>
-                                    <textarea rows="5" cols="40" name="outdoor_detail_memo"><%=o.getOutdoor_detail_memo()%></textarea>
+                                    <textarea rows="5" cols="40" name="outdoor_detail_memo"><%=CmmUtil.nvl(request.getParameter("outdoor_detail_memo"))%></textarea>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <%}%>
                 </div>
                 <div class="snsSec">
                     <ul>

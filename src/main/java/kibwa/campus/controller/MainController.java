@@ -17,13 +17,7 @@ public class MainController {
 
         return "/test/FinalMain";
     }
-        @RequestMapping(value = "cu/mypage")
-        public String mypage(){
 
-            log.info(this.getClass().getName() + ".LoginPage GO!!!! ");
-
-            return "/member/mypage";
-        }
 
 
 }
