@@ -1,24 +1,45 @@
 package kibwa.campus.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletRequest;
-
-import static kibwa.campus.util.CmmUtil.nvl;
-
+@Slf4j
 @Controller
 public class MainController {
-    @RequestMapping(value = "FinalMain")
-    public String FinalMain(HttpServletRequest request, ModelMap model)
-            throws Exception{
 
-        //String name = nvl(request.getParameter("name"));
-        //model.addAttribute("name", name);
+
+    //메인화면으로 넘어가기
+    @RequestMapping(value = "cu/Main")
+    public String Main() {
+
+        log.info(this.getClass().getName() + ".MAINPAGE GO!! ");
+
         return "/test/FinalMain";
     }
-}
 
-//지니 수정
-//민지가 오류나는거 수정함
+    @RequestMapping(value = "cu/businessMain")
+    public String businMain() {
+
+        log.info(this.getClass().getName() + ".MAINPAGE GO!! ");
+
+        return "/business/businessMain";
+    }
+
+    @RequestMapping(value = "cu/adminMain")
+    public String adminMain() {
+
+        log.info(this.getClass().getName() + ".MAINPAGE GO!! ");
+
+        return "/admin/adminMain";
+    }
+
+    @RequestMapping(value = "cu/businessMypage")
+    public String businessMypage() {
+
+        log.info(this.getClass().getName() + ".MAINPAGE GO!! ");
+
+        return "/member/BusinessMypage";
+
+    }
+}

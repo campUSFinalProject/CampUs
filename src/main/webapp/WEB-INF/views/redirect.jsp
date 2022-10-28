@@ -10,13 +10,12 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Insert title here</title>
+    <title>Message PopUp</title>
 </head>
 <body>
 <script type="text/javascript">
     location.href="<%=url%>";
     alert("<%=msg%>");
-
 </script>
 </body>
 </html>
