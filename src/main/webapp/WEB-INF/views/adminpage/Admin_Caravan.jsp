@@ -15,6 +15,7 @@
     System.out.println("cList : " + cList);
 %>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,6 +68,8 @@
                     <p><span>PARADISE</span><span>KIDS VILLAGE</span></p></a></li>
             </ul>
         </div>
+
+
     </div>
 </div>
 <!-- 우측 메뉴바 끝 -->
