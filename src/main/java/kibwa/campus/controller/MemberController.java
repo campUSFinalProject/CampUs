@@ -244,4 +244,12 @@ public class MemberController {
 
         return "/member/changeMem";
     }
+
+    @RequestMapping(value = "cu/testboard")
+    public String testboards(HttpSession session, HttpServletResponse response,HttpServletRequest request, ModelMap model) {
+
+        log.info(this.getClass().getName() + ".MyPage GO!!!! ");
+
+        return "/test/testboard";
+    }
 }
