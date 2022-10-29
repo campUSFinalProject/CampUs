@@ -28,8 +28,6 @@ public class RevController {
     private final IRevService<RevRoomDTO> revRoomService;
     private final IRevService<RevGIDTO> revGIService;
 
-    private HttpServletRequest request;
-
     @Autowired
     public RevController(IRevService<RevDateDTO> revDateService, IRevService<RevRoomDTO> revRoomService, IRevService<RevGIDTO> revGIService) {
         this.revDateService = revDateService;
@@ -64,13 +62,15 @@ public class RevController {
     }
 
     /**
-     * 1. 선택된 캠핑장의 구역 정하기?
+     * 1. 선택된 캠핑장의 구역
      */
     //
     @GetMapping(value = "/Rooms")
     public String Rooms(Model model,  RedirectAttributes redirectAttributes) throws Exception {
 
-        Map <String, ?> flashMap = RequestContextUtils.getInputFlashMap(request);
+        Map <String, ?> flashMap;
+        HttpServletRequest request = null;
+        flashMap = RequestContextUtils.getInputFlashMap(request);
         if(flashMap!=null) {
             RevDateDTO revDateDTO =(RevDateDTO)flashMap.get("revDateDTO ");
         }
