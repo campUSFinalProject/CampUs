@@ -71,6 +71,7 @@ public class MemberService implements IMemberService {
         return res;
     }
 
+    //--------- 회원정보 수정 ---------------
     @Transactional
     @Override
     public void updateMember(MemberDTO pDTO) throws Exception {
