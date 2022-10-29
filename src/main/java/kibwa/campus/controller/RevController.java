@@ -12,10 +12,12 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Controller
@@ -25,6 +27,8 @@ public class RevController {
     private final IRevService<RevDateDTO> revDateService;
     private final IRevService<RevRoomDTO> revRoomService;
     private final IRevService<RevGIDTO> revGIService;
+
+    private HttpServletRequest request;
 
     @Autowired
     public RevController(IRevService<RevDateDTO> revDateService, IRevService<RevRoomDTO> revRoomService, IRevService<RevGIDTO> revGIService) {
@@ -66,11 +70,10 @@ public class RevController {
     @GetMapping(value = "/Rooms")
     public String Rooms(Model model,  RedirectAttributes redirectAttributes) throws Exception {
 
-        log.info("여긴 들어오니? room ");
-        redirectAttributes.getFlashAttributes().get("revDateDTO");
-        log.info(redirectAttributes.getFlashAttributes().get("revDateDTO").toString());
-        //revRoomService.getList();
-        //
+        Map <String, ?> flashMap = RequestContextUtils.getInputFlashMap(request);
+        if(flashMap!=null) {
+            RevDateDTO revDateDTO =(RevDateDTO)flashMap.get("revDateDTO ");
+        }
         return "/RevRooms";
     }
 

@@ -4,7 +4,7 @@
 <mapper namespace="kibwa.campus.persistance.mapper.IRevMapper">
 
     <!-- 예약 쿼리 -->
-    <select id="getRevList" resultType="RevDTO">
+    <select id="getRevList" resultType="kibwa.campus.dto.RevDTO">
         select m.NAME as NAME ,
                m.MEM_TEL as MEM_TEL,
                m.EMAIL as EMAIL,
