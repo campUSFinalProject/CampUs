@@ -43,7 +43,7 @@ public class RevController {
     public String cground(@PathVariable String cGroundId,
                           @PathVariable String sectorId,
                           RedirectAttributes rt){
-        rt.addFlashAttribute("revCampInfoDTO", revService.findById(id));
+        rt.addFlashAttribute("revCampInfoDTO", revService.findRevCampInfo(cGroundId,sectorId));
         return "redirect:/rev/rooms";
     }
 
@@ -53,12 +53,12 @@ public class RevController {
     //
     @GetMapping(value = "/rooms")
     public String Rooms() throws Exception {
-        return "/RevRooms";
+        return "/rev/RevRooms";
     }
 
     @PostMapping(value = "/rooms")
     public String Rooms(RevDTO revDTO) {
-        revService.save(revDTO);
+        //revService.save(revDTO);
 
         return "redirect:/rev/date";
     }
@@ -66,13 +66,13 @@ public class RevController {
     @GetMapping(value = "/date") // RevDate/ 이후의 ID 값읇 불러와서 해당 캠핑장의 예약을 도와줌
     public String RevDate(Model model) throws Exception {
 
-       return "/RevDate";
+       return "/rev/RevDate";
     }
 
     @PostMapping(value = "/date")
     public String RevDate(@ModelAttribute RevDTO revDTO) throws Exception {
         log.info("revDTO = {}", revDTO);
-        revService.save(revDTO);
+        //revService.save(revDTO);
         return "redirect:/RevRooms";
     }
 
@@ -82,18 +82,8 @@ public class RevController {
      */
     @GetMapping(value = "gi/{id}")
     public String gi(@PathVariable @Nullable String id, ModelMap model) throws Exception {
-        log.info(this.getClass().getName() + ".RevGIList start!");
-
-        List<revDTO> rgiList = revService.getList();
-
-        if (rgiList == null){
-            rgiList = new ArrayList<>();
-        }
-
-        log.info("rgiList : {}", rgiList);
-        model.addAttribute("rgiList", rgiList);
 
         log.info("{} .RevGIList End!", this.getClass().getName());
-        return "/RevGI";
+        return "/rev/RevGI";
     }
 }

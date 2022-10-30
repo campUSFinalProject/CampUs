@@ -18,7 +18,7 @@ public class RevService {
         this.revMapper = revMapper;
     }
 
-    public List<RevDTO> findRevCampInfo(String cGroundId, String sectorId) {
-        revMapper.findRevCampInfo(cGroundId, sectorId);
+    public RevDTO findRevCampInfo(String cGroundId, String sectorId) {
+        return revMapper.findRevCampInfo(cGroundId, sectorId);
     }
 }

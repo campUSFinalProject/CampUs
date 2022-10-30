@@ -20,7 +20,7 @@
     </select>
 
     <!-- 예약 쿼리 -->
-    <select id="getRevDateList" resultType="kibwa.campus.dto.rev.RevDateDTO">
+    <select id="getRevDateList" resultType="kibwa.campus.dto.rev.RevDTO">
         select *
         from MEMBER
     </select>
@@ -39,7 +39,7 @@
     </insert>
 
     <!-- 예약 쿼리 -->
-    <select id="findById" resultType="kibwa.campus.dto.rev.RevDTO">
+    <select id="findRevCampInfo" resultType="kibwa.campus.dto.rev.RevDTO">
         select '1' as ID
         from
             dual
