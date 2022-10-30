@@ -27,43 +27,25 @@ public class AdminController {
     @Resource(name = "OutfieldService")
     private IOutfieldService outfieldService;
 
+    //노지 리스트
     @RequestMapping(value = "AdminOutfield")
     public String Outfield(HttpServletRequest request, ModelMap model) throws Exception {
         log.info(this.getClass().getName() + ".AdminOutfieldList start!");
 
-        String msg = "";
+        List<OutfieldDTO> oList = outfieldService.getOutfieldList();
 
-        try{
-            String field_num = CmmUtil.nvl(request.getParameter("field_num"));
-
-            log.info("field_num : " + field_num);
-
-            OutfieldDTO oDTO = new OutfieldDTO();
-            oDTO.setOutdoor_info_num(field_num);
-
-            OutfieldDTO ofDTO = outfieldService.getOudfieldView(oDTO);
-
-            if (ofDTO == null){
-                ofDTO = new OutfieldDTO();
-            }
-
-            log.info("getOudfieldView success");
-            model.addAttribute("ofDTO", ofDTO);
-            log.info("of.field_num : " + ofDTO.getOutdoor_info_num());
-
-        }catch (Exception e) {
-            msg = "실패하였습니다. : " +  e.getMessage();
-            log.info(e.toString());
-            e.printStackTrace();
-        }finally {
-            log.info(this.getClass().getName() + ".OudfieldView End!");
-            model.addAttribute("msg", msg);
+        if (oList == null){
+            oList = new ArrayList<>();
         }
+
+        log.info("oList : " + oList);
+        model.addAttribute("oList", oList);
 
         log.info(this.getClass().getName() + ".AdminOutfieldList End!");
         return "/adminpage/AdminOutfield";
     }
 
+    //노지 등록
     @RequestMapping(value = "Admin_insert")
     public String Admin_insert(HttpServletRequest request, ModelMap model) throws Exception {
         log.info(this.getClass().getName() + ".Admin_insert start!");
@@ -110,37 +92,41 @@ public class AdminController {
         return "/adminpage/Admin_insert";
     }
 
+    //노지 수정폼
     @RequestMapping(value = "AdminOutfieldDetail")
     public String OutfieldDetail(HttpServletRequest request, ModelMap model) throws Exception {
         log.info(this.getClass().getName() + ".AdminOutfieldDetail start!");
 
         String msg = "";
-        String url = "";
+        //String url = "";
 
         try {
-            String city_name = CmmUtil.nvl(request.getParameter("city_name"));
-            String location_specific = CmmUtil.nvl(request.getParameter("location_specific"));
-            String Outdoor_detail_info = CmmUtil.nvl(request.getParameter("Outdoor_detail_info"));
-            String outdoor_detail_memo = CmmUtil.nvl(request.getParameter("outdoor_detail_memo"));
+            String Outdoor_detail_info_num = CmmUtil.nvl(request.getParameter("Outdoor_detail_info_num"));
 
-            log.info("city_name : " + city_name);
-            log.info("location_specific : " + location_specific);
+            log.info("Outdoor_detail_info_num : " + Outdoor_detail_info_num);
 
             OutfieldDTO oDTO = new OutfieldDTO();
 
-            oDTO.setCity_name(city_name);
-            oDTO.setLocation_specific(location_specific);
-            oDTO.setOutdoor_detail_info(Outdoor_detail_info);
-            oDTO.setOutdoor_detail_memo(outdoor_detail_memo);
+            oDTO.setOutdoor_info_num(Outdoor_detail_info_num);
 
-            outfieldService.updateOutfield(oDTO);
+            OutfieldDTO ofDTO = outfieldService.getOudfieldView(oDTO);
 
-            msg = "수정되었습니다.";
-            url = "/adminpage/AdminOutfieldDetail";
+            if (ofDTO == null){
+                ofDTO = new OutfieldDTO();
+            }
+
+            log.info("getOudfieldView success");
+            model.addAttribute("ofDTO", ofDTO);
+            log.info("of.getOutdoor_info_num : " + ofDTO.getOutdoor_info_num());
+
+            outfieldService.updateOutfield(ofDTO);
+
+            //msg = "수정되었습니다.";
+            //url = "/adminpage/AdminOutfieldDetail";
 
         } catch (Exception e) {
             msg = "실패하였습니다 : " + e.getMessage();
-            url = "/adminpage/AdminOutfieldDetail";
+            //url = "/adminpage/AdminOutfieldDetail";
 
             log.info(e.toString());
             e.printStackTrace();
@@ -148,7 +134,7 @@ public class AdminController {
         } finally {
             log.info(this.getClass().getName() + ".AdminOutfieldDetail update End!");
 
-            model.addAttribute("url", url);
+            //model.addAttribute("url", url);
             model.addAttribute("msg", msg);
 
             log.info("mode : " + model);

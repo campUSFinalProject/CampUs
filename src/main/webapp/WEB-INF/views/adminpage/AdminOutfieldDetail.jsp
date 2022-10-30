@@ -37,7 +37,7 @@
 
 <script type="text/javascript">
     function Adminupdate(){
-        document.frm.submit();
+        location.href="/adminpage/AdminOutfield?locacion_specific=<%=CmmUtil.nvl(oDTO.getLocation_specific())%>"
     }
 </script>
 
@@ -351,7 +351,7 @@
 
 <!-- 메인 정보창 -->
 <form name="frm" action="/AdminOutfieldDetail" method="post" onsubmit="return doSubmit(this);">
-    <input type="hidden" name="board_num" value="<%=CmmUtil.nvl(request.getParameter("")) %>"/>
+    <input type="hidden" name="board_num" value="<%=CmmUtil.nvl(request.getParameter("Outdoor_info_num")) %>"/>
     <div id="wrap">
         <div id="container">
             <div class="conHeader">
@@ -402,7 +402,7 @@
                     <div class="rightSec">
                         <ul class="detail">
                             <li></li>
-                            <li><a type="submit" class="btn_2">수정하기</a></li>
+                            <li><a href="javascript:Adminupdate()" class="btn_2">수정하기</a></li>
                             <li><a href="" class="btn_3">삭제하기</a></li>
                         </ul>
                         <h2>Outfield Info</h2>
