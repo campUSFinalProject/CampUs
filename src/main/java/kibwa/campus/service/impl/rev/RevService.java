@@ -1,54 +1,24 @@
 package kibwa.campus.service.impl.rev;
 
-import kibwa.campus.dto.rev.RevDateDTO;
-import kibwa.campus.service.IRevService;
+import kibwa.campus.dto.rev.RevDTO;
+import kibwa.campus.persistance.mapper.rev.IRevMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
 @Slf4j
 @Service
-public class RevService implements IRevService<RevDateDTO> {
-//    private final IRevMapper revMapper;
+public class RevService {
 
-//    @Autowired
-//    public RevService(IRevMapper revMapper) {
-//        this.revMapper = revMapper;
-//    }
-//
-//    @Override
-//    public List<RevDTO> getRevList() throws Exception {
-//
-//        List<RevDTO> rList = revMapper.getRevList();
-//
-//        log.info(this.getClass().getName() + " rList : " + rList);
-//
-//        return revMapper.getRevList();
-//    }
+    private final IRevMapper revMapper;
 
-    @Override
-    public List<RevDateDTO> getList() {
-        return null;
+    public RevService(IRevMapper revMapper) {
+        this.revMapper = revMapper;
     }
 
-    @Override
-    public void save(RevDateDTO DTO) {
-
-    }
-
-    @Override
-    public void modify(RevDateDTO DTO) {
-
-    }
-
-    @Override
-    public RevDateDTO findById(String id) {
-        return null;
-    }
-
-    @Override
-    public void delete(RevDateDTO DTO) {
-
+    public List<RevDTO> findRevCampInfo(String cGroundId, String sectorId) {
+        revMapper.findRevCampInfo(cGroundId, sectorId);
     }
 }

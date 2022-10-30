@@ -19,5 +19,31 @@
         where m.name='스프링'
     </select>
 
+    <!-- 예약 쿼리 -->
+    <select id="getRevDateList" resultType="kibwa.campus.dto.rev.RevDateDTO">
+        select *
+        from MEMBER
+    </select>
+
+    <insert id="save" parameterType="kibwa.campus.dto.rev.RevDTO">
+        INSERT INTO REV (
+            REV_PEOPLE,
+            ENTER_DATE,
+            EXIT_DATE
+        )
+        values(
+                  #{rev_People},
+                  #{enter_Date},
+                  #{exit_Date}
+              )
+    </insert>
+
+    <!-- 예약 쿼리 -->
+    <select id="findById" resultType="kibwa.campus.dto.rev.RevDTO">
+        select '1' as ID
+        from
+            dual
+    </select>
+
 
 </mapper>

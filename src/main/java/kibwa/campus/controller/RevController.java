@@ -1,10 +1,7 @@
 package kibwa.campus.controller;
 
-import kibwa.campus.dto.rev.RevCampInfoDTO;
-import kibwa.campus.dto.rev.RevDateDTO;
-import kibwa.campus.dto.rev.RevGIDTO;
-import kibwa.campus.dto.rev.RevRoomDTO;
-import kibwa.campus.service.IRevService;
+import kibwa.campus.dto.rev.RevDTO;
+import kibwa.campus.service.impl.rev.RevService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
@@ -13,29 +10,20 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.support.RequestContextUtils;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Slf4j
 @Controller
 @RequestMapping("rev")
 public class RevController {
 
-    private final IRevService<RevDateDTO> revDateService;
-    private final IRevService<RevRoomDTO> revRoomService;
-    private final IRevService<RevGIDTO> revGIService;
-    private final IRevService<RevCampInfoDTO> revCampInfoRevService;
+    private final RevService revService;
 
     @Autowired
-    public RevController(IRevService<RevDateDTO> revDateService, IRevService<RevRoomDTO> revRoomService, IRevService<RevGIDTO> revGIService, IRevService<RevCampInfoDTO> revCampInfoRevService) {
-        this.revDateService = revDateService;
-        this.revRoomService = revRoomService;
-        this.revGIService = revGIService;
-        this.revCampInfoRevService = revCampInfoRevService;
+    public RevController(RevService revService) {
+        this.revService = revService;
     }
 
     /**
@@ -48,12 +36,14 @@ public class RevController {
      */
 
     /**
-     *  1. localhost/Rev/Rooms/1 (구역 번호) id는 방번호
+     *  1. localhost:9000/rev/캠핑장ID/구역ID  용수가 이런 식의 형태를 a 태그 이용해서 나한테 넘겨주기
      */
 
-    @GetMapping(value = "/cground/{id}")
-    public String cground(@PathVariable @Nullable String id, RedirectAttributes redirectAttributes){
-        redirectAttributes.addFlashAttribute("revCampInfoDTO", revCampInfoRevService.findById(id));
+    @GetMapping(value = "/{cGroundId}/{sectorId}")
+    public String cground(@PathVariable String cGroundId,
+                          @PathVariable String sectorId,
+                          RedirectAttributes rt){
+        rt.addFlashAttribute("revCampInfoDTO", revService.findById(id));
         return "redirect:/rev/rooms";
     }
 
@@ -67,8 +57,8 @@ public class RevController {
     }
 
     @PostMapping(value = "/rooms")
-    public String Rooms(RevRoomDTO revRoomDTO) {
-        revRoomService.save(revRoomDTO);
+    public String Rooms(RevDTO revDTO) {
+        revService.save(revDTO);
 
         return "redirect:/rev/date";
     }
@@ -80,9 +70,9 @@ public class RevController {
     }
 
     @PostMapping(value = "/date")
-    public String RevDate(@ModelAttribute RevDateDTO revDateDTO) throws Exception {
-        log.info("revDateDTO = {}", revDateDTO);
-        revDateService.save(revDateDTO);
+    public String RevDate(@ModelAttribute RevDTO revDTO) throws Exception {
+        log.info("revDTO = {}", revDTO);
+        revService.save(revDTO);
         return "redirect:/RevRooms";
     }
 
@@ -94,7 +84,7 @@ public class RevController {
     public String gi(@PathVariable @Nullable String id, ModelMap model) throws Exception {
         log.info(this.getClass().getName() + ".RevGIList start!");
 
-        List<RevGIDTO> rgiList = revGIService.getList();
+        List<revDTO> rgiList = revService.getList();
 
         if (rgiList == null){
             rgiList = new ArrayList<>();
