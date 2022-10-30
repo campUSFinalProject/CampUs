@@ -23,7 +23,7 @@ input::placeholder, textarea::placeholder {
     font-size: 0.875em;
 }
 
-input:focus::placeholder, textarea::focus:placeholder {
+input:focus::placeholder, textarea:focus::placeholder {
     color: #bbb5af;
 }
 
@@ -148,7 +148,7 @@ textarea:hover {
 }
 
 #submit {
-    width: 502px;
+    width: 470px;
 
     padding: 0;
     margin: -5px 0px 0px 0px;

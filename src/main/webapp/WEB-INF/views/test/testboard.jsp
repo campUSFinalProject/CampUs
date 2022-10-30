@@ -13,7 +13,6 @@
     <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
     <link href="../css/testboard.css" rel="stylesheet" type="text/css" />
     <script src="../4_jquery_class/lib/jquery-1.9.1.min.js"></script>
-
 </head>
 <body>
 
