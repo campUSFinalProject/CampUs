@@ -1,5 +1,6 @@
 package kibwa.campus.controller;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import kibwa.campus.dto.BusinessDTO;
 import kibwa.campus.dto.MemberDTO;
 import kibwa.campus.service.IBusinessService;
@@ -8,6 +9,7 @@ import kibwa.campus.util.EncryptUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -15,6 +17,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -157,6 +161,41 @@ public class BusinessController {
         }
 
         return "/redirect";
+    }
+
+
+    //---------사업자 마이페이지 이동-----------------------
+    @RequestMapping(value = "cu/businessMypage")
+    public String businessMypage() {
+
+        log.info(this.getClass().getName() + ".BUS MY PAGE GO!! ");
+
+        return "/member/businessMypage";
+
+    }
+
+
+
+
+    //--------------- 사업자 전환 요청 리스트 조회 ---------------------
+    @GetMapping(value = "business/changeReqList")
+    public String changeReqList(ModelMap model) throws Exception{
+
+        log.info(this.getClass().getName() + ".changeReqList START!!!");
+
+        List<BusinessDTO> pList = businessService.getChangeReq();
+
+        if (pList == null){
+            pList = new ArrayList<>();
+        }
+
+        log.info("pList : " + pList);
+
+        model.addAttribute("pList", pList);
+
+        log.info(this.getClass().getName() + ".changeReqList END!!!");
+
+        return "/admin/changeReqList";
     }
 
 
