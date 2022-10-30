@@ -1,6 +1,6 @@
-package kibwa.campus.persistance.mapper;
+package kibwa.campus.persistance.mapper.rev;
 
-import kibwa.campus.dto.RevDTO;
+import kibwa.campus.dto.rev.RevDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

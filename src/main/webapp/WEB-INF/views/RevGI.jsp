@@ -1,4 +1,4 @@
-<%@ page import="kibwa.campus.dto.RevGIDTO" %>
+<%@ page import="kibwa.campus.dto.rev.RevGIDTO" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>

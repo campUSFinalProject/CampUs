@@ -1,4 +1,4 @@
-<%@ page import="kibwa.campus.dto.RevDateDTO" %>
+<%@ page import="kibwa.campus.dto.rev.RevDateDTO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
@@ -360,7 +360,7 @@
             </a>
         </div>
 
-        <form action="${pageContext.request.contextPath}/RevDate" method="post">
+        <form action="${pageContext.request.contextPath}/rev/date" method="post">
             <fieldset>
                 <div class="split field">
                     <div class="equal">

@@ -1,4 +1,4 @@
-package kibwa.campus.dto;
+package kibwa.campus.dto.rev;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +8,7 @@ import lombok.ToString;
 @Setter
 @ToString
 
-public class RevDTO {
+public class RevGIDTO {
 
     private String mem_Num;
     private String name;

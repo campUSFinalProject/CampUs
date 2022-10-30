@@ -1,4 +1,4 @@
-package kibwa.campus.dto;
+package kibwa.campus.dto.rev;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,15 +7,23 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class RevDateDTO {
+
+public class RevDTO {
+//이거 DTO 나누지말고 합쳐서 쓰죠
+    private String mem_Num;
+    private String name;
+    private String mem_Tel;
+    private String email;
 
     private String  rev_Num;
     private String  rev_Date;
     private String  rev_People;
-    private String  mem_Num;
     private String  enter_Date;
     private String  exit_Date;
     private String  help_Check;
     private String  sector_Num;
 
+    private String thereIsNoCowLevel;
+
+    private String id;
 }

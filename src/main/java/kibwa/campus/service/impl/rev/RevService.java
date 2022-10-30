@@ -1,7 +1,6 @@
-package kibwa.campus.service.impl;
+package kibwa.campus.service.impl.rev;
 
-import kibwa.campus.dto.RevDateDTO;
-import kibwa.campus.persistance.mapper.IRevMapper;
+import kibwa.campus.dto.rev.RevDateDTO;
 import kibwa.campus.service.IRevService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -41,6 +40,11 @@ public class RevService implements IRevService<RevDateDTO> {
     @Override
     public void modify(RevDateDTO DTO) {
 
+    }
+
+    @Override
+    public RevDateDTO findById(String id) {
+        return null;
     }
 
     @Override

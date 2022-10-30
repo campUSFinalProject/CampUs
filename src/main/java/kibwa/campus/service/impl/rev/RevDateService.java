@@ -1,7 +1,7 @@
-package kibwa.campus.service.impl;
+package kibwa.campus.service.impl.rev;
 
-import kibwa.campus.dto.RevDateDTO;
-import kibwa.campus.persistance.mapper.IRevDateMapper;
+import kibwa.campus.dto.rev.RevDateDTO;
+import kibwa.campus.persistance.mapper.rev.IRevDateMapper;
 import kibwa.campus.service.IRevService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +27,11 @@ public class RevDateService implements IRevService<RevDateDTO> {
         log.info(this.getClass().getName() + " rdList : " + rdList);
 
         return revDateMapper.getRevDateList();
+    }
+
+    @Override
+    public RevDateDTO findById(String id) {
+        return null;
     }
 
     @Override

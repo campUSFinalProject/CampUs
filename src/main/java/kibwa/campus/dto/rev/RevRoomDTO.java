@@ -1,4 +1,4 @@
-package kibwa.campus.dto;
+package kibwa.campus.dto.rev;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,6 +9,6 @@ import lombok.ToString;
 @ToString
 public class RevRoomDTO {
 
-    private String thereIsNoCowLevel;
+
 
 }

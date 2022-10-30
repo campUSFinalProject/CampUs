@@ -1,3 +1,4 @@
+<%@ page import="kibwa.campus.dto.rev.RevCampInfoDTO" %>
 <section id="section-main" class="section-reservation">
     <div class="w800">
         <div id="status-track">
@@ -16,8 +17,17 @@
                 <div class="lbl">Guest Info</div>
             </a>
         </div>
+<%
+    System.out.println(request.getAttribute("revCampInfoDTO"));
+    RevCampInfoDTO revCampInfoDTO = (RevCampInfoDTO)request.getAttribute("revCampInfoDTO");
+%>
+        <form action="${pageContext.request.contextPath}/rev/rooms" method="post">
+            <%-- 캠핑장 정보들을 숨겨서 서버로 보낼것 --%>
+            <input type="hidden" name="id" value="<%=revCampInfoDTO.getId()%>">
+            <input type="hidden" name="" value="">
+            <input type="hidden" name="" value="">
+            <input type="hidden" name="" value="">
 
-        <form action="#">
             <div class="split field">
                 <div>
                     <label for="numadults">Adults</label>
@@ -127,7 +137,11 @@
             <div class="spacer"></div>
             <div class="actions">
                 <div><a href="">Cancel</a></div>
-                <div><a class="btn btn-aqua" href="#"><i class="fa fa-angle-left fa"></i> Back</a><a class="btn btn-aqua spacer-v" href="#">Continue <i class="fa fa-angle-right fa"></i></a></div>
+                <div><a class="btn btn-aqua" href="#"><i class="fa fa-angle-left fa"></i> Back</a><span class="btn btn-aqua spacer-v" onclick="">Continue <i class="fa fa-angle-right fa"></i></span></div>
+                <i class="fa fa-angle-left fa"></i>
+                <input type="submit" class="btn btn-aqua" value="Back" />
+                <input type="submit" class="btn btn-aqua spacer-v" value="Continue"/>
+                <i class="fa fa-angle-right fa"></i>
             </div>
         </form>
     </div>
