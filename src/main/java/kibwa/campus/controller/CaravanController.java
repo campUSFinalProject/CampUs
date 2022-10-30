@@ -22,13 +22,18 @@ public class  CaravanController {
     @Resource(name = "CaravanService")
     private ICaravanService CaravanService;
 
+    /* 카라반 리스트 페이지*/
     @RequestMapping(value = "Caravan")
     public String Caravan(HttpServletRequest request, ModelMap model) throws Exception {
         String name = nvl(request.getParameter("name"));
+
         model.addAttribute("name", name);
         return "/Caravan/Caravan";
     }
 
+
+
+    /* 카라반 상세정보 페이지*/
     @RequestMapping(value = "CaravanDetail")
     public String CaravanDetail(HttpServletRequest request, ModelMap model) throws Exception {
         log.info(this.getClass().getName() + ".CaravanList start!");

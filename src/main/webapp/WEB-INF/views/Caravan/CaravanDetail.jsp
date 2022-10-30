@@ -1,6 +1,7 @@
 <%@ page import="kibwa.campus.dto.CaravanDTO" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
+<%@ page import="kibwa.campus.util.CmmUtil" %>
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
 
 <%
@@ -477,16 +478,37 @@
                 // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
                 var map = new kakao.maps.Map(mapContainer, mapOption);
 
-                // 마커가 표시될 위치입니다
-                var markerPosition  = new kakao.maps.LatLng(37.58176478603421, 127.53583598220568);
+                <%
+                    CaravanDTO cDTO = new CaravanDTO();
 
-                // 마커를 생성합니다
-                var marker = new kakao.maps.Marker({
-                    position: markerPosition
+                    if (cDTO == null){
+                        cDTO = new CaravanDTO();
+                    }
+                %>
+
+                // 주소-좌표 변환 객체를 생성합니다
+                var geocoder = new kakao.maps.services.Geocoder();
+                // 주소로 좌표를 검색합니다
+                geocoder.addressSearch('<%=CmmUtil.nvl(cDTO.getCground_location())%>', function(result, status) {
+
+                    // 정상적으로 검색이 완료됐으면
+                    if (status === kakao.maps.services.Status.OK) {
+
+                        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+                        // 결과값으로 받은 위치를 마커로 표시합니다
+                        var marker = new kakao.maps.Marker({
+                            map: map,
+                            position: coords,
+                            clickable: true
+                        });
+
+                        // 마커가 지도 위에 표시되도록 설정합니다
+                        marker.setMap(map);
+                    }
                 });
 
-                // 마커가 지도 위에 표시되도록 설정합니다
-                marker.setMap(map);
+
             </script>
 
         </div>
