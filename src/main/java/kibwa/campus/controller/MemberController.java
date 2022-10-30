@@ -22,8 +22,8 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class MemberController {
 
-    //--- service 연결 ------
     @Resource(name = "MemberService")
+
     private IMemberService memberService;
 
     //---------------회원가입/로그인 페이지로 이동---------------
@@ -147,6 +147,7 @@ public class MemberController {
                 session.setAttribute("SS_MEM_TEL", rDTO.getMem_tel());
                 session.setAttribute("SS_EMAIL", rDTO.getEmail());
                 session.setAttribute("SS_NAME", rDTO.getName());
+                session.setAttribute("SS_PASSWORD", rDTO.getPassword());
             }
             rDTO = null;
 
@@ -210,13 +211,65 @@ public class MemberController {
         return "/redirect";
     }
 
+    //---------- 회원정보 수정 ---------------
+    @RequestMapping(value = "cu/updateMember")
+    public String updateMember(HttpSession session, HttpServletRequest request, ModelMap model) {
+
+        log.info(this.getClass().getName() + ".memberUpdate START!!!");
+
+        String msg = "";
+        String url = "";
+
+        try {
+
+            String mem_num = CmmUtil.nvl(request.getParameter("mem_num"));
+            String name = CmmUtil.nvl(request.getParameter("name"));
+            String mem_tel = CmmUtil.nvl(request.getParameter("mem_tel"));
+
+            log.info("mem_num" + mem_num);
+            log.info("name" + name);
+            log.info("mem_tel" + mem_tel);
+
+            MemberDTO pDTO = new MemberDTO();
+
+            pDTO.setMem_num(mem_num);
+            pDTO.setName(name);
+            pDTO.setMem_tel(mem_tel);
+
+
+            memberService.updateMember(pDTO);
+
+            msg = "수정되었습니다";
+            url = "/cu/mypage";
+
+            session.setAttribute("SS_MEM_TEL", pDTO.getMem_tel());
+            session.setAttribute("SS_NAME", pDTO.getName());
+
+        }catch (Exception e){
+
+            msg = "수정 실패";
+            url = "/cu/mypage";
+            log.info("수정 실패 :" + e.toString());
+            e.printStackTrace();
+
+        }finally {
+            log.info(this.getClass().getName() + ".MemUpdate END!!!");
+
+            model.addAttribute("msg", msg);
+            model.addAttribute("url", url);
+
+        }
+
+        return "/redirect";
+    }
+
     //------------- 로그아웃 -----------
     @RequestMapping(value = "cu/Logout")
     public String Logout(HttpServletRequest request, ModelMap model){
         log.info(this.getClass().getName() + ".LOGOUT START!!!");
         HttpSession session = request.getSession();
 
-        String url = "/member/memRegLoginForm";
+        String url = "/cu/Main";
         String msg = "로그아웃 성공";
 
         session.invalidate(); // session clear
@@ -228,59 +281,14 @@ public class MemberController {
     }
 
 
-    //-------------- 회원정보 수정 -------------------(마이페이지 url연결해야함)
-    @RequestMapping(value = "cu/updateMember")
-    public String updateMember(HttpSession session, HttpServletRequest request, ModelMap model){
+    //마이페이지 이동
+    @RequestMapping(value = "cu/mypage")
+    public String mypage(HttpSession session, HttpServletResponse response,HttpServletRequest request, ModelMap model){
 
-        log.info(this.getClass().getName() + "UPDATE MEMBER START!!!");
+        log.info(this.getClass().getName() + ".MyPage GO!!!! ");
 
-        String msg = "";
-        String url = "";
-
-        try {
-
-            String mem_num = CmmUtil.nvl(request.getParameter("mem_num"));
-            String name = CmmUtil.nvl(request.getParameter("name"));
-            String mem_tel = CmmUtil.nvl(request.getParameter("mem_tal"));
-
-            log.info("mem_num : " + mem_num);
-            log.info("name : " + name);
-            log.info("mem_tel : " + mem_tel);
-
-            MemberDTO pDTO = new MemberDTO();
-
-            pDTO.setMem_num(mem_num);
-            pDTO.setName(name);
-            pDTO.setMem_tel(mem_tel);
-
-            memberService.updateMember(pDTO);
-
-            msg = "수정이 완료되었습니다.";
-            url = "/마이페이지url";
-
-            session.setAttribute("SS_MEM_TEL", pDTO.getMem_tel());
-            session.setAttribute("SS_NAME", pDTO.getName());
-
-        }catch (Exception e){
-
-            msg = "수정을 실패하였습니다 :" + e.toString();
-            url = "마이페이지 url";
-            log.info("수정실패 : " +e.toString());
-            e.printStackTrace();
-
-        }finally {
-
-            log.info(this.getClass().getName() + ".UPDATE MEMEBER END!!!");
-
-            model.addAttribute("msg", msg);
-            model.addAttribute("url", url);
-
-        }
-
-        return "/redirect";
+        return "/member/mypage";
     }
-
-
     //사업자 전환요청 페이지
     @RequestMapping(value = "cu/changeMem")
     public String changeMem(){

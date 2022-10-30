@@ -135,7 +135,7 @@ p {
 
 input[type=text] {
     border-width: 1px;
-    border-style: solid;
+
     border-image: linear-gradient(to right, #3fb6a8, rgba(126, 211, 134, 0.5)) 1 0%;
     border-top: 0;
     width: 80%;
@@ -175,12 +175,14 @@ span {
     font-weight: 900;
 }
 
+/*
 input {
     border: 1px solid #dddddd;
     font-family: "Roboto", sans-serif;
     padding: 2px;
     margin: 0;
 }
+*/
 
 .privacy h2 {
     margin-top: 25px;

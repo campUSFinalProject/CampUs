@@ -17,16 +17,23 @@
              ACTIVATION
             )
         VALUES(
-               #{BUSINESS_NUM},
-               #{BUSINESS_ID},
-               #{BUSINESS_PW},
-               #{BUSINESS_NAME},
-               #{BUSINESS_TEL},
-               #{BUSINESS_EMAIL},
+               #{business_num},
+               #{business_id},
+               #{business_pw},
+               #{business_name},
+               #{business_tel},
+               #{business_email},
                'N'
               )
     </insert>
 
+    <!-- 사업자 로그인-->
+    <select id="getMemLoginCheck" parameterType="kibwa.campus.dto.BusinessDTO" resultType="kibwa.campus.dto.BusinessDTO">
+        SELECT BUSINESS_ID, BUSINESS_NUM, BUSINESS_NAME, BUSINESS_TEL, BUSINESS_EMAIL, BUSINESS_PW
+        FROM BUSINESS
+        WHERE BUSINESS_ID = #{business_id}
+        AND BUSINESS_PW = #{business_pw}
+    </select>
 
 
 

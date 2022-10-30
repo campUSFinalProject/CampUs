@@ -17,13 +17,29 @@ public class MainController {
 
         return "/test/FinalMain";
     }
-        @RequestMapping(value = "cu/mypage")
-        public String mypage(){
 
-            log.info(this.getClass().getName() + ".LoginPage GO!!!! ");
+    @RequestMapping(value = "cu/businessMain")
+    public String businMain() {
 
-            return "/member/mypage";
-        }
+        log.info(this.getClass().getName() + ".MAINPAGE GO!! ");
 
+        return "/business/businessMain";
+    }
 
+    @RequestMapping(value = "cu/adminMain")
+    public String adminMain() {
+
+        log.info(this.getClass().getName() + ".MAINPAGE GO!! ");
+
+        return "/admin/adminMain";
+    }
+
+    @RequestMapping(value = "cu/businessNypage")
+    public String businessMypage() {
+
+        log.info(this.getClass().getName() + ".MAINPAGE GO!! ");
+
+        return "/member/businessMypage";
+
+    }
 }

@@ -40,6 +40,7 @@
                 return false;
             }
         }
+
         function password() {
             var p1 = document.getElementById('password').value;
             var p2 = document.getElementById('password2').value;
@@ -110,14 +111,14 @@
                 <div class="cont_img_back_">
                     <img src="../img/fire.jpg" alt="" />
                 </div>
-                <form class="cont_form_login" method="post" action="/cu/getMemLoginCheck" onsubmit="return doLoginUserCheck(this);">
+                <form class="cont_form_login" method="post" onsubmit="return doLoginUserCheck(this);">
                     <a href="#" onclick="ocultar_login_sign_up()" ><i class="material-icons">&#xE5C4;</i></a>
                     <h2>LOGIN</h2>
 
                         <input type="text" placeholder="아이디" name="id" id="id"/>
                         <input type="password" placeholder="비밀번호" name="password" id="password"/>
-                        <button type="submit" class="btn_login" onclick="cambiar_login()">사용자 로그인</button>
-                        <button type="submit" class="btn_login" onclick="cambiar_login()">사업자 로그인</button>
+                        <button type="submit" class="btn_login" formaction="/cu/getMemLoginCheck" onclick="cambiar_login()">사용자 로그인</button>
+                        <button type="submit" class="btn_login" formaction="/cu/getBusinessLoginCheck" onclick="cambiar_login()">사업자 로그인</button>
 
                 </form>
 

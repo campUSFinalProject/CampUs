@@ -1,6 +1,7 @@
 package kibwa.campus.service.impl;
 
 import kibwa.campus.dto.BusinessDTO;
+import kibwa.campus.dto.MemberDTO;
 import kibwa.campus.persistance.mapper.IBusinessMapper;
 import kibwa.campus.service.IBusinessService;
 import lombok.RequiredArgsConstructor;
@@ -37,5 +38,13 @@ public class BusinessService implements IBusinessService {
         return res;
 
 
+    }
+
+    @Override
+    public BusinessDTO getMemLoginCheck(BusinessDTO pDTO) throws Exception {
+        if (pDTO == null) {
+            pDTO = new BusinessDTO();
+        }
+            return businessMapper.getMemLoginCheck(pDTO);
     }
 }

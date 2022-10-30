@@ -3,7 +3,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
 <%
-    String SS_ID = CmmUtil.nvl((String) session.getAttribute("SS_ID"));
     String SS_EMAIL = CmmUtil.nvl((String) session.getAttribute("SS_EMAIL"));
     String SS_MEM_TEL = CmmUtil.nvl((String) session.getAttribute("SS_MEM_TEL"));
 %>
@@ -21,8 +20,10 @@
     <script src="../4_jquery_class/lib/jquery-1.9.1.min.js"></script>
     <script src="https://kit.fontawesome.com/c49ea42a2f.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
+        var anText_sub1 = document.getElementById('business_num').value;
 
     </script>
+
 </head>
 <body>
 <div class="container">
@@ -37,7 +38,7 @@
             <a id="payment"><i class="fa-solid fa-pen"></i></a> <!-- 회원정보수정 아이콘 -->
             <a id="subscription" class="active"><i class="fa-solid fa-user-plus"></i></a>   <!-- 사업자 전환 아이콘 -->
             <a id="privacy"><i class="fa-solid fa-key"></i></a> <!-- 비밀번호 변경 아이콘 -->
-            <a id="settings"><i class="fa-solid fa-user-minus"></i></a> <!-- 회원탈퇴 아이콘 -->
+            <a id="settings" href="/cu/deleteMember"><i class="fa-solid fa-user-minus"></i></a> <!-- 회원탈퇴 아이콘 -->
         </nav>
     </div>
     <div class="rightbox">
@@ -45,9 +46,10 @@
         <div class="profile2">
 
                 <h1>사업자 전환 요청</h1>
-                <form method="post" action="">
+                <form method="post" action="/member/InsertChangeRequest">
                     <h2>사업자 번호 (10자리 / - 포함)</h2>
-                    <input type="text" placeholder="ex) 000-00-00000" name="business_num" id="business_num"/>
+                    <input type="text" placeholder="여기에 적으세요." autofocus name="business_num" id="business_num">
+                    <%--<input type="text" placeholder="ex) 000-00-00000" name="business_num" id="business_num"/>--%>
                     <h2>회사 명</h2>
                     <input type="text" placeholder="ex) CampUs" name="business_name" id="business_name"/>
                     <h2>이메일</h2>
@@ -55,10 +57,10 @@
                     <h2>전화번호</h2>
                     <input type="text" value="<%=SS_MEM_TEL%>" name="business_tel" id="business_tel"/>
                     <button type="submit" class="btn2">사업자 변환 요청</button>
-            </form>
+                </form>
         </div>
 
-        <div class="payment noshow">
+       <%-- <div class="payment noshow">
             <h1>Payment Info</h1>
             <h2>Payment Method</h2>
             <p>Mastercard •••• •••• •••• 0000 <button class="btn">update</button></p>
@@ -111,7 +113,7 @@
             <p></p>
             <h2>Referrals <button class="btn">get $10</button></h2>
             <p></p>
-        </div>
+        </div>--%>
 
     </div>
 </div>
