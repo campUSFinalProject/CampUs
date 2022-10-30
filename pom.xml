@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>Kibwa</groupId>
-    <artifactId>campus</artifactId>
+    <artifactId>CampUs</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>campus</name>
-    <description>campus</description>
+    <name>CampUs</name>
+    <description>CampUs</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -37,10 +37,15 @@
             <version>21.1.0.0</version>
         </dependency>
 
+        <!-- mariaDb -->
         <dependency>
-            <groupId>com.oracle.ojdbc</groupId>
-            <artifactId>orai18n</artifactId>
-            <version>19.3.0.0</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
         </dependency>
 
         <dependency>
@@ -75,6 +80,12 @@
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>1.15</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.oracle.ojdbc</groupId>
+            <artifactId>orai18n</artifactId>
+            <version>19.3.0.0</version>
         </dependency>
     </dependencies>
 

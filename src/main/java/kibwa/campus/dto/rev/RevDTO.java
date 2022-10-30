@@ -9,7 +9,7 @@ import lombok.ToString;
 @ToString
 
 public class RevDTO {
-//이거 DTO 나누지말고 합쳐서 쓰죠
+
     private String mem_Num;
     private String name;
     private String mem_Tel;
