@@ -6,7 +6,7 @@
 <%
     List<CaravanDTO> cList = (List<CaravanDTO>) request.getAttribute("cList");
 
-    //노지 정보 조회 결과 보여주기
+    //카라반 정보 조회 결과 보여주기
     if (cList == null){
         cList = new ArrayList<CaravanDTO>();
     }
@@ -75,7 +75,7 @@
 <div class="top-bar con-min-width row">
     <div class="ride">
         <a href="/FinalMain" class="logo cell block img-box">
-            <img src="../img/camlog.jpg" alt="">
+            <img src="../img/CampUslogo.png" alt="">
         </a>
         <nav class="menu-box-2 cell">
             <ul class="row">
