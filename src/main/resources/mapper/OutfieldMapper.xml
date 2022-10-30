@@ -9,6 +9,12 @@
         from outdoor_info
     </select>
 
+    <select id="geOutfieldView" resultType="kibwa.campus.dto.BoardDTO">
+        select outdoor_info_num, location_specific, outdoor_detail_info, location_city_num, outdoor_detail_memo
+        from outdoor_info
+        where outdoor_info_num = #{outdoor_info_num}
+    </select>
+
     <!-- 노지 정보 인서트 쿼리 -->
     <insert id="insertOutfield" parameterType="kibwa.campus.dto.OutfieldDTO">
         insert into outdoor_info

@@ -1,4 +1,5 @@
 package kibwa.campus.controller;
+import kibwa.campus.dto.BoardDTO;
 import kibwa.campus.dto.CaravanDTO;
 import kibwa.campus.dto.OutfieldDTO;
 import kibwa.campus.service.IOutfieldService;
@@ -28,8 +29,38 @@ public class AdminController {
 
     @RequestMapping(value = "AdminOutfield")
     public String Outfield(HttpServletRequest request, ModelMap model) throws Exception {
-        String name = nvl(request.getParameter("name"));
-        model.addAttribute("name", name);
+        log.info(this.getClass().getName() + ".AdminOutfieldList start!");
+
+        String msg = "";
+
+        try{
+            String field_num = CmmUtil.nvl(request.getParameter("field_num"));
+
+            log.info("field_num : " + field_num);
+
+            OutfieldDTO oDTO = new OutfieldDTO();
+            oDTO.setOutdoor_info_num(field_num);
+
+            OutfieldDTO ofDTO = outfieldService.getOudfieldView(oDTO);
+
+            if (ofDTO == null){
+                ofDTO = new OutfieldDTO();
+            }
+
+            log.info("getOudfieldView success");
+            model.addAttribute("ofDTO", ofDTO);
+            log.info("of.field_num : " + ofDTO.getOutdoor_info_num());
+
+        }catch (Exception e) {
+            msg = "실패하였습니다. : " +  e.getMessage();
+            log.info(e.toString());
+            e.printStackTrace();
+        }finally {
+            log.info(this.getClass().getName() + ".OudfieldView End!");
+            model.addAttribute("msg", msg);
+        }
+
+        log.info(this.getClass().getName() + ".AdminOutfieldList End!");
         return "/adminpage/AdminOutfield";
     }
 

@@ -4,17 +4,18 @@
 <%@ page import="kibwa.campus.util.CmmUtil" %>
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
 
-<%--<%
-    List<OutfieldDTO> oList = (List<OutfieldDTO>) request.getAttribute("oList");
+<%
+    OutfieldDTO oDTO = (OutfieldDTO)request.getAttribute("ofDTO");
 
-    //노지 정보 조회 결과 보여주기
-    if (oList == null){
-        oList = new ArrayList<OutfieldDTO>();
+    //노지 정보를 못불러왔다면, 객체 생성
+    if (oDTO==null){
+        oDTO = new OutfieldDTO();
     }
 
-    //주석
-    System.out.println("oList : " + oList);
-%>--%>
+    System.out.println(oDTO.getLocation_specific());
+    System.out.println(oDTO.getOutdoor_detail_info());
+    System.out.println(oDTO.getOutdoor_detail_memo());
+%>
 
 <!DOCTYPE html>
 <html>
@@ -349,7 +350,8 @@
 <!-- 상단 메뉴바 끝 -->
 
 <!-- 메인 정보창 -->
-<form name="frm" action="/AdminOutfieldDetail">
+<form name="frm" action="/AdminOutfieldDetail" method="post" onsubmit="return doSubmit(this);">
+    <input type="hidden" name="board_num" value="<%=CmmUtil.nvl(request.getParameter("")) %>"/>
     <div id="wrap">
         <div id="container">
             <div class="conHeader">
@@ -394,8 +396,8 @@
                 </div>
                 <div class="content_2">
                     <div class="leftSec">
-                        <p class="title"><input type="text" name="location_specific" value="<%=CmmUtil.nvl(request.getParameter("location_specific"))%>"></p>
-                        <p class="callText"><textarea rows="5" cols="40" name="outdoor_detail_info"><%=CmmUtil.nvl(request.getParameter("Outdoor_detail_info"))%></textarea></p>
+                        <p class="title"><input type="text" name="location_specific" value="<%=oDTO.getLocation_specific()%>"></p>
+                        <p class="callText"><textarea rows="5" cols="40" name="outdoor_detail_info"><%=oDTO.getOutdoor_detail_info()%></textarea></p>
                     </div>
                     <div class="rightSec">
                         <ul class="detail">
@@ -407,7 +409,7 @@
                         <div class="bottomBox">
                             <ul class="headList">
                                 <li>
-                                    <textarea rows="5" cols="40" name="outdoor_detail_memo"><%=CmmUtil.nvl(request.getParameter("outdoor_detail_memo"))%></textarea>
+                                    <textarea rows="5" cols="40" name="outdoor_detail_memo"><%=oDTO.getOutdoor_detail_memo()%></textarea>
                                 </li>
                             </ul>
                         </div>

@@ -89,7 +89,7 @@
         <div align="left">제목</div>
         <div>
             <input type="text" name="title" maxlength="100"
-                   value="<%=CmmUtil.nvl(boDTO.getBoard_title()) %>" style="width: 450px"/>
+                   value="<%=CmmUtil.nvl(bDTO.getBoard_title()) %>" style="width: 450px"/>
         </div>
     </div>
     <div>
@@ -99,7 +99,7 @@
         <div colspan="2">
 				<textarea
                         name="contents" style="width: 550px; height: 400px"
-                ><%=CmmUtil.nvl(boDTO.getBoard_content()) %></textarea>
+                ><%=CmmUtil.nvl(bDTO.getBoard_content()) %></textarea>
         </div>
     </div>
     <div>
