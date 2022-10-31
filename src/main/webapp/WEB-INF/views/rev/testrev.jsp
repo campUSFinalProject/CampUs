@@ -9,15 +9,17 @@
     <meta charset="UTF-8">
     <title>예약</title>
 </head>
+js/
+<link href="<%=request.getContextPath()%>/resources/static/css/FinalMain.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/resources/static/css/RevDate.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/resources/static/css/RevRooms.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/resources/static/css/RevPayments.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/resources/static/css/RevGuestinfo.css" rel="stylesheet" type="text/css" />
 
-<link href="../css/FinalMain.css" rel="stylesheet" type="text/css" />
-<link href="../css/RevDate.css" rel="stylesheet" type="text/css" />
-<link href="../css/RevRooms.css" rel="stylesheet" type="text/css" />
-<link href="../css/RevPayments.css" rel="stylesheet" type="text/css" />
-<link href="../css/RevGuestinfo.css" rel="stylesheet" type="text/css" />
-
-<script src="../4_jquery_class/lib/jquery-1.9.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script defer type="text/javascript" src= "<%=request.getContextPath()%>/resources/static/js/FinalMain.js"></script>
+<script defer type="text/javascript" src= "<%=request.getContextPath()%>/resources/static/js/RevDate.js"></script>
+<script defer src="../4_jquery_class/lib/jquery-1.9.1.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <!-- 폰트어썸 불러오기 -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -448,8 +450,6 @@
                     <div class="rp">$165.00</div>
                 </li>
             </ul>
-
-            <form action="#">
                 <fieldset>
                     <div class="split field">
                         <div class="equal">
@@ -468,11 +468,8 @@
                             <label for="numadults">Adults</label>
                             <input type="number" id="numadults" />
                         </div>
-
                     </div>
                 </fieldset>
-
-
 
                 <label>Price</label>
                 <div class="display-price">
@@ -506,9 +503,6 @@
 </section>
 
 <!-- 예약 날짜 끝 -->
-
-<script type="text/javascript" src= "../js/FinalMain.js"></script>
-<script type="text/javascript" src= "../js/RevDate.js"></script>
 
 
 </body>

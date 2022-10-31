@@ -1,5 +1,6 @@
 package kibwa.campus.controller;
 
+import kibwa.campus.dto.MemberDTO;
 import kibwa.campus.dto.rev.RevDTO;
 import kibwa.campus.service.impl.rev.RevService;
 import lombok.extern.slf4j.Slf4j;
@@ -11,6 +12,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,41 +41,44 @@ public class RevController {
      *  1. localhost:9000/rev/캠핑장ID/구역ID  용수가 이런 식의 형태를 a 태그 이용해서 나한테 넘겨주기
      */
 
-    @GetMapping(value = "/{cGroundId}/{sectorId}")
-    public String cground(@PathVariable String cGroundId,
-                          @PathVariable String sectorId,
-                          RedirectAttributes rt){
-        rt.addFlashAttribute("revCampInfoDTO", revService.findRevCampInfo(cGroundId,sectorId));
-        return "redirect:/rev/rooms";
-    }
-
-    /**
-     * 1. 선택된 캠핑장의 구역
-     */
     //
-    @GetMapping(value = "/rooms")
-    public String Rooms() throws Exception {
+    @GetMapping(value = "/{cGroundName}/{sectorId}") //localhost:9000/캠핑장이름/섹터넘버;
+    public String Rooms(@PathVariable String sectorId,
+                        Model model) throws Exception {
+        log.info("pathVariable = {}", sectorId);
+        RevDTO revDTO = revService.findRevCampInfo(sectorId);
+        log.info("revDTO = {}", revDTO);
+        model.addAttribute("campInfo", revDTO);
+
         return "/rev/RevRooms";
     }
 
     @PostMapping(value = "/rooms")
-    public String Rooms(RevDTO revDTO) {
-        //revService.save(revDTO);
+    public String Rooms(RevDTO revDTO,
+                        HttpSession session) {
+        MemberDTO memberDTO =(MemberDTO) session.getAttribute("Mem_num");
+        revService.save(revDTO, memberDTO);
 
-        return "redirect:/rev/date";
+        return "redirect:/rev/payment";
     }
 
-    @GetMapping(value = "/date") // RevDate/ 이후의 ID 값읇 불러와서 해당 캠핑장의 예약을 도와줌
-    public String RevDate(Model model) throws Exception {
+    @GetMapping(value = "/payment") // RevDate/ 이후의 ID 값읇 불러와서 해당 캠핑장의 예약을 도와줌
+    public String payment() throws Exception {
 
-       return "/rev/RevDate";
+       return "/rev/Revpay";
     }
 
-    @PostMapping(value = "/date")
-    public String RevDate(@ModelAttribute RevDTO revDTO) throws Exception {
+    @PostMapping(value = "/payment")
+    public String payment(@ModelAttribute RevDTO revDTO) throws Exception {
         log.info("revDTO = {}", revDTO);
         //revService.save(revDTO);
-        return "redirect:/RevRooms";
+        return "redirect:/rev/guestInfo";
+    }
+
+    @GetMapping("/guestInfo")
+    public String guestInfo(Model model) throws Exception {
+
+        return "/rev/RevGI";
     }
 
     /**

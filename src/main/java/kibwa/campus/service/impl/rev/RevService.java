@@ -1,5 +1,6 @@
 package kibwa.campus.service.impl.rev;
 
+import kibwa.campus.dto.MemberDTO;
 import kibwa.campus.dto.rev.RevDTO;
 import kibwa.campus.persistance.mapper.rev.IRevMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +19,13 @@ public class RevService {
         this.revMapper = revMapper;
     }
 
-    public RevDTO findRevCampInfo(String cGroundId, String sectorId) {
-        return revMapper.findRevCampInfo(cGroundId, sectorId);
+    public RevDTO findRevCampInfo(String sectorId) {
+        return revMapper.findRevCampInfo(sectorId);
+    }
+
+    public void save(RevDTO revDTO, MemberDTO memberDTO) {
+        revDTO.setMem_Num(memberDTO.getMem_num());
+
+        revMapper.save(revDTO);
     }
 }

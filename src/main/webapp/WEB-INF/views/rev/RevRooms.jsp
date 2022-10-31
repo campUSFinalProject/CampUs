@@ -1,4 +1,3 @@
-<%@ page import="kibwa.campus.dto.rev.RevCampInfoDTO" %>
 <section id="section-main" class="section-reservation">
     <div class="w800">
         <div id="status-track">
@@ -18,12 +17,11 @@
             </a>
         </div>
 <%
-    System.out.println(request.getAttribute("revCampInfoDTO"));
-    RevCampInfoDTO revCampInfoDTO = (RevCampInfoDTO)request.getAttribute("revCampInfoDTO");
+
 %>
         <form action="${pageContext.request.contextPath}/rev/rooms" method="post">
             <%-- 캠핑장 정보들을 숨겨서 서버로 보낼것 --%>
-            <input type="hidden" name="id" value="<%=revCampInfoDTO.getId()%>">
+            <input type="hidden" name="id" value="">
             <input type="hidden" name="" value="">
             <input type="hidden" name="" value="">
             <input type="hidden" name="" value="">

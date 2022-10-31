@@ -9,5 +9,7 @@ import java.util.List;
 public interface IRevMapper {
     List<RevDTO> getRevList() throws Exception;
 
-    RevDTO findRevCampInfo(String cGroundId, String sectorId);
+    RevDTO findRevCampInfo(String sectorId);
+
+    void save(RevDTO revDTO);
 }
