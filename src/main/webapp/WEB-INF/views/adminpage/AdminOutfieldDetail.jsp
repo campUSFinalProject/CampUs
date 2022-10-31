@@ -36,8 +36,16 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.theme.default.min.css">
 
 <script type="text/javascript">
+    function goToMain() {
+        location.href = "/";
+    }
+
+    function goToOutfield() {
+        location.href = "/board/BoardList";
+    }
+
     function Adminupdate(){
-        location.href="/adminpage/AdminOutfield?locacion_specific=<%=CmmUtil.nvl(oDTO.getLocation_specific())%>"
+        location.href="/adminpage/AdminOutfield?locacion_specific=<%=CmmUtil.nvl(oDTO.getOutdoor_info_num())%>"
     }
 </script>
 
@@ -350,8 +358,6 @@
 <!-- 상단 메뉴바 끝 -->
 
 <!-- 메인 정보창 -->
-<form name="frm" action="/AdminOutfieldDetail" method="post" onsubmit="return doSubmit(this);">
-    <input type="hidden" name="board_num" value="<%=CmmUtil.nvl(request.getParameter("Outdoor_info_num")) %>"/>
     <div id="wrap">
         <div id="container">
             <div class="conHeader">
@@ -396,8 +402,8 @@
                 </div>
                 <div class="content_2">
                     <div class="leftSec">
-                        <p class="title"><input type="text" name="location_specific" value="<%=oDTO.getLocation_specific()%>"></p>
-                        <p class="callText"><textarea rows="5" cols="40" name="outdoor_detail_info"><%=oDTO.getOutdoor_detail_info()%></textarea></p>
+                        <p class="title"><input type="text" name="location_specific" value="<%=CmmUtil.nvl(oDTO.getLocation_specific())%>"></p>
+                        <p class="callText"><textarea rows="5" cols="40" name="outdoor_detail_info"><%=CmmUtil.nvl(oDTO.getOutdoor_detail_info())%></textarea></p>
                     </div>
                     <div class="rightSec">
                         <ul class="detail">
@@ -409,7 +415,7 @@
                         <div class="bottomBox">
                             <ul class="headList">
                                 <li>
-                                    <textarea rows="5" cols="40" name="outdoor_detail_memo"><%=oDTO.getOutdoor_detail_memo()%></textarea>
+                                    <textarea rows="5" cols="40" name="outdoor_detail_memo"><%=CmmUtil.nvl(oDTO.getOutdoor_detail_memo())%></textarea>
                                 </li>
                             </ul>
                         </div>
@@ -460,7 +466,6 @@
             </div>
         </footer>
     </div>
-</form>
 <!-- 메인 정보창 끝 -->
 
 <script type="text/javascript" src= "../js/FinalMain.js"></script>

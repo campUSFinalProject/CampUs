@@ -8,11 +8,13 @@ import kibwa.campus.util.CmmUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -141,5 +143,51 @@ public class AdminController {
         }
 
         return "/adminpage/AdminOutfieldDetail";
+    }
+
+    //노지 업데이트
+    @PostMapping(value = "AdminUpdate")
+    public String NoticeUpdate(HttpSession session, HttpServletRequest request, ModelMap model){
+        log.info(this.getClass().getName() + ".AdminUpdate Start!");
+
+        String msg = "";
+        String url = "";
+
+        try{
+            String city_name = CmmUtil.nvl((String) session.getAttribute("city_name"));
+            String location_specific = CmmUtil.nvl(request.getParameter("location_specific"));
+            String Outdoor_detail_info = CmmUtil.nvl(request.getParameter("Outdoor_detail_info"));
+            String outdoor_detail_memo = CmmUtil.nvl(request.getParameter("outdoor_detail_memo"));
+
+            log.info("city_name : " + city_name);
+            log.info("location_specific : " + location_specific);
+            log.info("Outdoor_detail_info : " + Outdoor_detail_info);
+            log.info("outdoor_detail_memo : " + outdoor_detail_memo);
+
+            OutfieldDTO oDTO = new OutfieldDTO();
+
+            oDTO.setCity_name(city_name);
+            oDTO.setLocation_specific(location_specific);
+            oDTO.setOutdoor_detail_info(Outdoor_detail_info);
+            oDTO.setOutdoor_detail_memo(outdoor_detail_memo);
+
+            outfieldService.updateOutfield(oDTO);
+
+            msg = "수정되었습니다";
+            url = "/adminpage/AdminOutfieldDetail?Outdoor_detail_info_num=" + oDTO.getOutdoor_info_num();
+
+        }catch (Exception e){
+            msg = "실패하였습니다 : " + e.getMessage();
+            log.info(e.toString());
+            e.printStackTrace();
+            url = "/adminpage/AdminOutfield";
+
+        }finally {
+            log.info(this.getClass().getName() + ".AdminUpdate end");
+
+            model.addAttribute("msg", msg);
+            model.addAttribute("url", url);
+        }
+        return "/redirect";
     }
 }

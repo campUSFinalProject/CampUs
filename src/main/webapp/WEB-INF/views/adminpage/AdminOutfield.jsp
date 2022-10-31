@@ -1,6 +1,7 @@
 <%@ page import="kibwa.campus.dto.OutfieldDTO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="kibwa.campus.util.CmmUtil" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
@@ -14,13 +15,18 @@
     //주석
     System.out.println("oList : " + oList);
     //System.out.println("oList.location : " + oList.);
-%>
+    Object oDTO;%>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>관리자 노지 캠핑</title>
+    <script type="text/javascript">
+        function Adminupdate(Outdoor_info_num){
+            location.href="/adminpage/AdminOutfield?Outdoor_info_num=" + Outdoor_info_num;
+        }
+    </script>
 </head>
 
 <link href="../css/FinalMain.css" rel="stylesheet" type="text/css" />
@@ -371,7 +377,7 @@
 <div class="card">
     <div class="card__thumb"><a href="javascript:;"><img class="animate" src="https://picsum.photos/800?random=1"/></a></div>
     <div class="card__content">
-        <h2 class="card__title animate"><a href="javascript:;"><%=o.getLocation_specific()%></a></h2>
+        <h2 class="card__title animate"><a href="javascript:Adminupdate('<%=o.getOutdoor_info_num()%>')"><%=o.getLocation_specific()%></a></h2>
         <p class="card__text"><%=o.getOutdoor_detail_info()%></p>
         <button class="card__btn"><i class="fa-solid fa-arrow-right fa-fw"></i></button>
     </div>
@@ -382,7 +388,7 @@
     <ul class="detail">
         <li></li>
         <li></li>
-        <li><a href="" class="btn_3">등록하기</a></li>
+        <li><a href="/Admin_insert" class="btn_3">등록하기</a></li>
     </ul>
 </div>
 
