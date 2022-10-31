@@ -25,9 +25,13 @@ public class  CaravanController {
     /* 카라반 리스트 페이지*/
     @RequestMapping(value = "Caravan")
     public String Caravan(HttpServletRequest request, ModelMap model) throws Exception {
-        String name = nvl(request.getParameter("name"));
+        //String name = nvl(request.getParameter("name"));
+        //model.addAttribute("name", name);
 
-        model.addAttribute("name", name);
+        List<CaravanDTO> cList = CaravanService.getCaravanList();
+
+        model.addAttribute("cList" , cList);
+
         return "/Caravan/Caravan";
     }
 
