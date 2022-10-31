@@ -7,6 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BoardDTO {
+    private String rownum;
     private String board_num;
     private String board_title;
     private String board_content;

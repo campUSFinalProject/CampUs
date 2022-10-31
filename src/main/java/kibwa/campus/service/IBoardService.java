@@ -12,5 +12,4 @@ public interface IBoardService {
     BoardDTO getBoardView(BoardDTO bDTO) throws Exception;
     int deleteBoard(BoardDTO bDTO) throws Exception;
     void updateBoard(BoardDTO bDTO) throws Exception;
-    void updateBoardViewNum(BoardDTO bDTO) throws Exception;
 }
