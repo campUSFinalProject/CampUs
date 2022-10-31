@@ -5,15 +5,19 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
 
 <%
-    List<CaravanDTO> cList = (List<CaravanDTO>) request.getAttribute("cList");
+    //List<CaravanDTO> cList = (List<CaravanDTO>) request.getAttribute("cList");
 
     //카라반 정보 조회 결과 보여주기
-    if (cList == null){
-        cList = new ArrayList<CaravanDTO>();
-    }
+    //if (cList == null){
+    //    cList = new ArrayList<CaravanDTO>();
+    //}
 
     //주석
-    System.out.println("cList : " + cList);
+    //System.out.println("cList : " + cList)
+
+    CaravanDTO coDTO = (CaravanDTO) request.getAttribute("coDTO");
+    System.out.println("coDTO : " + coDTO);
+    System.out.println("bo.mem_num : " + coDTO.getCground_info_num());
 %>
 
 <!DOCTYPE html>
@@ -388,25 +392,23 @@
                 </ul>
             </div>
             <div class="content_2">
-                <%for (CaravanDTO c : cList) { %>
                 <div class="leftSec">
-                    <p class="title">    <%= c.getCground_name() %>  </p>
-                    <p class="callText"> <%= c.getCground_location() %> </p>
+                    <p class="title"> <%=CmmUtil.nvl(coDTO.getCground_name())%></p>
+                    <p class="callText"> <%=CmmUtil.nvl(coDTO.getCground_location())%></p>
                     <ul>
-                        <li><span>· 전화번호 : </span> <%= c.getCground_tel()%> </li>
-                        <li><span>· 예약금액 : </span> <%= c.getCground_deposit() %> </li>
-                        <li><span>· 조회수 : </span> <%= c.getRev_count() %> </li>
+                        <li><span>· 전화번호 : </span> <%=CmmUtil.nvl(coDTO.getCground_tel())%> </li>
+                        <li><span>· 예약금액 : </span> <%=CmmUtil.nvl(coDTO.getCground_deposit())%> </li>
+                        <li><span>· 조회수 : </span><%=CmmUtil.nvl(coDTO.getRev_count())%> </li>
 
                     </ul>
                     <div class="bottomSec">
                         <div class="leftSec"><h3>객실서비스</h3></div>
                         <div class="rightSec1">
                             <ul>
-                                <li>· <%= c.getCground_detail_info() %> </li>
+                                <li>· <%=CmmUtil.nvl(coDTO.getCground_detail_info())%> </li>
                             </ul>
                         </div>
                     </div>
-                    <%}%>
                 </div>
 
                 <div class="rightSec">
@@ -418,20 +420,19 @@
                     <h2>객실 정보</h2>
 
                     <div class="bottomBox">
-                        <%for (CaravanDTO c : cList) { %>
                         <ul class="headList">
                             <li>
                                 <p>· 체크인/체크아웃 시간</p>
                                 <ul>
-                                    <li>- 체크인 : <%= c.getCamping_enter() %> </li>
-                                    <li>- 체크아웃 : <%= c.getCamping_exit() %></li>
+                                    <li>- 체크인 : <%=CmmUtil.nvl(coDTO.getCamping_enter())%> </li>
+                                    <li>- 체크아웃 : <%=CmmUtil.nvl(coDTO.getCamping_exit())%></li>
                                 </ul>
                             </li>
 
                             <li>
                                 <p>· 추가 시설</p>
                                 <ul>
-                                    <li>- <%= c.getAdd_facil() %></li>
+                                    <li>- <%=CmmUtil.nvl(coDTO.getAdd_facil())%></li>
                                 </ul>
                             </li>
                             <li>
@@ -445,7 +446,6 @@
                         </ul>
                     </div>
                 </div>
-                <%}%>
             </div>
             <div class="content_3">
                 <h2>후기</h2>
@@ -461,8 +461,6 @@
                 </div>
             </div>
             <br/>
-
-
 
             <!-- 지도를 표시할 div 입니다 -->
             <div id="map" style="width:911px;height:300px;"></div>
@@ -507,12 +505,8 @@
                         marker.setMap(map);
                     }
                 });
-
-
             </script>
-
         </div>
-
         <div class="snsSec">
             <ul>
                 <li><a href="" class="facebook"><em class="blind">페이스북</em></a></li>
@@ -520,7 +514,6 @@
                 <li><a href="" class="kakao"><em class="blind">카카오스토리</em></a></li>
             </ul>
         </div>
-
     </div>
 
     <footer>

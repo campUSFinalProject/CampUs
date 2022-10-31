@@ -1,6 +1,7 @@
 package kibwa.campus.controller;
 import kibwa.campus.dto.CaravanDTO;
 import kibwa.campus.service.ICaravanService;
+import kibwa.campus.util.CmmUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -42,16 +43,32 @@ public class  CaravanController {
     public String CaravanDetail(HttpServletRequest request, ModelMap model) throws Exception {
         log.info(this.getClass().getName() + ".CaravanList start!");
 
-        List<CaravanDTO> cList = CaravanService.getCaravanList();
+        /*List<CaravanDTO> cList = CaravanService.getCaravanList();
 
         if (cList == null){
             cList = new ArrayList<>();
         }
 
         log.info("cList : " + cList);
-        model.addAttribute("cList", cList);
+        model.addAttribute("cList", cList);*/
 
-        log.info(this.getClass().getName() + ".CaravanList End!");
+        try{
+            String cground_info_num = CmmUtil.nvl(request.getParameter("cground_info_num"));
+            log.info("cground_info_num : " + cground_info_num);
+
+            CaravanDTO cDTO = new CaravanDTO();
+            cDTO.setCground_info_num(cground_info_num);
+
+            CaravanDTO coDTO = CaravanService.getCaravanDetail(cDTO);
+
+            model.addAttribute("coDTO", coDTO);
+
+        }catch (Exception e) {
+            log.info(e.toString());
+            e.printStackTrace();
+        }finally {
+            log.info(this.getClass().getName() + ".CaravanList End!");
+        }
 
         return "/Caravan/CaravanDetail";
     }

@@ -1,5 +1,6 @@
 package kibwa.campus.service.impl;
 
+import kibwa.campus.dto.BoardDTO;
 import kibwa.campus.dto.CaravanDTO;
 import kibwa.campus.persistance.mapper.ICaravanMapper;
 import kibwa.campus.service.ICaravanService;
@@ -28,5 +29,10 @@ public class CaravanService implements ICaravanService {
     @Override
     public void insertCampingInfo(CaravanDTO cDTO) throws Exception {
         CaravanMapper.insertCampingInfo(cDTO);
+    }
+
+    @Override
+    public CaravanDTO getCaravanDetail(CaravanDTO cDTO) throws Exception {
+        return CaravanMapper.getCaravanDetail(cDTO);
     }
 }

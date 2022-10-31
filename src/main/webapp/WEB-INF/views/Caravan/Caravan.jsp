@@ -20,6 +20,14 @@
 <head>
     <meta charset="UTF-8">
     <title>카라반</title>
+
+    <!--나중에 JS독립시키기-->
+    <script type="text/javascript">
+        //제목 누르면 게시글 보게 함
+        function goToCaravanDetail(cground_info_num){
+            location.href="/CaravanDetail?cground_info_num=" + cground_info_num;
+        }
+    </script>
 </head>
 
 <link href="../css/FinalMain.css" rel="stylesheet" type="text/css" />
@@ -365,7 +373,6 @@
 </div>
 <!-- 상단 메뉴바 끝 -->
 
-
 <!-- 캠핑장 리스트  -->
 
 <%for (CaravanDTO c : cList) {%>
@@ -374,7 +381,7 @@
     <div class="card__content">
         <h2 class="card__title animate"><a href="javascript:;"> <%=c.getCground_name()%> </a></h2>
         <p class="card__text"> <%=c.getCground_detail_info()%> </p>
-        <button class="card__btn"><i class="fa-solid fa-arrow-right fa-fw"></i></button>
+        <button class="card__btn" onclick="goToCaravanDetail('<%=c.getCground_info_num()%>')"><i class="fa-solid fa-arrow-right fa-fw"></i></button>
     </div>
 </div>
 <%}%>
