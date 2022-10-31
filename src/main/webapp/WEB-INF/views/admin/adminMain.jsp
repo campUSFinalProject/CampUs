@@ -72,10 +72,10 @@
                     <p><span>OUTDOOR OCEAN SPA</span><span>사업자등록 게시판</span></p></a></li>
                 <li><a href="https://www.busanparadisehotel.co.kr/front/facility/dinebuffet?">
                     <em class="icon5"><i></i></em>
-                    <p><span>BUFFET</span><span>ON THE PLATE</span></p></a></li>
+                    <p><span>BUFFET</span><span>사업자 등록 요청 현황</span></p></a></li>
                 <li><a href="https://www.busanparadisehotel.co.kr/front/facility/kidsList?">
                     <em class="icon6"><i></i></em>
-                    <p><span>PARADISE</span><span>KIDS VILLAGE</span></p></a></li>
+                    <p><span>PARADISE</span><span></span></p></a></li>
             </ul>
         </div>
 
@@ -103,17 +103,30 @@
                             <div>
                                 <ul class="row">
                                     <li class="cell">
-                                        <a href="#">캠핑장 1</a>
+                                        <a href="#">경기도</a>
                                     </li>
                                     <li class="cell">
-                                        <a href="#">캠핑장 2</a>
+                                        <a href="#">강원도</a>
                                     </li>
                                     <li class="cell">
-                                        <a href="#">캠핑장 3</a>
+                                        <a href="#">충청북도</a>
                                     </li>
                                     <li class="cell">
-                                        <a href="#">캠핑장 4</a>
+                                        <a href="#">충정ㄴ</a>
                                     </li>
+                                    <li class="cell">
+                                        <a href="#">전</a>
+                                    </li>
+                                    <li class="cell">
+                                        <a href="#">전라북</a>
+                                    </li>
+                                    <li class="cell">
+                                        <a href="#">전라북도</a>
+                                    </li>
+                                    <li class="cell">
+                                    <a href="#">전라북도</a>
+                                </li>
+
                                 </ul>
                             </div>
                         </div>
@@ -246,7 +259,7 @@
                     </div>
                 </li>
                 <li class="cell">
-                    <a href="#" class="block">AUXILIARY FACILITIES</a>
+                  <!-- <a href="#" class="block">AUXILIARY FACILITIES</a>
                     <div>
                         <div>
                             <div>
@@ -345,7 +358,7 @@
                 </li>
                 <li class="cell">
                     <a href="#" class="block"></a>
-                </li>
+                </li>-->
             </ul>
         </nav>
     </div>

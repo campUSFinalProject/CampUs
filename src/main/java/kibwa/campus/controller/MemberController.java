@@ -27,11 +27,20 @@ public class MemberController {
     private IMemberService memberService;
 
     //---------------회원가입/로그인 페이지로 이동---------------
-    @RequestMapping(value = "member/memRegLoginForm")
+    @RequestMapping(value = "cu/memRegLoginForm")
     public String memRegLoginForm(){
         log.info(this.getClass().getName() + ".member/memRegLoginForm START!!!!");
 
         return "/member/memRegLoginForm";
+    }
+
+    //수정 페이지 이동
+
+    @RequestMapping(value = "cu/modifyMypage")
+    public String modifyMypage(){
+        log.info(this.getClass().getName() + ".member/memRegLoginForm START!!!!");
+
+        return "/member/modifyMypage";
     }
 
 
