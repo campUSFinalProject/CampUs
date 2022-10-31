@@ -38,7 +38,7 @@
             <a id="payment"><i class="fa-solid fa-pen"></i></a> <!-- 회원정보수정 아이콘 -->
             <a id="subscription" class="active"><i class="fa-solid fa-user-plus"></i></a>   <!-- 사업자 전환 아이콘 -->
             <a id="privacy"><i class="fa-solid fa-key"></i></a> <!-- 비밀번호 변경 아이콘 -->
-            <a id="settings"><i class="fa-solid fa-user-minus"></i></a> <!-- 회원탈퇴 아이콘 -->
+            <a id="settings" href="/cu/deleteMember"><i class="fa-solid fa-user-minus"></i></a> <!-- 회원탈퇴 아이콘 -->
         </nav>
     </div>
     <div class="rightbox">

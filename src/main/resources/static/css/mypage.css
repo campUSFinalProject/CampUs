@@ -143,6 +143,7 @@ input[type=text] {
     font-size: 0.7em;
     padding: 7px 0;
     color: #070707;
+    background: white;
 }
 
 span {
