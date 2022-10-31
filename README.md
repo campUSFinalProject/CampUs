@@ -16,3 +16,5 @@ Refactor : 코드 리펙토링
 Chore : 기타 작업
 Branch 이름은 작업자 별 
 ```
+## Document   
+📕 Notion : https://overjoyed-thorium-06d.notion.site/3-Final-Project-CampUs-9e96b360bdd84b1183a74648a8ee7f13

@@ -5,7 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
 
 <%
-    OutfieldDTO oDTO = (OutfieldDTO)request.getAttribute("ofDTO");
+    OutfieldDTO oDTO = (OutfieldDTO)request.getAttribute("oDTO");
 
     //노지 정보를 못불러왔다면, 객체 생성
     if (oDTO==null){
@@ -37,15 +37,15 @@
 
 <script type="text/javascript">
     function goToMain() {
-        location.href = "/";
+        location.href = "/FinalMain";
     }
 
     function goToOutfield() {
-        location.href = "/board/BoardList";
+        location.href = "/AdminOutfield.jsp";
     }
 
     function Adminupdate(){
-        location.href="/adminpage/AdminOutfield?locacion_specific=<%=CmmUtil.nvl(oDTO.getOutdoor_info_num())%>"
+        location.href="/AdminOutfieldDetail?locacion_specific=<%=CmmUtil.nvl(oDTO.getOutdoor_info_num())%>"
     }
 </script>
 
@@ -362,9 +362,9 @@
         <div id="container">
             <div class="conHeader">
                 <ul>
-                    <li><a href="/test" class="homeIcon"><em class="blind">홈</em></a></li>
+                    <li><a href="/FinalMain" class="homeIcon"><em class="blind">홈</em></a></li>
                     <li>></li>
-                    <li><a href="/Outfield" style="color: #666666">노지 목록</a></li>
+                    <li><a href="/AdminOutfield" style="color: #666666">노지 목록</a></li>
                     <li>></li>
                     <li><a href="">노지 정보</a></li>
                 </ul>
@@ -408,8 +408,10 @@
                     <div class="rightSec">
                         <ul class="detail">
                             <li></li>
+                            <form name="f" method="post" action="/updateOutfield" onsubmit="return doSubmit(this);">
                             <li><a href="javascript:Adminupdate()" class="btn_2">수정하기</a></li>
                             <li><a href="" class="btn_3">삭제하기</a></li>
+                            </form>
                         </ul>
                         <h2>Outfield Info</h2>
                         <div class="bottomBox">

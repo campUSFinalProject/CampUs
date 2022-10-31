@@ -1,34 +1,34 @@
 <%@ page import="kibwa.campus.util.CmmUtil" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
-                    pageEncoding="utf-8" %>
+         pageEncoding="utf-8" %>
 <%
 
-    String SS_ID = CmmUtil.nvl((String) session.getAttribute("SS_ID"));
-    String SS_NAME = CmmUtil.nvl((String) session.getAttribute("SS_NAME"));
-    String SS_MEM_TEL = CmmUtil.nvl((String) session.getAttribute("SS_MEM_TEL"));
-    String SS_EMAIL = CmmUtil.nvl((String) session.getAttribute("SS_EMAIL"));
+    String SS_ID = CmmUtil.nvl((String) session.getAttribute("SS_business_ID"));
+    String SS_NAME = CmmUtil.nvl((String) session.getAttribute("SS_business_NAME"));
+    String SS_MEM_TEL = CmmUtil.nvl((String) session.getAttribute("SS_business_TEL"));
+    String SS_EMAIL = CmmUtil.nvl((String) session.getAttribute("SS_business_EMAIL"));
 
 
 %>
 <!DOCTYPE html>
-           
+
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>마이페이지</title>
-       <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <title>사업자 마이페이지</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
 
-       <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
-       <link href="../css/mypage.css" rel="stylesheet" type="text/css" />
-       <script src="../4_jquery_class/lib/jquery-1.9.1.min.js"></script>
-       <script src="https://kit.fontawesome.com/c49ea42a2f.js" crossorigin="anonymous"></script>
-   </head>
-   <body>
-    <div class="container">
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+    <link href="../css/mypage.css" rel="stylesheet" type="text/css" />
+    <script src="../4_jquery_class/lib/jquery-1.9.1.min.js"></script>
+    <script src="https://kit.fontawesome.com/c49ea42a2f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
     <div id="logo"><h1 class="logo">CAMP US</h1>
-        <button class="CTA" onclick="location.href='/cu/Main'">
+        <button class="CTA" onclick="location.href='/cu/businessMain'">
             <h1>MAIN PAGE</h1>
         </button>
     </div>
@@ -38,14 +38,14 @@
             <a id="payment"><i class="fa-solid fa-pen"></i></a> <!-- 회원정보수정 아이콘 -->
             <a id="subscription" href="/cu/changeMem"><i class="fa-solid fa-user-plus"></i></a>   <!-- 사업자 전환 아이콘 -->
             <a id="privacy"><i class="fa-solid fa-key"></i></a> <!-- 비밀번호 변경 아이콘 -->
-            <a id="settings" href="/cu/deleteMember"><i class="fa-solid fa-user-minus"></i></a> <!-- 회원탈퇴 아이콘 -->
+            <a id="settings"><i class="fa-solid fa-user-minus"></i></a> <!-- 회원탈퇴 아이콘 -->
         </nav>
     </div>
     <div class="rightbox">
         <div class="profile">
             <h1>회원 정보</h1>
             <h2>회원 등급</h2>
-            <p>일반 회원<button class="btn">사업자 등급 변환</button></p>
+            <p>사업자<button class="btn"></button></p>
             <h2>이름</h2>
             <p><%=SS_NAME%></p>
             <h2>아이디</h2>
@@ -113,6 +113,6 @@
 
     </div>
 </div>
- <script type="text/javascript" src= "../js/mypage.js"></script>
+<script type="text/javascript" src= "../js/mypage.js"></script>
 </body>
 </html>

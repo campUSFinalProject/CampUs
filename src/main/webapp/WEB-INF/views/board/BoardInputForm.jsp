@@ -17,20 +17,33 @@
             CmmUtil.nvl(bDTO.getId()))){
         access = 2;
     }
-    //String SS_ID = CmmUtil.nvl((String) session.getAttribute("SS_ID"));
+
+    //사용자 로그인 여부 확인
+    int id = 0;
+
+    //Session을 받을때는 값이 null로 올때를 생각해서 조건문을 사용한다.
+    if (session.getAttribute("SS_ID") != null) {
+        //세션의 값을 가져오기
+        id = 1;
+    }
 %>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html" ; charset="UTF-8">
-    <title>게시판 글쓰기</title>
+    <title>게시글 작성</title>
 </head>
 
 <!--상단, 라이트바 위한 css-->
 <link href="../css/FinalMain.css" rel="stylesheet" type="text/css"/>
 <script src="../4_jquery_class/lib/jquery-1.9.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!--게시판 글쓰기 css-->
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+<link href="../css/testboard.css" rel="stylesheet" type="text/css" />
 
 <!-- 폰트어썸 불러오기 -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
@@ -59,7 +72,7 @@
     <div class="top-bar con-min-width row">
         <div class="ride">
             <a href="#" class="logo cell block img-box">
-                <img src="../img/camlog.jpg" alt="">
+                <img src="../img/camplogg.png" alt="">
             </a>
             <nav class="menu-box-2 cell">
                 <ul class="row">
@@ -76,13 +89,10 @@
                                             <a href="#">캠핑장 2</a>
                                         </li>
                                         <li class="cell">
-                                            <a href="#">뉴스</a>
+                                            <a href="#">캠핑장 3</a>
                                         </li>
                                         <li class="cell">
-                                            <a href="#">갤러리</a>
-                                        </li>
-                                        <li class="cell">
-                                            <a href="#">LotteHottel Seoul 위치</a>
+                                            <a href="#">캠핑장 4</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -96,7 +106,7 @@
                                 <div>
                                     <ul class="row">
                                         <li class="cell">
-                                            <a href="#">Main Tower</a>
+                                            <a href="#">2인전용</a>
                                             <ul class="row">
                                                 <li class="cell"><a href="#" class="block">스탠다드</a></li>
                                                 <li class="cell"><a href="#" class="block">슈페리어 룸</a></li>
@@ -104,7 +114,7 @@
                                             </ul>
                                         </li>
                                         <li class="cell">
-                                            <a href="#">Club Floor</a>
+                                            <a href="#">4인전용</a>
                                             <ul class="row">
                                                 <li class="cell"><a href="#" class="block">디럭스 룸</a></li>
                                                 <li class="cell"><a href="#" class="block">주니어 스위트 룸</a></li>
@@ -318,30 +328,46 @@
                     </li>
                 </ul>
             </nav>
-            <div class="cell-right row">
-                <div class="cell"><a href="#" class=""></a>
+        </div>
+
+        <!--로그인 전 화면  -->
+
+        <div class="cell-right row">
+            <%if (id == 0) {%>
+            <ul>
+                <div class="cell"><a href="/member/memRegLoginForm" class="">로그인/회원가입</a>
                 </div>
-                <div class="cell block"><a href="#">MEMBERSHIP</a>
-                </div>
-                <div class="cell block"><a href="#"></a>
+                <div class="cell block"><a href="">예약확인/취소</a>
                 </div>
                 <div class="cell block"><a href="#">ABOUT US</a>
                 </div>
-                <div class="cell block"><a href="#">로그인</a>
+                <div class="cell block"><a href="#">CAMP US</a>
                 </div>
-                <div class="cell block"><a href="#">회원가입</a>
+                <div class="cell block"><a href="#">asdasd</a>
                 </div>
-                <div class="cell block"><a href="#">예약확인/취소</a>
+                <div class="cell block"><a href="#"></a>
                 </div>
-                <div class="cell block"><a href="#">KR <i class="fas fa-caret-down"></i></a>
-                    <ul>
-                        <li><a href="#">KR</a></li>
-                        <li><a href="#">EN</a></li>
-                        <li><a href="#">JP</a></li>
-                        <li><a href="#">CN</a></li>
-                    </ul>
+            </ul>
+
+
+            <!--로그인 후 화면  -->
+
+            <%} else if (id > 0) {%>
+            <ul>
+                <div class="cell"><a href="/cu/mypage" class="">내정보</a>
                 </div>
-            </div>
+                <div class="cell block"><a href="/cu/Logout">로그아웃</a>
+                </div>
+                <div class="cell block"><a href="">예약확인/취소</a>
+                </div>
+                <div class="cell block"><a href="#">ABOUT US</a>
+                </div>
+                <div class="cell block"><a href="/member/memRegLoginForm">asdasd</a>
+                </div>
+                <div class="cell block"><a href="#"></a>            </div>
+
+            </ul>
+            <%};%>
         </div>
     </div>
 
@@ -349,9 +375,8 @@
     <div class="bring">
         <div class="why cell-right">
             <div class="quickH">
-
-                <a href="/front/게시판">
-
+                <!--민지 : 게시판으로 이동-->
+                <a href="/board/BoardList">
                     <h1>게시판</h1>
                     <p>정보 공유 및 <br>소통 가능한 게시판</p>
                 </a>
@@ -365,11 +390,10 @@
                         <em class="icon2"><i></i></em>
                         <p><span>ALL DAY</span><span>정보게시판</span></p></a></li>
                     <li><a href="https://www.busanparadisehotel.co.kr/front/facility/spaparacimer?">
-                        <em class="icon3"><i></i></em>
-                        <p><span>TipBoard</span><span>꿀팁게시판</span></p></a></li>
+                        <em class="icon3"><i></i></em><p><span>TipBoard</span><span>꿀팁게시판</span></p></a></li>
                     <li><a href="https://www.busanparadisehotel.co.kr/front/facility/spaparapool?">
                         <em class="icon4"><i></i></em>
-                        <p><span>OUTDOOR OCEAN SPA</span><span>POOL</span></p></a></li>
+                        <p><span>OUTDOOR OCEAN SPA</span><span>사업자등록 게시판</span></p></a></li>
                     <li><a href="https://www.busanparadisehotel.co.kr/front/facility/dinebuffet?">
                         <em class="icon5"><i></i></em>
                         <p><span>BUFFET</span><span>ON THE PLATE</span></p></a></li>
@@ -382,13 +406,13 @@
     </div>
 
     <!--BoardInputForm area-->
-    <h4> 게시판 글 쓰기 </h4><br/>
-    나중에 이쁘게 만드시오 <br/><br/>
-    <form name='frm' action="/board/BoardInsert">
-        제  목 : <input type='text' name="title" required><br/><br/>
-        내  용 : <textarea name="contents" rows='10' cols='40' required></textarea><br/><br/>
-        <input type='button' value='작성' onclick="javascript:contentIsInsert()">
+    <header> [ 게시글 작성 ] </header>
+
+    <form name='frm' id="form" class="topBefore" action="/board/BoardInsert">
+        <input id="name" name="title" type="text" placeholder="제목">
+        <textarea id="message" name="contents" type="text" placeholder="내용" required></textarea>
         <input type='reset' value='취소' onclick="javascript:goToBoardList()">
+        <input id="submit" type="submit" value="작성하기" onclick="javascript:contentIsInsert()">
     </form>
 </div>
 

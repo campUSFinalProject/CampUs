@@ -24,7 +24,7 @@
     <title>관리자 노지 캠핑</title>
     <script type="text/javascript">
         function Adminupdate(Outdoor_info_num){
-            location.href="/adminpage/AdminOutfield?Outdoor_info_num=" + Outdoor_info_num;
+            location.href="/AdminOutfieldDetail?Outdoor_info_num=" + Outdoor_info_num;
         }
     </script>
 </head>

@@ -38,20 +38,20 @@
             <a id="payment"><i class="fa-solid fa-pen"></i></a> <!-- 회원정보수정 아이콘 -->
             <a id="subscription" class="active"><i class="fa-solid fa-user-plus"></i></a>   <!-- 사업자 전환 아이콘 -->
             <a id="privacy"><i class="fa-solid fa-key"></i></a> <!-- 비밀번호 변경 아이콘 -->
-            <a id="settings"><i class="fa-solid fa-user-minus"></i></a> <!-- 회원탈퇴 아이콘 -->
+            <a id="settings" href="/cu/deleteMember"><i class="fa-solid fa-user-minus"></i></a> <!-- 회원탈퇴 아이콘 -->
         </nav>
     </div>
     <div class="rightbox">
 
-        <div class="profile">
+        <div class="profile2">
 
                 <h1>사업자 전환 요청</h1>
-                <form method="post" action="">
+                <form method="post" action="/member/InsertChangeRequest">
                     <h2>사업자 번호 (10자리 / - 포함)</h2>
                     <input type="text" placeholder="여기에 적으세요." autofocus name="business_num" id="business_num">
                     <%--<input type="text" placeholder="ex) 000-00-00000" name="business_num" id="business_num"/>--%>
                     <h2>회사 명</h2>
-                    <input type="text" placeholder="ex) CampUs" name="business_title" id="business_title"/>
+                    <input type="text" placeholder="ex) CampUs" name="business_name" id="business_name"/>
                     <h2>이메일</h2>
                     <input type="text" value="<%=SS_EMAIL%>" name="business_email" id="business_email"/>
                     <h2>전화번호</h2>
@@ -60,7 +60,7 @@
                 </form>
         </div>
 
-        <div class="payment noshow">
+       <%-- <div class="payment noshow">
             <h1>Payment Info</h1>
             <h2>Payment Method</h2>
             <p>Mastercard •••• •••• •••• 0000 <button class="btn">update</button></p>
@@ -113,7 +113,7 @@
             <p></p>
             <h2>Referrals <button class="btn">get $10</button></h2>
             <p></p>
-        </div>
+        </div>--%>
 
     </div>
 </div>

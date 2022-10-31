@@ -5,6 +5,9 @@
 
 <%
     String SS_ID = CmmUtil.nvl((String) session.getAttribute("SS_ID"));
+    String SS_PASSWORD = CmmUtil.nvl((String) session.getAttribute("SS_PASSWORD"));
+
+    System.out.println("SS_PASWORD : " + SS_PASSWORD);
 
 %>
 
@@ -23,7 +26,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>메인페이지</title>
 </head>
 
 <link href="../css/FinalMain.css" rel="stylesheet" type="text/css" />

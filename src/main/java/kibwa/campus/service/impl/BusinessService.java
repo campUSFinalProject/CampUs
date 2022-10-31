@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Slf4j
 @Service(value = "BusinessService")
 @RequiredArgsConstructor
@@ -38,4 +40,21 @@ public class BusinessService implements IBusinessService {
 
 
     }
+
+    //------------------- 사업자 로그인 ----------------------
+    @Override
+    public BusinessDTO getMemLoginCheck(BusinessDTO pDTO) throws Exception {
+        if (pDTO == null) {
+            pDTO = new BusinessDTO();
+        }
+            return businessMapper.getMemLoginCheck(pDTO);
+    }
+
+    //------------ 사업자 전환 신청 리스트 조회 -------------------
+    @Override
+    public List<BusinessDTO> getChangeReq() throws Exception {
+        return businessMapper.getChangeReq();
+    }
+
+
 }
