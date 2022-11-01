@@ -1,108 +1,165 @@
 package kibwa.campus.controller;
 
-import kibwa.campus.dto.CaravanDTO;
-import kibwa.campus.service.ICaravanService;
+import kibwa.campus.dto.BusinessDTO;
+import kibwa.campus.dto.MemberDTO;
+import kibwa.campus.service.IBusinessService;
 import kibwa.campus.util.CmmUtil;
+import kibwa.campus.util.EncryptUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static kibwa.campus.util.CmmUtil.nvl;
-
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @Slf4j
 @Controller
 public class BusinessController {
 
-    @Resource(name = "CaravanService")
-    private ICaravanService CaravanService;
 
-    //관리자 캠핑장 정보 insertForm
-    @RequestMapping(value = "businessInsertForm")
-    public String BusinessInsertForm(ModelMap model)
-        throws Exception{
-        log.info(this.getClass().getName() + ".CampingInfo insertForm start!");
-        return "businesspage/Business_CRUD";
-    }
+    @Resource(name = "BusinessService")
+    private IBusinessService businessService;
 
-    //관리자 캠핑장정보 insert
-    @RequestMapping(value = "businesscrud")
-    public String Business_CRUD(HttpServletRequest request, ModelMap model) throws Exception {
-        log.info(this.getClass().getName() + ".CampingInfo insert start!");
+
+    //------------- 일반사용자에서 사업자전환요청 -----------------
+    @PostMapping(value = "member/InsertChangeRequest")
+    public String InsertChangeRequest (HttpServletRequest request,HttpSession session, HttpServletResponse response,
+                                       ModelMap model) throws Exception {
+
+        log.info(this.getClass().getName() + ".InsertChangeRequest START!!!");
 
         String msg = "";
         String url = "";
 
+        BusinessDTO pDTO = null;
         try {
-            String city_name = CmmUtil.nvl(request.getParameter("city_name"));
-            String cground_name = CmmUtil.nvl(request.getParameter("cground_name"));
-            String cground_tel = CmmUtil.nvl(request.getParameter("cground_tel"));
-            String cground_loacation = CmmUtil.nvl(request.getParameter("cground_loacation"));
-            String cground_deposit = CmmUtil.nvl(request.getParameter("cground_deposit"));
-            String campinng_enter = CmmUtil.nvl(request.getParameter("campinng_enter"));
-            String camping_exit = CmmUtil.nvl(request.getParameter("camping_exit"));
-            String cground_detail_info = CmmUtil.nvl(request.getParameter("cground_detail_info"));
-            String add_facil = CmmUtil.nvl(request.getParameter("add_facil"));
-            String business_num = "1";
 
-            log.info("city_name : " + city_name);
-            log.info("cground_name : " + cground_name);
-            log.info("cground_tel : " + cground_tel);
-            log.info("cground_loacation : " + cground_loacation);
-            log.info("cground_deposit : " + cground_deposit);
-            log.info("campinng_enter : " + campinng_enter);
-            log.info("camping_exit : " + camping_exit);
-            log.info("cground_detail_info : " + cground_detail_info);
-            log.info("add_facil : " + add_facil);
+            String business_num = CmmUtil.nvl(request.getParameter("business_num"));
+            String business_id = CmmUtil.nvl((String) session.getAttribute("SS_ID"));
+            String business_pw = CmmUtil.nvl((String) session.getAttribute("SS_PASSWORD"));
+            String business_name = CmmUtil.nvl(request.getParameter("business_name"));
+            String business_tel = CmmUtil.nvl(request.getParameter("business_tel"));
+            String business_email = CmmUtil.nvl(request.getParameter("business_email"));
+
             log.info("business_num : " + business_num);
+            log.info("id : " + business_id);
+            log.info("password : " + business_pw);
+            log.info("name : " + business_name);
+            log.info("tel : " + business_tel);
+            log.info("email : " + business_email);
 
-            CaravanDTO cDTO = new CaravanDTO();
 
-            cDTO.setCity_name(city_name);
-            cDTO.setCground_name(cground_name);
-            cDTO.setCground_tel(cground_tel);
-            cDTO.setCground_location(cground_loacation);
-            cDTO.setCground_deposit(cground_deposit);
-            cDTO.setCamping_enter(campinng_enter);
-            cDTO.setCamping_exit(camping_exit);
-            cDTO.setCground_detail_info(cground_detail_info);
-            cDTO.setAdd_facil(add_facil);
-            cDTO.setBusiness_num(business_num);
+            pDTO = new BusinessDTO();
 
-            CaravanService.insertCampingInfo(cDTO);
+            pDTO.setBusiness_num(business_num);
+            pDTO.setBusiness_id(business_id);
+            pDTO.setBusiness_pw(business_pw);
+            pDTO.setBusiness_name(business_name);
+            pDTO.setBusiness_tel(business_tel);
+            pDTO.setBusiness_email(business_email);
 
-            msg = "등록되었습니다.";
-            url = "/businessInsertForm";
+            int res = businessService.InsertChangeRequest(pDTO);
+
+            if (res == 1) {
+                msg = "사업자 전환요청이 완료되었습니다.";
+                url = "/cu/Main";
+            } else {
+                msg = "오류로 인해 사업자 전환요청에 실패하였습니다.";
+                url = "/cu/changeMem";
+            }
 
         } catch (Exception e) {
-            msg = "실패하였습니다 : " + e.getMessage();
-            url = "/businessInsertForm";
 
+            msg = "실패하였습니다 : " + e.toString();
+            url = "/cu/changeMem";
             log.info(e.toString());
             e.printStackTrace();
 
         } finally {
-            log.info(this.getClass().getName() + ".CampingInfo Insert End!");
+            log.info(this.getClass().getName() + ".InsertChangeRequest end!!");
 
-            model.addAttribute("url", url);
             model.addAttribute("msg", msg);
+            model.addAttribute("url", url);
+            model.addAttribute("pDTO", pDTO);
 
-            log.info("model : " + model);
+            pDTO = null;
         }
 
         return "/redirect";
     }
 
 
-}
+    //--------------사업자 로그인 기능-----------------
+    @PostMapping(value = "cu/getBusinessLoginCheck")
+    public String getBusinessLoginCheck(HttpSession session, HttpServletResponse response, HttpServletRequest request,
+                                   ModelMap model) throws Exception{
+        log.info(this.getClass().getName() + ". getBusinessLoginCheck START!!!");
 
-//지니 수정
-//민지가 오류나는거 수정함
-//건우 push test
+        String msg = "";
+        String url = "";
+
+        try{
+
+            String business_id = CmmUtil.nvl(request.getParameter("id"));
+            String business_pw = CmmUtil.nvl(request.getParameter("password"));
+            String Business_email = CmmUtil.nvl(request.getParameter("Business_email"));
+            String Business_tel = CmmUtil.nvl(request.getParameter("Business_tel"));
+            String Business_name = CmmUtil.nvl(request.getParameter("Business_name"));
+
+            log.info("Business_id : " + business_id);
+            log.info("Business_password : " + business_pw);
+
+            BusinessDTO pDTO = new BusinessDTO();
+
+            pDTO.setBusiness_id(business_id);
+            pDTO.setBusiness_pw(EncryptUtil.encHashSHA256(business_pw));
+            pDTO.setBusiness_name(Business_name);
+            pDTO.setBusiness_email(Business_email);
+            pDTO.setBusiness_tel(Business_tel);
+
+            //로그인정보 체크
+            BusinessDTO rDTO = businessService.getMemLoginCheck(pDTO);
+
+            if (rDTO == null){
+                rDTO = new BusinessDTO();
+                msg = "아이디 / 비밀번호를 확인해주세요";
+                url = "/member/memRegLoginForm";
+
+            }else {
+                msg = "로그인 성공";
+                url = "/cu/businessMain";
+
+                session.setAttribute("SS_business_ID", rDTO.getBusiness_id());
+                session.setAttribute("SS_business_NUM", rDTO.getBusiness_num());
+                session.setAttribute("SS_business_TEL", rDTO.getBusiness_tel());
+                session.setAttribute("SS_business_EMAIL", rDTO.getBusiness_email());
+                session.setAttribute("SS_business_NAME", rDTO.getBusiness_name());
+                session.setAttribute("SS_business_PASSWORD", rDTO.getBusiness_pw());
+
+
+            }
+            rDTO = null;
+
+        }catch (Exception e){
+            msg = "실패하였습니다 :" + e.toString();
+            System.out.println("오류로 인해 로그인이 실패하였습니다.");
+            log.info(e.toString());
+            e.printStackTrace();
+
+        }finally {
+            log.info(this.getClass().getName() + ".LOGIN_CHECK END!!!!");
+            model.addAttribute("msg", msg);
+            model.addAttribute("url", url);
+        }
+
+        return "/redirect";
+    }
+
+
+
+
+}

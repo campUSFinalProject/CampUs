@@ -24,6 +24,7 @@ public class BoardService implements IBoardService {
     // 게시판 글 조회
     @Override
     public List<BoardDTO> getBoardList() throws Exception{
+
         return boardMapper.getBoardList();
     }
 
@@ -39,6 +40,7 @@ public class BoardService implements IBoardService {
     @Override
     public BoardDTO getBoardView(BoardDTO bDTO) throws Exception {
         log.info(this.getClass().getName() + ".BoardViewService");
+        boardMapper.updateBoardViewNum(bDTO);
         return boardMapper.getBoardView(bDTO);
     }
 
@@ -55,12 +57,5 @@ public class BoardService implements IBoardService {
     public void updateBoard(BoardDTO bDTO) throws Exception {
         log.info(this.getClass().getName() + ".updateBoardService");
         boardMapper.updateBoard(bDTO);
-    }
-
-    //게시글 조회수 증가
-    @Override
-    public void updateBoardViewNum(BoardDTO bDTO) throws Exception {
-        log.info(this.getClass().getName() + ".updateBoardViewNumService");
-        boardMapper.updateBoardViewNum(bDTO);
     }
 }
