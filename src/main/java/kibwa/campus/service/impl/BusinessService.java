@@ -50,7 +50,7 @@ public class BusinessService implements IBusinessService {
             return businessMapper.getMemLoginCheck(pDTO);
     }
 
-    //------------ 사업자 전환 신청 리스트 조회 -------------------
+    /*//------------ 사업자 전환 신청 리스트 조회 -------------------
     @Override
     public List<BusinessDTO> getChangeReq() throws Exception {
         return businessMapper.getChangeReq();
@@ -62,7 +62,7 @@ public class BusinessService implements IBusinessService {
         log.info(this.getClass().getName() + ".changeReqInfo START!!");
 
         return businessMapper.changeReqInfo(pDTO);
-    }
+    }*/
 
 
 }

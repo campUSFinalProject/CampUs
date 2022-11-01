@@ -14,7 +14,6 @@
              BUSINESS_NAME,
              BUSINESS_TEL,
              BUSINESS_EMAIL,
-             ACTIVATION
             )
         VALUES(
                #{business_num},
@@ -23,7 +22,6 @@
                #{business_name},
                #{business_tel},
                #{business_email},
-               'N'
               )
     </insert>
 
@@ -37,7 +35,7 @@
     </select>
 
 
-    <!-- 사업자 신청 리스트 조회 -->
+     <!--사업자 신청 리스트 조회
     <select id="getChangeReq" resultType="kibwa.campus.dto.BusinessDTO">
         SELECT BUSINESS_NUM, BUSINESS_ID, BUSINESS_NAME, BUSINESS_TEL, BUSINESS_EMAIL, ACTIVATION
         FROM BUSINESS
@@ -48,7 +46,7 @@
         select business_num, business_id, business_name, business_tel, business_email, activation
         from business
         where business_num = #{business_num}
-    </select>
+    </select>-->
 
 
 </mapper>
