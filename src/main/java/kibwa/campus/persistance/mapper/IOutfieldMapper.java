@@ -1,7 +1,6 @@
 package kibwa.campus.persistance.mapper;
 
 
-import kibwa.campus.dto.OutfieldDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
