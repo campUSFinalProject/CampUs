@@ -36,6 +36,17 @@ public class  CaravanController {
         return "/Caravan/Caravan";
     }
 
+    @RequestMapping(value = "business_insert")
+    public String business_insert(HttpServletRequest request, ModelMap model) throws Exception {
+
+        List<CaravanDTO> cList = CaravanService.getCaravanList();
+
+        model.addAttribute("cList" , cList);
+
+        return "/business/business_insert";
+    }
+
+
 
 
     /* 카라반 상세정보 페이지*/
