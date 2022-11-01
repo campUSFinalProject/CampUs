@@ -177,7 +177,7 @@ public class BusinessController {
 
 
 
-    //--------------- 사업자 전환 요청 리스트 조회 ---------------------
+    /*//--------------- 사업자 전환 요청 리스트 조회 ---------------------
     @GetMapping(value = "business/changeReqList")
     public String changeReqList(ModelMap model) throws Exception{
 
@@ -196,8 +196,47 @@ public class BusinessController {
         log.info(this.getClass().getName() + ".changeReqList END!!!");
 
         return "/admin/changeReqList";
-    }
+    }*/
 
+    /*//-------------- 사업자 전환 요청 상세 조회 ---------------------
+    @GetMapping(value = "admin/changeReqInfo")
+    public String changeReqInfo(HttpSession session, HttpServletRequest request, ModelMap model)
+        throws Exception{
+
+        log.info(this.getClass().getName() + ".changeReqInfo START!!!");
+
+        String msg = "";
+
+        try {
+            String business_num = CmmUtil.nvl(request.getParameter("business_num"));
+
+            log.info("business_num : " + business_num);
+
+            BusinessDTO pDTO = new BusinessDTO();
+            pDTO.setBusiness_num(business_num);
+
+            BusinessDTO rDTO = businessService.changeReqInfo(pDTO);
+
+            if (rDTO == null){
+                rDTO = new BusinessDTO();
+            }
+
+            model.addAttribute("rDTO",rDTO);
+
+            log.info("r.business_num : " + rDTO.getBusiness_num());
+
+        }catch (Exception e){
+            msg = "실패하였습니다 : " + e.toString();
+            log.info(e.toString());
+            e.printStackTrace();
+
+        }finally {
+            log.info(this.getClass().getName() + ".changeReqInfo END!!!!");
+            model.addAttribute("msg", msg);
+        }
+
+        return "/admin/changeReqInfo";
+    }*/
 
 
 
