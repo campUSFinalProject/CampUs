@@ -13,4 +13,5 @@ public interface IOutfieldMapper {
     OutfieldDTO getOutfieldView(OutfieldDTO oDTO) throws Exception;
     void insertOutfield(OutfieldDTO oDTO) throws Exception;
     void updateOutfield(OutfieldDTO oDTO) throws Exception;
+    int deleteOutfield(OutfieldDTO oDTO) throws Exception;
 }

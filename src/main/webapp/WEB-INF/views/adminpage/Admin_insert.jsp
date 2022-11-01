@@ -7,7 +7,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>노지 관리자 페이지</title>
+    <title>노지 관리자 등록 페이지</title>
+    <script type="text/javascript">
+        function goToOutfield() {
+            location.href = "/AdminOutfield";
+        }
+    </script>
 </head>
 
 <link href="../css/Admin_insert.css" rel="stylesheet" type="text/css" />
@@ -15,7 +20,7 @@
 <body>
 
 <div class="container">
-    <h1>노지 관리자 페이지</h1>
+    <h1>노지 관리자 등록 페이지</h1>
 
     <form name="frm" action="/Admin_insert">
         <br>
@@ -56,11 +61,10 @@
             <p>
                 <input type="submit" >
             </p>
+            <p>
+                <input type='reset' value='메인으로' onclick="javascript:goToOutfield()">
+            </p>
         </div>
-        <fieldset>
-            <legend>Legend</legend>
-            Fieldset
-        </fieldset>
     </form>
 </div>
 

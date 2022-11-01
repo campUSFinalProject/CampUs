@@ -2,7 +2,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="kibwa.campus.util.CmmUtil" %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
     OutfieldDTO ofDTO = (OutfieldDTO)request.getAttribute("ofDTO");
@@ -37,16 +37,21 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.theme.default.min.css">
 
 <script type="text/javascript">
+    //메인 이동
     function goToMain() {
         location.href = "/FinalMain";
     }
 
+    //노지 리스트 이동
     function goToOutfield() {
-        location.href = "/AdminOutfield.jsp";
+        location.href = "/AdminOutfield";
     }
 
-    function Adminupdate(){
-        location.href="/AdminOutfieldDetail?Outdoor_info_num=<%=CmmUtil.nvl(ofDTO.getOutdoor_info_num())%>"
+    //노지 삭제
+    function Admindelete() {
+        if (confirm("해당 노지를 삭제하시겠습니까?")) {
+            location.href = "/Admindelete?Outdoor_info_num=<%=CmmUtil.nvl(ofDTO.getOutdoor_info_num())%>";
+        }
     }
 </script>
 
@@ -375,7 +380,7 @@
                 <h2>객실</h2>
                 <ul>
                     <li><a href="/FinalMain">메인 화면</a></li>
-                    <li><a href="/Outfield">노지 리스트</a></li>
+                    <li><a href="/AdminOutfield">노지 리스트</a></li>
                 </ul>
             </div>
             <div class="contents">
@@ -402,27 +407,28 @@
                     </ul>
                 </div>
                 <div class="content_2">
+                    <form id="f" method="post" id="form" class="topBefore" action="/AdminUpdate" onsubmit="return doSubmit(this);">
+                        <input type="hidden" id="outdoor_info_num" name="outdoor_info_num" value="<%=CmmUtil.nvl(ofDTO.getOutdoor_info_num()) %>"/>
                     <div class="leftSec">
                         <p class="title"><input type="text" name="location_specific" value="<%=CmmUtil.nvl(ofDTO.getLocation_specific())%>"></p>
-                        <p class="callText"><textarea rows="5" cols="40" name="outdoor_detail_info"><%=CmmUtil.nvl(ofDTO.getOutdoor_detail_info())%></textarea></p>
+                        <p class="callText"><textarea rows="5" cols="40" id="outdoor_detail_info" name="outdoor_detail_info"><%=CmmUtil.nvl(ofDTO.getOutdoor_detail_info())%></textarea></p>
                     </div>
                     <div class="rightSec">
                         <ul class="detail">
                             <li></li>
-                            <form name="f" method="post" action="/AdminUpdate" onsubmit="return doSubmit(this);">
-                                <li><a href="javascript:Adminupdate()" class="btn_2">수정하기</a></li>
-                            </form>
-                            <li><a href="" class="btn_3">삭제하기</a></li>
+                            <li><a href="#" onclick="document.getElementById('f').submit();" class="btn_2">수정하기</a></li>
+                            <li><a href="javascript:Admindelete()" class="btn_3">삭제하기</a></li>
                         </ul>
                         <h2>Outfield Info</h2>
                         <div class="bottomBox">
                             <ul class="headList">
                                 <li>
-                                    <textarea rows="5" cols="40" name="outdoor_detail_memo"><%=CmmUtil.nvl(ofDTO.getOutdoor_detail_memo())%></textarea>
+                                    <textarea rows="5" cols="40" id="outdoor_detail_memo" name="outdoor_detail_memo"><%=CmmUtil.nvl(ofDTO.getOutdoor_detail_memo())%></textarea>
                                 </li>
                             </ul>
                         </div>
                     </div>
+                    </form>
                 </div>
                 <div class="snsSec">
                     <ul>

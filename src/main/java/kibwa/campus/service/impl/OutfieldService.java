@@ -43,4 +43,12 @@ public class OutfieldService implements IOutfieldService {
     public void updateOutfield(OutfieldDTO oDTO) throws Exception {
         outfieldMapper.updateOutfield(oDTO);
     }
+
+    //노지 삭제
+    @Override
+    public int deleteOutfield(OutfieldDTO oDTO) throws Exception {
+        log.info(this.getClass().getName() + ".deleteOutfieldService");
+        int res = outfieldMapper.deleteOutfield(oDTO);
+        return res;
+    }
 }
