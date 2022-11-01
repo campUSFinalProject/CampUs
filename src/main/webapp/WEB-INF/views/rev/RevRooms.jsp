@@ -1,3 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="kibwa.campus.dto.rev.CampingInfoResponseDTO" %>
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>응애나애기붐킨쨩</title>
+</head>
+<body>
 <section id="section-main" class="section-reservation">
     <div class="w800">
         <div id="status-track">
@@ -16,15 +29,28 @@
                 <div class="lbl">Guest Info</div>
             </a>
         </div>
-<%
 
-%>
+        <%
+            System.out.println(((CampingInfoResponseDTO)request.getAttribute("campInfo")));
+        %>
+
         <form action="${pageContext.request.contextPath}/rev/rooms" method="post">
             <%-- 캠핑장 정보들을 숨겨서 서버로 보낼것 --%>
-            <input type="hidden" name="id" value="">
-            <input type="hidden" name="" value="">
-            <input type="hidden" name="" value="">
-            <input type="hidden" name="" value="">
+            <input type="hidden" name="sector_num" value="${campInfo.sector_num}">
+            <input type="hidden" name="cground_info_num" value="${campInfo.cground_info_num}">
+            <input type="hidden" name="cground_name" value="${campInfo.cground_name}">
+            <input type="hidden" name="cground_location" value="${campInfo.cground_location}">
+            <input type="hidden" name="cground_tel" value="${campInfo.cground_tel}">
+            <input type="hidden" name="cground_deposit" value="${campInfo.cground_deposit}">
+            <input type="hidden" name="cground_enter" value="${campInfo.cground_enter}">
+            <input type="hidden" name="cground_exit" value="${campInfo.cground_exit}">
+            <input type="hidden" name="cground_detail_info" value="${campInfo.cground_detail_info}">
+            <input type="hidden" name="add_facil" value="${campInfo.add_facil}">
+            <input type="hidden" name="rev_count" value="${campInfo.rev_count}">
+            <input type="hidden" name="location_city_num" value="${campInfo.location_city_num}">
+            <input type="hidden" name="camping_type_num" value="${campInfo.camping_type_num}">
+            <input type="hidden" name="camping_type_name" value="${campInfo.camping_type_name}">
+            <input type="hidden" name="mem_num" value="${campInfo.mem_num}">
 
             <div class="split field">
                 <div>
@@ -144,3 +170,6 @@
         </form>
     </div>
 </section>
+
+</body>
+</html>

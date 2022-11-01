@@ -9,23 +9,34 @@
     <meta charset="UTF-8">
     <title>예약</title>
 </head>
-js/
+
 <link href="<%=request.getContextPath()%>/resources/static/css/FinalMain.css" rel="stylesheet" type="text/css" />
 <link href="<%=request.getContextPath()%>/resources/static/css/RevDate.css" rel="stylesheet" type="text/css" />
 <link href="<%=request.getContextPath()%>/resources/static/css/RevRooms.css" rel="stylesheet" type="text/css" />
 <link href="<%=request.getContextPath()%>/resources/static/css/RevPayments.css" rel="stylesheet" type="text/css" />
 <link href="<%=request.getContextPath()%>/resources/static/css/RevGuestinfo.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/resources/static/css/uikit.css" rel="stylesheet" type="text/css" />
 
-<script defer type="text/javascript" src= "<%=request.getContextPath()%>/resources/static/js/FinalMain.js"></script>
-<script defer type="text/javascript" src= "<%=request.getContextPath()%>/resources/static/js/RevDate.js"></script>
-<script defer src="../4_jquery_class/lib/jquery-1.9.1.min.js"></script>
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script defer type="text/javascript" src="<%=request.getContextPath()%>/resources/static/js/FinalMain.js"></script>
+<script defer type="text/javascript" src="<%=request.getContextPath()%>/resources/static/js/uikit.js"></script>
+<script defer type="text/javascript" src="<%=request.getContextPath()%>/resources/static/js/RevDate.js"></script>
+<script defer type="text/javascript" src="<%=request.getContextPath()%>/resources/static/js/RevRooms.js"></script>
+<script defer type="text/javascript" src="<%=request.getContextPath()%>/resources/static/js/RevPayments.js"></script>
+<script defer type="text/javascript" src="<%=request.getContextPath()%>/resources/static/js/RevGuestinfo.js"></script>
+
+<link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 
 <!-- 폰트어썸 불러오기 -->
+
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.theme.default.min.css">
+
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
+<script defer src="../4_jquery_class/lib/jquery-1.9.1.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script defer src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+
 
 <body>
 
@@ -355,16 +366,20 @@ js/
             </div>
         </div>
     </div>
-
 </div>
 <!-- 상단 메뉴바 끝 -->
 
 <!-- 예약 날짜 -->
 
+
 <section id="section-main" class="section-reservation">
     <div class="w800">
         <div id="status-track">
-
+            <a class="complete" href="#">
+                <i class="fa fa-check-circle-o"></i>
+                <div class="lbl">Dates</div>
+                <div class="sub">DEC 12 - DEC 13</div>
+            </a>
             <a class="current" href="#"><i class="fa fa-th-list"> </i>
                 <div class="lbl">Rooms</div>
             </a>
@@ -378,12 +393,22 @@ js/
 
         <form action="#">
             <div class="split field">
-
+                <div>
+                    <label for="numadults">Adults</label>
+                    <input type="number" id="numadults" />
+                </div>
+                <div>
+                    <label for="numchildren">Children</label>
+                    <input type="number" id="numchildren" />
+                </div>
 
             </div>
             <label>Filter By Room Type</label>
             <ul id="room-types-container">
-                <li class="rc is-selected" data-filter=".rt1">
+                <li class="rc is-selected" data-filter="*">
+                    All
+                </li>
+                <li class="rc" data-filter=".rt1">
                     NQ1
                 </li>
                 <li class="rc" data-filter=".rt2">
@@ -450,58 +475,37 @@ js/
                     <div class="rp">$165.00</div>
                 </li>
             </ul>
-                <fieldset>
-                    <div class="split field">
-                        <div class="equal">
-                            <label>Check In</label>
-                            <input type="date"/>
-                        </div>
-                        <div class="equal">
-                            <label>Check Out</label>
-                            <input type="date"/>
-                        </div>
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <div class="split field">
-                        <div>
-                            <label for="numadults">Adults</label>
-                            <input type="number" id="numadults" />
-                        </div>
-                    </div>
-                </fieldset>
 
-                <label>Price</label>
-                <div class="display-price">
-                    <div class="dp-row">
-                        <div class="col1"><b>ROOM</b></div>
-                        <div class="col2">
-                            <input type="text" id="reservation_rate" />
-                        </div>
-                    </div>
-                    <div class="dp-row">
-                        <div class="col1">TAX (10%)</div>
-                        <div class="col2">
-                            <input type="text" id="reservation_tax" />
-                        </div>
-                    </div>
-                    <div class="dp-row">
-                        <div class="col1"><b>TOTAL</b></div>
-                        <div class="col2">
-                            <input type="text" id="reservation_total" />
-                        </div>
+            <label>Price</label>
+            <div class="display-price">
+                <div class="dp-row">
+                    <div class="col1"><b>ROOM</b></div>
+                    <div class="col2">
+                        <input type="text" id="reservation_rate" />
                     </div>
                 </div>
-
-                <div class="spacer"></div>
-                <div class="actions">
-                    <div><a href="">Cancel</a></div>
-                    <div><a class="btn btn-aqua" href="#"><i class="fa fa-angle-left fa"></i> Back</a><a class="btn btn-aqua spacer-v" href="#">Continue <i class="fa fa-angle-right fa"></i></a></div>
+                <div class="dp-row">
+                    <div class="col1">TAX (10%)</div>
+                    <div class="col2">
+                        <input type="text" id="reservation_tax" />
+                    </div>
                 </div>
-            </form>
+                <div class="dp-row">
+                    <div class="col1"><b>TOTAL</b></div>
+                    <div class="col2">
+                        <input type="text" id="reservation_total" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="spacer"></div>
+            <div class="actions">
+                <div><a href="">Cancel</a></div>
+                <div><a class="btn btn-aqua" href="#"><i class="fa fa-angle-left fa"></i> Back</a><a class="btn btn-aqua spacer-v" href="#">Continue <i class="fa fa-angle-right fa"></i></a></div>
+            </div>
+        </form>
     </div>
 </section>
-
 <!-- 예약 날짜 끝 -->
 
 

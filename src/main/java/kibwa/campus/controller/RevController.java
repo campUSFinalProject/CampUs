@@ -1,7 +1,8 @@
 package kibwa.campus.controller;
 
 import kibwa.campus.dto.MemberDTO;
-import kibwa.campus.dto.rev.RevDTO;
+import kibwa.campus.dto.rev.RoomsRequestDTO;
+import kibwa.campus.dto.rev.CampingInfoResponseDTO;
 import kibwa.campus.service.impl.rev.RevService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
 
 @Slf4j
 @Controller
@@ -45,19 +43,19 @@ public class RevController {
     @GetMapping(value = "/{cGroundName}/{sectorId}") //localhost:9000/캠핑장이름/섹터넘버;
     public String Rooms(@PathVariable String sectorId,
                         Model model) throws Exception {
-        log.info("pathVariable = {}", sectorId);
-        RevDTO revDTO = revService.findRevCampInfo(sectorId);
-        log.info("revDTO = {}", revDTO);
-        model.addAttribute("campInfo", revDTO);
+
+        CampingInfoResponseDTO campingInfoResponseDTO = revService.findRevCampInfo(sectorId);
+        log.info("조회해온 campingInfo = {}", campingInfoResponseDTO);
+        model.addAttribute("campInfo", campingInfoResponseDTO);
 
         return "/rev/RevRooms";
     }
 
     @PostMapping(value = "/rooms")
-    public String Rooms(RevDTO revDTO,
+    public String Rooms(RoomsRequestDTO roomsRequestDTO,
                         HttpSession session) {
         MemberDTO memberDTO =(MemberDTO) session.getAttribute("Mem_num");
-        revService.save(revDTO, memberDTO);
+        revService.save(roomsRequestDTO, memberDTO);
 
         return "redirect:/rev/payment";
     }
@@ -69,7 +67,7 @@ public class RevController {
     }
 
     @PostMapping(value = "/payment")
-    public String payment(@ModelAttribute RevDTO revDTO) throws Exception {
+    public String payment(@ModelAttribute CampingInfoResponseDTO revDTO) throws Exception {
         log.info("revDTO = {}", revDTO);
         //revService.save(revDTO);
         return "redirect:/rev/guestInfo";
@@ -90,5 +88,12 @@ public class RevController {
 
         log.info("{} .RevGIList End!", this.getClass().getName());
         return "/rev/RevGI";
+    }
+
+
+
+    @GetMapping(value = "test")
+    public String test1(){
+        return "rev/testrev";
     }
 }

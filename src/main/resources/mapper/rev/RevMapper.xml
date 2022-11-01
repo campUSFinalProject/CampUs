@@ -3,29 +3,7 @@
 
 <mapper namespace="kibwa.campus.persistance.mapper.rev.IRevMapper">
 
-    <!-- 예약 쿼리 -->
-    <select id="getRevList" resultType="kibwa.campus.dto.rev.RevDTO">
-        select m.NAME as NAME ,
-               m.MEM_TEL as MEM_TEL,
-               m.EMAIL as EMAIL,
-               r.REV_PEOPLE as REV_PEOPLE,
-               r.HELP_CHECK as HELP_CHECK,
-               r.SECTOR_NUM as SECTOR_NUM,
-               r.REV_DATE as REV_DATE,
-               r.ENTER_DATE as ENTER_DATE,
-               r.EXIT_DATE as EXIT_DATE
-        from REV r,
-             MEMBER m
-        where m.name='스프링'
-    </select>
-
-    <!-- 예약 쿼리 -->
-    <select id="getRevDateList" resultType="kibwa.campus.dto.rev.RevDTO">
-        select *
-        from MEMBER
-    </select>
-
-    <insert id="save" parameterType="kibwa.campus.dto.rev.RevDTO">
+    <insert id="save" parameterType="kibwa.campus.dto.rev.CampingInfoResponseDTO">
         INSERT INTO REV (
             REV_NUM,
             REV_PEOPLE,
@@ -45,7 +23,7 @@
     </insert>
 
     <!-- 예약 쿼리 -->
-    <select id="findRevCampInfo" resultType="kibwa.campus.dto.rev.RevDTO">
+    <select id="findRevCampInfo" resultType="kibwa.campus.dto.rev.CampingInfoResponseDTO">
         select A.CGROUND_INFO_NUM,
                A.CGROUND_NAME,
                A.CGROUND_LOCATION,
@@ -66,7 +44,7 @@
         WHERE 1=1
             AND A.CGROUND_INFO_NUM = B.CGROUND_INFO_NUM
             AND B.CAMPING_TYPE_NUM = C.CAMPING_TYPE_NUM
-            AND B.SECTOR_NUM = #{sector_num}
+            AND B.SECTOR_NUM = #{sector_Num}
 
     </select>
 

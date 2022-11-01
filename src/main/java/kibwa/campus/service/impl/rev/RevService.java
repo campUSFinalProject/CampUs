@@ -1,13 +1,12 @@
 package kibwa.campus.service.impl.rev;
 
 import kibwa.campus.dto.MemberDTO;
+import kibwa.campus.dto.rev.RoomsRequestDTO;
+import kibwa.campus.dto.rev.CampingInfoResponseDTO;
 import kibwa.campus.dto.rev.RevDTO;
 import kibwa.campus.persistance.mapper.rev.IRevMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-
-import java.util.List;
 
 @Slf4j
 @Service
@@ -19,13 +18,15 @@ public class RevService {
         this.revMapper = revMapper;
     }
 
-    public RevDTO findRevCampInfo(String sectorId) {
-        return revMapper.findRevCampInfo(sectorId);
+    public CampingInfoResponseDTO findRevCampInfo(String sectorId) {
+        RevDTO revDTO = new RevDTO();
+        revDTO.setSector_Num(sectorId);
+        return revMapper.findRevCampInfo(revDTO);
     }
 
-    public void save(RevDTO revDTO, MemberDTO memberDTO) {
-        revDTO.setMem_Num(memberDTO.getMem_num());
+    public void save(RoomsRequestDTO roomsRequestDTO, MemberDTO memberDTO) {
+        roomsRequestDTO.setMem_num(memberDTO.getMem_num());
 
-        revMapper.save(revDTO);
+        revMapper.save(roomsRequestDTO);
     }
 }
