@@ -17,4 +17,7 @@ public interface IBusinessMapper {
     //사업자 전환요청 리스트 조회
     List<BusinessDTO> getChangeReq() throws Exception;
 
+    //게시글 상세내용 조회
+    BusinessDTO changeReqInfo(BusinessDTO pDTO) throws Exception;
+
 }
