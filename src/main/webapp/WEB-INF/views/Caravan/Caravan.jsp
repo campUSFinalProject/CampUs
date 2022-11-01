@@ -386,8 +386,6 @@
 </div>
 <%}%>
 
-<!-- 야영지 정보 -->
-
 <script type="text/javascript" src= "../js/FinalMain.js"></script>
 </body>
 </html>

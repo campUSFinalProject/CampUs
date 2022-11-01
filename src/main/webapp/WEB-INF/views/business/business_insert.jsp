@@ -15,11 +15,20 @@
     System.out.println("cList : " + cList);
 %>
 
+
+
+    <!-- 예약페이지로 이동 -->
+    <script type="text/javascript">
+        function goToBusinessinsert() {
+            location.href = "/Business_CRUD";
+        }
+    </script>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>카라반</title>
+    <title>캠핑장 리스트 & 등록</title>
 
     <!--나중에 JS독립시키기-->
     <script type="text/javascript">
@@ -386,8 +395,15 @@
 </div>
 <%}%>
 
-<!-- 야영지 정보 -->
+<p>
+    <input type='reset' value='캠핑장 등록하기' onclick="javascript:goToBusinessinsert()">
+</p>
+
+
 
 <script type="text/javascript" src= "../js/FinalMain.js"></script>
+<script type="text/javascript" src= "../js/Admin_in_up_de.js"></script>
+
 </body>
+
 </html>

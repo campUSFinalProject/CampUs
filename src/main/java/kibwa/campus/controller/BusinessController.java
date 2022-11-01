@@ -1,8 +1,10 @@
 package kibwa.campus.controller;
 
 import kibwa.campus.dto.BusinessDTO;
+import kibwa.campus.dto.CaravanDTO;
 import kibwa.campus.dto.MemberDTO;
 import kibwa.campus.service.IBusinessService;
+import kibwa.campus.service.impl.CaravanService;
 import kibwa.campus.util.CmmUtil;
 import kibwa.campus.util.EncryptUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +17,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -23,6 +26,13 @@ public class BusinessController {
 
     @Resource(name = "BusinessService")
     private IBusinessService businessService;
+
+    //------------- 사업자 캠핑장 등록 페이지 -------------------
+    @RequestMapping(value = "Business_CRUD")
+    public String Business_CRUD(HttpServletRequest request, ModelMap model) throws Exception {
+        return "/businesspage/Business_CRUD";
+    }
+
 
 
     //------------- 일반사용자에서 사업자전환요청 -----------------

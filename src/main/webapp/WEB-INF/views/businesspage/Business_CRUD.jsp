@@ -8,9 +8,17 @@
 
 <link href="../css/business.css" rel="stylesheet" type="text/css" />
 
+<!-- 제출 시 프레임 띄워주기 -->
 <script type="text/javascript">
-    function businessIsInsert(){
+    function businessInsert(){
         document.frm.submit();
+    }
+</script>
+
+<!-- 리스트로 이동 -->
+<script type="text/javascript">
+    function goTolist() {
+        location.href = "/business_insert";
     }
 </script>
 
@@ -99,15 +107,15 @@
             </p>
 
             <p>
-                <input type="file" name="file" id="file">
-            </p>
-
-            <p>
-                <input type="submit" onclick="javascript:businessIsInsert()">
+                <input type="submit" onclick="javascript:businessInsert()">
             </p>
 
             <p>
                 <input type="reset">
+            </p>
+
+            <p>
+                <input type="reset" value='목록으로' onclick="javascript:goTolist()">
             </p>
 
         </div>
