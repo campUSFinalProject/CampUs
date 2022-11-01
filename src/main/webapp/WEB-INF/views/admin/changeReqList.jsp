@@ -400,7 +400,7 @@
     <div class="notice">
         <div class="page-title">
             <div class="container">
-                <h3>자유게시판</h3>
+                <h3>사업자 전환요청 리스트</h3>
             </div>
         </div>
 
@@ -425,11 +425,9 @@
                 <table class="board-table">
                     <thead>
                     <tr>
-                        <th scope="col" class="th-num">번호</th>
-                        <th scope="col" class="th-title">제목</th>
-                        <th scope="col" class="th-id">작성자</th>
-                        <th scope="col" class="th-date">등록일</th>
-                        <th scope="col" class="th-showNum">조회수</th>
+                        <th scope="col" class="th-num">사업자 번호</th>
+                        <th scope="col" class="th-title">사업명</th>
+                        <th scope="col" class="th-id">신청자 아이디</th>
                     </tr>
                     </thead>
                     <tbody>
