@@ -1,6 +1,5 @@
 package kibwa.campus.service;
 
-import kibwa.campus.dto.BoardDTO;
 import kibwa.campus.dto.CaravanDTO;
 
 import java.util.List;
