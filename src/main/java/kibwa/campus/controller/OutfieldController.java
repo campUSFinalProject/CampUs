@@ -72,7 +72,7 @@ public class OutfieldController {
 
             oDTO.setOutdoor_info_num(Outdoor_detail_info_num);
 
-            OutfieldDTO ofDTO = outfieldService.getOudfieldView(oDTO);
+            OutfieldDTO ofDTO = outfieldService.getOutfieldView(oDTO);
 
             if (ofDTO == null){
                 ofDTO = new OutfieldDTO();

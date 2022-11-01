@@ -37,7 +37,7 @@
         set location_specific=#{location_specific},
             outdoor_detail_info=#{outdoor_detail_info},
             outdoor_detail_memo=#{outdoor_detail_memo}
-        where location_specific=#{location_specific};
+        where Outdoor_info_num=#{Outdoor_info_num};
     </update>
 
 

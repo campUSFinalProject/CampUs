@@ -5,16 +5,17 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
 
 <%
-    OutfieldDTO oDTO = (OutfieldDTO)request.getAttribute("oDTO");
+    OutfieldDTO ofDTO = (OutfieldDTO)request.getAttribute("ofDTO");
 
     //노지 정보를 못불러왔다면, 객체 생성
-    if (oDTO==null){
-        oDTO = new OutfieldDTO();
+    if (ofDTO==null){
+        ofDTO = new OutfieldDTO();
     }
 
-    System.out.println(oDTO.getLocation_specific());
-    System.out.println(oDTO.getOutdoor_detail_info());
-    System.out.println(oDTO.getOutdoor_detail_memo());
+    System.out.println(ofDTO.getLocation_specific());
+    System.out.println("Outdoor_info_num : " + ofDTO.getOutdoor_info_num());
+    System.out.println(ofDTO.getOutdoor_detail_info());
+    System.out.println(ofDTO.getOutdoor_detail_memo());
 %>
 
 <!DOCTYPE html>
@@ -45,7 +46,7 @@
     }
 
     function Adminupdate(){
-        location.href="/AdminOutfieldDetail?locacion_specific=<%=CmmUtil.nvl(oDTO.getOutdoor_info_num())%>"
+        location.href="/AdminOutfieldDetail?Outdoor_info_num=<%=CmmUtil.nvl(ofDTO.getOutdoor_info_num())%>"
     }
 </script>
 
@@ -402,22 +403,22 @@
                 </div>
                 <div class="content_2">
                     <div class="leftSec">
-                        <p class="title"><input type="text" name="location_specific" value="<%=CmmUtil.nvl(oDTO.getLocation_specific())%>"></p>
-                        <p class="callText"><textarea rows="5" cols="40" name="outdoor_detail_info"><%=CmmUtil.nvl(oDTO.getOutdoor_detail_info())%></textarea></p>
+                        <p class="title"><input type="text" name="location_specific" value="<%=CmmUtil.nvl(ofDTO.getLocation_specific())%>"></p>
+                        <p class="callText"><textarea rows="5" cols="40" name="outdoor_detail_info"><%=CmmUtil.nvl(ofDTO.getOutdoor_detail_info())%></textarea></p>
                     </div>
                     <div class="rightSec">
                         <ul class="detail">
                             <li></li>
-                            <form name="f" method="post" action="/updateOutfield" onsubmit="return doSubmit(this);">
-                            <li><a href="javascript:Adminupdate()" class="btn_2">수정하기</a></li>
-                            <li><a href="" class="btn_3">삭제하기</a></li>
+                            <form name="f" method="post" action="/AdminUpdate" onsubmit="return doSubmit(this);">
+                                <li><a href="javascript:Adminupdate()" class="btn_2">수정하기</a></li>
                             </form>
+                            <li><a href="" class="btn_3">삭제하기</a></li>
                         </ul>
                         <h2>Outfield Info</h2>
                         <div class="bottomBox">
                             <ul class="headList">
                                 <li>
-                                    <textarea rows="5" cols="40" name="outdoor_detail_memo"><%=CmmUtil.nvl(oDTO.getOutdoor_detail_memo())%></textarea>
+                                    <textarea rows="5" cols="40" name="outdoor_detail_memo"><%=CmmUtil.nvl(ofDTO.getOutdoor_detail_memo())%></textarea>
                                 </li>
                             </ul>
                         </div>

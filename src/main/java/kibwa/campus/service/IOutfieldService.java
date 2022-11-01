@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IOutfieldService {
     List<OutfieldDTO> getOutfieldList() throws Exception;
-    OutfieldDTO getOudfieldView(OutfieldDTO oDTO) throws Exception;
+    OutfieldDTO getOutfieldView(OutfieldDTO oDTO) throws Exception;
     void insertOutfield(OutfieldDTO oDTO) throws Exception;
     void updateOutfield(OutfieldDTO oDTO) throws Exception;
 }

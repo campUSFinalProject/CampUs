@@ -103,15 +103,15 @@ public class AdminController {
         //String url = "";
 
         try {
-            String Outdoor_detail_info_num = CmmUtil.nvl(request.getParameter("Outdoor_detail_info_num"));
+            String Outdoor_info_num = CmmUtil.nvl(request.getParameter("Outdoor_info_num"));
 
-            log.info("Outdoor_detail_info_num : " + Outdoor_detail_info_num);
+            log.info("Outdoor_info_num : " + Outdoor_info_num);
 
             OutfieldDTO oDTO = new OutfieldDTO();
 
-            oDTO.setOutdoor_info_num(Outdoor_detail_info_num);
+            oDTO.setOutdoor_info_num(Outdoor_info_num);
 
-            OutfieldDTO ofDTO = outfieldService.getOudfieldView(oDTO);
+            OutfieldDTO ofDTO = outfieldService.getOutfieldView(oDTO);
 
             if (ofDTO == null){
                 ofDTO = new OutfieldDTO();
@@ -119,9 +119,10 @@ public class AdminController {
 
             log.info("getOudfieldView success");
             model.addAttribute("ofDTO", ofDTO);
+            log.info("ofDTO : " + ofDTO);
             log.info("of.getOutdoor_info_num : " + ofDTO.getOutdoor_info_num());
 
-            outfieldService.updateOutfield(ofDTO);
+            //outfieldService.updateOutfield(ofDTO);
 
             //msg = "수정되었습니다.";
             //url = "/adminpage/AdminOutfieldDetail";
@@ -134,14 +135,13 @@ public class AdminController {
             e.printStackTrace();
 
         } finally {
-            log.info(this.getClass().getName() + ".AdminOutfieldDetail update End!");
+            log.info(this.getClass().getName() + ".AdminOutfieldDetail End!");
 
             //model.addAttribute("url", url);
             model.addAttribute("msg", msg);
 
             log.info("mode : " + model);
         }
-
         return "/adminpage/AdminOutfieldDetail";
     }
 
@@ -154,19 +154,19 @@ public class AdminController {
         String url = "";
 
         try{
-            String city_name = CmmUtil.nvl((String) session.getAttribute("city_name"));
+            String Outdoor_info_num = CmmUtil.nvl(request.getParameter("Outdoor_info_num"));
             String location_specific = CmmUtil.nvl(request.getParameter("location_specific"));
             String Outdoor_detail_info = CmmUtil.nvl(request.getParameter("Outdoor_detail_info"));
             String outdoor_detail_memo = CmmUtil.nvl(request.getParameter("outdoor_detail_memo"));
 
-            log.info("city_name : " + city_name);
+            log.info("Outdoor_info_num : " + Outdoor_info_num);
             log.info("location_specific : " + location_specific);
             log.info("Outdoor_detail_info : " + Outdoor_detail_info);
             log.info("outdoor_detail_memo : " + outdoor_detail_memo);
 
             OutfieldDTO oDTO = new OutfieldDTO();
 
-            oDTO.setCity_name(city_name);
+            oDTO.setOutdoor_info_num(Outdoor_info_num);
             oDTO.setLocation_specific(location_specific);
             oDTO.setOutdoor_detail_info(Outdoor_detail_info);
             oDTO.setOutdoor_detail_memo(outdoor_detail_memo);
@@ -174,13 +174,13 @@ public class AdminController {
             outfieldService.updateOutfield(oDTO);
 
             msg = "수정되었습니다";
-            url = "/adminpage/AdminOutfieldDetail?Outdoor_detail_info_num=" + oDTO.getOutdoor_info_num();
+            url = "/AdminOutfieldDetail?getOutdoor_info_num=" + oDTO.getOutdoor_info_num();
 
         }catch (Exception e){
             msg = "실패하였습니다 : " + e.getMessage();
             log.info(e.toString());
             e.printStackTrace();
-            url = "/adminpage/AdminOutfield";
+            url = "/AdminOutfield";
 
         }finally {
             log.info(this.getClass().getName() + ".AdminUpdate end");

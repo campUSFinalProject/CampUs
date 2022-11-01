@@ -28,9 +28,10 @@ public class OutfieldService implements IOutfieldService {
     }
     //노지 상세조회
     @Override
-    public OutfieldDTO getOudfieldView(OutfieldDTO oDTO) throws Exception {
+    public OutfieldDTO getOutfieldView(OutfieldDTO oDTO) throws Exception {
         log.info(this.getClass().getName() + ".OutfieldService");
-        return outfieldMapper.getOudfieldView(oDTO);
+
+        return outfieldMapper.getOutfieldView(oDTO);
     }
     //노지 등록
     @Override
