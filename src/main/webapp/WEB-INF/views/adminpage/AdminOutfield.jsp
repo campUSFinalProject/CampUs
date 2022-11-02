@@ -6,12 +6,10 @@
 
 <%
     List<OutfieldDTO> oList = (List<OutfieldDTO>) request.getAttribute("oList");
-
     //노지 정보 조회 결과 보여주기
     if (oList == null){
         oList = new ArrayList<OutfieldDTO>();
     }
-
     //주석
     System.out.println("oList : " + oList);
     //System.out.println("oList.location : " + oList.);
@@ -21,13 +19,11 @@
 <%
     String SS_ID = CmmUtil.nvl((String) session.getAttribute("SS_ID"));
     String SS_PASSWORD = CmmUtil.nvl((String) session.getAttribute("SS_PASSWORD"));
-
     System.out.println("SS_PASWORD : " + SS_PASSWORD);
 %>
 
 <%
     int id = 0;
-
     //Session을 받을때는 값이 null로 올때를 생각해서 조건문을 사용한다.
     if (session.getAttribute("SS_ID") != null) {
         //세션의 값을 가져오기
@@ -39,7 +35,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>노지 캠핑</title>
+    <title>관리자 노지 캠핑</title>
+    <script type="text/javascript">
+        function Adminupdate(Outdoor_info_num){
+            location.href="/AdminOutfieldDetail?Outdoor_info_num=" + Outdoor_info_num;
+        }
+    </script>
 </head>
 
 <link href="../css/FinalMain.css" rel="stylesheet" type="text/css" />
@@ -52,12 +53,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.theme.default.min.css">
-
-<script type="text/javascript">
-    function OutfieldDetail(Outdoor_info_num){
-        location.href="/OutfieldDetail?Outdoor_info_num=" + Outdoor_info_num;
-    }
-</script>
 
 <body>
 
@@ -407,12 +402,21 @@
 <div class="card">
     <div class="card__thumb"><a href="javascript:;"><img class="animate" src="https://picsum.photos/800?random=1"/></a></div>
     <div class="card__content">
-        <h2 class="card__title animate"><a href="javascript:OutfieldDetail('<%=o.getOutdoor_info_num()%>')"><%=o.getLocation_specific()%></a></h2>
+        <h2 class="card__title animate"><a href="javascript:Adminupdate('<%=o.getOutdoor_info_num()%>')"><%=o.getLocation_specific()%></a></h2>
         <p class="card__text"><%=o.getOutdoor_detail_info()%></p>
         <button class="card__btn"><i class="fa-solid fa-arrow-right fa-fw"></i></button>
     </div>
 </div>
 <%}%>
+
+<div class="rightSec">
+    <ul class="detail">
+        <li></li>
+        <li></li>
+        <li><a href="/Admin_insert" class="btn_3">등록하기</a></li>
+    </ul>
+</div>
+
 <!-- 메인 정보창 끝 -->
 
 <script type="text/javascript" src= "../js/FinalMain.js"></script>
