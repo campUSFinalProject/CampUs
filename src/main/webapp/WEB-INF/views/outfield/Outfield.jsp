@@ -1,6 +1,7 @@
 <%@ page import="kibwa.campus.dto.OutfieldDTO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="kibwa.campus.util.CmmUtil" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
@@ -14,6 +15,24 @@
     //주석
     System.out.println("oList : " + oList);
     //System.out.println("oList.location : " + oList.);
+    Object oDTO;
+%>
+
+<%
+    String SS_ID = CmmUtil.nvl((String) session.getAttribute("SS_ID"));
+    String SS_PASSWORD = CmmUtil.nvl((String) session.getAttribute("SS_PASSWORD"));
+
+    System.out.println("SS_PASWORD : " + SS_PASSWORD);
+%>
+
+<%
+    int id = 0;
+
+    //Session을 받을때는 값이 null로 올때를 생각해서 조건문을 사용한다.
+    if (session.getAttribute("SS_ID") != null) {
+        //세션의 값을 가져오기
+        id = 1;
+    }
 %>
 
 <!DOCTYPE html>
@@ -34,15 +53,20 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.theme.default.min.css">
 
+<script type="text/javascript">
+    function OutfieldDetail(Outdoor_info_num){
+        location.href="/OutfieldDetail?Outdoor_info_num=" + Outdoor_info_num;
+    }
+</script>
+
 <body>
 
 <!-- 우측 메뉴바 -->
 <div class="bring">
     <div class="why cell-right">
         <div class="quickH">
-
-            <a href="/front/게시판">
-
+            <!--민지 : 게시판으로 이동-->
+            <a href="/board/BoardList">
                 <h1>게시판</h1>
                 <p>정보 공유 및 <br>소통 가능한 게시판</p>
             </a>
@@ -59,7 +83,7 @@
                     <em class="icon3"><i></i></em><p><span>TipBoard</span><span>꿀팁게시판</span></p></a></li>
                 <li><a href="https://www.busanparadisehotel.co.kr/front/facility/spaparapool?">
                     <em class="icon4"><i></i></em>
-                    <p><span>OUTDOOR OCEAN SPA</span><span>POOL</span></p></a></li>
+                    <p><span>OUTDOOR OCEAN SPA</span><span>사업자등록 게시판</span></p></a></li>
                 <li><a href="https://www.busanparadisehotel.co.kr/front/facility/dinebuffet?">
                     <em class="icon5"><i></i></em>
                     <p><span>BUFFET</span><span>ON THE PLATE</span></p></a></li>
@@ -78,7 +102,7 @@
 <div class="top-bar con-min-width row">
     <div class="ride">
         <a href="#" class="logo cell block img-box">
-            <img src="../img/camlog.jpg" alt="">
+            <img src="../img/camplogg.png" alt="">
         </a>
         <nav class="menu-box-2 cell">
             <ul class="row">
@@ -95,13 +119,10 @@
                                         <a href="#">캠핑장 2</a>
                                     </li>
                                     <li class="cell">
-                                        <a href="#">뉴스</a>
+                                        <a href="#">캠핑장 3</a>
                                     </li>
                                     <li class="cell">
-                                        <a href="#">갤러리</a>
-                                    </li>
-                                    <li class="cell">
-                                        <a href="#">LotteHottel Seoul 위치</a>
+                                        <a href="#">캠핑장 4</a>
                                     </li>
                                 </ul>
                             </div>
@@ -115,7 +136,7 @@
                             <div>
                                 <ul class="row">
                                     <li class="cell">
-                                        <a href="#">Main Tower</a>
+                                        <a href="#">2인전용</a>
                                         <ul class="row">
                                             <li class="cell"><a href="#" class="block">스탠다드</a></li>
                                             <li class="cell"><a href="#" class="block">슈페리어 룸</a></li>
@@ -123,7 +144,7 @@
                                         </ul>
                                     </li>
                                     <li class="cell">
-                                        <a href="#">Club Floor</a>
+                                        <a href="#">4인전용</a>
                                         <ul class="row">
                                             <li class="cell"><a href="#" class="block">디럭스 룸</a></li>
                                             <li class="cell"><a href="#" class="block">주니어 스위트 룸</a></li>
@@ -337,32 +358,47 @@
                 </li>
             </ul>
         </nav>
-        <div class="cell-right row">
-            <div class="cell"><a href="#" class=""></a>
+    </div>
+
+    <!--로그인 전 화면  -->
+
+    <div class="cell-right row">
+        <%if (id == 0) {%>
+        <ul>
+            <div class="cell"><a href="/member/memRegLoginForm" class="">로그인/회원가입</a>
             </div>
-            <div class="cell block"><a href="#">MEMBERSHIP</a>
-            </div>
-            <div class="cell block"><a href="#"></a>
+            <div class="cell block"><a href="">예약확인/취소</a>
             </div>
             <div class="cell block"><a href="#">ABOUT US</a>
             </div>
-            <div class="cell block"><a href="#">로그인</a>
+            <div class="cell block"><a href="#">CAMP US</a>
             </div>
-            <div class="cell block"><a href="#">회원가입</a>
+            <div class="cell block"><a href="#">asdasd</a>
             </div>
-            <div class="cell block"><a href="#">예약확인/취소</a>
+            <div class="cell block"><a href="#"></a>
             </div>
-            <div class="cell block"><a href="#">KR <i class="fas fa-caret-down"></i></a>
-                <ul>
-                    <li><a href="#">KR</a></li>
-                    <li><a href="#">EN</a></li>
-                    <li><a href="#">JP</a></li>
-                    <li><a href="#">CN</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+        </ul>
 
+
+        <!--로그인 후 화면  -->
+
+        <%} else if (id > 0) {%>
+        <ul>
+            <div class="cell"><a href="/cu/mypage" class="">내정보</a>
+            </div>
+            <div class="cell block"><a href="/cu/Logout">로그아웃</a>
+            </div>
+            <div class="cell block"><a href="">예약확인/취소</a>
+            </div>
+            <div class="cell block"><a href="#">ABOUT US</a>
+            </div>
+            <div class="cell block"><a href="/member/memRegLoginForm">asdasd</a>
+            </div>
+            <div class="cell block"><a href="#"></a>            </div>
+
+        </ul>
+        <%};%>
+    </div>
 </div>
 <!-- 상단 메뉴바 끝 -->
 
@@ -371,7 +407,7 @@
 <div class="card">
     <div class="card__thumb"><a href="javascript:;"><img class="animate" src="https://picsum.photos/800?random=1"/></a></div>
     <div class="card__content">
-        <h2 class="card__title animate"><a href="javascript:;"><%=o.getLocation_specific()%></a></h2>
+        <h2 class="card__title animate"><a href="javascript:OutfieldDetail('<%=o.getOutdoor_info_num()%>')"><%=o.getLocation_specific()%></a></h2>
         <p class="card__text"><%=o.getOutdoor_detail_info()%></p>
         <button class="card__btn"><i class="fa-solid fa-arrow-right fa-fw"></i></button>
     </div>

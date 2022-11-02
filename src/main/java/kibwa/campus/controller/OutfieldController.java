@@ -47,30 +47,17 @@ public class OutfieldController {
     public String OutfieldDetail(HttpServletRequest request, ModelMap model) throws Exception {
         log.info(this.getClass().getName() + ".OutfieldList start!");
 
-        /*List<OutfieldDTO> oList = outfieldService.getOutfieldList();
-
-        if (oList == null){
-            oList = new ArrayList<>();
-        }
-
-        log.info("oList : " + oList);
-        model.addAttribute("oList", oList);
-
-        log.info(this.getClass().getName() + ".OutfieldList End!");
-
-        return "/outfield/OutfieldDetail";*/
-
         String msg = "";
         //String url = "";
 
         try {
-            String Outdoor_detail_info_num = CmmUtil.nvl(request.getParameter("Outdoor_detail_info_num"));
+            String Outdoor_info_num = CmmUtil.nvl(request.getParameter("Outdoor_info_num"));
 
-            log.info("Outdoor_detail_info_num : " + Outdoor_detail_info_num);
+            log.info("Outdoor_info_num : " + Outdoor_info_num);
 
             OutfieldDTO oDTO = new OutfieldDTO();
 
-            oDTO.setOutdoor_info_num(Outdoor_detail_info_num);
+            oDTO.setOutdoor_info_num(Outdoor_info_num);
 
             OutfieldDTO ofDTO = outfieldService.getOutfieldView(oDTO);
 
@@ -80,9 +67,10 @@ public class OutfieldController {
 
             log.info("getOudfieldView success");
             model.addAttribute("ofDTO", ofDTO);
+            log.info("ofDTO : " + ofDTO);
             log.info("of.getOutdoor_info_num : " + ofDTO.getOutdoor_info_num());
 
-            outfieldService.updateOutfield(ofDTO);
+            //outfieldService.updateOutfield(ofDTO);
 
             //msg = "수정되었습니다.";
             //url = "/adminpage/AdminOutfieldDetail";
@@ -95,7 +83,7 @@ public class OutfieldController {
             e.printStackTrace();
 
         } finally {
-            log.info(this.getClass().getName() + ".AdminOutfieldDetail update End!");
+            log.info(this.getClass().getName() + ".AdminOutfieldDetail End!");
 
             //model.addAttribute("url", url);
             model.addAttribute("msg", msg);
