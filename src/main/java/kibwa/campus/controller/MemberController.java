@@ -133,7 +133,7 @@ public class MemberController {
                 msg = "아이디 / 비밀번호를 확인해주세요";
                 url = "/member/memRegLoginForm";
 
-            }else if(rDTO.getMem_grade().equals(1)) {
+            }else if(rDTO.getMem_grade().equals(2)) {
                 msg = "관리자 로그인";
                 url = "cu/adminMain";
                 session.setAttribute("SS_ID", rDTO.getId());
