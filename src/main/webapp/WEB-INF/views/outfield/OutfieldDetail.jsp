@@ -442,11 +442,14 @@
                 </div>
                 <div class="content_2">
                     <form id="f" method="post" id="form" class="topBefore" action="/AdminUpdate" onsubmit="return doSubmit(this);">
+                        <!-- 노지 넘버 가져오기 -->
                         <input type="hidden" id="outdoor_info_num" name="outdoor_info_num" value="<%=CmmUtil.nvl(ofDTO.getOutdoor_info_num()) %>"/>
                         <div class="leftSec">
+                            <!-- 노지 상세 주소 -->
                             <p class="title" name="location_specific"><%=CmmUtil.nvl(ofDTO.getLocation_specific())%></p>
                             <br>
                             <h2>특이사항</h2>
+                            <!-- 노지 특이사항 -->
                             <p class="callText" id="outdoor_detail_info" name="outdoor_detail_info"><%=CmmUtil.nvl(ofDTO.getOutdoor_detail_info())%></p>
                         </div>
                         <div class="rightSec">
@@ -459,6 +462,7 @@
                             <div class="bottomBox">
                                 <ul class="headList">
                                     <li>
+                                        <!-- 노지 주변 시설 -->
                                         <span rows="5" cols="40" id="outdoor_detail_memo" name="outdoor_detail_memo"><%=CmmUtil.nvl(ofDTO.getOutdoor_detail_memo())%></span>
                                     </li>
                                 </ul>

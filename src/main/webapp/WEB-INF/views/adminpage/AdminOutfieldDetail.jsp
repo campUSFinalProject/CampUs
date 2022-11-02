@@ -454,9 +454,14 @@
             </div>
             <div class="content_2">
                 <form id="f" method="post" id="form" class="topBefore" action="/AdminUpdate" onsubmit="return doSubmit(this);">
+                    <!-- 노지 넘버 가져오기 -->
                     <input type="hidden" id="outdoor_info_num" name="outdoor_info_num" value="<%=CmmUtil.nvl(ofDTO.getOutdoor_info_num()) %>"/>
                     <div class="leftSec">
+                        <!-- 노지 상세 주소 -->
                         <p class="title"><input type="text" name="location_specific" value="<%=CmmUtil.nvl(ofDTO.getLocation_specific())%>"></p>
+                        <br>
+                        <!-- 노지 특이사항 -->
+                        <h2>특이사항</h2>
                         <p class="callText"><textarea rows="5" cols="40" id="outdoor_detail_info" name="outdoor_detail_info"><%=CmmUtil.nvl(ofDTO.getOutdoor_detail_info())%></textarea></p>
                     </div>
                     <div class="rightSec">
@@ -465,10 +470,11 @@
                             <li><a href="#" onclick="document.getElementById('f').submit();" class="btn_2">수정하기</a></li>
                             <li><a href="javascript:Admindelete()" class="btn_3">삭제하기</a></li>
                         </ul>
-                        <h2>Outfield Info</h2>
+                        <h2>주변 시설</h2>
                         <div class="bottomBox">
                             <ul class="headList">
                                 <li>
+                                    <!-- 노지 주변시설 -->
                                     <textarea rows="5" cols="40" id="outdoor_detail_memo" name="outdoor_detail_memo"><%=CmmUtil.nvl(ofDTO.getOutdoor_detail_memo())%></textarea>
                                 </li>
                             </ul>

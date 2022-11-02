@@ -58,13 +58,13 @@
         </div>
         <div class="grand">
             <ul class="quickC">
-                <li><a href="https://www.busanparadisehotel.co.kr/front/hotel/room/list">
+                <li><a href="/board/BoardList">
                     <em class="icon1"><i></i></em>
                     <p><span>MainBoard</span><span>전체게시판</span></p></a></li>
-                <li><a href="https://www.busanparadisehotel.co.kr/front/facility/launge?">
+                <li><a href="/board/BoardList">
                     <em class="icon2"><i></i></em>
                     <p><span>ALL DAY</span><span>정보게시판</span></p></a></li>
-                <li><a href="https://www.busanparadisehotel.co.kr/front/facility/spaparacimer?">
+                <li><a href="/board/BoardList">
                     <em class="icon3"><i></i></em><p><span>TipBoard</span><span>꿀팁게시판</span></p></a></li>
                 <li><a href="https://www.busanparadisehotel.co.kr/front/facility/spaparapool?">
                     <em class="icon4"><i></i></em>

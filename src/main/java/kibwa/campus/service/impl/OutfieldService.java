@@ -26,6 +26,7 @@ public class OutfieldService implements IOutfieldService {
     public List<OutfieldDTO> getOutfieldList() throws Exception {
         return outfieldMapper.getOutfieldList();
     }
+
     //노지 상세조회
     @Override
     public OutfieldDTO getOutfieldView(OutfieldDTO oDTO) throws Exception {
@@ -33,12 +34,14 @@ public class OutfieldService implements IOutfieldService {
 
         return outfieldMapper.getOutfieldView(oDTO);
     }
+
     //노지 등록
     @Override
     public void insertOutfield(OutfieldDTO oDTO) throws Exception {
         outfieldMapper.insertOutfield(oDTO);
     }
-    //노지 업데이트
+
+    //노지 수정
     @Override
     public void updateOutfield(OutfieldDTO oDTO) throws Exception {
         outfieldMapper.updateOutfield(oDTO);

@@ -407,7 +407,9 @@
 <div class="card">
     <div class="card__thumb"><a href="javascript:;"><img class="animate" src="https://picsum.photos/800?random=1"/></a></div>
     <div class="card__content">
+        <!-- 노지 상세 주소 -->
         <h2 class="card__title animate"><a href="javascript:OutfieldDetail('<%=o.getOutdoor_info_num()%>')"><%=o.getLocation_specific()%></a></h2>
+        <!-- 노지 특이사항 -->
         <p class="card__text"><%=o.getOutdoor_detail_info()%></p>
         <button class="card__btn"><i class="fa-solid fa-arrow-right fa-fw"></i></button>
     </div>
