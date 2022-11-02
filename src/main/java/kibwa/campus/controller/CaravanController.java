@@ -68,6 +68,7 @@ public class  CaravanController {
             log.info("cground_info_num : " + cground_info_num);
 
             CaravanDTO cDTO = new CaravanDTO();
+
             cDTO.setCground_info_num(cground_info_num);
 
             CaravanDTO coDTO = CaravanService.getCaravanDetail(cDTO);
