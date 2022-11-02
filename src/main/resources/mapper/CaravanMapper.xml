@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kibwa.campus.persistance.mapper.ICaravanMapper">
+
+    <!-- 캠핑장 리스트 -->
+    <select id="getCaravanList" resultType="kibwa.campus.dto.CaravanDTO">
+        SELECT * FROM CGROUND_INFO
+    </select>
+
+    <!-- 캠핑장 상세정보 -->
+    <select id="getCaravanDetail" resultType="kibwa.campus.dto.CaravanDTO">
+        SELECT * FROM CGROUND_INFO where cground_info_num = #{cground_info_num}
+    </select>
+
+
+    <!-- 관리자 캠핑장정보 insert -->
+    <insert id="insertCampingInfo" parameterType="kibwa.campus.dto.CaravanDTO">
+        INSERT INTO CGROUND_INFO
+        (cground_info_num,
+         location_city_num,
+         cground_location,
+         cground_name,
+         cground_tel,
+         cground_deposit,
+         camping_enter,
+         camping_exit,
+         cground_detail_info,
+         add_facil,
+         rev_count,
+         business_num)
+        VALUES (cground_seq.nextval,
+                (select location_city_num from location_city where city_name = #{city_name}),
+                #{cground_location},
+                #{cground_name},
+                #{cground_tel},
+                #{cground_deposit},
+                #{camping_enter},
+                #{camping_exit},
+                #{cground_detail_info},
+                #{add_facil},
+                0,
+                #{business_num})
+    </insert>
+
+
+
+
+</mapper>

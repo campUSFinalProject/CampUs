@@ -2,6 +2,7 @@ package kibwa.campus.controller;
 
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import kibwa.campus.dto.BusinessDTO;
+import kibwa.campus.dto.CaravanDTO;
 import kibwa.campus.dto.MemberDTO;
 import kibwa.campus.service.IBusinessService;
 import kibwa.campus.util.CmmUtil;
@@ -27,6 +28,12 @@ public class BusinessController {
 
     @Resource(name = "BusinessService")
     private IBusinessService businessService;
+
+    @RequestMapping(value = "Business_CRUD")
+    public String Business_CRUD(HttpServletRequest request, ModelMap model) throws Exception {
+
+        return "/businesspage/Business_CRUD";
+    }
 
 
     //------------- 일반사용자에서 사업자전환요청 -----------------

@@ -88,15 +88,6 @@ a {
     transition: all 0.3s ease;
 }
 
-.rightSec{float: left; width: 380px;margin-left: 30px}
-.rightSec .detail{overflow: hidden}
-.rightSec .detail li{float: left; display: inline-block; width: 120px; height: 40px; line-height: 40px;text-align: center;margin-left: 10px}
-.rightSec .detail li:first-child{margin-left:0}
-.rightSec .detail a{display: block; width: 120px; height: 40px; font-size: 14px; color: white;font-weight: bold}
-.rightSec .btn_1{background-color: #c4aa89}
-.rightSec .btn_2{background-color: #ad9480}
-.rightSec .btn_3{background-color: #e07a3f}
-
 /* :: mediaqueries :: */
 @media (min-width: 680px) {
     .card {

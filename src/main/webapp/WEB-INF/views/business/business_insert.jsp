@@ -1,12 +1,46 @@
+<%@ page import="kibwa.campus.dto.CaravanDTO" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
+
+<%
+    List<CaravanDTO> cList = (List<CaravanDTO>) request.getAttribute("cList");
+
+    //카라반 정보 조회 결과 보여주기
+    if (cList == null){
+        cList = new ArrayList<CaravanDTO>();
+    }
+
+    //주석
+    System.out.println("cList : " + cList);
+%>
+
+
+
+    <!-- 예약페이지로 이동 -->
+    <script type="text/javascript">
+        function goToBusinessinsert() {
+            location.href = "/Business_CRUD";
+        }
+    </script>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>노지 캠핑</title>
+    <title>캠핑장 리스트 & 등록</title>
+
+    <!--나중에 JS독립시키기-->
+    <script type="text/javascript">
+        //제목 누르면 게시글 보게 함
+        function goToCaravanDetail(cground_info_num){
+            location.href="/CaravanDetail?cground_info_num=" + cground_info_num;
+        }
+    </script>
 </head>
 
 <link href="../css/FinalMain.css" rel="stylesheet" type="text/css" />
+<link href="../css/Caravan.css" rel="stylesheet" type="text/css" />
 <script src="../4_jquery_class/lib/jquery-1.9.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -60,7 +94,7 @@
 <div class="top-bar con-min-width row">
     <div class="ride">
         <a href="#" class="logo cell block img-box">
-            <img src="../img/camlog.jpg" alt="">
+            <img src="../img/CampUslogo.png" alt="">
         </a>
         <nav class="menu-box-2 cell">
             <ul class="row">
@@ -348,6 +382,28 @@
 </div>
 <!-- 상단 메뉴바 끝 -->
 
+<!-- 캠핑장 리스트  -->
+
+<%for (CaravanDTO c : cList) {%>
+<div class="card">
+    <div class="card__thumb"><a href="javascript:;"><img class="animate" src="https://picsum.photos/800?random=1"/></a></div>
+    <div class="card__content">
+        <h2 class="card__title animate"><a href="javascript:;"> <%=c.getCground_name()%> </a></h2>
+        <p class="card__text"> <%=c.getCground_detail_info()%> </p>
+        <button class="card__btn" onclick="goToCaravanDetail('<%=c.getCground_info_num()%>')"><i class="fa-solid fa-arrow-right fa-fw"></i></button>
+    </div>
+</div>
+<%}%>
+
+<p>
+    <input type='reset' value='캠핑장 등록하기' onclick="javascript:goToBusinessinsert()">
+</p>
+
+
+
 <script type="text/javascript" src= "../js/FinalMain.js"></script>
+<script type="text/javascript" src= "../js/Admin_in_up_de.js"></script>
+
 </body>
+
 </html>
