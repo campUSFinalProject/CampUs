@@ -11,7 +11,7 @@ public class MemberDTO {
     private String email;
     private String name;
     private String mem_tel;
-    private String mem_grade;
+    private int mem_grade;
 
     private String exists_yn;
 }

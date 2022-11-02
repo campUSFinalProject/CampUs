@@ -34,7 +34,7 @@
 
     <!-- 로그인 시 아이디 비밀번호 일치 확인 -->
     <select id="getMemLoginCheck" parameterType="kibwa.campus.dto.MemberDTO" resultType="kibwa.campus.dto.MemberDTO">
-        SELECT ID, MEM_NUM, NAME, MEM_TEL, EMAIL, PASSWORD
+        SELECT ID, MEM_NUM, NAME, MEM_TEL, EMAIL, PASSWORD, MEM_GRADE
         FROM MEMBER
         WHERE ID = #{id}
         AND PASSWORD = #{password}

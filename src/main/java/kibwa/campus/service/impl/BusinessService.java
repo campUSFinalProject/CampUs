@@ -1,13 +1,14 @@
 package kibwa.campus.service.impl;
 
 import kibwa.campus.dto.BusinessDTO;
-import kibwa.campus.dto.MemberDTO;
 import kibwa.campus.persistance.mapper.IBusinessMapper;
 import kibwa.campus.service.IBusinessService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Slf4j
 @Service(value = "BusinessService")
@@ -40,6 +41,7 @@ public class BusinessService implements IBusinessService {
 
     }
 
+    //------------------- 사업자 로그인 ----------------------
     @Override
     public BusinessDTO getMemLoginCheck(BusinessDTO pDTO) throws Exception {
         if (pDTO == null) {
@@ -47,4 +49,20 @@ public class BusinessService implements IBusinessService {
         }
             return businessMapper.getMemLoginCheck(pDTO);
     }
+
+    /*//------------ 사업자 전환 신청 리스트 조회 -------------------
+    @Override
+    public List<BusinessDTO> getChangeReq() throws Exception {
+        return businessMapper.getChangeReq();
+    }
+
+    //사업자 전환요청 상세내용 조회
+    @Override
+    public BusinessDTO changeReqInfo(BusinessDTO pDTO) throws Exception {
+        log.info(this.getClass().getName() + ".changeReqInfo START!!");
+
+        return businessMapper.changeReqInfo(pDTO);
+    }*/
+
+
 }

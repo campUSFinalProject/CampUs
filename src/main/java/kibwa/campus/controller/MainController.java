@@ -34,12 +34,4 @@ public class MainController {
         return "/admin/adminMain";
     }
 
-    @RequestMapping(value = "cu/businessMypage")
-    public String businessMypage() {
-
-        log.info(this.getClass().getName() + ".MAINPAGE GO!! ");
-
-        return "/member/BusinessMypage";
-
-    }
 }
