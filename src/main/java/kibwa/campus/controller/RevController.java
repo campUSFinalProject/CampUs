@@ -40,7 +40,7 @@ public class RevController {
      */
 
     //
-    @GetMapping(value = "/{cGroundName}/{sectorId}") //localhost:9000/캠핑장이름/섹터넘버;
+    @GetMapping(value = "/{cGroundName}/{sectorId}") //localhost:9000/캠핑장이름/섹터넘버 cground/1
     public String Rooms(@PathVariable String sectorId,
                         Model model) throws Exception {
 

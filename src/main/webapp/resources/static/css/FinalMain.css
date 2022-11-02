@@ -29,7 +29,7 @@ a {
 .img-box > img {
     width:100px;
     height:100px;
-   object-fit: cover;
+    object-fit: cover;
 
 
     display:block;
@@ -410,7 +410,7 @@ a {
     padding:35px 10px;
     position:relative;
     font-size:14px;
-  /*   font-weight; */
+    /*   font-weight; */
 }
 
 .top-bar > div  > .menu-box-2 > ul > li > a::after {
@@ -501,7 +501,7 @@ a {
 }
 .top-bar > div > .menu-box-2 > ul > li > div > div > div > ul > li > ul > li > a {
     color:#6C5246;
-} 
+}
 .top-bar > div > .menu-box-2 > ul > li > div > div > div > ul > li > ul > li > a:hover {
     color:#777777;
 }
@@ -519,7 +519,7 @@ a {
     width:0;
     height:1px;
     background-color:#AF6E52;
-    transition:width 0.3s;    
+    transition:width 0.3s;
 }
 .top-bar > div > .menu-box-2 > ul > li > div > div > div > ul > li:hover > a:not(:only-child)::after {
     width:calc(100% - 20px);
@@ -600,7 +600,7 @@ a {
 }
 .top-bar .cell-right > div > ul {
     display:none;
-    
+
 }
 
 .top-bar .cell-right > div:hover > ul {
@@ -621,10 +621,10 @@ a {
 }*
 
 
-/* 임시 */
-body {
-    min-height:200vh;
-}
+     /* 임시 */
+ body {
+     min-height:200vh;
+ }
 .scroll-top-over-200 .top-bar {
     z-index:1;
 }
@@ -848,16 +848,16 @@ body {
 }
 .box-2-title > .bb > span {
     margin-top:70px;
-   font-size:30px;
-   font-weight:700;
+    font-size:30px;
+    font-weight:700;
     margin-bottom:15px;
-   color:#9C836A;
+    color:#9C836A;
 }
 .box-2-title > .gr > span {
-   font-size:16px;
-   font-weight:500;
-   color:#666666;
-   padding-bottom:70px;
+    font-size:16px;
+    font-weight:500;
+    color:#666666;
+    padding-bottom:70px;
 }
 .box-2 > .menu-box-1  {
     margin-top:20px;
@@ -1016,14 +1016,14 @@ ul div .img:not(.noScale) > img {
     padding-top:50px;
 }
 .box-3-title > h1 {
-   font-size:30px;
-   font-weight:700;
-   color:#9C836A;
+    font-size:30px;
+    font-weight:700;
+    color:#9C836A;
 }
 .box-3-title > p {
-   font-size:16px;
-   font-weight:500;
-   color:#666666;
+    font-size:16px;
+    font-weight:500;
+    color:#666666;
     padding-bottom:70px;
 }
 .box-6 > .menu-box-1  {
@@ -1133,15 +1133,15 @@ ul li .img:not(.noScale) > img {
 }
 .box-3-title > .bb > span {
     margin-top:70px;
-   font-size:30px;
-   font-weight:700;
-   color:#9C836A;
-   margin-bottom:15px;
+    font-size:30px;
+    font-weight:700;
+    color:#9C836A;
+    margin-bottom:15px;
 }
 .box-3-title > .gr > span {
-   font-size:16px;
-   font-weight:500;
-   color:#666666;
+    font-size:16px;
+    font-weight:500;
+    color:#666666;
     padding-bottom:70px;
 }
 .box-2 > .menu-box-1  {
@@ -1574,30 +1574,7 @@ ul li .img:not(.noScale) > img {
     padding-bottom:40px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 /* 마지막 */
-
-
-
-
-
-
-
-
-
-
-
 
 
 .s099 {
