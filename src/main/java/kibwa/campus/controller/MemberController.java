@@ -115,9 +115,7 @@ public class MemberController {
 
             String id = CmmUtil.nvl(request.getParameter("id"));
             String password = CmmUtil.nvl(request.getParameter("password"));
-            String email = CmmUtil.nvl(request.getParameter("email"));
-            String mem_tel = CmmUtil.nvl(request.getParameter("mem_tel"));
-            String name = CmmUtil.nvl(request.getParameter("name"));
+
 
             log.info("id : " + id);
             log.info("password : " + password);
@@ -126,9 +124,6 @@ public class MemberController {
 
             pDTO.setId(id);
             pDTO.setPassword(EncryptUtil.encHashSHA256(password));
-            pDTO.setName(name);
-            pDTO.setEmail(email);
-            pDTO.setMem_tel(mem_tel);
 
             //로그인정보 체크
             MemberDTO rDTO = memberService.getMemLoginCheck(pDTO);
@@ -137,6 +132,17 @@ public class MemberController {
                 rDTO = new MemberDTO();
                 msg = "아이디 / 비밀번호를 확인해주세요";
                 url = "/member/memRegLoginForm";
+
+            }else if(rDTO.getMem_grade().equals(1)) {
+                msg = "관리자 로그인";
+                url = "cu/adminMain";
+                session.setAttribute("SS_ID", rDTO.getId());
+                session.setAttribute("SS_NUM", rDTO.getMem_num());
+                session.setAttribute("SS_MEM_TEL", rDTO.getMem_tel());
+                session.setAttribute("SS_EMAIL", rDTO.getEmail());
+                session.setAttribute("SS_NAME", rDTO.getName());
+                session.setAttribute("SS_PASSWORD", rDTO.getPassword());
+                session.setAttribute("SS_MEM_GRADE", rDTO.getMem_grade());
 
             }else {
                 msg = "로그인 성공";
@@ -148,6 +154,7 @@ public class MemberController {
                 session.setAttribute("SS_EMAIL", rDTO.getEmail());
                 session.setAttribute("SS_NAME", rDTO.getName());
                 session.setAttribute("SS_PASSWORD", rDTO.getPassword());
+
             }
             rDTO = null;
 
