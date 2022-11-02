@@ -24,6 +24,8 @@
 
     //주석
     System.out.println("bList :" + bList);
+    String keyword = CmmUtil.nvl(request.getParameter("keyword"));
+    System.out.println("keyword :" + bList);
 %>
 
 <!DOCTYPE html>
@@ -366,7 +368,7 @@
         <div class="why cell-right">
             <div class="quickH">
                 <!--민지 : 게시판으로 이동-->
-                <a href="/board/BoardList">
+                <a href="/board/BoardList?keyword=">
                     <h1>게시판</h1>
                     <p>정보 공유 및 <br>소통 가능한 게시판</p>
                 </a>
@@ -410,9 +412,11 @@
                 <div class="search-window">
                     <form action="">
                         <div class="search-wrap">
-                            <label for="search" class="blind">공지사항 내용 검색</label>
-                            <input id="search" type="search" name="" placeholder="검색어를 입력해주세요." value="">
-                            <button type="submit" class="btn btn-dark">검색</button>
+                            <form id="searchForm" action="/board/BoardList" method="get">
+                                <label for="search" class="blind">공지사항 내용 검색</label>
+                                <input id="search" type="search" name="keyword" placeholder="게시글의 제목을 입력해주세요." value="">
+                                <button type="submit" class="btn btn-dark">검색</button>
+                            </form>
                         </div>
                     </form>
                 </div>
@@ -442,7 +446,7 @@
                     <tr>
                         <td><%=b.getRownum()%>
                         </td>
-                        <td><a href="javascript:goToBoardView('<%=b.getBoard_num()%>')"><%=b.getBoard_title()%>
+                        <td name = "title"><a href="javascript:goToBoardView('<%=b.getBoard_num()%>')"><%=b.getBoard_title()%>
                         </a></td>
                         <td><a><%=b.getId()%>
                         </a></td>

@@ -18,4 +18,5 @@ public class BoardDTO {
     private String board_view_num;
     private String board_mod_date;
     private String notice_check;
+    private String keyword;
 }
