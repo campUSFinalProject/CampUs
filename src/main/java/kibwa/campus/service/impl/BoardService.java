@@ -13,7 +13,6 @@ import java.util.List;
 @Slf4j
 @Service(value = "BoardService")
 public class BoardService implements IBoardService {
-
     private final IBoardMapper boardMapper;
 
     @Autowired
@@ -24,7 +23,6 @@ public class BoardService implements IBoardService {
     // 게시판 글 조회
     @Override
     public List<BoardDTO> getBoardList() throws Exception{
-
         return boardMapper.getBoardList();
     }
 
@@ -40,6 +38,7 @@ public class BoardService implements IBoardService {
     @Override
     public BoardDTO getBoardView(BoardDTO bDTO) throws Exception {
         log.info(this.getClass().getName() + ".BoardViewService");
+        //게시글 조회수 증가 처리
         boardMapper.updateBoardViewNum(bDTO);
         return boardMapper.getBoardView(bDTO);
     }
@@ -57,5 +56,11 @@ public class BoardService implements IBoardService {
     public void updateBoard(BoardDTO bDTO) throws Exception {
         log.info(this.getClass().getName() + ".updateBoardService");
         boardMapper.updateBoard(bDTO);
+    }
+
+    @Override
+    public List<BoardDTO> searchBoard(BoardDTO bDTO) throws Exception {
+        log.info(this.getClass().getName() + ".searchBoardService");
+        return boardMapper.searchBoard(bDTO);
     }
 }

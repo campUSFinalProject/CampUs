@@ -1,37 +1,45 @@
-<%@ page import="kibwa.campus.dto.CaravanDTO" %>
+<%@ page import="kibwa.campus.dto.OutfieldDTO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
+<%@ page import="kibwa.campus.util.CmmUtil" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
-    List<CaravanDTO> cList = (List<CaravanDTO>) request.getAttribute("cList");
-
-    //카라반 정보 조회 결과 보여주기
-    if (cList == null){
-        cList = new ArrayList<CaravanDTO>();
+    OutfieldDTO ofDTO = (OutfieldDTO)request.getAttribute("ofDTO");
+    //노지 정보를 못불러왔다면, 객체 생성
+    if (ofDTO==null){
+        ofDTO = new OutfieldDTO();
     }
+    System.out.println(ofDTO.getLocation_specific());
+    System.out.println("Outdoor_info_num : " + ofDTO.getOutdoor_info_num());
+    System.out.println(ofDTO.getOutdoor_detail_info());
+    System.out.println(ofDTO.getOutdoor_detail_memo());
+%>
 
-    //주석
-    System.out.println("cList : " + cList);
+<%
+    String SS_ID = CmmUtil.nvl((String) session.getAttribute("SS_ID"));
+    String SS_PASSWORD = CmmUtil.nvl((String) session.getAttribute("SS_PASSWORD"));
+    System.out.println("SS_PASWORD : " + SS_PASSWORD);
+%>
+
+<%
+    int id = 0;
+    //Session을 받을때는 값이 null로 올때를 생각해서 조건문을 사용한다.
+    if (session.getAttribute("SS_ID") != null) {
+        //세션의 값을 가져오기
+        id = 1;
+    }
 %>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>카라반</title>
-
-    <!--나중에 JS독립시키기-->
-    <script type="text/javascript">
-        //제목 누르면 게시글 보게 함
-        function goToCaravanDetail(cground_info_num){
-            location.href="/CaravanDetail?cground_info_num=" + cground_info_num;
-        }
-    </script>
+    <title>관리자 상세 페이지</title>
 </head>
 
 <link href="../css/FinalMain.css" rel="stylesheet" type="text/css" />
-<link href="../css/Caravan.css" rel="stylesheet" type="text/css" />
+<link href="../css/OutfieldDetail.css" rel="stylesheet" type="text/css" />
 <script src="../4_jquery_class/lib/jquery-1.9.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -41,15 +49,31 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.theme.default.min.css">
 
+<script type="text/javascript">
+    //메인 이동
+    function goToMain() {
+        location.href = "/FinalMain";
+    }
+    //노지 리스트 이동
+    function goToOutfield() {
+        location.href = "/AdminOutfield";
+    }
+    //노지 삭제
+    function Admindelete() {
+        if (confirm("해당 노지를 삭제하시겠습니까?")) {
+            location.href = "/Admindelete?Outdoor_info_num=<%=CmmUtil.nvl(ofDTO.getOutdoor_info_num())%>";
+        }
+    }
+</script>
+
 <body>
 
 <!-- 우측 메뉴바 -->
 <div class="bring">
     <div class="why cell-right">
         <div class="quickH">
-
-            <a href="/front/게시판">
-
+            <!--민지 : 게시판으로 이동-->
+            <a href="/board/BoardList">
                 <h1>게시판</h1>
                 <p>정보 공유 및 <br>소통 가능한 게시판</p>
             </a>
@@ -66,7 +90,7 @@
                     <em class="icon3"><i></i></em><p><span>TipBoard</span><span>꿀팁게시판</span></p></a></li>
                 <li><a href="https://www.busanparadisehotel.co.kr/front/facility/spaparapool?">
                     <em class="icon4"><i></i></em>
-                    <p><span>OUTDOOR OCEAN SPA</span><span>POOL</span></p></a></li>
+                    <p><span>OUTDOOR OCEAN SPA</span><span>사업자등록 게시판</span></p></a></li>
                 <li><a href="https://www.busanparadisehotel.co.kr/front/facility/dinebuffet?">
                     <em class="icon5"><i></i></em>
                     <p><span>BUFFET</span><span>ON THE PLATE</span></p></a></li>
@@ -85,7 +109,7 @@
 <div class="top-bar con-min-width row">
     <div class="ride">
         <a href="#" class="logo cell block img-box">
-            <img src="../img/CampUslogo.png" alt="">
+            <img src="../img/camplogg.png" alt="">
         </a>
         <nav class="menu-box-2 cell">
             <ul class="row">
@@ -102,13 +126,10 @@
                                         <a href="#">캠핑장 2</a>
                                     </li>
                                     <li class="cell">
-                                        <a href="#">뉴스</a>
+                                        <a href="#">캠핑장 3</a>
                                     </li>
                                     <li class="cell">
-                                        <a href="#">갤러리</a>
-                                    </li>
-                                    <li class="cell">
-                                        <a href="#">LotteHottel Seoul 위치</a>
+                                        <a href="#">캠핑장 4</a>
                                     </li>
                                 </ul>
                             </div>
@@ -122,7 +143,7 @@
                             <div>
                                 <ul class="row">
                                     <li class="cell">
-                                        <a href="#">Main Tower</a>
+                                        <a href="#">2인전용</a>
                                         <ul class="row">
                                             <li class="cell"><a href="#" class="block">스탠다드</a></li>
                                             <li class="cell"><a href="#" class="block">슈페리어 룸</a></li>
@@ -130,7 +151,7 @@
                                         </ul>
                                     </li>
                                     <li class="cell">
-                                        <a href="#">Club Floor</a>
+                                        <a href="#">4인전용</a>
                                         <ul class="row">
                                             <li class="cell"><a href="#" class="block">디럭스 룸</a></li>
                                             <li class="cell"><a href="#" class="block">주니어 스위트 룸</a></li>
@@ -344,49 +365,162 @@
                 </li>
             </ul>
         </nav>
-        <div class="cell-right row">
-            <div class="cell"><a href="#" class=""></a>
+    </div>
+
+    <!--로그인 전 화면  -->
+
+    <div class="cell-right row">
+        <%if (id == 0) {%>
+        <ul>
+            <div class="cell"><a href="/member/memRegLoginForm" class="">로그인/회원가입</a>
             </div>
-            <div class="cell block"><a href="#">MEMBERSHIP</a>
-            </div>
-            <div class="cell block"><a href="#"></a>
+            <div class="cell block"><a href="">예약확인/취소</a>
             </div>
             <div class="cell block"><a href="#">ABOUT US</a>
             </div>
-            <div class="cell block"><a href="#">로그인</a>
+            <div class="cell block"><a href="#">CAMP US</a>
             </div>
-            <div class="cell block"><a href="#">회원가입</a>
+            <div class="cell block"><a href="#">asdasd</a>
             </div>
-            <div class="cell block"><a href="#">예약확인/취소</a>
+            <div class="cell block"><a href="#"></a>
             </div>
-            <div class="cell block"><a href="#">KR <i class="fas fa-caret-down"></i></a>
-                <ul>
-                    <li><a href="#">KR</a></li>
-                    <li><a href="#">EN</a></li>
-                    <li><a href="#">JP</a></li>
-                    <li><a href="#">CN</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+        </ul>
 
+
+        <!--로그인 후 화면  -->
+
+        <%} else if (id > 0) {%>
+        <ul>
+            <div class="cell"><a href="/cu/mypage" class="">내정보</a>
+            </div>
+            <div class="cell block"><a href="/cu/Logout">로그아웃</a>
+            </div>
+            <div class="cell block"><a href="">예약확인/취소</a>
+            </div>
+            <div class="cell block"><a href="#">ABOUT US</a>
+            </div>
+            <div class="cell block"><a href="/member/memRegLoginForm">asdasd</a>
+            </div>
+            <div class="cell block"><a href="#"></a>            </div>
+
+        </ul>
+        <%};%>
+    </div>
 </div>
 <!-- 상단 메뉴바 끝 -->
 
-<!-- 캠핑장 리스트  -->
+<!-- 메인 정보창 -->
+<div id="wrap">
+    <div id="container">
+        <div class="conHeader">
+            <ul>
+                <li><a href="/FinalMain" class="homeIcon"><em class="blind">홈</em></a></li>
+                <li>></li>
+                <li><a href="/AdminOutfield" style="color: #666666">노지 목록</a></li>
+                <li>></li>
+                <li><a href="">노지 정보</a></li>
+            </ul>
+        </div>
 
-<%for (CaravanDTO c : cList) {%>
-<div class="card">
-    <div class="card__thumb"><a href="javascript:;"><img class="animate" src="https://picsum.photos/800?random=1"/></a></div>
-    <div class="card__content">
-        <h2 class="card__title animate"><a href="javascript:;"> <%=c.getCground_name()%> </a></h2>
-        <p class="card__text"> <%=c.getCground_detail_info()%> </p>
-        <button class="card__btn" onclick="goToCaravanDetail('<%=c.getCground_info_num()%>')"><i class="fa-solid fa-arrow-right fa-fw"></i></button>
+        <div class="nav">
+            <h2>객실</h2>
+            <ul>
+                <li><a href="/FinalMain">메인 화면</a></li>
+                <li><a href="/AdminOutfield">노지 리스트</a></li>
+            </ul>
+        </div>
+        <div class="contents">
+            <h1>노지 상세 정보</h1>
+            <div class="mainVisual">
+                <div class="slider">
+                    <div class="visual_1"></div>
+                    <div class="visual_1"></div>
+                    <div class="visual_1"></div>
+                    <div class="visual_1"></div>
+                </div>
+
+                <div class="btnsArea">
+                    <a href="#" class="previousPage"><span class="mark"><em class="blind">이전페이지</em></span></a>
+                    <a href="#" class="nextPage"><span class="mark"><em class="blind">다음페이지</em></span></a>
+                </div>
+            </div>
+            <div class="subVisual">
+                <ul>
+                    <li><a href="" class="visual_1"><em class="blind">사진</em></a></li>
+                    <li><a href="" class="visual_1"><em class="blind">사진</em></a></li>
+                    <li><a href="" class="visual_1"><em class="blind">사진</em></a></li>
+                    <li><a href="" class="visual_1"><em class="blind">사진</em></a></li>
+                </ul>
+            </div>
+            <div class="content_2">
+                <form id="f" method="post" id="form" class="topBefore" action="/AdminUpdate" onsubmit="return doSubmit(this);">
+                    <input type="hidden" id="outdoor_info_num" name="outdoor_info_num" value="<%=CmmUtil.nvl(ofDTO.getOutdoor_info_num()) %>"/>
+                    <div class="leftSec">
+                        <p class="title"><input type="text" name="location_specific" value="<%=CmmUtil.nvl(ofDTO.getLocation_specific())%>"></p>
+                        <p class="callText"><textarea rows="5" cols="40" id="outdoor_detail_info" name="outdoor_detail_info"><%=CmmUtil.nvl(ofDTO.getOutdoor_detail_info())%></textarea></p>
+                    </div>
+                    <div class="rightSec">
+                        <ul class="detail">
+                            <li></li>
+                            <li><a href="#" onclick="document.getElementById('f').submit();" class="btn_2">수정하기</a></li>
+                            <li><a href="javascript:Admindelete()" class="btn_3">삭제하기</a></li>
+                        </ul>
+                        <h2>Outfield Info</h2>
+                        <div class="bottomBox">
+                            <ul class="headList">
+                                <li>
+                                    <textarea rows="5" cols="40" id="outdoor_detail_memo" name="outdoor_detail_memo"><%=CmmUtil.nvl(ofDTO.getOutdoor_detail_memo())%></textarea>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="snsSec">
+                <ul>
+                    <li><a href="" class="facebook"><em class="blind">페이스북</em></a></li>
+                    <li><a href="" class="blog"><em class="blind">블로그</em></a></li>
+                    <li><a href="" class="kakao"><em class="blind">카카오스토리</em></a></li>
+                </ul>
+            </div>
+        </div>
+
     </div>
-</div>
-<%}%>
 
-<!-- 야영지 정보 -->
+    <footer>
+        <div class="topCon">
+            <div class="test1">
+                <div class="logo_1"><em class="blind">로고</em></div>
+                <ul>
+                    <li><a href="">회사소개</a></li>
+                    <li><a href="">회사사진</a></li>
+                    <li><a href="">회사안내도</a></li>
+                    <li><a href="">오시는길</a></li>
+                    <li><a href="">채용</a></li>
+                    <li><a href="">의견&문의</a></li>
+                </ul>
+            </div>
+            <div class="bottomCon">
+                <ul class="information">
+                    <li>개인정보처리방침</li>
+                    <li>개인정보취급방침</li>
+                    <li>이메일무단수집금지</li>
+                </ul>
+                <hr class="line">
+                <ul class="information_2">
+                    <li>(주)CampUS</li>
+                    <li>경기도 고양시 일산동구 식사동 위시티4로 79</li>
+                    <li>TEL 010-4042-3101</li>
+                    <li>FAX 010-4042-3101</li>
+                    <li>사업자번호 1998-03-03</li>
+                    <li>대표이사 이진희</li>
+                </ul>
+                <p>COPYRIGHT ⓒ 2022 S.Y. NAM COMMPANY MINJJ LIMITED, ALL RIGHTS RESERVED. </p>
+            </div>
+        </div>
+    </footer>
+</div>
+<!-- 메인 정보창 끝 -->
 
 <script type="text/javascript" src= "../js/FinalMain.js"></script>
 </body>

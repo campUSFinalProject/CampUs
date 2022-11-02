@@ -2,6 +2,7 @@ package kibwa.campus.controller;
 import kibwa.campus.dto.BoardDTO;
 import kibwa.campus.dto.MemberDTO;
 import kibwa.campus.service.IBoardService;
+import kibwa.campus.service.impl.BoardService;
 import kibwa.campus.util.CmmUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +31,13 @@ public class BoardListController {
 
     // 게시판 리스트 조회
     @GetMapping(value = "board/BoardList")
-    public String BoardList(ModelMap model)
+    public String BoardList(BoardDTO bDTO, HttpServletRequest request, ModelMap model)
         throws Exception{
 
         log.info(this.getClass().getName() + ".BoardList start!");
 
-        List<BoardDTO> bList = boardService.getBoardList();
+        //게시글 검색 로직으로 리스트 가져옴
+        List<BoardDTO> bList = boardService.searchBoard(bDTO);
 
         if (bList == null){
             bList = new ArrayList<>();
@@ -250,6 +252,4 @@ public class BoardListController {
         }
         return "/redirect";
     }
-
-    //게시글 조회수 증가
 }

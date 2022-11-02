@@ -19,4 +19,6 @@ public interface IBoardMapper {
     void updateBoard(BoardDTO bDTO) throws Exception;
     //게시글 조회수 증가
     void updateBoardViewNum(BoardDTO bDTO) throws Exception;
+    //게시글 검색
+    List<BoardDTO> searchBoard(BoardDTO bDTO) throws Exception;
 }
