@@ -12,4 +12,6 @@ public interface IBoardService {
     BoardDTO getBoardView(BoardDTO bDTO) throws Exception;
     int deleteBoard(BoardDTO bDTO) throws Exception;
     void updateBoard(BoardDTO bDTO) throws Exception;
+    //게시글 검색
+    List<BoardDTO> searchBoard(BoardDTO bDTO) throws Exception;
 }
