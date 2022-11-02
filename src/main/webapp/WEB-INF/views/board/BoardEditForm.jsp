@@ -420,7 +420,7 @@
         <div class="why cell-right">
             <div class="quickH">
                 <!--민지 : 게시판으로 이동-->
-                <a href="/board/BoardList">
+                <a href="/board/BoardList?keyword=">
                     <h1>게시판</h1>
                     <p>정보 공유 및 <br>소통 가능한 게시판</p>
                 </a>
