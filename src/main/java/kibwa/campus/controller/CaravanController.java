@@ -1,14 +1,17 @@
 package kibwa.campus.controller;
+import kibwa.campus.dto.BoardDTO;
 import kibwa.campus.dto.CaravanDTO;
 import kibwa.campus.service.ICaravanService;
 import kibwa.campus.util.CmmUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +25,72 @@ public class  CaravanController {
 
     @Resource(name = "CaravanService")
     private ICaravanService CaravanService;
+
+    //-------------------- 캠핑장 등록 ------------------------
+    @RequestMapping(value = "businesscrud")
+    public String Business_CRUD(HttpServletRequest request, ModelMap model) throws Exception {
+
+        String msg = "";
+        String url = "";
+
+
+        try {
+
+            String city_name = CmmUtil.nvl(request.getParameter("city_name"));
+            String cground_name = CmmUtil.nvl(request.getParameter("cground_name"));
+            String cground_tel = CmmUtil.nvl(request.getParameter("cground_tel"));
+            String cground_loacation = CmmUtil.nvl(request.getParameter("cground_loacation"));
+            String cground_deposit = CmmUtil.nvl(request.getParameter("cground_deposit"));
+            String camping_enter = CmmUtil.nvl(request.getParameter("camping_enter"));
+            String camping_exit = CmmUtil.nvl(request.getParameter("camping_exit"));
+            String cground_detail_info = CmmUtil.nvl(request.getParameter("cground_detail_info"));
+            String add_facil = CmmUtil.nvl(request.getParameter("add_facil"));
+            String business_num = "1";
+
+            log.info("city_name : " + city_name);
+            log.info("cground_name : " + cground_name);
+            log.info("cground_tel : " + cground_tel);
+            log.info("cground_loacation : " + cground_loacation);
+            log.info("cground_deposit : " + cground_deposit);
+            log.info("camping_enter : " + camping_enter);
+            log.info("camping_exit : " + camping_exit);
+            log.info("cground_detail_info : " + cground_detail_info);
+            log.info("add_facil : " + add_facil);
+            log.info("business_num : " + business_num);
+
+            CaravanDTO cDTO = new CaravanDTO();
+
+            cDTO.setCity_name(city_name);
+            cDTO.setCground_name(cground_name);
+            cDTO.setCground_tel(cground_tel);
+            cDTO.setCground_location(cground_loacation);
+            cDTO.setCground_deposit(cground_deposit);
+            cDTO.setCamping_enter(camping_enter);
+            cDTO.setCamping_exit(camping_exit);
+            cDTO.setCground_detail_info(cground_detail_info);
+            cDTO.setAdd_facil(add_facil);
+            cDTO.setBusiness_num(business_num);
+
+            CaravanService.insertCampingInfo(cDTO);
+
+            msg = "등록되었습니다";
+            url = "/Caravan";
+
+        } catch (Exception e) {
+            msg = "실패하였습니다 : " + e.getMessage();
+            url = "/businesspage/Business_CRUD";
+
+            log.info(e.toString());
+            e.printStackTrace();
+
+        } finally {
+            model.addAttribute("url", url);
+            model.addAttribute("msg", msg);
+        }
+
+        return "/redirect";
+    }
+
 
     /* 카라반 리스트 페이지*/
     @RequestMapping(value = "Caravan")
@@ -45,8 +114,6 @@ public class  CaravanController {
 
         return "/business/business_insert";
     }
-
-
 
 
     /* 카라반 상세정보 페이지*/

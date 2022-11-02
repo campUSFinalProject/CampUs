@@ -81,7 +81,7 @@
             <p>
                 <label>
                     입실시간<br>
-                    <input type="text" name="campinng_enter"  placeholder="00:00">
+                    <input type="text" name="camping_enter"  placeholder="00:00">
                 </label>
             </p>
 
