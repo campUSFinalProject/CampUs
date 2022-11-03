@@ -378,7 +378,7 @@
             </div>
             <div class="cell block"><a href="/cu/Logout">로그아웃</a>
             </div>
-            <div class="cell block"><a href="">내 업장 관리</a>
+            <div class="cell block"><a href="/business/myCaravan">내 업장 관리</a>
             </div>
             <div class="cell block"><a href="#">내 업장 예약현황</a>
             </div>

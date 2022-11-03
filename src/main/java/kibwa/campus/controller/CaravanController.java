@@ -28,9 +28,9 @@ public class CaravanController {
     @Resource(name = "CaravanService")
     private ICaravanService CaravanService;
 
-    //-------------------- 캠핑장 등록 ------------------------
+    //-------------------- 카라반 등록 ------------------------
     @RequestMapping(value = "businesscrud")
-    public String Business_CRUD(HttpServletRequest request, ModelMap model) throws Exception {
+    public String Business_CRUD(HttpServletRequest request, ModelMap model, HttpSession session) throws Exception {
 
         String msg = "";
         String url = "";
@@ -47,7 +47,7 @@ public class CaravanController {
             String camping_exit = CmmUtil.nvl(request.getParameter("camping_exit"));
             String cground_detail_info = CmmUtil.nvl(request.getParameter("cground_detail_info"));
             String add_facil = CmmUtil.nvl(request.getParameter("add_facil"));
-            String business_num = "1";
+            String business_num = CmmUtil.nvl((String) session.getAttribute("SS_business_NUM"));
 
             log.info("city_name : " + city_name);
             log.info("cground_name : " + cground_name);
@@ -76,7 +76,7 @@ public class CaravanController {
             CaravanService.insertCampingInfo(cDTO);
 
             msg = "등록되었습니다";
-            url = "/Caravan";
+            url = "/business/myCaravan";
 
         } catch (Exception e) {
             msg = "실패하였습니다 : " + e.getMessage();
@@ -107,6 +107,7 @@ public class CaravanController {
         return "/Caravan/Caravan";
     }
 
+    //사업자가 보는 카라반 리스트
     @RequestMapping(value = "business_insert")
     public String business_insert(HttpServletRequest request, ModelMap model) throws Exception {
 
@@ -123,26 +124,24 @@ public class CaravanController {
     public String CaravanDetail(HttpServletRequest request, ModelMap model) throws Exception {
         log.info(this.getClass().getName() + ".CaravanList start!");
 
-        /*List<CaravanDTO> cList = CaravanService.getCaravanList();
 
-        if (cList == null){
-            cList = new ArrayList<>();
-        }
-
-        log.info("cList : " + cList);
-        model.addAttribute("cList", cList);*/
 
         try{
+
+            String business_num = CmmUtil.nvl(request.getParameter("SS_business_NUM"));
             String cground_info_num = CmmUtil.nvl(request.getParameter("cground_info_num"));
             log.info("cground_info_num : " + cground_info_num);
+            log.info("business_num : " + business_num);
 
             CaravanDTO cDTO = new CaravanDTO();
 
             cDTO.setCground_info_num(cground_info_num);
+            cDTO.setBusiness_num(business_num);
 
             CaravanDTO coDTO = CaravanService.getCaravanDetail(cDTO);
 
             model.addAttribute("coDTO", coDTO);
+
 
         }catch (Exception e) {
             log.info(e.toString());
@@ -156,9 +155,37 @@ public class CaravanController {
 
     //------------- 카라반 수정페이지로 이동 -----------------
     @GetMapping(value = "caravan/updateCaravanForm")
-    public String updateCaravanForm(HttpSession session, HttpServletRequest request, ModelMap model){
+    public String updateCaravanForm(HttpSession session, HttpServletRequest request, ModelMap model) throws Exception {
 
         log.info(this.getClass().getName() + ".Caravan UpdateForm START!!!");
+
+
+        try {
+            String business_num = CmmUtil.nvl(request.getParameter("SS_business_NUM"));
+            String cground_info_num = CmmUtil.nvl(request.getParameter("cground_info_num"));
+
+            CaravanDTO cDTO = new CaravanDTO();
+            cDTO.setBusiness_num(business_num);
+            cDTO.setCground_info_num(cground_info_num);
+
+            CaravanDTO coDTO =  CaravanService.getCaravanDetail(cDTO);
+
+            if (coDTO == null){
+                coDTO = new CaravanDTO();
+            }
+
+            model.addAttribute("coDTO", coDTO);
+
+
+
+        }catch (Exception e){
+
+            log.info(e.toString());
+        }finally {
+
+        }
+
+
 
         log.info(this.getClass().getName() + ".Caravan UpdateForm END!!!");
 
@@ -215,13 +242,13 @@ public class CaravanController {
             CaravanService.updateCaravan(cDTO);
 
             msg = "수정완료";
-            url = "/Caravan";
+            url = "/business/myCaravan";
 
         }catch (Exception e){
             msg = "실패하였습니다 : " + e.toString();
             log.info(e.toString());
             e.printStackTrace();
-            url = "/Caravan";
+            url = "/business/myCaravan";
 
         }finally {
             log.info(this.getClass().getName() + ".CaravanUpdate END!!!");

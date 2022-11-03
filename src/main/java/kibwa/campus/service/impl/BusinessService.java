@@ -1,6 +1,7 @@
 package kibwa.campus.service.impl;
 
 import kibwa.campus.dto.BusinessDTO;
+import kibwa.campus.dto.CaravanDTO;
 import kibwa.campus.persistance.mapper.IBusinessMapper;
 import kibwa.campus.service.IBusinessService;
 import lombok.RequiredArgsConstructor;
@@ -49,6 +50,14 @@ public class BusinessService implements IBusinessService {
         }
             return businessMapper.getMemLoginCheck(pDTO);
     }
+
+    //사업자가 등록한 본인의 카라반 조회
+    @Override
+    public List<CaravanDTO> getMyCaravan(CaravanDTO cDTO) throws Exception {
+        return businessMapper.getMyCaravan(cDTO);
+    }
+
+
 
     /*//------------ 사업자 전환 신청 리스트 조회 -------------------
     @Override

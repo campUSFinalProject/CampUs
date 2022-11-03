@@ -14,18 +14,57 @@
 
     //주석
     //System.out.println("cList : " + cList)
-
     CaravanDTO coDTO = (CaravanDTO) request.getAttribute("coDTO");
+
+    String SS_business_NUM = CmmUtil.nvl((String) request.getAttribute("SS_business_NUM"));
+    int access = 1;
+    if (CmmUtil.nvl((String) session.getAttribute("SS_business_NUM")).equals(
+            CmmUtil.nvl(coDTO.getBusiness_num()))) {
+        access = 2;
+    }
+
+    //사용자 로그인 여부 확인
+    int id = 0;
+
+    //Session을 받을때는 값이 null로 올때를 생각해서 조건문을 사용한다.
+    if (session.getAttribute("SS_buiness_ID") != null) {
+        //세션의 값을 가져오기
+        id = 1;
+    }
+
     System.out.println("coDTO : " + coDTO);
     System.out.println("location : " + coDTO.getCground_location());
-    System.out.println("bo.mem_num : " + coDTO.getCground_info_num());
+    System.out.println("cground_info_num : " + coDTO.getCground_info_num());
+
 %>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>소풍캠핑장 상세정보</title>
+    <title>카라반 상세정보</title>
+
+    <script type="text/javascript">
+        function doEdit() {
+            if ("<%=access%>" == "1") {
+                alert("작성자만 수정할 수 있습니다.");
+            } else {
+                location.href = "/caravan/updateCaravanForm?cground_info_num=<%=CmmUtil.nvl(coDTO.getCground_info_num())%>"
+            }
+        }
+
+        //게시글 삭제 함수
+        function doDelete() {
+            if ("<%=access%> == 2") {
+                if (confirm("작성한 글을 삭제하시겠습니까?")) {
+                    location.href = "/caravan/deleteCaravan?cground_info_num=<%=CmmUtil.nvl(coDTO.getCground_info_num())%>";
+                }
+            } else {
+                alert("본인이 작성한 게시글만 삭제할 수 있습니다.");
+            }
+        }
+
+    </script>
 </head>
 
 <link href="../css/FinalMain.css" rel="stylesheet" type="text/css" />
@@ -415,7 +454,7 @@
                 <div class="rightSec">
                     <ul class="detail">
                         <li></li>
-                        <li></li>
+                        <li><a href="javascript:doEdit();" class="btn_3">수정하기</a></li>
                         <li><a href="" class="btn_3">예약하기</a></li>
                     </ul>
                     <h2>객실 정보</h2>

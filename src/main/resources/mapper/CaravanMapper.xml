@@ -3,16 +3,15 @@
 
 <mapper namespace="kibwa.campus.persistance.mapper.ICaravanMapper">
 
-    <!-- 캠핑장 리스트 -->
+    <!-- 카라반 리스트 -->
     <select id="getCaravanList" resultType="kibwa.campus.dto.CaravanDTO">
         SELECT * FROM CGROUND_INFO
     </select>
 
-    <!-- 캠핑장 상세정보 -->
+    <!-- 카라반 상세정보 -->
     <select id="getCaravanDetail" resultType="kibwa.campus.dto.CaravanDTO">
         SELECT * FROM CGROUND_INFO where cground_info_num = #{cground_info_num}
     </select>
-
 
     <!-- 관리자 캠핑장정보 insert -->
     <insert id="insertCampingInfo" parameterType="kibwa.campus.dto.CaravanDTO">
@@ -46,7 +45,7 @@
     <!-- 카라반 정보 수정 -->
     <update id="updateCaravan" parameterType="kibwa.campus.dto.CaravanDTO">
         UPDATE CGROUND_INFO
-        SET LOCATION_CITY_NUM = #{location_city_num},
+        SET LOCATION_CITY_NUM = (select location_city_num from location_city where city_name = #{city_name}),
             CGROUND_LOCATION = #{cground_location},
             CGROUND_NAME = #{cground_name},
             CGROUND_TEL = #{cground_tel},
@@ -54,7 +53,7 @@
             CAMPING_ENTER = #{camping_enter},
             CAMPING_EXIT = #{camping_exit},
             CGROUND_DETAIL_INFO = #{cground_detail_info},
-            ADD_FACIL = #{acc_facil}
+            ADD_FACIL = #{add_facil}
         WHERE CGROUND_INFO_NUM = #{cground_info_num}
     </update>
 

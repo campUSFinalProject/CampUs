@@ -29,6 +29,7 @@ public class BusinessController {
     @Resource(name = "BusinessService")
     private IBusinessService businessService;
 
+    //카라반 등록 ********제발 주석좀 답시다
     @RequestMapping(value = "Business_CRUD")
     public String Business_CRUD(HttpServletRequest request, ModelMap model) throws Exception {
 
@@ -117,9 +118,6 @@ public class BusinessController {
 
             String business_id = CmmUtil.nvl(request.getParameter("id"));
             String business_pw = CmmUtil.nvl(request.getParameter("password"));
-            String Business_email = CmmUtil.nvl(request.getParameter("Business_email"));
-            String Business_tel = CmmUtil.nvl(request.getParameter("Business_tel"));
-            String Business_name = CmmUtil.nvl(request.getParameter("Business_name"));
 
             log.info("Business_id : " + business_id);
             log.info("Business_password : " + business_pw);
@@ -128,9 +126,6 @@ public class BusinessController {
 
             pDTO.setBusiness_id(business_id);
             pDTO.setBusiness_pw(EncryptUtil.encHashSHA256(business_pw));
-            pDTO.setBusiness_name(Business_name);
-            pDTO.setBusiness_email(Business_email);
-            pDTO.setBusiness_tel(Business_tel);
 
             //로그인정보 체크
             BusinessDTO rDTO = businessService.getMemLoginCheck(pDTO);
@@ -150,13 +145,12 @@ public class BusinessController {
                 session.setAttribute("SS_business_EMAIL", rDTO.getBusiness_email());
                 session.setAttribute("SS_business_NAME", rDTO.getBusiness_name());
                 session.setAttribute("SS_business_PASSWORD", rDTO.getBusiness_pw());
-
-
             }
             rDTO = null;
 
         }catch (Exception e){
             msg = "실패하였습니다 :" + e.toString();
+            url = "/member/memRegLoginForm";
             System.out.println("오류로 인해 로그인이 실패하였습니다.");
             log.info(e.toString());
             e.printStackTrace();
@@ -182,6 +176,21 @@ public class BusinessController {
     }
 
 
+    //사업자 내 카라반 버기
+    @RequestMapping(value = "business/myCaravan")
+    public String myCaravan(HttpServletRequest request, ModelMap model, HttpSession session)
+        throws Exception{
+        String business_num = CmmUtil.nvl((String) session.getAttribute("SS_business_NUM"));
+
+        CaravanDTO cDTO = new CaravanDTO();
+        cDTO.setBusiness_num(business_num);
+
+        List<CaravanDTO> cList = businessService.getMyCaravan(cDTO);
+
+        model.addAttribute("cList", cList);
+
+        return "/business/business_insert";
+    }
 
 
     /*//--------------- 사업자 전환 요청 리스트 조회 ---------------------
