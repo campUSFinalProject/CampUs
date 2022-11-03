@@ -21,7 +21,7 @@ import static kibwa.campus.util.CmmUtil.nvl;
 
 @Slf4j
 @Controller
-public class  CaravanController {
+public class CaravanController {
 
     @Resource(name = "CaravanService")
     private ICaravanService CaravanService;
