@@ -284,11 +284,11 @@ public class CaravanController {
             log.info("res : " + res);
 
             msg = "카라반이 삭제되었습니다.";
-            url = "/Caravan";
+            url = "/business/myCaravan";
 
         }catch (Exception e){
             msg = "삭제에 실패하였습니다 : " + e.toString();
-            url = "/Caravan";
+            url = "/business/myCaravan";
             log.info(e.toString());
             e.printStackTrace();
 
