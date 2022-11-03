@@ -43,6 +43,27 @@
                 #{business_num})
     </insert>
 
+    <!-- 카라반 정보 수정 -->
+    <update id="updateCaravan" parameterType="kibwa.campus.dto.CaravanDTO">
+        UPDATE CGROUND_INFO
+        SET LOCATION_CITY_NUM = #{location_city_num},
+            CGROUND_LOCATION = #{cground_location},
+            CGROUND_NAME = #{cground_name},
+            CGROUND_TEL = #{cground_tel},
+            CGROUND_DEPOSIT = #{cground_deposit},
+            CAMPING_ENTER = #{camping_enter},
+            CAMPING_EXIT = #{camping_exit},
+            CGROUND_DETAIL_INFO = #{cground_detail_info},
+            ADD_FACIL = #{acc_facil}
+        WHERE CGROUND_INFO_NUM = #{cground_info_num}
+    </update>
+
+    <!-- 카라반 삭제 -->
+    <delete id="deleteCaravan" parameterType="kibwa.campus.dto.CaravanDTO">
+        DELETE
+        FROM CGROUND_INFO
+        WHERE CGROUND_INFO_NUM = #{cground_info_num}
+    </delete>
 
 
 
