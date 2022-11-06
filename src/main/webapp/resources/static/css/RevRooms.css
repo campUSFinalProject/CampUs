@@ -174,9 +174,17 @@ li.rc.is-selected, .rc:hover {
     margin-top: 0.667em;
 }
 
+.revrev > div {
+    margin-left: 23%;
+    float: left;
+    text-align: center;
+}
 
-
-
+.revrev::after {
+    content: "";
+    display: block;
+    clear: both;
+}
 
 
 .spacer {

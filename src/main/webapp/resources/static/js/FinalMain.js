@@ -6,7 +6,7 @@ console.clear();
 $(window).scroll(function() {
     var scrollTop = $(window).scrollTop();
 
-    if ( scrollTop >= 200 ) {
+    if ( scrollTop >= 500) {
         $('html').addClass('scroll-top-over-200');
     }
     else {
