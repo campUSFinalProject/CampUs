@@ -51,7 +51,7 @@ public class RevController {
         return "/rev/RevRooms";
     }
 
-    @PostMapping(value = "/payment")
+    @PostMapping(value = "/rooms")
     public String Rooms(RoomsRequestDTO roomsRequestDTO,
                         HttpSession session) {
         MemberDTO memberDTO =(MemberDTO) session.getAttribute("Mem_num");
