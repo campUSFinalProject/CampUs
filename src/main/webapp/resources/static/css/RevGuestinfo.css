@@ -58,6 +58,7 @@ https://codepen.io/overdrivemachines/pen/KVpGje
 .guest-actions {
     display: flex;
     align-items: center;
+    /*margin-left: ;*/
 }
 
 .guest-actions a {

@@ -10,4 +10,9 @@ import lombok.ToString;
 public class RevDTO {
     private String sector_Num;
     private String mem_Num;
+    private String name;
+    private String mem_Tel;
+    private String email;
 }
+
+

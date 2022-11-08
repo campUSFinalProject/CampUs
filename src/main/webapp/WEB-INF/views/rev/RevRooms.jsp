@@ -11,26 +11,24 @@
     <title> 예약 페이지 </title>
 </head>
 
-
 <!-- CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <link href="../../../resources/static/css/FinalMain.css" rel="stylesheet" type="text/css" />
 <link href="../../../resources/static/css/RevRooms.css" rel="stylesheet" type="text/css" />
+<link href="../../../resources/static/css/business.css" rel="stylesheet" type="text/css" />
 <script src="../4_jquery_class/lib/jquery-1.9.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
-
 <!-- 폰트어썸 불러오기 -->
-
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.theme.default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
 
-
-<body>
 
 <!-- 우측 메뉴바 -->
+<body>
 <div class="bring">
     <div class="why cell-right">
         <div class="quickH">
@@ -142,7 +140,7 @@
                     <a class="current" href="#"><i class="fa fa-th-list"> </i>
                         <div class="lbl"> 날짜 </div>
                     </a>
-                    <a class="future" href="#"><i class="fa fa-users"></i>
+                    <a class="future" href="#"><i class="fa fa-credit-card"></i>
                         <div class="lbl"> 결제 </div>
                     </a>
                     <a class="future" href="#"><i class="fa fa-users"></i>
@@ -171,7 +169,6 @@
                     <input type="hidden" name="camping_type_num" value="${campInfo.camping_type_num}">
                     <input type="hidden" name="camping_type_name" value="${campInfo.camping_type_name}">
                     <input type="hidden" name="mem_num" value="${campInfo.mem_num}">
-                </form>
 
                 <br/>
                 <br/>
@@ -179,12 +176,11 @@
                 <div class="revrev">
                     <div class="split field">
                         <br/>
-                        <div class="equal">
-                            <label><b> 체크인 </b></label>
+                        <div class="equal" >
+                            <label style="margin-left: 6%"><b> 체크인 </b></label>
                             <input type="date"/>
                         </div>
-                        <br/>
-                        <br/>
+
                         <div class="equal">
                             <label><b> 체크아웃 </b></label>
                             <input type="date"/>
@@ -207,10 +203,13 @@
                         <div class="dp-row">
                             <div class="col1"><b> 총계 </b></div>
                             <div class="col2">
-                                <input type="text" id="reservation_total" />
+                                <input type="text" id="reservation_total" readonly />
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="dp-row" style="margin-left: 71.8%">
+                    <input type="submit" value="결제하기">
                 </div>
                 </form>
         </div>
@@ -221,11 +220,6 @@
 <br/>
 <br/>
 
-<div class="dp-row" style="margin-left: 63.5%">
-    <form action="${pageContext.request.contextPath}/rev/payment" method="post">
-        <input type"submit"/>
-    </form>
-</div>
 
 
 <!-- 자바 스크립트 -->

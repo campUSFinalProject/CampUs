@@ -55,6 +55,7 @@ public class RevController {
     public String Rooms(RoomsRequestDTO roomsRequestDTO,
                         HttpSession session) {
         MemberDTO memberDTO =(MemberDTO) session.getAttribute("Mem_num");
+        log.info("MemeberDTO = {}", memberDTO);
         revService.save(roomsRequestDTO, memberDTO);
 
         return "redirect:/rev/payment";
