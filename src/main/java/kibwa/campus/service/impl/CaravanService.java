@@ -35,4 +35,18 @@ public class CaravanService implements ICaravanService {
     public CaravanDTO getCaravanDetail(CaravanDTO cDTO) throws Exception {
         return CaravanMapper.getCaravanDetail(cDTO);
     }
+
+    @Override
+    public void updateCaravan(CaravanDTO cDTO) throws Exception {
+        log.info(this.getClass().getName() + ".updateCaravan START!!!");
+
+        CaravanMapper.updateCaravan(cDTO);
+    }
+
+    @Override
+    public int deleteCaravan(CaravanDTO cDTO) throws Exception {
+        log.info(this.getClass().getName() + ".deleteCaravan START!!");
+        int res = CaravanMapper.deleteCaravan(cDTO);
+        return res;
+    }
 }

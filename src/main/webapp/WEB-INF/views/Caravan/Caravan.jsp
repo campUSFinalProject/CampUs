@@ -377,6 +377,8 @@
 
 <%for (CaravanDTO c : cList) {%>
 <div class="card">
+
+
     <div class="card__thumb"><a href="javascript:;"><img class="animate" src="https://picsum.photos/800?random=1"/></a></div>
     <div class="card__content">
         <h2 class="card__title animate"><a href="javascript:;"> <%=c.getCground_name()%> </a></h2>

@@ -71,8 +71,6 @@ public class BoardListController {
         try{
             String user_id = CmmUtil.nvl((String) session.getAttribute("SS_ID"));
             String mem_num = CmmUtil.nvl((String)session.getAttribute("SS_NUM"));
-            //String user_id = "ming";
-            //int mem_num = 1;
             String title = CmmUtil.nvl(request.getParameter("title"));
             String contents = CmmUtil.nvl(request.getParameter("contents"));
 

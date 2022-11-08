@@ -163,6 +163,7 @@ public class MemberController {
 
         }catch (Exception e){
             msg = "실패하였습니다 :" + e.toString();
+            url = "/member/memRegLoginForm";
             System.out.println("오류로 인해 로그인이 실패하였습니다.");
             log.info(e.toString());
             e.printStackTrace();
