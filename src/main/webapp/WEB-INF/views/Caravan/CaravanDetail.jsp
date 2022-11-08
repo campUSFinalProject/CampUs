@@ -14,17 +14,57 @@
 
     //주석
     //System.out.println("cList : " + cList)
-
     CaravanDTO coDTO = (CaravanDTO) request.getAttribute("coDTO");
+
+    String SS_business_NUM = CmmUtil.nvl((String) request.getAttribute("SS_business_NUM"));
+    int access = 1;
+    if (CmmUtil.nvl((String) session.getAttribute("SS_business_NUM")).equals(
+            CmmUtil.nvl(coDTO.getBusiness_num()))) {
+        access = 2;
+    }
+
+    //사용자 로그인 여부 확인
+    int id = 0;
+
+    //Session을 받을때는 값이 null로 올때를 생각해서 조건문을 사용한다.
+    if (session.getAttribute("SS_buiness_ID") != null) {
+        //세션의 값을 가져오기
+        id = 1;
+    }
+
     System.out.println("coDTO : " + coDTO);
-    System.out.println("bo.mem_num : " + coDTO.getCground_info_num());
+    System.out.println("location : " + coDTO.getCground_location());
+    System.out.println("cground_info_num : " + coDTO.getCground_info_num());
+
 %>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>소풍캠핑장 상세정보</title>
+    <title>카라반 상세정보</title>
+
+    <script type="text/javascript">
+        function doEdit() {
+            if ("<%=access%>" == "1") {
+                alert("작성자만 수정할 수 있습니다.");
+            } else {
+                location.href = "/caravan/updateCaravanForm?cground_info_num=<%=CmmUtil.nvl(coDTO.getCground_info_num())%>"
+            }
+        }
+
+        //게시글 삭제 함수
+        function doDelete() {
+            if ("<%=access%> == 2") {
+                if (confirm("작성한 글을 삭제하시겠습니까?")) {
+                    location.href = "/caravan/deleteCaravan?cground_info_num=<%=CmmUtil.nvl(coDTO.getCground_info_num())%>";
+                }
+            } else {
+                alert("본인이 작성한 게시글만 삭제할 수 있습니다.");
+            }
+        }
+
+    </script>
 </head>
 
 <link href="../css/FinalMain.css" rel="stylesheet" type="text/css" />
@@ -414,7 +454,7 @@
                 <div class="rightSec">
                     <ul class="detail">
                         <li></li>
-                        <li></li>
+                        <li><a href="javascript:doEdit();" class="btn_3">수정하기</a></li>
                         <li><a href="" class="btn_3">예약하기</a></li>
                     </ul>
                     <h2>객실 정보</h2>
@@ -465,34 +505,67 @@
             <!-- 지도를 표시할 div 입니다 -->
             <div id="map" style="width:911px;height:300px;"></div>
 
-            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=119ae2ea8315dbedde5d3225d2c16c6d"></script>
+            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=119ae2ea8315dbedde5d3225d2c16c6d&libraries=services"></script>
             <script>
+
                 var mapContainer = document.getElementById('map'), // 지도를 표시할 div
                     mapOption = {
-                        center: new kakao.maps.LatLng(37.58176478603421, 127.53583598220568), // 소풍캠핑장 주소
+                        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
                         level: 3 // 지도의 확대 레벨
                     };
 
-                // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+                // 지도를 생성합니다
                 var map = new kakao.maps.Map(mapContainer, mapOption);
-
-                <%
-                    CaravanDTO cDTO = new CaravanDTO();
-
-                    if (cDTO == null){
-                        cDTO = new CaravanDTO();
-                    }
-                %>
 
                 // 주소-좌표 변환 객체를 생성합니다
                 var geocoder = new kakao.maps.services.Geocoder();
+
                 // 주소로 좌표를 검색합니다
-                geocoder.addressSearch('<%=CmmUtil.nvl(cDTO.getCground_location())%>', function(result, status) {
+                geocoder.addressSearch('<%=CmmUtil.nvl(coDTO.getCground_location())%>', function(result, status) {
+
+                    // 정상적으로 검색이 완료됐으면
+                    if (status === kakao.maps.services.Status.OK) {
+                        console.log("status : " +status)
+
+                        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+                        // 결과값으로 받은 위치를 마커로 표시합니다
+                        var marker = new kakao.maps.Marker({
+                            map: map,
+                            position: coords
+                        });
+
+                        // 인포윈도우로 장소에 대한 설명을 표시합니다
+                        var infowindow = new kakao.maps.InfoWindow({
+                            content: '<div style="width:150px;text-align:center;padding:6px 0;"><%=CmmUtil.nvl(coDTO.getCground_name())%></div>'
+                        });
+                        infowindow.open(map, marker);
+
+                        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+                        map.setCenter(coords);
+                    }
+                });
+
+                /* var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+                     mapOption = {
+                         center: new kakao.maps.LatLng(37.58176478603421, 127.53583598220568), // 소풍캠핑장 주소
+                         level: 3 // 지도의 확대 레벨
+                     };
+
+                 // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+                 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도 생성
+
+
+                 // 주소-좌표 변환 객체를 생성합니다
+                 var geocoder = new kakao.maps.services.Geocoder();
+                 // 주소로 좌표를 검색합니다
+                 geocoder.addressSearch('', function(result, status) {
 
                     // 정상적으로 검색이 완료됐으면
                     if (status === kakao.maps.services.Status.OK) {
 
                         var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+                        console.log("coords : " + coords)
 
                         // 결과값으로 받은 위치를 마커로 표시합니다
                         var marker = new kakao.maps.Marker({
@@ -500,11 +573,9 @@
                             position: coords,
                             clickable: true
                         });
-
-                        // 마커가 지도 위에 표시되도록 설정합니다
-                        marker.setMap(map);
+                            marker.setMap(map);
                     }
-                });
+                });*/
             </script>
         </div>
         <div class="snsSec">

@@ -1,6 +1,7 @@
 <%@ page import="kibwa.campus.dto.CaravanDTO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="kibwa.campus.util.CmmUtil" %>
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
 
 <%
@@ -15,15 +16,6 @@
     System.out.println("cList : " + cList);
 %>
 
-
-
-    <!-- 예약페이지로 이동 -->
-    <script type="text/javascript">
-        function goToBusinessinsert() {
-            location.href = "/Business_CRUD";
-        }
-    </script>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,6 +28,23 @@
         function goToCaravanDetail(cground_info_num){
             location.href="/CaravanDetail?cground_info_num=" + cground_info_num;
         }
+
+
+        //수정폼 이동
+        function doEdit(cground_info_num) {
+            location.href = "/caravan/updateCaravanForm?cground_info_num=" + cground_info_num;
+
+        }
+
+        //삭제
+        function doDelete(cground_info_num){
+            location.href = "/caravan/deleteCaravan?cground_info_num=" + cground_info_num;
+        }
+
+        function goToBusinessinsert() {
+            location.href = "/Business_CRUD";
+        }
+
     </script>
 </head>
 
@@ -385,12 +394,24 @@
 <!-- 캠핑장 리스트  -->
 
 <%for (CaravanDTO c : cList) {%>
+<%
+    if (cList.isEmpty()){%>
 <div class="card">
-    <div class="card__thumb"><a href="javascript:;"><img class="animate" src="https://picsum.photos/800?random=1"/></a></div>
+    <div class="card__thumb"><img class="animate" src="https://picsum.photos/800?random=1"/></div>
     <div class="card__content">
-        <h2 class="card__title animate"><a href="javascript:;"> <%=c.getCground_name()%> </a></h2>
+        <h2 class="card__title animate">등록한 카라반이 없습니다.</h2>
+        <p class="card__text">등록하려면 아래 버튼을 눌러주세요. </p>
+        <button class="card__btn" onclick="goToBusinessinsert"><a class="fa-solid fa-arrow-right fa-fw">카라반등록</a></button>
+    </div>
+</div>
+<%}else %>
+
+<div class="card">
+    <div class="card__thumb"><a href="javascript:doEdit('<%=c.getCground_info_num()%>')"><img class="animate" src="https://picsum.photos/800?random=1"/></a></div>
+    <div class="card__content">
+        <h2 class="card__title animate"><a href="javascript:doEdit('<%=c.getCground_info_num()%>')"> <%=c.getCground_name()%> </a></h2>
         <p class="card__text"> <%=c.getCground_detail_info()%> </p>
-        <button class="card__btn" onclick="goToCaravanDetail('<%=c.getCground_info_num()%>')"><i class="fa-solid fa-arrow-right fa-fw"></i></button>
+        <button class="card__btn" onclick="doDelete('<%=c.getCground_info_num()%>')"><a class="fa-solid fa-arrow-right fa-fw">삭제</a></button>
     </div>
 </div>
 <%}%>

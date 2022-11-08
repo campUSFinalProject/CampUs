@@ -13,7 +13,7 @@
              BUSINESS_PW,
              BUSINESS_NAME,
              BUSINESS_TEL,
-             BUSINESS_EMAIL,
+             BUSINESS_EMAIL
             )
         VALUES(
                #{business_num},
@@ -21,7 +21,7 @@
                #{business_pw},
                #{business_name},
                #{business_tel},
-               #{business_email},
+               #{business_email}
               )
     </insert>
 
@@ -31,7 +31,12 @@
         FROM BUSINESS
         WHERE BUSINESS_ID = #{business_id}
         AND BUSINESS_PW = #{business_pw}
-        AND ACTIVATION = 'Y'
+    </select>
+
+    <!-- 사업자가 등록한 카라반만 리스트 조회 -->
+    <select id="getMyCaravan" parameterType="kibwa.campus.dto.CaravanDTO" resultType="kibwa.campus.dto.CaravanDTO">
+        SELECT * FROM CGROUND_INFO
+        WHERE BUSINESS_NUM = #{business_num}
     </select>
 
 

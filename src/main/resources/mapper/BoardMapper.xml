@@ -24,7 +24,8 @@
          notice_check,
          mem_num,
          board_type_num)
-        VALUES ((SELECT NULLIF(MAX(A.board_num), 0) + 1 FROM board A),
+        VALUES (
+                (SELECT NULLIF(MAX(A.board_num), 0) + 1 FROM board A),
                 #{board_title},
                 #{board_content},
                 sysdate,
