@@ -4,8 +4,12 @@
 <mapper namespace="kibwa.campus.persistance.mapper.rev.IRevMapper">
 
     <insert id="save" parameterType="kibwa.campus.dto.rev.CampingInfoResponseDTO">
+        <selectKey keyProperty="rev_num" resultType="String" order="BEFORE">
+            SELECT REV_SEQ.NEXTVAL FROM DUAL
+        </selectKey>
         INSERT INTO REV (
             REV_NUM,
+            REV_DATE,
             REV_PEOPLE,
             ENTER_DATE,
             EXIT_DATE,
@@ -13,12 +17,13 @@
             SECTOR_NUM
         )
         values(
-            seq.nextVal
-            #{rev_People},
-            #{enter_Date},
-            #{exit_Date},
-            #{mem_Num},
-            #{sector_Num}
+            #{rev_num},
+            #{rev_date},
+            #{rev_people},
+            #{enter_date},
+            #{exit_date},
+            #{mem_num},
+            #{sector_num}
               )
     </insert>
 
@@ -46,6 +51,24 @@
             AND B.CAMPING_TYPE_NUM = C.CAMPING_TYPE_NUM
             AND B.SECTOR_NUM = #{sector_Num}
 
+    </select>
+
+    <select id="getRevInfo" resultType="kibwa.campus.dto.rev.GuestInfoResponseDTO">
+        SELECT A.REV_NUM,
+               A.REV_DATE,
+               A.REV_PEOPLE,
+               A.REV_REVIEW,
+               A.ENTER_DATE,
+               A.EXIT_DATE,
+               A.HELP_CHECK,
+               A.MEM_NUM,
+               A.SECTOR_NUM,
+               B.NAME,
+               B.MEM_TEL
+        FROM REV A,
+             MEMBER B
+        WHERE A.MEM_NUM = B.MEM_NUM
+            AND REV_NUM = #{rev_num}
     </select>
 
 

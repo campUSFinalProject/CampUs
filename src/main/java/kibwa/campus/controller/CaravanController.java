@@ -139,7 +139,7 @@ public class CaravanController {
             cDTO.setBusiness_num(business_num);
 
             CaravanDTO coDTO = CaravanService.getCaravanDetail(cDTO);
-
+            coDTO.setSector_num(CaravanService.getCaravanSector(cDTO));
             model.addAttribute("coDTO", coDTO);
 
 

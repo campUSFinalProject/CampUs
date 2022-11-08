@@ -1,12 +1,13 @@
 package kibwa.campus.service.impl.rev;
 
 import kibwa.campus.dto.MemberDTO;
-import kibwa.campus.dto.rev.RoomsRequestDTO;
-import kibwa.campus.dto.rev.CampingInfoResponseDTO;
-import kibwa.campus.dto.rev.RevDTO;
+import kibwa.campus.dto.rev.*;
 import kibwa.campus.persistance.mapper.rev.IRevMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Slf4j
 @Service
@@ -24,9 +25,15 @@ public class RevService {
         return revMapper.findRevCampInfo(revDTO);
     }
 
-    public void save(RoomsRequestDTO roomsRequestDTO, MemberDTO memberDTO) {
+    public RoomsRequestDTO save(RoomsRequestDTO roomsRequestDTO, MemberDTO memberDTO) {
         roomsRequestDTO.setMem_num(memberDTO.getMem_num());
-
+        roomsRequestDTO.setRev_date(LocalDate.now().format(DateTimeFormatter.ISO_DATE));
+        log.info("roomsRequestDTO = {}", roomsRequestDTO);
         revMapper.save(roomsRequestDTO);
+        return roomsRequestDTO;
+    }
+
+    public GuestInfoResponseDTO getRevInfo(GuestInfoRequestDTO guestInfoRequestDTO) {
+        return revMapper.getRevInfo(guestInfoRequestDTO);
     }
 }

@@ -49,4 +49,9 @@ public class CaravanService implements ICaravanService {
         int res = CaravanMapper.deleteCaravan(cDTO);
         return res;
     }
+
+    @Override
+    public List<String> getCaravanSector(CaravanDTO cDTO) throws Exception {
+        return CaravanMapper.getCaravanSector(cDTO);
+    }
 }

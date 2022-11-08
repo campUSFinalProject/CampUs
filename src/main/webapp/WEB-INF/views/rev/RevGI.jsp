@@ -1,15 +1,11 @@
 <%@ page import="kibwa.campus.dto.rev.RevDTO" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
+<%@ page import="kibwa.campus.dto.rev.GuestInfoResponseDTO" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-    List<RevDTO> rList = (List<RevDTO>) request.getAttribute("rList");
-    // 예약 정보 불러오기
-    if (rList == null){
-        rList = new ArrayList<RevDTO>();
-    }
-    // 주석
-    System.out.println("rList : " + rList);
+    GuestInfoResponseDTO guestInfo = (GuestInfoResponseDTO) request.getAttribute("guestInfo");
+
 %>
 <!DOCTYPE html>
 <html>
@@ -19,11 +15,11 @@
     <title>예약</title>
 </head>
 
-<link href="../../../resources/css/FinalMain.css" rel="stylesheet" type="text/css" />
-<link href="../../../resources/css/RevDate.css" rel="stylesheet" type="text/css" />
-<link href="../../../resources/css/RevRooms.css" rel="stylesheet" type="text/css" />
-<link href="../../../resources/css/RevPayments.css" rel="stylesheet" type="text/css" />
-<link href="../../../resources/css/RevGuestinfo.css" rel="stylesheet" type="text/css" />
+<link href="../../../resources/static/css/FinalMain.css" rel="stylesheet" type="text/css" />
+<link href="../../../resources/static/css/RevDate.css" rel="stylesheet" type="text/css" />
+<link href="../../../resources/static/css/RevRooms.css" rel="stylesheet" type="text/css" />
+<link href="../../../resources/static/css/RevPayments.css" rel="stylesheet" type="text/css" />
+<link href="../../../resources/static/css/RevGuestinfo.css" rel="stylesheet" type="text/css" />
 
 <script src="../4_jquery_class/lib/jquery-1.9.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -161,40 +157,25 @@
         <table class="guests-list" style="margin-left: 30%">
             <thead>
             <tr>
-                <th>고객 명</th> <th>예약 확인</th>
+                <th>고객 명</th>
+            </tr>
+            <tr>
+                <td>${guestInfo.name}</td>
+            </tr>
+            <tr>
+                <td>TEL : ${guestInfo.mem_tel}</td>
+            </tr>
+            <tr>
+                <td>EMAIL : jssun0506@gmail.com</td>
             </tr>
             </thead>
-            <tbody>
-
-
-            <tr class="guest-item">
-                <%for (RevDTO r : rList){%>
-
-                <td class="guest-details-c">
-                    <div class="name">
-                        <%=r.getName()%>
-                    </div>
-                    <div class="guest-details">
-                        <div class="phone">
-                            <%=r.getMem_Tel()%>
-                        </div>
-                    </div>
-                    <div class="guest-details">
-                        <div class="email">
-                            <%=r.getEmail()%>
-                        </div>
-                    </div>
-                </td>
-                <%}%>
-                <td>
-                    <div class="guest-actions">
-                        <div><button type="button" onclick="location.href='RevConf.jsp' ">예약 확정</button></div>
-                        <div><button type="button" onclick="location.href='RevConf.jsp' ">예약 취소</button></div>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
         </table>
+        <div class="guest-actions" style="margin-left: 60%">
+            <button type="button" onclick="location.href='RevConf.jsp' " style="margin-right: 10px">예약 확정</button>
+            <br/>
+            <br/>
+            <button type="button" onclick="location.href='${pageContext.request.contextPath}/cu/Main'"> 홈으로</button>
+        </div>
         <div class="spacer"></div>
     </div>
 </section>

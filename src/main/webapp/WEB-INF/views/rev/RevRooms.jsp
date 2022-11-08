@@ -154,7 +154,6 @@
 
                 <form action="${pageContext.request.contextPath}/rev/rooms" method="post">
                     <%-- 캠핑장 정보들을 숨겨서 서버로 보낼것 --%>
-                    <input type="hidden" name="sector_num" value="${campInfo.sector_num}">
                     <input type="hidden" name="cground_info_num" value="${campInfo.cground_info_num}">
                     <input type="hidden" name="cground_name" value="${campInfo.cground_name}">
                     <input type="hidden" name="cground_location" value="${campInfo.cground_location}">
@@ -178,12 +177,12 @@
                         <br/>
                         <div class="equal" >
                             <label style="margin-left: 6%"><b> 체크인 </b></label>
-                            <input type="date"/>
+                            <input type="date" name="enter_date" />
                         </div>
 
                         <div class="equal">
                             <label><b> 체크아웃 </b></label>
-                            <input type="date"/>
+                            <input type="date" name="exit_date" />
                         </div>
                     </div>
 
@@ -191,19 +190,19 @@
                         <div class="dp-row">
                             <div class="col1"><b> 구역 </b></div>
                             <div class="col2">
-                                <input type="text" id="reservation_rate" />
+                                <input type="text" id="reservation_rate" name="sector_num" value="${campInfo.sector_num}" readonly />
                             </div>
                         </div>
                         <div class="dp-row">
                             <div class="col1"><b> 인원 </b></div>
                             <div class="col2">
-                                <input type="text" id="reservation_tax"/>
+                                <input type="text" name="rev_people" id="reservation_tax"/>
                             </div>
                         </div>
                         <div class="dp-row">
                             <div class="col1"><b> 총계 </b></div>
                             <div class="col2">
-                                <input type="text" id="reservation_total" readonly />
+                                <input type="text" id="reservation_total" name="total_price" readonly />
                             </div>
                         </div>
                     </div>
@@ -225,9 +224,10 @@
 <!-- 자바 스크립트 -->
 <script type="text/javascript" src= "../../../resources/static/js/FinalMain.js"></script>
 <script type="text/javascript">
-
-    document.getElementById('reservation_tax').addEventListener('change', (event) => {
-        console.log(event);
+    const num_people = document.getElementById('reservation_tax');
+    const total = document.getElementById('reservation_total');
+    num_people.addEventListener('change', (event) => {
+        total.value = num_people.value * 30000
     })
 
 

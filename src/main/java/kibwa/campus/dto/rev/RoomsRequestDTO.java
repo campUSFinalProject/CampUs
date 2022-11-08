@@ -19,10 +19,15 @@ public class RoomsRequestDTO {
     private String cground_detail_info;
     private String add_facil;
     private String rev_count;
+    private String rev_people;
+    private String total_price;
     private String location_city_num;
     private String sector_num;
     private String camping_type_num;
     private String camping_type_name;
     private String mem_num;
-
+    private String enter_date;
+    private String exit_date;
+    private String rev_date;
+    private String rev_num;
 }

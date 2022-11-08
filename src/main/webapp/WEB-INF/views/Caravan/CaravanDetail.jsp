@@ -386,15 +386,15 @@
         <div class="nav">
             <h2>구 역</h2>
             <ul>
-                <li><a href="">A 구역</a></li>
-                <li><a href="">B 구역</a></li>
-                <li><a href="">C 구역</a></li>
+            <% for(String sectorId : coDTO.getSector_num()) { %>
+                <li><a href=""><%=sectorId%> 구역</a></li>
+            <% } %>
             </ul>
 
 
         </div>
         <div class="contents">
-            <h1>A 구역</h1>
+            <h1>1 구역</h1>
             <div class="mainVisual">
                 <div class="slider">
                     <div class="visual_1"></div>
@@ -440,7 +440,7 @@
                     <ul class="detail">
                         <li></li>
                         <li><a href="javascript:doEdit();" class="btn_3">수정하기</a></li>
-                        <li><a href="" class="btn_3">예약하기</a></li>
+                        <li><a href="${pageContext.request.contextPath}/rev/한강뚝섬캠핑장/1" class="btn_3">예약하기</a></li>
                     </ul>
                     <h2>객실 정보</h2>
 

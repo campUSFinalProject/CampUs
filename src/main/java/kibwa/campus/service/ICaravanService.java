@@ -17,4 +17,6 @@ public interface ICaravanService {
 
     //카라반 삭제
     int deleteCaravan(CaravanDTO cDTO) throws Exception;
+
+    List<String> getCaravanSector(CaravanDTO cDTO) throws Exception;
 }

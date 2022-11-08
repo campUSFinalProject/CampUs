@@ -13,6 +13,11 @@
         SELECT * FROM CGROUND_INFO where cground_info_num = #{cground_info_num}
     </select>
 
+    <!-- 카라반 섹터 정보 -->
+    <select id="getCaravanSector" resultType="String">
+        SELECT Sector_Num FROM Sector where cground_info_num = #{cground_info_num}
+    </select>
+
     <!-- 관리자 캠핑장정보 insert -->
     <insert id="insertCampingInfo" parameterType="kibwa.campus.dto.CaravanDTO">
         INSERT INTO CGROUND_INFO

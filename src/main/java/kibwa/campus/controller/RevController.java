@@ -1,6 +1,7 @@
 package kibwa.campus.controller;
 
 import kibwa.campus.dto.MemberDTO;
+import kibwa.campus.dto.rev.GuestInfoRequestDTO;
 import kibwa.campus.dto.rev.RoomsRequestDTO;
 import kibwa.campus.dto.rev.CampingInfoResponseDTO;
 import kibwa.campus.service.impl.rev.RevService;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 
@@ -43,58 +45,42 @@ public class RevController {
     @GetMapping(value = "/{cGroundName}/{sectorId}") //localhost:9000/캠핑장이름/섹터넘버 cground/1
     public String Rooms(@PathVariable String sectorId,
                         Model model) throws Exception {
-
         CampingInfoResponseDTO campingInfoResponseDTO = revService.findRevCampInfo(sectorId);
         log.info("조회해온 campingInfo = {}", campingInfoResponseDTO);
         model.addAttribute("campInfo", campingInfoResponseDTO);
-
         return "/rev/RevRooms";
     }
 
     @PostMapping(value = "/rooms")
     public String Rooms(RoomsRequestDTO roomsRequestDTO,
-                        HttpSession session) {
-        MemberDTO memberDTO =(MemberDTO) session.getAttribute("Mem_num");
-        log.info("MemeberDTO = {}", memberDTO);
-        revService.save(roomsRequestDTO, memberDTO);
-
+                        HttpSession session,
+                        RedirectAttributes rt) {
+        MemberDTO memberDTO = new MemberDTO();
+        memberDTO.setMem_num((String)session.getAttribute("SS_NUM"));
+        log.info("memberDTO = {}", memberDTO);
+        rt.addFlashAttribute("paymentInfo", revService.save(roomsRequestDTO, memberDTO));
         return "redirect:/rev/payment";
     }
 
     @GetMapping(value = "/payment") // RevDate/ 이후의 ID 값읇 불러와서 해당 캠핑장의 예약을 도와줌
     public String payment() throws Exception {
-
        return "/rev/Revpay";
     }
 
     @PostMapping(value = "/payment")
-    public String payment(@ModelAttribute CampingInfoResponseDTO revDTO) throws Exception {
-        log.info("revDTO = {}", revDTO);
-        //revService.save(revDTO);
+    public String payment(@ModelAttribute GuestInfoRequestDTO guestInfoRequestDTO,
+                          RedirectAttributes rt) throws Exception {
+        log.info("PostMapping payment guestInfoRequestDTO = {} ", guestInfoRequestDTO);
+        rt.addFlashAttribute("guestInfo", guestInfoRequestDTO);
         return "redirect:/rev/guestInfo";
     }
 
     @GetMapping("/guestInfo")
     public String guestInfo(Model model) throws Exception {
+        GuestInfoRequestDTO guestInfoRequestDTO = (GuestInfoRequestDTO)model.asMap().get("guestInfo");
+        log.info("guestInfoRequestDTO = {}", guestInfoRequestDTO);
+        model.addAttribute("guestInfo", revService.getRevInfo(guestInfoRequestDTO));
 
         return "/rev/RevGI";
-    }
-
-    /**
-     *  1. ID 는 사용자 ID 가져와서 어떤 사용자의 예약정보를 보여줄지에 대한  ID (ps 짜다보면 달라질수있음)
-     *  2.
-     */
-    @GetMapping(value = "gi/{id}")
-    public String gi(@PathVariable @Nullable String id, ModelMap model) throws Exception {
-
-        log.info("{} .RevGIList End!", this.getClass().getName());
-        return "/rev/RevGI";
-    }
-
-
-
-    @GetMapping(value = "test")
-    public String test1(){
-        return "rev/testrev";
     }
 }

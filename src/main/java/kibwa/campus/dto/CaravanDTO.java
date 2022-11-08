@@ -3,6 +3,8 @@ package kibwa.campus.dto;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 public class CaravanDTO {
@@ -19,4 +21,5 @@ public class CaravanDTO {
     private String add_facil;
     private String rev_count;
     private String business_num;
+    private List<String> sector_num;
 }

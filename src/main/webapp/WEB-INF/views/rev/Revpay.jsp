@@ -1,6 +1,6 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -153,27 +153,27 @@
         <br/>
 
             <div style="margin-left: 70%">
-                <div>
-                    <label> 구역 </label>
-                    <input type="text" />
-                </div>
-
-                <div>
-                    <label> 가격 </label>
-                    <input type="number" />
-                </div>
-
-                <br/>
-
-                <div>
-                    <div class="actions" style="margin-right: 55%">
-                        <button input type="hidden" name="sector_num"> <b> 이전 </b>
-                        <button input type="hidden" name="sector_num"> <b> 결제 완료 </b>
+                <form action="${pageContext.request.contextPath}/rev/payment" method="post">
+                    <div>
+                        <label> 구역 </label>
+                        <input style="margin: 2px" type="text" value="${paymentInfo.sector_num}" readonly />
                     </div>
-                </div>
+
+                    <div>
+                        <label> 가격 </label>
+                        <input style="margin: 2px" type="number" value="${paymentInfo.total_price}" readonly/>
+                    </div>
+                        <input type="hidden" name="rev_num" value="${paymentInfo.rev_num}">
+                    <br/>
+
+                    <div>
+                        <div class="actions" style="margin-right: 55%">
+                            <button  type="button">이전</button>
+                            <button  type="submit">결제 완료</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-
-
         </div>
 </section>
 
