@@ -121,7 +121,7 @@
             <nav class="menu-box-2 cell">
                 <ul class="row">
                     <li class="cell">
-                        <a href="Caravan" class="block">CAMPING</a>
+                        <a href="/Caravan" class="block">CAMPING</a>
                         <div>
                             <div>
                                 <div>
@@ -155,7 +155,7 @@
                         </div>
                     </li>
                     <li class="cell">
-                        <a href="#" class="block">GLAMPING</a>
+                        <a href="/Caravan" class="block">GLAMPING</a>
                         <div>
                             <div>
                                 <div>
@@ -189,7 +189,7 @@
                         </div>
                     </li>
                     <li class="cell">
-                        <a href="#" class="block">CARAVAN</a>
+                        <a href="/Caravan" class="block">CARAVAN</a>
                         <div>
                             <div>
                                 <div>
