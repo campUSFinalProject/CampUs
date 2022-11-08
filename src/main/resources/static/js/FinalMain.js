@@ -1,7 +1,7 @@
 /**
  * 
  */
-console.clear();
+
 
 $(window).scroll(function() {
     var scrollTop = $(window).scrollTop();

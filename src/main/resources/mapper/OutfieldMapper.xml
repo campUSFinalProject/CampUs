@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kibwa.campus.persistance.mapper.IOutfieldMapper">
+
+    <!-- 노지 정보 리스트 쿼리 -->
+    <select id="getOutfieldList" resultType="kibwa.campus.dto.OutfieldDTO">
+        select outdoor_info_num, location_specific, outdoor_detail_info, location_city_num, outdoor_detail_memo
+        from outdoor_info
+    </select>
+
+    <!-- 노지 상세보기 쿼리 -->
+    <select id="getOutfieldView" resultType="kibwa.campus.dto.OutfieldDTO">
+        select outdoor_info_num, location_specific, outdoor_detail_info, location_city_num, outdoor_detail_memo
+        from outdoor_info
+        where outdoor_info_num = #{outdoor_info_num}
+    </select>
+
+    <!-- 노지 정보 인서트 쿼리 -->
+    <insert id="insertOutfield" parameterType="kibwa.campus.dto.OutfieldDTO">
+        insert into outdoor_info
+        (outdoor_info_num,
+         location_city_num,
+         location_specific,
+         outdoor_detail_info,
+         outdoor_detail_memo)
+        VALUES (outdoor_seq.nextval,
+        (select location_city_num from location_city where city_name = #{city_name}),
+        #{location_specific},
+        #{outdoor_detail_info},
+        #{outdoor_detail_memo})
+    </insert>
+
+    <!-- 노지 업데이트 쿼리 -->
+    <update id="updateOutfield" parameterType="kibwa.campus.dto.OutfieldDTO">
+        update outdoor_info
+        set location_specific=#{location_specific},
+            outdoor_detail_info=#{outdoor_detail_info},
+            outdoor_detail_memo=#{outdoor_detail_memo}
+        where Outdoor_info_num=#{Outdoor_info_num}
+    </update>
+
+    <!-- 노지 삭제 쿼리 -->
+    <delete id="deleteOutfield" parameterType="kibwa.campus.dto.OutfieldDTO">
+        delete
+        from outdoor_info
+        where Outdoor_info_num = #{Outdoor_info_num}
+    </delete>
+
+</mapper>

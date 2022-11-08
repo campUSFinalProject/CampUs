@@ -7,6 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BoardDTO {
+    private String rownum;
     private String board_num;
     private String board_title;
     private String board_content;
@@ -17,4 +18,5 @@ public class BoardDTO {
     private String board_view_num;
     private String board_mod_date;
     private String notice_check;
+    private String keyword;
 }

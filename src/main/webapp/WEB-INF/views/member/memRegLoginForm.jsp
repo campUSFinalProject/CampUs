@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>사업자 전환신청 폼</title>
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
     <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>

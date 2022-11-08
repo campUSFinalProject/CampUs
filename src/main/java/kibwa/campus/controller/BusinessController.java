@@ -1,6 +1,8 @@
 package kibwa.campus.controller;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import kibwa.campus.dto.BusinessDTO;
+import kibwa.campus.dto.CaravanDTO;
 import kibwa.campus.dto.MemberDTO;
 import kibwa.campus.service.IBusinessService;
 import kibwa.campus.util.CmmUtil;
@@ -8,6 +10,7 @@ import kibwa.campus.util.EncryptUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -15,6 +18,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -23,6 +28,13 @@ public class BusinessController {
 
     @Resource(name = "BusinessService")
     private IBusinessService businessService;
+
+    //카라반 등록 ********제발 주석좀 답시다
+    @RequestMapping(value = "Business_CRUD")
+    public String Business_CRUD(HttpServletRequest request, ModelMap model) throws Exception {
+
+        return "/businesspage/Business_CRUD";
+    }
 
 
     //------------- 일반사용자에서 사업자전환요청 -----------------
@@ -106,9 +118,6 @@ public class BusinessController {
 
             String business_id = CmmUtil.nvl(request.getParameter("id"));
             String business_pw = CmmUtil.nvl(request.getParameter("password"));
-            String Business_email = CmmUtil.nvl(request.getParameter("Business_email"));
-            String Business_tel = CmmUtil.nvl(request.getParameter("Business_tel"));
-            String Business_name = CmmUtil.nvl(request.getParameter("Business_name"));
 
             log.info("Business_id : " + business_id);
             log.info("Business_password : " + business_pw);
@@ -117,9 +126,6 @@ public class BusinessController {
 
             pDTO.setBusiness_id(business_id);
             pDTO.setBusiness_pw(EncryptUtil.encHashSHA256(business_pw));
-            pDTO.setBusiness_name(Business_name);
-            pDTO.setBusiness_email(Business_email);
-            pDTO.setBusiness_tel(Business_tel);
 
             //로그인정보 체크
             BusinessDTO rDTO = businessService.getMemLoginCheck(pDTO);
@@ -139,13 +145,12 @@ public class BusinessController {
                 session.setAttribute("SS_business_EMAIL", rDTO.getBusiness_email());
                 session.setAttribute("SS_business_NAME", rDTO.getBusiness_name());
                 session.setAttribute("SS_business_PASSWORD", rDTO.getBusiness_pw());
-
-
             }
             rDTO = null;
 
         }catch (Exception e){
             msg = "실패하였습니다 :" + e.toString();
+            url = "/member/memRegLoginForm";
             System.out.println("오류로 인해 로그인이 실패하였습니다.");
             log.info(e.toString());
             e.printStackTrace();
@@ -159,6 +164,95 @@ public class BusinessController {
         return "/redirect";
     }
 
+
+    //---------사업자 마이페이지 이동-----------------------
+    @RequestMapping(value = "cu/businessMypage")
+    public String businessMypage() {
+
+        log.info(this.getClass().getName() + ".BUS MY PAGE GO!! ");
+
+        return "/member/businessMypage";
+
+    }
+
+
+    //사업자 내 카라반 버기
+    @RequestMapping(value = "business/myCaravan")
+    public String myCaravan(HttpServletRequest request, ModelMap model, HttpSession session)
+        throws Exception{
+        String business_num = CmmUtil.nvl((String) session.getAttribute("SS_business_NUM"));
+
+        CaravanDTO cDTO = new CaravanDTO();
+        cDTO.setBusiness_num(business_num);
+
+        List<CaravanDTO> cList = businessService.getMyCaravan(cDTO);
+
+        model.addAttribute("cList", cList);
+
+        return "/business/business_insert";
+    }
+
+
+    /*//--------------- 사업자 전환 요청 리스트 조회 ---------------------
+    @GetMapping(value = "business/changeReqList")
+    public String changeReqList(ModelMap model) throws Exception{
+
+        log.info(this.getClass().getName() + ".changeReqList START!!!");
+
+        List<BusinessDTO> pList = businessService.getChangeReq();
+
+        if (pList == null){
+            pList = new ArrayList<>();
+        }
+
+        log.info("pList : " + pList);
+
+        model.addAttribute("pList", pList);
+
+        log.info(this.getClass().getName() + ".changeReqList END!!!");
+
+        return "/admin/changeReqList";
+    }*/
+
+    /*//-------------- 사업자 전환 요청 상세 조회 ---------------------
+    @GetMapping(value = "admin/changeReqInfo")
+    public String changeReqInfo(HttpSession session, HttpServletRequest request, ModelMap model)
+        throws Exception{
+
+        log.info(this.getClass().getName() + ".changeReqInfo START!!!");
+
+        String msg = "";
+
+        try {
+            String business_num = CmmUtil.nvl(request.getParameter("business_num"));
+
+            log.info("business_num : " + business_num);
+
+            BusinessDTO pDTO = new BusinessDTO();
+            pDTO.setBusiness_num(business_num);
+
+            BusinessDTO rDTO = businessService.changeReqInfo(pDTO);
+
+            if (rDTO == null){
+                rDTO = new BusinessDTO();
+            }
+
+            model.addAttribute("rDTO",rDTO);
+
+            log.info("r.business_num : " + rDTO.getBusiness_num());
+
+        }catch (Exception e){
+            msg = "실패하였습니다 : " + e.toString();
+            log.info(e.toString());
+            e.printStackTrace();
+
+        }finally {
+            log.info(this.getClass().getName() + ".changeReqInfo END!!!!");
+            model.addAttribute("msg", msg);
+        }
+
+        return "/admin/changeReqInfo";
+    }*/
 
 
 
