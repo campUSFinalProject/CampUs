@@ -108,7 +108,7 @@
 <!-- 상단 메뉴바 -->
 <div class="top-bar con-min-width row">
     <div class="ride">
-        <a href="#" class="logo cell block img-box">
+        <a href="/cu/Main" class="logo cell block img-box">
             <img src="../img/camplogg.png" alt="">
         </a>
         <nav class="menu-box-2 cell">
