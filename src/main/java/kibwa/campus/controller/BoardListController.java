@@ -89,12 +89,12 @@ public class BoardListController {
             boardService.insertBoard(bDTO);
 
             msg = "등록되었습니다";
-            url = "/board/BoardList";
+            url = "/board/BoardList?keyword=";
 
         } catch (Exception e) {
 
             msg = "실패하였습니다 : " + e.getMessage();
-            url = "/board/BoardList";
+            url = "/board/BoardList?keyword=";
 
             log.info(e.toString());
             e.printStackTrace();
