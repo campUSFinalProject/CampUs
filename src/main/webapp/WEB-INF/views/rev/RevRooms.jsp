@@ -224,6 +224,14 @@
 
 <!-- 자바 스크립트 -->
 <script type="text/javascript" src= "../../../resources/static/js/FinalMain.js"></script>
+<script type="text/javascript">
+
+    document.getElementById('reservation_tax').addEventListener('change', (event) => {
+        console.log(event);
+    })
+
+
+</script>
 
 
 
