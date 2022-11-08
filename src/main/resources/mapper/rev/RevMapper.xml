@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kibwa.campus.persistance.mapper.rev.IRevMapper">
+
+    <insert id="save" parameterType="kibwa.campus.dto.rev.CampingInfoResponseDTO">
+        INSERT INTO REV (
+            REV_NUM,
+            REV_PEOPLE,
+            ENTER_DATE,
+            EXIT_DATE,
+            MEM_NUM,
+            SECTOR_NUM
+        )
+        values(
+            seq.nextVal
+            #{rev_People},
+            #{enter_Date},
+            #{exit_Date},
+            #{mem_Num},
+            #{sector_Num}
+              )
+    </insert>
+
+    <!-- 예약 쿼리 -->
+    <select id="findRevCampInfo" resultType="kibwa.campus.dto.rev.CampingInfoResponseDTO">
+        select A.CGROUND_INFO_NUM,
+               A.CGROUND_NAME,
+               A.CGROUND_LOCATION,
+               A.CGROUND_TEL,
+               A.CGROUND_DEPOSIT,
+               A.CAMPING_ENTER,
+               A.CAMPING_EXIT,
+               A.CGROUND_DETAIL_INFO,
+               A.ADD_FACIL,
+               A.REV_COUNT,
+               A.LOCATION_CITY_NUM,
+               B.SECTOR_NUM,
+               C.CAMPING_TYPE_NUM,
+               C.CAMPING_TYPE_NAME
+        FROM CGROUND_INFO A,
+             SECTOR B,
+             CAMPING_TYPE C
+        WHERE 1=1
+            AND A.CGROUND_INFO_NUM = B.CGROUND_INFO_NUM
+            AND B.CAMPING_TYPE_NUM = C.CAMPING_TYPE_NUM
+            AND B.SECTOR_NUM = #{sector_Num}
+
+    </select>
+
+
+</mapper>
