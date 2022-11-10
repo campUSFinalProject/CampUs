@@ -1,6 +1,6 @@
 # 🛺 SW캠프 Final 프로젝트 : CampUs
 ## Development   
-* Java 
+* Java v1.8
 * Spring Boot
 * Oracle v11.2.0.1.0
 * IntellJ v17.0.4.1
