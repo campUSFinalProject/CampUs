@@ -1,8 +1,8 @@
 # 👨‍💻 SW캠프 Final 프로젝트 
 ## Development   
-* Java
+* Java 
 * Spring Boot
-* Oracle v  
+* Oracle v11.2.0.1.0
 * IntellJ v17.0.4.1
 ### Page routing path   
 ### Commit Message Convention   
