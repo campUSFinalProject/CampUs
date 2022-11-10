@@ -1,10 +1,12 @@
-# 👨‍💻 SW캠프 Final 프로젝트 
+# 🛺 SW캠프 Final 프로젝트 : CampUs
 ## Development   
 * Java 
 * Spring Boot
 * Oracle v11.2.0.1.0
 * IntellJ v17.0.4.1
-### Page routing path   
+
+### ✉️ 프로젝트 한 줄 소개  
+
 ### Commit Message Convention   
 
 ```
@@ -16,5 +18,5 @@ Refactor : 코드 리펙토링
 Chore : 기타 작업
 Branch 이름은 작업자 별 
 ```
-## Document   
+### Document   
 📕 Notion : https://overjoyed-thorium-06d.notion.site/3-Final-Project-CampUs-9e96b360bdd84b1183a74648a8ee7f13
